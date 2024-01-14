@@ -1,0 +1,82 @@
+[
+{
+  "directory": "/home/matthiasvp/assignment/task1/task1b/build",
+  "command": "/usr/bin/g++    -g   -std=gnu++2a -o CMakeFiles/task1bapp.dir/main.cpp.o -c /home/matthiasvp/assignment/task1/task1b/main.cpp",
+  "file": "/home/matthiasvp/assignment/task1/task1b/main.cpp"
+},
+{
+  "directory": "/home/matthiasvp/assignment/task1/task1b/build",
+  "command": "/usr/bin/g++    -g   -std=gnu++2a -o CMakeFiles/task1bapp.dir/Product.cpp.o -c /home/matthiasvp/assignment/task1/task1b/Product.cpp",
+  "file": "/home/matthiasvp/assignment/task1/task1b/Product.cpp"
+},
+{
+  "directory": "/home/matthiasvp/assignment/task1/task1b/build",
+  "command": "/usr/bin/g++    -g   -std=gnu++2a -o CMakeFiles/task1bapp.dir/ComputerGame.cpp.o -c /home/matthiasvp/assignment/task1/task1b/ComputerGame.cpp",
+  "file": "/home/matthiasvp/assignment/task1/task1b/ComputerGame.cpp"
+},
+{
+  "directory": "/home/matthiasvp/assignment/task1/task1b/build",
+  "command": "/usr/bin/g++    -g   -std=gnu++2a -o CMakeFiles/task1bapp.dir/Clothing.cpp.o -c /home/matthiasvp/assignment/task1/task1b/Clothing.cpp",
+  "file": "/home/matthiasvp/assignment/task1/task1b/Clothing.cpp"
+},
+{
+  "directory": "/home/matthiasvp/assignment/task1/task1b/build",
+  "command": "/usr/bin/g++    -g   -std=gnu++2a -o CMakeFiles/task1bapp.dir/Electronics.cpp.o -c /home/matthiasvp/assignment/task1/task1b/Electronics.cpp",
+  "file": "/home/matthiasvp/assignment/task1/task1b/Electronics.cpp"
+},
+{
+  "directory": "/home/matthiasvp/assignment/task1/task1b/build",
+  "command": "/usr/bin/g++    -g   -std=gnu++2a -o CMakeFiles/task1bapp.dir/Book.cpp.o -c /home/matthiasvp/assignment/task1/task1b/Book.cpp",
+  "file": "/home/matthiasvp/assignment/task1/task1b/Book.cpp"
+},
+{
+  "directory": "/home/matthiasvp/assignment/task1/task1b/build",
+  "command": "/usr/bin/g++    -g   -std=gnu++2a -o CMakeFiles/task1bapp.dir/Transport.cpp.o -c /home/matthiasvp/assignment/task1/task1b/Transport.cpp",
+  "file": "/home/matthiasvp/assignment/task1/task1b/Transport.cpp"
+},
+{
+  "directory": "/home/matthiasvp/assignment/task1/task1b/build",
+  "command": "/usr/bin/g++    -g   -std=gnu++2a -o CMakeFiles/task1bapp.dir/Aircraft.cpp.o -c /home/matthiasvp/assignment/task1/task1b/Aircraft.cpp",
+  "file": "/home/matthiasvp/assignment/task1/task1b/Aircraft.cpp"
+},
+{
+  "directory": "/home/matthiasvp/assignment/task1/task1b/build",
+  "command": "/usr/bin/g++    -g   -std=gnu++2a -o CMakeFiles/task1bapp.dir/SeaVessel.cpp.o -c /home/matthiasvp/assignment/task1/task1b/SeaVessel.cpp",
+  "file": "/home/matthiasvp/assignment/task1/task1b/SeaVessel.cpp"
+},
+{
+  "directory": "/home/matthiasvp/assignment/task1/task1b/build",
+  "command": "/usr/bin/g++    -g   -std=gnu++2a -o CMakeFiles/task1bapp.dir/Truck.cpp.o -c /home/matthiasvp/assignment/task1/task1b/Truck.cpp",
+  "file": "/home/matthiasvp/assignment/task1/task1b/Truck.cpp"
+},
+{
+  "directory": "/home/matthiasvp/assignment/task1/task1b/build",
+  "command": "/usr/bin/g++    -g   -std=gnu++2a -o CMakeFiles/task1bapp.dir/Packaging.cpp.o -c /home/matthiasvp/assignment/task1/task1b/Packaging.cpp",
+  "file": "/home/matthiasvp/assignment/task1/task1b/Packaging.cpp"
+},
+{
+  "directory": "/home/matthiasvp/assignment/task1/task1b/build",
+  "command": "/usr/bin/g++    -g   -std=gnu++2a -o CMakeFiles/task1bapp.dir/Stock.cpp.o -c /home/matthiasvp/assignment/task1/task1b/Stock.cpp",
+  "file": "/home/matthiasvp/assignment/task1/task1b/Stock.cpp"
+},
+{
+  "directory": "/home/matthiasvp/assignment/task1/task1b/build",
+  "command": "/usr/bin/g++    -g   -std=gnu++2a -o CMakeFiles/task1bapp.dir/StockItem.cpp.o -c /home/matthiasvp/assignment/task1/task1b/StockItem.cpp",
+  "file": "/home/matthiasvp/assignment/task1/task1b/StockItem.cpp"
+},
+{
+  "directory": "/home/matthiasvp/assignment/task1/task1b/build",
+  "command": "/usr/bin/g++    -g   -std=gnu++2a -o CMakeFiles/task1bapp.dir/Shipment.cpp.o -c /home/matthiasvp/assignment/task1/task1b/Shipment.cpp",
+  "file": "/home/matthiasvp/assignment/task1/task1b/Shipment.cpp"
+},
+{
+  "directory": "/home/matthiasvp/assignment/task1/task1b/build",
+  "command": "/usr/bin/g++    -g   -std=gnu++2a -o CMakeFiles/task1bapp.dir/AppState.cpp.o -c /home/matthiasvp/assignment/task1/task1b/AppState.cpp",
+  "file": "/home/matthiasvp/assignment/task1/task1b/AppState.cpp"
+},
+{
+  "directory": "/home/matthiasvp/assignment/task1/task1b/build",
+  "command": "/usr/bin/g++    -g   -std=gnu++2a -o CMakeFiles/task1bapp.dir/Customer.cpp.o -c /home/matthiasvp/assignment/task1/task1b/Customer.cpp",
+  "file": "/home/matthiasvp/assignment/task1/task1b/Customer.cpp"
+}
+]

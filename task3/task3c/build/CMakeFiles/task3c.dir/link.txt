@@ -1,0 +1,1 @@
+/usr/bin/g++  -g  -rdynamic CMakeFiles/task3c.dir/main.cpp.o CMakeFiles/task3c.dir/Product.cpp.o CMakeFiles/task3c.dir/Book.cpp.o CMakeFiles/task3c.dir/ComputerGame.cpp.o CMakeFiles/task3c.dir/Clothing.cpp.o CMakeFiles/task3c.dir/Electronics.cpp.o CMakeFiles/task3c.dir/Stock.cpp.o CMakeFiles/task3c.dir/StockItem.cpp.o  -o task3c 

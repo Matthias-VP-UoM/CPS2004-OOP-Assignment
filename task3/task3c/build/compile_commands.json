@@ -1,0 +1,42 @@
+[
+{
+  "directory": "/home/matthiasvp/assignment/task3/task3c/build",
+  "command": "/usr/bin/g++    -g   -std=gnu++2a -o CMakeFiles/task3c.dir/main.cpp.o -c /home/matthiasvp/assignment/task3/task3c/main.cpp",
+  "file": "/home/matthiasvp/assignment/task3/task3c/main.cpp"
+},
+{
+  "directory": "/home/matthiasvp/assignment/task3/task3c/build",
+  "command": "/usr/bin/g++    -g   -std=gnu++2a -o CMakeFiles/task3c.dir/Product.cpp.o -c /home/matthiasvp/assignment/task3/task3c/Product.cpp",
+  "file": "/home/matthiasvp/assignment/task3/task3c/Product.cpp"
+},
+{
+  "directory": "/home/matthiasvp/assignment/task3/task3c/build",
+  "command": "/usr/bin/g++    -g   -std=gnu++2a -o CMakeFiles/task3c.dir/Book.cpp.o -c /home/matthiasvp/assignment/task3/task3c/Book.cpp",
+  "file": "/home/matthiasvp/assignment/task3/task3c/Book.cpp"
+},
+{
+  "directory": "/home/matthiasvp/assignment/task3/task3c/build",
+  "command": "/usr/bin/g++    -g   -std=gnu++2a -o CMakeFiles/task3c.dir/ComputerGame.cpp.o -c /home/matthiasvp/assignment/task3/task3c/ComputerGame.cpp",
+  "file": "/home/matthiasvp/assignment/task3/task3c/ComputerGame.cpp"
+},
+{
+  "directory": "/home/matthiasvp/assignment/task3/task3c/build",
+  "command": "/usr/bin/g++    -g   -std=gnu++2a -o CMakeFiles/task3c.dir/Clothing.cpp.o -c /home/matthiasvp/assignment/task3/task3c/Clothing.cpp",
+  "file": "/home/matthiasvp/assignment/task3/task3c/Clothing.cpp"
+},
+{
+  "directory": "/home/matthiasvp/assignment/task3/task3c/build",
+  "command": "/usr/bin/g++    -g   -std=gnu++2a -o CMakeFiles/task3c.dir/Electronics.cpp.o -c /home/matthiasvp/assignment/task3/task3c/Electronics.cpp",
+  "file": "/home/matthiasvp/assignment/task3/task3c/Electronics.cpp"
+},
+{
+  "directory": "/home/matthiasvp/assignment/task3/task3c/build",
+  "command": "/usr/bin/g++    -g   -std=gnu++2a -o CMakeFiles/task3c.dir/Stock.cpp.o -c /home/matthiasvp/assignment/task3/task3c/Stock.cpp",
+  "file": "/home/matthiasvp/assignment/task3/task3c/Stock.cpp"
+},
+{
+  "directory": "/home/matthiasvp/assignment/task3/task3c/build",
+  "command": "/usr/bin/g++    -g   -std=gnu++2a -o CMakeFiles/task3c.dir/StockItem.cpp.o -c /home/matthiasvp/assignment/task3/task3c/StockItem.cpp",
+  "file": "/home/matthiasvp/assignment/task3/task3c/StockItem.cpp"
+}
+]

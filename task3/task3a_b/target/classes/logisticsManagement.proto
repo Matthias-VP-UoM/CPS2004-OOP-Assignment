@@ -1,0 +1,94 @@
+syntax = "proto3";
+
+package com.task3a_b;
+
+message Product {
+  // Product attributes
+  string productName = 1;
+  int32 productID = 2;
+  string productCategory = 3;
+  double productPrice = 4;
+  int32 productVolume = 5;
+  // Add other product attributes as needed
+}
+
+// Subclasses of Product
+message Book {
+  string bookIBAN = 1;
+  string bookAuthor = 2;
+  string bookGenre = 3;
+}
+
+message Clothing{
+  double width = 1;
+  double length = 2;
+  string sizeClassification = 3;
+}
+
+message ComputerGame{}
+
+message Electronics{}
+
+message Transport {
+  // Transport attributes
+  string vehicleType = 1;
+  int32 vehicleID = 2;
+  double transportatoinSpeed = 3;
+  double transportationCostPerKm = 4;
+  // Add other transport attributes as needed
+}
+
+// Subclasses of Transport
+message Aircraft{
+  repeated string airSpaceList = 1;
+  string airSpace = 2;
+}
+
+message SeaVessel{
+  repeated string routeList = 1;
+  string route = 2;
+}
+
+message Truck{
+  repeated string motorwayList = 1;
+  string motorway = 2;
+}
+
+message Packaging {
+  // Packaging attributes
+  int32 packagingID = 1;
+  string material = 2;
+  double cost = 3;
+  int32 capacityInPackagingUnits = 4;
+  // Add other packaging attributes as needed
+}
+
+message StockItem {
+  // StockItem attributes
+  Product product = 1;
+  int32 quantity = 2;
+  // Add other stock item attributes as needed
+}
+
+message Stock {
+  repeated StockItem items = 1;
+}
+
+message Customer {
+  string customerName = 1;
+  int32 customerID = 2;
+  string customerRoad = 3;
+  string customerTown = 4;
+  string customerPostCode = 5;
+}
+
+message Shipment {
+  // Shipment attributes
+  int32 shipmentID = 1;
+  string shipmentStatus = 2;
+  string dispatchDate = 3;
+  repeated StockItem itemsToShip = 4;
+  Customer shipmentCustomer = 5;
+  Transport shipmentTransport = 6;
+  // Add other shipment attributes as needed
+}
