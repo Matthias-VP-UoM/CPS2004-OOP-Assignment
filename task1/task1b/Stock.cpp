@@ -30,13 +30,18 @@ void Stock::read_stock_list(){
 
 void Stock::print_item_details(int pos){
     try {
-        if (items.at(pos).getQuantity() > 0){
-            Product* prodAtPos = items.at(pos).getProduct();
-            cout << "Item " << pos << ":" << endl;
-            cout << "Product Details:" << endl;
-            prodAtPos->display_product_info();
-            cout << "Product Quantity in Stock: " << items.at(pos).getQuantity() << endl;
-            cout << "" << endl;
+        StockItem currentItem = items.at(pos);
+        StockItem *p = &currentItem;
+        if (p != NULL){
+            int currentQuantity = items.at(pos).getQuantity();
+            if (currentQuantity > 0){
+                Product* prodAtPos = items.at(pos).getProduct();
+                cout << "Item " << pos << ":" << endl;
+                cout << "Product Details:" << endl;
+                prodAtPos->display_product_info();
+                cout << "Product Quantity in Stock: " << items.at(pos).getQuantity() << endl;
+                cout << "" << endl;
+            }
         }else{
             cout << "There is no item in the position given!" << endl;
         }

@@ -20,7 +20,7 @@
 using namespace std;
 
 
-Stock* stock = new Stock();
+Stock stock;
 vector<Transport*> vehiclesList;
 vector<Packaging> packagesList;
 vector<Customer> customersList;
@@ -51,7 +51,7 @@ void AddObject(int choiceEntered){
             cout << "Enter choice of category: ";
             cin >> categoryChoice;
 
-            switch(toupper(choiceEntered)){
+            switch(toupper(categoryChoice)){
                 case 'A': category = "Aircraft"; validChoice = true; break;
                 case 'B': category = "Sea Vessel"; validChoice = true; break;
                 case 'C': category = "Truck"; validChoice = true; break;
@@ -175,7 +175,7 @@ void AddObject(int choiceEntered){
             item.setQuantity(quantity);
             item.setProduct(book);
 
-            stock->addItem(item);
+            stock.addItem(item);
         }else if (category.compare("Clothing") == 0){
             double width, length;
             string size;
@@ -191,7 +191,7 @@ void AddObject(int choiceEntered){
             item.setQuantity(quantity);
             item.setProduct(cloth);
 
-            stock->addItem(item);
+            stock.addItem(item);
         }else if (category.compare("Computer Game") == 0){
             ComputerGame* cg = new ComputerGame(id, name, price, "Computer Game", volume);
             
@@ -199,7 +199,7 @@ void AddObject(int choiceEntered){
             item.setQuantity(quantity);
             item.setProduct(cg);
 
-            stock->addItem(item);
+            stock.addItem(item);
         }else if (category.compare("Electronics") == 0){
             Electronics* electronic = new Electronics(id, name, price, "Electronics", volume);
             
@@ -207,7 +207,7 @@ void AddObject(int choiceEntered){
             item.setQuantity(quantity);
             item.setProduct(electronic);
 
-            stock->addItem(item);
+            stock.addItem(item);
         }
     }else if (choiceEntered == 3){
         int id;
@@ -330,7 +330,7 @@ void AddObject(int choiceEntered){
             cout << "ID of customer could not be found! Please try again!" << endl;
         }else{
             Customer custOrder = customersList.at(posOfCust);
-            stock->read_stock_list();
+            stock.read_stock_list();
 
             bool isValid = false;
 
@@ -342,13 +342,13 @@ void AddObject(int choiceEntered){
                 cout << "Enter quantity to order for the product you chose: ";
                 cin >> orderQuantity;
 
-                StockItem i = stock->getItem(prodIndex);
+                StockItem i = stock.getItem(prodIndex);
                 StockItem *p = &i;
-                if (p != NULL && orderQuantity <= stock->calculate_product_quantity(i)){
+                if (p != NULL && orderQuantity <= stock.calculate_product_quantity(i)){
                     StockItem itemOrdered(orderQuantity, i.getProduct());
                     Shipment ship(orderID, custOrder);
                     ship.addItemToList(itemOrdered);
-                    stock->getItem(prodIndex).updateQuantity(-orderQuantity);
+                    stock.getItem(prodIndex).updateQuantity(-orderQuantity);
                     
 
                     /*if (stock.getItem(prodIndex).getQuantity() == 0){
@@ -434,7 +434,7 @@ void ReadObject(int choiceEntered){
         int readChoice = 0;
         bool validOption = false;
 
-        if (!stock->checkIfEmptyList()){
+        if (!stock.checkIfEmptyList()){
             do{
                 cout << "1. Read entire list of items in stock" << endl;
                 cout << "2. Read one item in stock" << endl;
@@ -442,12 +442,12 @@ void ReadObject(int choiceEntered){
                 cin >> readChoice;
 
                 switch(readChoice){
-                    case 1: stock->read_stock_list(); validOption = true; break;
+                    case 1: stock.read_stock_list(); validOption = true; break;
                     case 2:{
                         int posToRead;
                         cout << "Enter position of item to search in array: ";
                         cin >> posToRead;
-                        stock->print_item_details(posToRead);
+                        stock.print_item_details(posToRead);
                         validOption = true;
                     } break;
                     default: cout << "Invalid option! Please try again!" << endl;
@@ -636,7 +636,7 @@ void UpdateObject(int choiceEntered){
             double price;
             int volume, quantity;
 
-            StockItem itemAtPos = stock->getItem(posToUpdate);
+            StockItem itemAtPos = stock.getItem(posToUpdate);
             Product* prodAtPos = itemAtPos.getProduct();
 
             cout << "Original Product Name (enter nothing to keep same name): " << prodAtPos->getName() << endl;
@@ -670,7 +670,7 @@ void UpdateObject(int choiceEntered){
             }
 
             itemAtPos.setProduct(prodAtPos);
-            stock->updateItem(itemAtPos, posToUpdate);
+            stock.updateItem(itemAtPos, posToUpdate);
 
             if (prodAtPos->getCategory().compare("Book") == 0){
                 Book* b = (Book*) prodAtPos;
@@ -692,7 +692,7 @@ void UpdateObject(int choiceEntered){
                 }
 
                 string author;
-                cout << "Original Author: " << b->getIBAN() << endl;
+                cout << "Original Author: " << b->getAuthor() << endl;
                 cout << "Enter new author (enter nothing to keep same author): ";
                 cin >> author;
                 if (author.length() != 0){
@@ -700,7 +700,7 @@ void UpdateObject(int choiceEntered){
                 }
 
                 itemAtPos.setProduct(b);
-                stock->updateItem(itemAtPos, posToUpdate);
+                stock.updateItem(itemAtPos, posToUpdate);
             }else if (prodAtPos->getCategory().compare("Clothing") == 0){
                 Clothing* c = (Clothing*) prodAtPos;
 
@@ -731,7 +731,7 @@ void UpdateObject(int choiceEntered){
                 }
 
                 itemAtPos.setProduct(c);
-                stock->updateItem(itemAtPos, posToUpdate);
+                stock.updateItem(itemAtPos, posToUpdate);
             }
         }catch(const exception& e){
             cout << "Item not found!" << endl;
@@ -981,7 +981,7 @@ void UpdateObject(int choiceEntered){
             cout << "ID of customer could not be found! Please try again!" << endl;
         }else{
             Customer custOrder = customersList.at(posOfCust);
-            stock->read_stock_list();
+            stock.read_stock_list();
 
             bool isValid = false;
 
@@ -1018,12 +1018,12 @@ void UpdateObject(int choiceEntered){
 
                             StockItem *p = &itemChosen;
 
-                            if (p != NULL && orderQuantity <= stock->calculate_product_quantity(stock->getItem(prodIndex))){
+                            if (p != NULL && orderQuantity <= stock.calculate_product_quantity(stock.getItem(prodIndex))){
                                 StockItem itemOrdered(orderQuantity, itemChosen.getProduct());
                                 Shipment ship(orderID, custOrder);
                                 ship.updateItemInList(itemOrdered, posToUpdate);
                                 if (orderQuantity < originalQuantity || orderQuantity > originalQuantity)
-                                    stock->getItem(prodIndex).updateQuantity(orderQuantity - originalQuantity);
+                                    stock.getItem(prodIndex).updateQuantity(orderQuantity - originalQuantity);
                                 
 
                                 /*if (stock.getItem(prodIndex).getQuantity() == 0){
@@ -1051,14 +1051,14 @@ void UpdateObject(int choiceEntered){
                             cout << "Enter quantity to order for the product you chose: ";
                             cin >> orderQuantity;
 
-                            StockItem i = stock->getItem(prodIndex);
+                            StockItem i = stock.getItem(prodIndex);
                             StockItem *p2 = &i;
 
-                            if (p2 != NULL && orderQuantity <= stock->calculate_product_quantity(i)){
+                            if (p2 != NULL && orderQuantity <= stock.calculate_product_quantity(i)){
                                 StockItem itemOrdered(orderQuantity, i.getProduct());
                                 Shipment ship(orderID, custOrder);
                                 ship.addItemToList(itemOrdered);
-                                stock->getItem(prodIndex).updateQuantity(-orderQuantity);
+                                stock.getItem(prodIndex).updateQuantity(-orderQuantity);
                                 
 
                                 /*if (stock.getItem(prodIndex).getQuantity() == 0){
@@ -1155,7 +1155,7 @@ void DeleteObject(int choiceEntered){
     if (choiceEntered == 1){
         cout << "Enter position of item to remove: ";
         cin >> posToRemove;
-        stock->removeItem(posToRemove);
+        stock.removeItem(posToRemove);
     }else if (choiceEntered == 2){
         cout << "Enter position of vehicle to remove: ";
         cin >> posToRemove;
@@ -1177,14 +1177,16 @@ void DeleteObject(int choiceEntered){
 
 // Method for saving (serialization)
 void save2(const string& filename) {
-    std::ofstream outFile(filename, std::ios::binary);
+    std::ofstream outFile;
+
+    outFile.open(filename, ios::app);
     if (!outFile) {
         std::cerr << "Error: Could not open file for writing.\n";
         return;
     }
 
     // Serialize the stock
-    outFile.write(reinterpret_cast<const char*>(&stock), sizeof(Stock));
+    outFile.write((char*)&stock, sizeof(stock));
 
     // Serialize the vehiclesList
     size_t transportSize = vehiclesList.size();
@@ -1211,17 +1213,23 @@ void save2(const string& filename) {
 
 // Method for loading (deserialization)
 void load2(const string& filename) {
-    std::ifstream inFile(filename, std::ios::binary);
+    std::ifstream inFile;
+
+    inFile.open(filename, ios::in);
+
     if (!inFile) {
         std::cerr << "Error: Could not open file for reading.\n";
         return;
     }
     
     // Deserialize the stock
-    inFile.read(reinterpret_cast<char*>(&stock), sizeof(Stock));
+    inFile.read((char*)&stock, sizeof(stock));
+
+    //delete stock;
+    //stock = loadedStock;
 
     // Deserialize the transportList
-    size_t transportSize;
+    /* size_t transportSize;
     inFile.read(reinterpret_cast<char*>(&transportSize), sizeof(transportSize));
     vehiclesList.resize(transportSize);
     inFile.read(reinterpret_cast<char*>(vehiclesList.data()), transportSize * sizeof(Transport));
@@ -1242,7 +1250,7 @@ void load2(const string& filename) {
     size_t orderSize;
     inFile.read(reinterpret_cast<char*>(&orderSize), sizeof(orderSize));
     ordersList.resize(orderSize);
-    inFile.read(reinterpret_cast<char*>(ordersList.data()), orderSize * sizeof(Shipment));
+    inFile.read(reinterpret_cast<char*>(ordersList.data()), orderSize * sizeof(Shipment)); */
 
     inFile.close();
 }
@@ -1273,7 +1281,6 @@ void AccessSubMenu(string word, int choiceEntered){
         }
 
     }while (tolower(subChoice) != 'e');
-    
 }
 
 void ChooseShipmentToDispatch(){
@@ -1366,5 +1373,11 @@ int main(int, char**){
             default: cout << "Invalid choice!" << endl;
         }
     }while(choice != 9);
+
+    //delete stock;
+
+    for (int i = 0; i < vehiclesList.size(); i++){
+        delete vehiclesList[i];
+    }
     
 }

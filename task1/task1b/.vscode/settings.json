@@ -4,6 +4,7 @@
         "iostream": "cpp",
         "array": "cpp",
         "string": "cpp",
-        "*.tcc": "cpp"
+        "*.tcc": "cpp",
+        "new": "cpp"
     }
 }

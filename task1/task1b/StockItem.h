@@ -7,39 +7,24 @@
 #include <vector>
 
 class StockItem {
-    int quantity;
-    Product* product;
+    int itemQuantity;
+    Product* itemProduct;
 
     public:
-        StockItem(){}
+        StockItem();
 
-        StockItem(int quantity, Product* product){
-            this->quantity = quantity;
-            this->product = product;
-        }
+        StockItem(int quantity, Product* product);
 
         // Setters
-        void setQuantity(int quantity){
-            this->quantity = quantity;
-        }
-
-        void setProduct(Product* product){
-            this->product = product;
-        }
+        void setQuantity(int quantity);
+        void setProduct(Product* product);
 
         // Getters
-        int getQuantity(){
-            return quantity;
-        }
-
-        Product* getProduct(){
-            return product;
-        }
+        int getQuantity() const;
+        Product* getProduct() const;
 
         // Other Methods
-        void updateQuantity(int newQuantity){
-            quantity += newQuantity;
-        }
+        void updateQuantity(int newQuantity);
 };
 
 #endif //STOCKITEM_H

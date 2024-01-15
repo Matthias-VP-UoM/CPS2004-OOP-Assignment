@@ -55,7 +55,9 @@ CMakeFiles/task1bapp.dir/Stock.cpp.o: ../Stock.cpp
 CMakeFiles/task1bapp.dir/Stock.cpp.o: ../Stock.h
 CMakeFiles/task1bapp.dir/Stock.cpp.o: ../StockItem.h
 
+CMakeFiles/task1bapp.dir/StockItem.cpp.o: ../Product.h
 CMakeFiles/task1bapp.dir/StockItem.cpp.o: ../StockItem.cpp
+CMakeFiles/task1bapp.dir/StockItem.cpp.o: ../StockItem.h
 
 CMakeFiles/task1bapp.dir/Transport.cpp.o: ../Transport.cpp
 CMakeFiles/task1bapp.dir/Transport.cpp.o: ../Transport.h
