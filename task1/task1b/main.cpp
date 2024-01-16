@@ -472,6 +472,7 @@ void ReadObject(int choiceEntered){
                         for (int i = 0; i < vehiclesList.size(); i++){
                             vehiclesList[i]->display_transport_details();
                         }
+                        validOption = true;
                     } break;
                     case 2:{
                         int posToRead;
@@ -482,11 +483,14 @@ void ReadObject(int choiceEntered){
                             do{
                                 if (count == posToRead){
                                     vehiclesList[count]->display_transport_details();
+                                }else{
+                                    count++;
                                 }
                             }while (count < vehiclesList.size());
                         }catch(const exception& e){
                             cout << "Vehicle does not exist in list!" << endl;
                         }
+                        validOption = true;
                     } break;
                     default: cout << "Invalid option! Please try again!" << endl;
                 }
@@ -520,6 +524,8 @@ void ReadObject(int choiceEntered){
                             do{
                                 if (count == posToRead){
                                     packagesList[count].display_package_details();
+                                }else{
+                                    count++;
                                 }
                             }while (count < packagesList.size());
                         }catch(const exception& e){
@@ -1177,82 +1183,78 @@ void DeleteObject(int choiceEntered){
 
 // Method for saving (serialization)
 void save2(const string& filename) {
-    std::ofstream outFile;
+    std::ofstream outFile(filename.c_str(), std::ios::out | std::ios::binary | std::ios::app);
 
-    outFile.open(filename, ios::app);
-    if (!outFile) {
-        std::cerr << "Error: Could not open file for writing.\n";
-        return;
+    if (!outFile.is_open()) {
+        std::cerr << "Error: Could not open file for writing." << endl;
+    }else{
+        // Serialize the stock
+        outFile.write((char*)(&stock), sizeof(Stock));
+
+        // Serialize the vehiclesList
+        size_t transportSize = vehiclesList.size();
+        outFile.write(reinterpret_cast<const char*>(&transportSize), sizeof(transportSize));
+        outFile.write(reinterpret_cast<const char*>(vehiclesList.data()), transportSize * sizeof(Transport));
+
+        // Serialize the packagesList
+        size_t packageSize = packagesList.size();
+        outFile.write(reinterpret_cast<const char*>(&packageSize), sizeof(packageSize));
+        outFile.write(reinterpret_cast<const char*>(packagesList.data()), packageSize * sizeof(Packaging));
+
+        // Serialize the customersList
+        size_t customerSize = customersList.size();
+        outFile.write(reinterpret_cast<const char*>(&customerSize), sizeof(customerSize));
+        outFile.write(reinterpret_cast<const char*>(customersList.data()), customerSize * sizeof(Customer));
+
+        // Serialize the ordersList
+        size_t orderSize = ordersList.size();
+        outFile.write(reinterpret_cast<const char*>(&orderSize), sizeof(orderSize));
+        outFile.write(reinterpret_cast<const char*>(ordersList.data()), orderSize * sizeof(Shipment));
+
+        outFile.close();
     }
-
-    // Serialize the stock
-    outFile.write((char*)&stock, sizeof(stock));
-
-    // Serialize the vehiclesList
-    size_t transportSize = vehiclesList.size();
-    outFile.write(reinterpret_cast<const char*>(&transportSize), sizeof(transportSize));
-    outFile.write(reinterpret_cast<const char*>(vehiclesList.data()), transportSize * sizeof(Transport));
-
-    // Serialize the packagesList
-    size_t packageSize = packagesList.size();
-    outFile.write(reinterpret_cast<const char*>(&packageSize), sizeof(packageSize));
-    outFile.write(reinterpret_cast<const char*>(packagesList.data()), packageSize * sizeof(Packaging));
-
-    // Serialize the customersList
-    size_t customerSize = customersList.size();
-    outFile.write(reinterpret_cast<const char*>(&customerSize), sizeof(customerSize));
-    outFile.write(reinterpret_cast<const char*>(customersList.data()), customerSize * sizeof(Customer));
-
-    // Serialize the ordersList
-    size_t orderSize = ordersList.size();
-    outFile.write(reinterpret_cast<const char*>(&orderSize), sizeof(orderSize));
-    outFile.write(reinterpret_cast<const char*>(ordersList.data()), orderSize * sizeof(Shipment));
-
-    outFile.close();
 }
 
 // Method for loading (deserialization)
 void load2(const string& filename) {
-    std::ifstream inFile;
+    std::ifstream inFile(filename, std::ios::in | std::ios::binary | std::ios::app);
 
-    inFile.open(filename, ios::in);
+    if (!inFile.is_open()) {
+        std::cerr << "Error: Could not open file for reading." << endl;
+    }else{
+        // Deserialize the stock
+        Stock loadedStock;
+        inFile.read(reinterpret_cast<char*>(&loadedStock), sizeof(Stock));
+        stock = loadedStock;
 
-    if (!inFile) {
-        std::cerr << "Error: Could not open file for reading.\n";
-        return;
+        // Deserialize the transportList
+        size_t transportSize;
+        inFile.read(reinterpret_cast<char*>(&transportSize), sizeof(transportSize));
+        vehiclesList.resize(transportSize);
+        inFile.read(reinterpret_cast<char*>(vehiclesList.data()), transportSize * sizeof(Transport));
+
+        // Deserialize the packagesList
+        size_t packageSize;
+        inFile.read(reinterpret_cast<char*>(&packageSize), sizeof(packageSize));
+        packagesList.resize(packageSize);
+        inFile.read(reinterpret_cast<char*>(packagesList.data()), packageSize * sizeof(Packaging));
+
+        // Deserialize the customersList
+        size_t customerSize;
+        inFile.read(reinterpret_cast<char*>(&customerSize), sizeof(customerSize));
+        customersList.resize(customerSize);
+        inFile.read(reinterpret_cast<char*>(customersList.data()), customerSize * sizeof(Customer));
+
+        // Deserialize the ordersList
+        size_t orderSize;
+        inFile.read(reinterpret_cast<char*>(&orderSize), sizeof(orderSize));
+        ordersList.resize(orderSize);
+        inFile.read(reinterpret_cast<char*>(ordersList.data()), orderSize * sizeof(Shipment));
+
+        inFile.close();
     }
-    
-    // Deserialize the stock
-    inFile.read((char*)&stock, sizeof(stock));
-
     //delete stock;
     //stock = loadedStock;
-
-    // Deserialize the transportList
-    /* size_t transportSize;
-    inFile.read(reinterpret_cast<char*>(&transportSize), sizeof(transportSize));
-    vehiclesList.resize(transportSize);
-    inFile.read(reinterpret_cast<char*>(vehiclesList.data()), transportSize * sizeof(Transport));
-
-    // Deserialize the packagesList
-    size_t packageSize;
-    inFile.read(reinterpret_cast<char*>(&packageSize), sizeof(packageSize));
-    packagesList.resize(packageSize);
-    inFile.read(reinterpret_cast<char*>(packagesList.data()), packageSize * sizeof(Packaging));
-
-    // Deserialize the customersList
-    size_t customerSize;
-    inFile.read(reinterpret_cast<char*>(&customerSize), sizeof(customerSize));
-    customersList.resize(customerSize);
-    inFile.read(reinterpret_cast<char*>(customersList.data()), customerSize * sizeof(Customer));
-
-    // Deserialize the ordersList
-    size_t orderSize;
-    inFile.read(reinterpret_cast<char*>(&orderSize), sizeof(orderSize));
-    ordersList.resize(orderSize);
-    inFile.read(reinterpret_cast<char*>(ordersList.data()), orderSize * sizeof(Shipment)); */
-
-    inFile.close();
 }
 
 void AccessSubMenu(string word, int choiceEntered){
@@ -1367,8 +1369,8 @@ int main(int, char**){
             case 4: keyWord = "Customer"; AccessSubMenu(keyWord, 4); break;
             case 5: keyWord = "Order"; AccessSubMenu(keyWord, 5); break;
             case 6: keyWord = "Shipment"; ChooseShipmentToDispatch(); break;
-            case 7: save2("application_state.dat"); cout << "State is saved successfully!" << endl; break;
-            case 8: load2("application_state.dat"); cout << "State is loaded successfully!" << endl; break;
+            case 7: save2("application_state.ser"); cout << "State is saved successfully!" << endl; break;
+            case 8: load2("application_state.ser"); cout << "State is loaded successfully!" << endl; break;
             case 9: cout << "Thanks for using the program!" << endl; break;
             default: cout << "Invalid choice!" << endl;
         }
@@ -1376,8 +1378,8 @@ int main(int, char**){
 
     //delete stock;
 
-    for (int i = 0; i < vehiclesList.size(); i++){
+    /*for (int i = 0; i < vehiclesList.size(); i++){
         delete vehiclesList[i];
-    }
+    }*/
     
 }

@@ -5,6 +5,10 @@ StockItem::StockItem(){}
 
 StockItem::StockItem(int quantity, Product* product): itemQuantity(quantity), itemProduct(product){}
 
+/* StockItem::~StockItem(){
+    delete itemProduct;
+} */
+
 // Setters
 void StockItem::setQuantity(int quantity){
     itemQuantity = quantity;

@@ -92,6 +92,7 @@ public class App implements Serializable
                 id = sc.nextInt();
 
                 if (!vehiclesList.isEmpty()){
+                    validID = true;
                     for (int i = 0; i < vehiclesList.size(); i++){
                         if (id == vehiclesList.get(i).getID()){
                             validID = false;
@@ -99,8 +100,6 @@ public class App implements Serializable
                             break;
                         }
                     }
-
-                    validID = true;
                 }else{
                     validID = true;
                 }
@@ -287,6 +286,7 @@ public class App implements Serializable
                 id = sc.nextInt();
 
                 if (!packagesList.isEmpty()){
+                    validID = true;
                     for (int i = 0; i < packagesList.size(); i++){
                         if (id == packagesList.get(i).getID()){
                             validID = false;
@@ -294,8 +294,6 @@ public class App implements Serializable
                             break;
                         }
                     }
-
-                    validID = true;
                 }else{
                     validID = true;
                 }
@@ -340,25 +338,24 @@ public class App implements Serializable
 
                 if (!customersList.isEmpty()){
                     for (int i = 0; i < customersList.size(); i++){
+                        validID = true;
                         if (id == customersList.get(i).getID()){
                             validID = false;
                             System.out.println("Customer with same ID already exists! Please enter another one!");
                             break;
                         }
                     }
-
-                    validID = true;
                 }else{
                     validID = true;
                 }
             }while (!validID);
-            System.out.println("Enter name: ");
+            System.out.print("Enter name: ");
             String name = sc.next();
-            System.out.println("Enter road: ");
+            System.out.print("Enter road: ");
             String road = sc.next();
-            System.out.println("Enter town: ");
+            System.out.print("Enter town: ");
             String town = sc.next();
-            System.out.println("Enter post code: ");
+            System.out.print("Enter post code: ");
             String postCode = sc.next();
 
             Customer cust = new Customer(id, name, road, town, postCode);
@@ -374,14 +371,13 @@ public class App implements Serializable
 
                 if (!ordersList.isEmpty()){
                     for (int i = 0; i < ordersList.size(); i++){
+                        validID = true;
                         if (orderID == ordersList.get(i).getID()){
                             validID = false;
                             System.out.println("Order with same ID already exists! Please enter another one!");
                             break;
                         }
                     }
-
-                    validID = true;
                 }else{
                     validID = true;
                 }
@@ -415,22 +411,33 @@ public class App implements Serializable
                 boolean isValid = false;
 
                 do{
-                    System.out.print("Enter index of product to order: ");
+                    System.out.print("Enter index of product to order (from 0): ");
                     int prodIndex = sc.nextInt();
 
                     System.out.print("Enter quantity to order for the product you chose: ");
                     int orderQuantity = sc.nextInt();
 
+                    System.out.print("Enter day of month of order: ");
+                    int day = sc.nextInt();
+
+                    System.out.print("Enter month number of order: ");
+                    int monthNum = sc.nextInt();
+
+                    System.out.print("Enter year of order: ");
+                    int year = sc.nextInt();
+
+                    String date = day+"/"+monthNum+"/"+year;
+
                     if (stock.getItem(prodIndex) != null && orderQuantity <= stock.calculate_product_quantity(stock.getItem(prodIndex))){
                         StockItem itemOrdered = new StockItem(orderQuantity, stock.getItem(prodIndex).getProduct());
-                        Shipment ship = new Shipment(orderID, custOrder);
+                        Shipment ship = new Shipment(orderID, custOrder, date);
                         ship.addItemToList(itemOrdered);
                         stock.getItem(prodIndex).updateQuantity(-orderQuantity);
                         
 
-                        /*if (stock.getItem(prodIndex).getQuantity() == 0){
+                        if (stock.getItem(prodIndex).getQuantity() == 0){
                             stock.removeItem(stock.getItem(prodIndex));
-                        }*/
+                        }
 
                         isValid = true;
 
@@ -511,7 +518,7 @@ public class App implements Serializable
                 do{
                     System.out.println("1. Read entire list of items in stock");
                     System.out.println("2. Read one item in stock");
-                    System.out.println("Enter your choice here: ");
+                    System.out.print("Enter your choice here: ");
                     readChoice = sc.nextInt();
 
                     switch(readChoice){
@@ -537,7 +544,7 @@ public class App implements Serializable
                 do{
                     System.out.println("1. Read entire list of vehicles");
                     System.out.println("2. Read one vehicle");
-                    System.out.println("Enter your choice here: ");
+                    System.out.print("Enter your choice here: ");
                     readChoice = sc.nextInt();
 
                     switch(readChoice){
@@ -582,7 +589,7 @@ public class App implements Serializable
                 do{
                     System.out.println("1. Read entire list of packages");
                     System.out.println("2. Read one package");
-                    System.out.println("Enter your choice here: ");
+                    System.out.print("Enter your choice here: ");
                     readChoice = sc.nextInt();
 
                     switch(readChoice){
@@ -627,7 +634,7 @@ public class App implements Serializable
                 do{
                     System.out.println("1. Read entire list of customers");
                     System.out.println("2. Read one customer");
-                    System.out.println("Enter your choice here: ");
+                    System.out.print("Enter your choice here: ");
                     readChoice = sc.nextInt();
 
                     switch(readChoice){
@@ -672,7 +679,7 @@ public class App implements Serializable
                 do{
                     System.out.println("1. Read entire list of orders");
                     System.out.println("2. Read one order");
-                    System.out.println("Enter your choice here: ");
+                    System.out.print("Enter your choice here: ");
                     readChoice = sc.nextInt();
 
                     switch(readChoice){
@@ -791,7 +798,7 @@ public class App implements Serializable
                     double width = sc.nextDouble();
                     String widthString = Double.toString(width);
                     if (!widthString.isEmpty()){
-                        c.setWidth(width);
+                        c.setWidth(quantity);
                     }
 
                     System.out.println("Original Length: " + c.getLength());
@@ -1022,6 +1029,18 @@ public class App implements Serializable
             System.out.print("Enter position of order to update in array: ");
             int posToUpdate = sc.nextInt();
 
+            System.out.println("Original Order Date: "+ordersList.get(posToUpdate).getOrderDate());
+            System.out.print("Enter day of month of order: ");
+            int day = sc.nextInt();
+
+            System.out.print("Enter month number of order: ");
+            int monthNum = sc.nextInt();
+
+            System.out.print("Enter year of order: ");
+            int year = sc.nextInt();
+
+            String date = day+"/"+monthNum+"/"+year;
+
             int orderID = ordersList.get(posToUpdate).getID();
 
             System.out.println("Original Customer: "+ordersList.get(posToUpdate).getCustomer());
@@ -1070,7 +1089,7 @@ public class App implements Serializable
                             case 1:{
                                 validSelection = true;
 
-                                System.out.print("Enter index of product to update: ");
+                                System.out.print("Enter index of product to update (from 0): ");
                                 int prodIndex = sc.nextInt();
 
                                 StockItem itemChosen = ordersList.get(posToUpdate).getItem(prodIndex);
@@ -1083,15 +1102,15 @@ public class App implements Serializable
 
                                 if (itemChosen != null && orderQuantity <= stock.calculate_product_quantity(stock.getItem(prodIndex))){
                                     StockItem itemOrdered = new StockItem(orderQuantity, itemChosen.getProduct());
-                                    Shipment ship = new Shipment(orderID, custOrder);
+                                    Shipment ship = new Shipment(orderID, custOrder, date);
                                     ship.updateItemInList(itemOrdered, posToUpdate);
                                     if (orderQuantity < originalQuantity || orderQuantity > originalQuantity)
                                         stock.getItem(prodIndex).updateQuantity(orderQuantity - originalQuantity);
                                     
 
-                                    /*if (stock.getItem(prodIndex).getQuantity() == 0){
+                                    if (stock.getItem(prodIndex).getQuantity() <= 0){
                                         stock.removeItem(stock.getItem(prodIndex));
-                                    }*/
+                                    }
 
                                     isValid = true;
 
@@ -1106,22 +1125,24 @@ public class App implements Serializable
                             case 2: {
                                 validSelection = true;
 
-                                System.out.print("Enter index of product to order: ");
+                                System.out.print("Enter index of product to order (from 0): ");
                                 int prodIndex = sc.nextInt();
 
                                 System.out.print("Enter quantity to order for the product you chose: ");
                                 int orderQuantity = sc.nextInt();
 
+                                
+
                                 if (stock.getItem(prodIndex) != null && orderQuantity <= stock.calculate_product_quantity(stock.getItem(prodIndex))){
                                     StockItem itemOrdered = new StockItem(orderQuantity, stock.getItem(prodIndex).getProduct());
-                                    Shipment ship = new Shipment(orderID, custOrder);
+                                    Shipment ship = new Shipment(orderID, custOrder, date);
                                     ship.addItemToList(itemOrdered);
                                     stock.getItem(prodIndex).updateQuantity(-orderQuantity);
                                     
 
-                                    /*if (stock.getItem(prodIndex).getQuantity() == 0){
+                                    if (stock.getItem(prodIndex).getQuantity() <= 0){
                                         stock.removeItem(stock.getItem(prodIndex));
-                                    }*/
+                                    }
 
                                     isValid = true;
 
@@ -1198,6 +1219,89 @@ public class App implements Serializable
                             default: System.out.println("Invalid option!"); validSelection = false; break;
                         }
                     }while (!validSelection);
+
+                    System.out.print("Enter index of product to order (from 0): ");
+                    int prodIndex = sc.nextInt();
+
+                    System.out.print("Enter quantity to order for the product you chose: ");
+                    int orderQuantity = sc.nextInt();
+
+                    if (stock.getItem(prodIndex) != null && orderQuantity <= stock.calculate_product_quantity(stock.getItem(prodIndex))){
+                        StockItem itemOrdered = new StockItem(orderQuantity, stock.getItem(prodIndex).getProduct());
+                        Shipment ship = new Shipment(orderID, custOrder, date);
+                        ship.addItemToList(itemOrdered);
+                        stock.getItem(prodIndex).updateQuantity(-orderQuantity);
+                        
+
+                        if (stock.getItem(prodIndex).getQuantity() <= 0){
+                            stock.removeItem(stock.getItem(prodIndex));
+                        }
+
+                        isValid = true;
+
+                        System.out.println("Enter distance between customer and warehouse: ");
+                        double distance = sc.nextDouble();
+
+                        String transportType = ship.stateTransportType(distance);
+
+                        for (int i = 0; i < vehiclesList.size(); i++){
+                            if (transportType.equals("Truck")){
+                                if (vehiclesList.get(i) instanceof Truck){
+                                    Truck currentVehicle = (Truck) vehiclesList.get(i);
+                                    int countVeh = 0;
+                                    boolean isSearched = false;
+
+                                    while(!isSearched){
+                                        if (currentVehicle.getRoute(countVeh).contains(custOrder.getTown())){
+                                            ship.setTransport(currentVehicle);
+                                            isSearched = true;
+                                        }else{
+                                            countVeh++;
+                                        }
+                                    }
+                                    break;
+                                }
+                            }else if (transportType.equals("Sea Vessel")){
+                                if (vehiclesList.get(i) instanceof SeaVessel){
+                                    SeaVessel currentVehicle = (SeaVessel) vehiclesList.get(i);
+                                    int countVeh = 0;
+                                    boolean isSearched = false;
+
+                                    while(!isSearched){
+                                        if (currentVehicle.getRoute(countVeh).contains(custOrder.getTown())){
+                                            ship.setTransport(currentVehicle);
+                                            isSearched = true;
+                                        }else{
+                                            countVeh++;
+                                        }
+                                    }
+                                    break;
+                                }
+                            }else if (transportType.equals("Aircraft")){
+                                if (vehiclesList.get(i) instanceof Aircraft){
+                                    Aircraft currentVehicle = (Aircraft) vehiclesList.get(i);
+                                    int countVeh = 0;
+                                    boolean isSearched = false;
+
+                                    while(!isSearched){
+                                        if (currentVehicle.getRoute(countVeh).contains(custOrder.getTown())){
+                                            ship.setTransport(currentVehicle);
+                                            isSearched = true;
+                                        }else{
+                                            countVeh++;
+                                        }
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                        ordersList.add(ship);
+
+                        System.out.println("Item has been put to cart!");
+                    }else{
+                        isValid = false;
+                        System.out.println("Please try again!");
+                    }
                 }while (!isValid);
             }
         }
@@ -1224,6 +1328,11 @@ public class App implements Serializable
         }else if (choiceEntered == 5){
             System.out.print("Enter position of order to remove: ");
             posToRemove = sc.nextInt();
+            Shipment orderToRemove = ordersList.get(posToRemove);
+            for (int i = 0; i < orderToRemove.getListSize(); i++){
+                orderToRemove.getItem(i).updateQuantity(orderToRemove.getOrderedQuantity(i));
+            }
+            ordersList.get(posToRemove).getItem(posToRemove);
             ordersList.remove(posToRemove);
         }
     }
@@ -1251,7 +1360,7 @@ public class App implements Serializable
         if (!foundShipment){
             System.out.println("Shipment cannot be found! Please try again!");
         }else{
-            System.out.print("Shipment found!");
+            System.out.println("Shipment found!");
 
             System.out.print("Enter day of month of dispatch: ");
             int day = sc.nextInt();
@@ -1265,18 +1374,11 @@ public class App implements Serializable
             String date = day+"/"+monthNum+"/"+year;
 
             double totalCost = ordersList.get(posOfShipment).calculateTotalCost(monthNum);
-            System.out.println("Total Cost: "+totalCost);
+            System.out.println("Total Cost: €"+totalCost);
 
-            System.out.print("Confirm Dispatch of Shipment (Yes or No): ");
-            String dispatchConfirmation = sc.next();
-
-            if (dispatchConfirmation.toUpperCase().charAt(0) == 'Y'){
-                ordersList.get(posOfShipment).dispatch(date);
-                System.out.println("Order has been dispatched!");
-                ordersList.remove(posOfShipment);
-            }else{
-                System.out.println("Process has been cancelled!");
-            }
+            ordersList.get(posOfShipment).dispatch(date);
+            System.out.println("Order has been dispatched!");
+            ordersList.remove(posOfShipment);
         }
     }
 

@@ -7,7 +7,7 @@ public class Shipment implements Serializable{
     private static final long serialVersionUID = 1L;
 
     private int shipmentID;
-    private String shipmentStatus, dispatchDate;
+    private String shipmentStatus, dispatchDate, orderDate;
     private ArrayList<StockItem> itemsToShip = new ArrayList<StockItem>();
     private Customer shipmentCustomer;
     private Transport shipmentTransport;
@@ -16,9 +16,10 @@ public class Shipment implements Serializable{
         shipmentStatus = "Not Dispatched";
     }
 
-    public Shipment(int id, Customer customer){
+    public Shipment(int id, Customer customer, String date){
         shipmentID = id;
         shipmentStatus = "Not Dispatched";
+        orderDate = date;
         shipmentCustomer = customer;
     }
 
@@ -96,7 +97,7 @@ public class Shipment implements Serializable{
     }
 
     public void setDate(String date){
-        dispatchDate = date;
+        orderDate = date;
     }
 
     public void setCustomer(Customer customer){
@@ -112,7 +113,11 @@ public class Shipment implements Serializable{
         return shipmentID;
     }
 
-    public String getDate(){
+    public String getOrderDate(){
+        return orderDate;
+    }
+
+    public String getDispatchDate(){
         return dispatchDate;
     }
 
@@ -130,5 +135,13 @@ public class Shipment implements Serializable{
 
     public Transport getTransport(){
         return shipmentTransport;
+    }
+
+    public int getListSize(){
+        return itemsToShip.size();
+    }
+
+    public int getOrderedQuantity(int pos){
+        return itemsToShip.get(pos).getQuantity();
     }
 }

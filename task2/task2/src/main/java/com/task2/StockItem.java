@@ -35,6 +35,6 @@ public class StockItem implements Serializable{
 
     // Other Methods
     public void updateQuantity(int newQuantity){
-        quantity = newQuantity;
+        quantity += newQuantity;
     }
 }

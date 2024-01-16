@@ -36,7 +36,7 @@ public class Stock implements Serializable{
         try {
             if (items.get(pos).quantity > 0){
                 Product prodAtPos = items.get(pos).getProduct();
-                System.out.println("Item " + pos + ":");
+                System.out.println("Item " + (pos+1) + ":");
                 System.out.println("Product Details:");
                 prodAtPos.display_product_info();
                 System.out.println("Product Quantity in Stock: " + items.get(pos).getQuantity());

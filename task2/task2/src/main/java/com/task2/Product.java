@@ -32,7 +32,9 @@ public class Product implements Serializable{
         }else if (quantity >= 15 && purchaseMonth == 11){
             discount = 0.2;
         }else if (quantity > 5){
-            discount = 0.1;   // 10% discount for more than 5 items purchased
+            discount = 0.18;   // 10% discount for more than 5 items purchased
+        }else{
+            discount = 0.1;
         }
 
         return discount;

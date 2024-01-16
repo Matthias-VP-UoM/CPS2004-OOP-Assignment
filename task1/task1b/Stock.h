@@ -12,11 +12,10 @@ using namespace std;
 
 class Stock{
     protected:
-        //Item* items[MAXITEMS];
         vector<StockItem> items;
     public:
         Stock();
-        //void setList();
+
         void addItem(StockItem item);
         void updateItem(StockItem item, int pos);
         void removeItem(int pos);

@@ -12,8 +12,8 @@ class StockItem {
 
     public:
         StockItem();
-
         StockItem(int quantity, Product* product);
+        //~StockItem();
 
         // Setters
         void setQuantity(int quantity);
