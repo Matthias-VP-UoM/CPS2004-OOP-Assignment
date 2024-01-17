@@ -193,7 +193,10 @@ void AddObject(int choiceEntered){
 
             stock.addItem(item);
         }else if (category.compare("Computer Game") == 0){
-            ComputerGame* cg = new ComputerGame(id, name, price, "Computer Game", volume);
+            string publisher;
+            cout << "Enter game publisher: ";
+            cin >> publisher;
+            ComputerGame* cg = new ComputerGame(id, name, price, "Computer Game", volume, publisher);
             
             StockItem item;
             item.setQuantity(quantity);
@@ -336,7 +339,7 @@ void AddObject(int choiceEntered){
 
             do{
                 int prodIndex, orderQuantity;
-                cout << "Enter index of product to order: ";
+                cout << "Enter index of product to order (from 0): ";
                 cin >> prodIndex;
 
                 cout << "Enter quantity to order for the product you chose: ";
@@ -645,7 +648,7 @@ void UpdateObject(int choiceEntered){
             StockItem itemAtPos = stock.getItem(posToUpdate);
             Product* prodAtPos = itemAtPos.getProduct();
 
-            cout << "Original Product Name (enter nothing to keep same name): " << prodAtPos->getName() << endl;
+            cout << "Original Product Name (enter same value to keep same name): " << prodAtPos->getName() << endl;
             cout << "Enter new name of product: ";
             cin >> name;
             if (name.length() != 0){
@@ -654,7 +657,7 @@ void UpdateObject(int choiceEntered){
             
 
             cout << "Original Product Price: " << prodAtPos->getPrice() << endl;
-            cout << "Enter new product price (enter nothing to keep same price): ";
+            cout << "Enter new product price (enter same value to keep same price): ";
             cin >> price;
             if (to_string(price).length() != 0){
                 prodAtPos->setPrice(price);
@@ -662,14 +665,14 @@ void UpdateObject(int choiceEntered){
             
 
             cout << "Original Product Volume: " << prodAtPos->getVolume() << endl;
-            cout << "Enter new product volume (enter nothing to keep same volume): ";
+            cout << "Enter new product volume (enter same value to keep same volume): ";
             cin >> volume;
             if (to_string(volume).length() != 0){
                 prodAtPos->setVolume(volume);
             }
 
             cout << "Original Item Quantity: " << itemAtPos.getQuantity() << endl;
-            cout << "Enter new item quantity (enter nothing to keep same quantity): ";
+            cout << "Enter new item quantity (enter same value to keep same quantity): ";
             cin >> quantity;
             if (to_string(quantity).length() != 0){
                 itemAtPos.setQuantity(quantity);
@@ -683,7 +686,7 @@ void UpdateObject(int choiceEntered){
 
                 string IBAN;
                 cout << "Original IBAN: " << b->getIBAN() << endl;
-                cout << "Enter new IBAN (enter nothing to keep same IBAN): ";
+                cout << "Enter new IBAN (enter same value to keep same IBAN): ";
                 cin >> IBAN;
                 if (IBAN.length() != 0){
                     b->setIBAN(IBAN);
@@ -691,7 +694,7 @@ void UpdateObject(int choiceEntered){
 
                 string genre;
                 cout << "Original Genre: " << b->getGenre() << endl;
-                cout << "Enter new genre (enter nothing to keep same genre): ";
+                cout << "Enter new genre (enter same value to keep same genre): ";
                 cin >> genre;
                 if (genre.length() != 0){
                     b->setGenre(genre);
@@ -699,7 +702,7 @@ void UpdateObject(int choiceEntered){
 
                 string author;
                 cout << "Original Author: " << b->getAuthor() << endl;
-                cout << "Enter new author (enter nothing to keep same author): ";
+                cout << "Enter new author (enter same value to keep same author): ";
                 cin >> author;
                 if (author.length() != 0){
                     b->setAuthor(author);
@@ -712,7 +715,7 @@ void UpdateObject(int choiceEntered){
 
                 double width;
                 cout << "Original Width: " << c->getWidth() << endl;
-                cout << "Enter new width (enter nothing to keep same width): ";
+                cout << "Enter new width (enter same value to keep same width): ";
                 cin >> width;
                 string widthString = to_string(width);
                 if (widthString.length() != 0){
@@ -721,7 +724,7 @@ void UpdateObject(int choiceEntered){
 
                 double length;
                 cout << "Original Length: " << c->getLength() << endl;
-                cout << "Enter new length (enter nothing to keep same length): ";
+                cout << "Enter new length (enter same value to keep same length): ";
                 cin >> length;
                 string lengthString = to_string(length);
                 if (lengthString.length() != 0){
@@ -730,7 +733,7 @@ void UpdateObject(int choiceEntered){
 
                 string size;
                 cout << "Original Size: " << c->getSize() << endl;
-                cout << "Enter new size (enter nothing to keep same size): ";
+                cout << "Enter new size (enter same value to keep same size): ";
                 cin >> size;
                 if (size.length() != 0){
                     c->setSize(size);
@@ -738,6 +741,15 @@ void UpdateObject(int choiceEntered){
 
                 itemAtPos.setProduct(c);
                 stock.updateItem(itemAtPos, posToUpdate);
+            }else if (prodAtPos->getCategory().compare("Computer Game") == 0){
+                ComputerGame* cg = (ComputerGame*) prodAtPos;
+                string publisher;
+                cout << "Original Game Publisher: " << cg->getPublisher() << endl;
+                cout << "Enter new publisher (enter same value to keep same size): ";
+                cin >> publisher;
+                if (publisher.length() != 0){
+                    cg->setPublisher(publisher);
+                }
             }
         }catch(const exception& e){
             cout << "Item not found!" << endl;
@@ -758,7 +770,7 @@ void UpdateObject(int choiceEntered){
 
             if(vehiclesList.at(posToUpdate)->getType().compare("Aircraft") == 0){
                 cout << "Original Vehicle Transportation Speed: " << vehiclesList.at(posToUpdate)->getSpeed() << endl;
-                cout << "Enter new vehicle speed (enter nothing to keep same speed): ";
+                cout << "Enter new vehicle speed (enter same value to keep same speed): ";
                 cin >> speed;
                 string speedString = to_string(speed);
                 if (speedString.length() != 0){
@@ -767,7 +779,7 @@ void UpdateObject(int choiceEntered){
                 
 
                 cout << "Original Vehicle Transportation Cost/km: " << vehiclesList.at(posToUpdate)->getCost() << endl;
-                cout << "Enter new vehicle cost (enter nothing to keep same cost): ";
+                cout << "Enter new vehicle cost (enter same value to keep same cost): ";
                 cin >> cost;
                 string costString = to_string(cost);
                 if (costString.length() != 0){
@@ -775,7 +787,7 @@ void UpdateObject(int choiceEntered){
                 }
             }else if(vehiclesList.at(posToUpdate)->getType().compare("SeaVessel") == 0){
                 cout << "Original Vehicle Transportation Speed: " << vehiclesList.at(posToUpdate)->getSpeed() << endl;
-                cout << "Enter new vehicle speed (enter nothing to keep same speed): ";
+                cout << "Enter new vehicle speed (enter same value to keep same speed): ";
                 cin >> speed;
                 string speedString = to_string(speed);
                 if (speedString.length() != 0){
@@ -784,7 +796,7 @@ void UpdateObject(int choiceEntered){
                 
 
                 cout << "Original Vehicle Transportation Cost/km: " << vehiclesList.at(posToUpdate)->getCost() << endl;
-                cout << "Enter new vehicle cost (enter nothing to keep same cost): ";
+                cout << "Enter new vehicle cost (enter same value to keep same cost): ";
                 cin >> cost;
                 string costString = to_string(cost);
                 if (costString.length() != 0){
@@ -792,7 +804,7 @@ void UpdateObject(int choiceEntered){
                 }
             }else if(vehiclesList.at(posToUpdate)->getType().compare("SeaVessel") == 0){
                 cout << "Original Vehicle Transportation Speed: " << vehiclesList.at(posToUpdate)->getSpeed() << endl;
-                cout << "Enter new vehicle speed (enter nothing to keep same speed): ";
+                cout << "Enter new vehicle speed (enter same value to keep same speed): ";
                 cin >> speed;
                 string speedString = to_string(speed);
                 if (speedString.length() != 0){
@@ -801,7 +813,7 @@ void UpdateObject(int choiceEntered){
                 
 
                 cout << "Original Vehicle Transportation Cost/km: " << vehiclesList.at(posToUpdate)->getCost() << endl;
-                cout << "Enter new vehicle cost (enter nothing to keep same cost): ";
+                cout << "Enter new vehicle cost (enter same value to keep same cost): ";
                 cin >> cost;
                 string costString = to_string(cost);
                 if (costString.length() != 0){
@@ -822,19 +834,19 @@ void UpdateObject(int choiceEntered){
                     case 1: {
                         if(vehiclesList.at(posToUpdate)->getType().compare("Aircraft") == 0){
                             acAtPos = (Aircraft*) vehiclesList.at(posToUpdate);
-                            cout << "Enter new air space (enter nothing to keep same air space): " << endl;
+                            cout << "Enter new air space (enter same value to keep same air space): " << endl;
                             cin >> route;
                             acAtPos->updateAirSpaceinList(route, posToUpdate);
                             vehiclesList.at(posToUpdate) = acAtPos;
                         }else if(vehiclesList.at(posToUpdate)->getType().compare("Sea Vessel") == 0){
                             svAtPos = (SeaVessel*) vehiclesList.at(posToUpdate);
-                            cout << "Enter new route (enter nothing to keep same route): ";
+                            cout << "Enter new route (enter same value to keep same route): ";
                             cin >> route;
                             svAtPos->updateRouteinList(route, posToUpdate);
                             vehiclesList.at(posToUpdate) = svAtPos;
                         }else if(vehiclesList.at(posToUpdate)->getType().compare("Truck") == 0){
                             tAtPos = (Truck*) vehiclesList.at(posToUpdate);
-                            cout << "Enter new motorway (enter nothing to keep same motorway): ";
+                            cout << "Enter new motorway (enter same value to keep same motorway): ";
                             cin >> route;
                             tAtPos->updateMotorwayinList(route, posToUpdate);
                             vehiclesList.at(posToUpdate) = tAtPos;
@@ -851,14 +863,14 @@ void UpdateObject(int choiceEntered){
                             vehiclesList.at(posToUpdate) = acAtPos;
                         }else if(vehiclesList.at(posToUpdate)->getType().compare("Sea Vessel") == 0){
                             svAtPos = (SeaVessel*) vehiclesList.at(posToUpdate);
-                            cout << "Enter new route (enter nothing to keep same route): ";
+                            cout << "Enter new route (enter same value to keep same route): ";
                             cin >> route;
                             svAtPos->setRoute(route);
                             svAtPos->addToList(route);
                             vehiclesList.at(posToUpdate) = svAtPos;
                         }else if(vehiclesList.at(posToUpdate)->getType().compare("Truck") == 0){
                             tAtPos = (Truck*) vehiclesList.at(posToUpdate);
-                            cout << "Enter new motorway (enter nothing to keep same motorway): ";
+                            cout << "Enter new motorway (enter same value to keep same motorway): ";
                             cin >> route;
                             tAtPos->setMotorway(route);
                             tAtPos->addToList(route);
@@ -883,7 +895,7 @@ void UpdateObject(int choiceEntered){
 
             string material;
             cout << "Original Packaging Material: " << packageAtPos.getMaterial() << endl;
-            cout << ("Enter new packaging material (enter nothing to keep same material): ");
+            cout << ("Enter new packaging material (enter same value to keep same material): ");
             cin >> material;
             if (material.length() != 0){
                 packageAtPos.setMaterial(material);
@@ -891,7 +903,7 @@ void UpdateObject(int choiceEntered){
 
             double cost;
             cout << "Original Packaging Cost: " << packageAtPos.getCost() << endl;
-            cout << "Enter new packaging cost (enter nothing to keep same cost): ";
+            cout << "Enter new packaging cost (enter same value to keep same cost): ";
             cin >> cost;
             string costString = to_string(cost);
             if (costString.length() != 0){
@@ -900,7 +912,7 @@ void UpdateObject(int choiceEntered){
 
             int capacity;
             cout << "Original Packaging Capacity: " << packageAtPos.getCapacity() << endl;
-            cout << "Enter new product capacity (enter nothing to keep same capacity): ";
+            cout << "Enter new product capacity (enter same value to keep same capacity): ";
             cin >> capacity;
             string capacityString = to_string(capacity);
             if (capacityString.length() != 0){
@@ -920,7 +932,7 @@ void UpdateObject(int choiceEntered){
             
             string name;
             cout << "Original Customer Name: " << custAtPos.getName() << endl;
-            cout << "Enter new name (enter nothing to keep same name): ";
+            cout << "Enter new name (enter same value to keep same name): ";
             cin >> name;
             if (name.length() != 0){
                 custAtPos.setName(name);
@@ -928,7 +940,7 @@ void UpdateObject(int choiceEntered){
 
             string road;
             cout << "Original Customer Road: " << custAtPos.getRoad() << endl;
-            cout << "Enter new road (enter nothing to keep same cost): ";
+            cout << "Enter new road (enter same value to keep same cost): ";
             cin >> road;
             if (road.length() != 0){
                 custAtPos.setRoad(road);
@@ -936,7 +948,7 @@ void UpdateObject(int choiceEntered){
 
             string town;
             cout << "Original Customer Town: " << custAtPos.getTown() << endl;
-            cout << "Enter new town (enter nothing to keep same cost): ";
+            cout << "Enter new town (enter same value to keep same cost): ";
             cin >> town;
             if (town.length() != 0){
                 custAtPos.setTown(town);
@@ -945,7 +957,7 @@ void UpdateObject(int choiceEntered){
             string postCode;
 
             cout << "Original Customer Post Code: " << custAtPos.getPostCode() << endl;
-            cout << "Enter new post code (enter nothing to keep same cost): ";
+            cout << "Enter new post code (enter same value to keep same cost): ";
             cin >> postCode;
             if (postCode.length() != 0){
                 custAtPos.setPostCode(postCode);
@@ -1010,7 +1022,7 @@ void UpdateObject(int choiceEntered){
                             validSelection = true;
                             
                             int prodIndex;
-                            cout << "Enter index of product to update: ";
+                            cout << "Enter index of product to update (from 0): ";
                             cin >> prodIndex;
 
                             StockItem itemChosen = ordersList.at(posToUpdate).getItem(prodIndex);
@@ -1050,7 +1062,7 @@ void UpdateObject(int choiceEntered){
                             validSelection = true;
 
                             int prodIndex;
-                            cout << "Enter index of product to order: ";
+                            cout << "Enter index of product to order (from 0): ";
                             cin >> prodIndex;
 
                             int orderQuantity;
@@ -1143,7 +1155,7 @@ void UpdateObject(int choiceEntered){
                         } break;
                         case 3: {
                             int posToRemove;
-                            cout << "Enter position of item to remove: ";
+                            cout << "Enter position of item to remove (from 0): ";
                             cin >> posToRemove;
                             ordersList.at(posToUpdate).removeItemFromlist(posToRemove);
                             validSelection = true;
@@ -1159,23 +1171,23 @@ void UpdateObject(int choiceEntered){
 void DeleteObject(int choiceEntered){
     int posToRemove;
     if (choiceEntered == 1){
-        cout << "Enter position of item to remove: ";
+        cout << "Enter position of item to remove (from 0): ";
         cin >> posToRemove;
         stock.removeItem(posToRemove);
     }else if (choiceEntered == 2){
-        cout << "Enter position of vehicle to remove: ";
+        cout << "Enter position of vehicle to remove (from 0): ";
         cin >> posToRemove;
         vehiclesList.erase(vehiclesList.begin() + posToRemove);
     }else if (choiceEntered == 3){
-        cout << "Enter position of package to remove: ";
+        cout << "Enter position of package to remove (from 0): ";
         cin >> posToRemove;
         packagesList.erase(packagesList.begin() + posToRemove);
     }else if (choiceEntered == 4){
-        cout << "Enter position of customer to remove: ";
+        cout << "Enter position of customer to remove (from 0): ";
         cin >> posToRemove;
         customersList.erase(customersList.begin() + posToRemove);
     }else if (choiceEntered == 5){
-        cout << "Enter position of order to remove: ";
+        cout << "Enter position of order to remove (from 0): ";
         cin >> posToRemove;
         ordersList.erase(ordersList.begin() + posToRemove);
     }

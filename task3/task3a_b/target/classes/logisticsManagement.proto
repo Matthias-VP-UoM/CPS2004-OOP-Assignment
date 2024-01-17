@@ -34,7 +34,8 @@ message PB_Clothing{
 }
 
 message PB_ComputerGame{
-  PB_Product product = 1;
+  string gamePublisher = 1;
+  PB_Product product = 2;
 }
 
 message PB_Electronics{

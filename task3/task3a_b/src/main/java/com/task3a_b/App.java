@@ -183,7 +183,7 @@ public class App implements Serializable
                 boolean isFinished = false;
                 do{
                     String ans;
-                    System.out.println("Do you want to add in an airspace (Yes or No): ");
+                    System.out.print("Do you want to add in an airspace (Yes or No): ");
                     ans = sc.next();
     
                     if (ans.toUpperCase().charAt(0) == 'Y'){
@@ -308,7 +308,9 @@ public class App implements Serializable
 
                 stock.addItem(item);
             }else if (category.equals("Computer Game")){
-                ComputerGame cg = new ComputerGame(id, name, price, "Computer Game", volume);
+                System.out.print("Enter game publisher: ");
+                String publisher = sc.next();
+                ComputerGame cg = new ComputerGame(id, name, price, "Computer Game", volume, publisher);
 
                 StockItem item = new StockItem();
                 item.setQuantity(quantity);
@@ -576,7 +578,7 @@ public class App implements Serializable
                         case 1: stock.read_stock_list(); validOption = true; break;
                         case 2:{
                             int posToRead;
-                            System.out.println("Enter position of item to search in array: ");
+                            System.out.println("Enter position of item to search in array (from 0): ");
                             posToRead = sc.nextInt();
                             stock.print_item_details(posToRead);
                             validOption = true;
@@ -609,7 +611,7 @@ public class App implements Serializable
                         } break;
                         case 2:{
                             int posToRead;
-                            System.out.print("Enter position of vehicle to search in array: ");
+                            System.out.print("Enter position of vehicle to search in array (from 0): ");
                             posToRead = sc.nextInt();
                             try{
                                 int count = 0;
@@ -654,7 +656,7 @@ public class App implements Serializable
                         } break;
                         case 2:{
                             int posToRead;
-                            System.out.print("Enter position of package to search in array: ");
+                            System.out.print("Enter position of package to search in array (from 0): ");
                             posToRead = sc.nextInt();
                             try{
                                 int count = 0;
@@ -699,7 +701,7 @@ public class App implements Serializable
                         } break;
                         case 2:{
                             int posToRead;
-                            System.out.print("Enter position of customer to search in array: ");
+                            System.out.print("Enter position of customer to search in array (from 0): ");
                             posToRead = sc.nextInt();
                             try{
                                 int count = 0;
@@ -744,7 +746,7 @@ public class App implements Serializable
                         } break;
                         case 2:{
                             int posToRead;
-                            System.out.print("Enter position of order to search in array: ");
+                            System.out.print("Enter position of order to search in array (from 0): ");
                             posToRead = sc.nextInt();
                             try{
                                 int count = 0;
@@ -774,13 +776,13 @@ public class App implements Serializable
         if (choiceEntered == 1){
             int posToUpdate;
             try{
-                System.out.print("Enter position of item to update in array: ");
+                System.out.print("Enter position of item to update in array (from 0): ");
                 posToUpdate = sc.nextInt();
 
                 StockItem itemAtPos = stock.getItem(posToUpdate);
                 Product prodAtPos = itemAtPos.getProduct();
 
-                System.out.println("Original Product Name (enter nothing to keep same name): " + prodAtPos.getName());
+                System.out.println("Original Product Name (enter same value to keep same name): " + prodAtPos.getName());
                 System.out.print("Enter new name of product: ");
                 String name = sc.next();
                 if (name.length() != 0){
@@ -789,7 +791,7 @@ public class App implements Serializable
                 
 
                 System.out.println("Original Product Price: " + prodAtPos.getPrice());
-                System.out.print("Enter new product price (enter nothing to keep same price): ");
+                System.out.print("Enter new product price (enter same value to keep same price): ");
                 double price = sc.nextDouble();
                 String priceString = Double.toString(price);
                 if (!priceString.isEmpty()){
@@ -798,7 +800,7 @@ public class App implements Serializable
                 
 
                 System.out.println("Original Product Volume: " + prodAtPos.getVolume());
-                System.out.print("Enter new product volume (enter nothing to keep same volume): ");
+                System.out.print("Enter new product volume (enter same value to keep same volume): ");
                 int volume = sc.nextInt();
                 String volumeString = Integer.toString(volume);
                 if (!volumeString.isEmpty()){
@@ -806,7 +808,7 @@ public class App implements Serializable
                 }
 
                 System.out.println("Original Item Quantity: " + stock.calculate_product_quantity(itemAtPos));
-                System.out.print("Enter new item quantity (enter nothing to keep same quantity): ");
+                System.out.print("Enter new item quantity (enter same value to keep same quantity): ");
                 int quantity = sc.nextInt();
                 String quantityString = Integer.toString(quantity);
                 if (!quantityString.isEmpty()){
@@ -819,21 +821,21 @@ public class App implements Serializable
                     Book b = (Book) prodAtPos;
 
                     System.out.println("Original IBAN: " + b.getIBAN());
-                    System.out.print("Enter new IBAN (enter nothing to keep same IBAN): ");
+                    System.out.print("Enter new IBAN (enter same value to keep same IBAN): ");
                     String IBAN = sc.next();
                     if (IBAN.length() != 0){
                         b.setIBAN(IBAN);
                     }
 
                     System.out.println("Original Genre: " + b.getGenre());
-                    System.out.print("Enter new genre (enter nothing to keep same genre): ");
+                    System.out.print("Enter new genre (enter same value to keep same genre): ");
                     String genre = sc.next();
                     if (genre.length() != 0){
                         b.setGenre(genre);
                     }
 
                     System.out.println("Original Author: " + b.getAuthor());
-                    System.out.print("Enter new author (enter nothing to keep same author): ");
+                    System.out.print("Enter new author (enter same value to keep same author): ");
                     String author = sc.next();
                     if (author.length() != 0){
                         b.setAuthor(author);
@@ -845,7 +847,7 @@ public class App implements Serializable
                     Clothing c = (Clothing) prodAtPos;
 
                     System.out.println("Original Width: " + c.getWidth());
-                    System.out.print("Enter new width (enter nothing to keep same width): ");
+                    System.out.print("Enter new width (enter same value to keep same width): ");
                     double width = sc.nextDouble();
                     String widthString = Double.toString(width);
                     if (!widthString.isEmpty()){
@@ -853,7 +855,7 @@ public class App implements Serializable
                     }
 
                     System.out.println("Original Length: " + c.getLength());
-                    System.out.print("Enter new length (enter nothing to keep same length): ");
+                    System.out.print("Enter new length (enter same value to keep same length): ");
                     double length = sc.nextDouble();
                     String lengthString = Double.toString(length);
                     if (!lengthString.isEmpty()){
@@ -861,13 +863,25 @@ public class App implements Serializable
                     }
 
                     System.out.println("Original Size: " + c.getSize());
-                    System.out.print("Enter new size (enter nothing to keep same size): ");
+                    System.out.print("Enter new size (enter same value to keep same size): ");
                     String size = sc.next();
                     if (size.length() != 0){
                         c.setSize(size);
                     }
 
                     itemAtPos.setProduct(c);
+                    stock.updateItem(itemAtPos, posToUpdate);
+                }else if (prodAtPos instanceof ComputerGame){
+                    ComputerGame cg = (ComputerGame) prodAtPos;
+
+                    System.out.println("Original Publisher: " + cg.getPublisher());
+                    System.out.print("Enter new publisher (enter same value to keep same publisher): ");
+                    String publisher = sc.next();
+                    if (publisher.length() != 0){
+                        cg.setPublisher(publisher);
+                    }
+
+                    itemAtPos.setProduct(cg);
                     stock.updateItem(itemAtPos, posToUpdate);
                 }
             }catch (IndexOutOfBoundsException e){
@@ -876,7 +890,7 @@ public class App implements Serializable
         }else if (choiceEntered == 2){
             int posToUpdate;
             try{
-                System.out.print("Enter position of vehicle to update in array: ");
+                System.out.print("Enter position of vehicle to update in array (from 0): ");
                 posToUpdate = sc.nextInt();
 
                 String route;
@@ -888,7 +902,7 @@ public class App implements Serializable
 
                 if(vehiclesList.get(posToUpdate) instanceof Aircraft){
                     System.out.println("Original Vehicle Transportation Speed: " + vehiclesList.get(posToUpdate).getSpeed());
-                    System.out.print("Enter new vehicle speed (enter nothing to keep same speed): ");
+                    System.out.print("Enter new vehicle speed (enter same value to keep same speed): ");
                     speed = sc.nextDouble();
                     String speedString = Double.toString(speed);
                     if (!speedString.isEmpty()){
@@ -897,7 +911,7 @@ public class App implements Serializable
                     
 
                     System.out.println("Original Vehicle Transportation Cost/km: " + vehiclesList.get(posToUpdate).getCost());
-                    System.out.print("Enter new vehicle cost (enter nothing to keep same cost): ");
+                    System.out.print("Enter new vehicle cost (enter same value to keep same cost): ");
                     cost = sc.nextDouble();
                     String costString = Double.toString(cost);
                     if (!costString.isEmpty()){
@@ -905,7 +919,7 @@ public class App implements Serializable
                     }
                 }else if(vehiclesList.get(posToUpdate) instanceof SeaVessel){
                     System.out.println("Original Vehicle Transportation Speed: " + vehiclesList.get(posToUpdate).getSpeed());
-                    System.out.print("Enter new vehicle speed (enter nothing to keep same speed): ");
+                    System.out.print("Enter new vehicle speed (enter same value to keep same speed): ");
                     speed = sc.nextDouble();
                     String speedString = Double.toString(speed);
                     if (!speedString.isEmpty()){
@@ -914,7 +928,7 @@ public class App implements Serializable
                     
 
                     System.out.println("Original Vehicle Transportation Cost/km: " + vehiclesList.get(posToUpdate).getCost());
-                    System.out.print("Enter new vehicle cost (enter nothing to keep same cost): ");
+                    System.out.print("Enter new vehicle cost (enter same value to keep same cost): ");
                     cost = sc.nextDouble();
                     String costString = Double.toString(cost);
                     if (!costString.isEmpty()){
@@ -922,7 +936,7 @@ public class App implements Serializable
                     }
                 }else if(vehiclesList.get(posToUpdate) instanceof Truck){
                     System.out.println("Original Vehicle Transportation Speed: " + vehiclesList.get(posToUpdate).getSpeed());
-                    System.out.print("Enter new vehicle speed (enter nothing to keep same speed): ");
+                    System.out.print("Enter new vehicle speed (enter same value to keep same speed): ");
                     speed = sc.nextDouble();
                     String speedString = Double.toString(speed);
                     if (!speedString.isEmpty()){
@@ -931,7 +945,7 @@ public class App implements Serializable
                     
 
                     System.out.println("Original Vehicle Transportation Cost/km: " + vehiclesList.get(posToUpdate).getCost());
-                    System.out.print("Enter new vehicle cost (enter nothing to keep same cost): ");
+                    System.out.print("Enter new vehicle cost (enter same value to keep same cost): ");
                     cost = sc.nextDouble();
                     String costString = Double.toString(cost);
                     if (!costString.isEmpty()){
@@ -952,19 +966,19 @@ public class App implements Serializable
                         case 1: {
                             if(vehiclesList.get(posToUpdate) instanceof Aircraft){
                                 acAtPos = (Aircraft) vehiclesList.get(posToUpdate);
-                                System.out.print("Enter new air space (enter nothing to keep same air space): ");
+                                System.out.print("Enter new air space (enter same value to keep same air space): ");
                                 route = sc.next();
                                 acAtPos.updateAirSpaceinList(route, posToUpdate);
                                 vehiclesList.set(posToUpdate, acAtPos);
                             }else if(vehiclesList.get(posToUpdate) instanceof SeaVessel){
                                 svAtPos = (SeaVessel) vehiclesList.get(posToUpdate);
-                                System.out.print("Enter new route (enter nothing to keep same route): ");
+                                System.out.print("Enter new route (enter same value to keep same route): ");
                                 route = sc.next();
                                 svAtPos.updateRouteinList(route, posToUpdate);
                                 vehiclesList.set(posToUpdate, svAtPos);
                             }else if(vehiclesList.get(posToUpdate) instanceof Truck){
                                 tAtPos = (Truck) vehiclesList.get(posToUpdate);
-                                System.out.print("Enter new motorway (enter nothing to keep same motorway): ");
+                                System.out.print("Enter new motorway (enter same value to keep same motorway): ");
                                 route = sc.next();
                                 tAtPos.updateMotorwayinList(route, posToUpdate);
                                 vehiclesList.set(posToUpdate, tAtPos);
@@ -981,14 +995,14 @@ public class App implements Serializable
                                 vehiclesList.set(posToUpdate, acAtPos);
                             }else if(vehiclesList.get(posToUpdate) instanceof SeaVessel){
                                 svAtPos = (SeaVessel) vehiclesList.get(posToUpdate);
-                                System.out.print("Enter new route (enter nothing to keep same route): ");
+                                System.out.print("Enter new route (enter same value to keep same route): ");
                                 route = sc.next();
                                 svAtPos.setRoute(route);
                                 svAtPos.addToList(route);
                                 vehiclesList.set(posToUpdate, svAtPos);
                             }else if(vehiclesList.get(posToUpdate) instanceof Truck){
                                 tAtPos = (Truck) vehiclesList.get(posToUpdate);
-                                System.out.print("Enter new motorway (enter nothing to keep same motorway): ");
+                                System.out.print("Enter new motorway (enter same value to keep same motorway): ");
                                 route = sc.next();
                                 tAtPos.setMotorway(route);
                                 tAtPos.addToList(route);
@@ -1006,20 +1020,20 @@ public class App implements Serializable
         }else if (choiceEntered == 3){
             int posToUpdate;
             try{
-                System.out.print("Enter position of package to update in array: ");
+                System.out.print("Enter position of package to update in array (from 0): ");
                 posToUpdate = sc.nextInt();
 
                 Packaging packageAtPos = packagesList.get(posToUpdate);
 
                 System.out.println("Original Packaging Material: " + packageAtPos.getMaterial());
-                System.out.print("Enter new packaging material (enter nothing to keep same material): ");
+                System.out.print("Enter new packaging material (enter same value to keep same material): ");
                 String material = sc.next();
                 if (material.length() != 0){
                     packageAtPos.setMaterial(material);
                 }
 
                 System.out.println("Original Packaging Cost: " + packageAtPos.getCost());
-                System.out.print("Enter new packaging cost (enter nothing to keep same cost): ");
+                System.out.print("Enter new packaging cost (enter same value to keep same cost): ");
                 double cost = sc.nextDouble();
                 String costString = Double.toString(cost);
                 if (!costString.isEmpty()){
@@ -1027,7 +1041,7 @@ public class App implements Serializable
                 }
 
                 System.out.println("Original Packaging Capacity: " + packageAtPos.getCapacity());
-                System.out.print("Enter new product capacity (enter nothing to keep same capacity): ");
+                System.out.print("Enter new product capacity (enter same value to keep same capacity): ");
                 int capacity = sc.nextInt();
                 String capacityString = Integer.toString(capacity);
                 if (!capacityString.isEmpty()){
@@ -1040,34 +1054,34 @@ public class App implements Serializable
         }else if (choiceEntered == 4){
             int posToUpdate;
             try{
-                System.out.print("Enter position of customer to update in array: ");
+                System.out.print("Enter position of customer to update in array (from 0): ");
                 posToUpdate = sc.nextInt();
 
                 Customer custAtPos = customersList.get(posToUpdate);
 
                 System.out.println("Original Customer Name: " + custAtPos.getName());
-                System.out.print("Enter new name (enter nothing to keep same name): ");
+                System.out.print("Enter new name (enter same value to keep same name): ");
                 String name = sc.next();
                 if (name.length() != 0){
                     custAtPos.setName(name);
                 }
 
                 System.out.println("Original Customer Road: " + custAtPos.getRoad());
-                System.out.print("Enter new road (enter nothing to keep same cost): ");
+                System.out.print("Enter new road (enter same value to keep same cost): ");
                 String road = sc.next();
                 if (road.length() != 0){
                     custAtPos.setRoad(road);
                 }
 
                 System.out.println("Original Customer Town: " + custAtPos.getTown());
-                System.out.print("Enter new town (enter nothing to keep same cost): ");
+                System.out.print("Enter new town (enter same value to keep same cost): ");
                 String town = sc.next();
                 if (town.length() != 0){
                     custAtPos.setTown(town);
                 }
 
                 System.out.println("Original Customer Post Code: " + custAtPos.getPostCode());
-                System.out.print("Enter new post code (enter nothing to keep same cost): ");
+                System.out.print("Enter new post code (enter same value to keep same cost): ");
                 String postCode = sc.next();
                 if (postCode.length() != 0){
                     custAtPos.setPostCode(postCode);
@@ -1077,7 +1091,7 @@ public class App implements Serializable
                 System.out.println("Customer not found!");
             }
         }else if (choiceEntered == 5){
-            System.out.print("Enter position of order to update in array: ");
+            System.out.print("Enter position of order to update in array (from 0): ");
             int posToUpdate = sc.nextInt();
 
             System.out.println("Original Order Date: "+ordersList.get(posToUpdate).getOrderDate());
@@ -1262,7 +1276,7 @@ public class App implements Serializable
                                 }
                             } break;
                             case 3: {
-                                System.out.print("Enter position of item to remove: ");
+                                System.out.print("Enter position of item to remove (from 0): ");
                                 int posToRemove = sc.nextInt();
                                 ordersList.get(posToUpdate).removeItemFromlist(posToRemove);
                                 validSelection = true;
@@ -1361,23 +1375,23 @@ public class App implements Serializable
     public static void DeleteObject(int choiceEntered){
         int posToRemove;
         if (choiceEntered == 1){
-            System.out.print("Enter position of item to remove: ");
+            System.out.print("Enter position of item to remove (from 0): ");
             posToRemove = sc.nextInt();
             stock.removeItem(stock.getItem(posToRemove));
         }else if (choiceEntered == 2){
-            System.out.print("Enter position of vehicle to remove: ");
+            System.out.print("Enter position of vehicle to remove (from 0): ");
             posToRemove = sc.nextInt();
             vehiclesList.remove(posToRemove);
         }else if (choiceEntered == 3){
-            System.out.print("Enter position of package to remove: ");
+            System.out.print("Enter position of package to remove (from 0): ");
             posToRemove = sc.nextInt();
             packagesList.remove(posToRemove);
         }else if (choiceEntered == 4){
-            System.out.print("Enter position of customer to remove: ");
+            System.out.print("Enter position of customer to remove (from 0): ");
             posToRemove = sc.nextInt();
             customersList.remove(posToRemove);
         }else if (choiceEntered == 5){
-            System.out.print("Enter position of order to remove: ");
+            System.out.print("Enter position of order to remove (from 0): ");
             posToRemove = sc.nextInt();
             Shipment orderToRemove = ordersList.get(posToRemove);
             for (int i = 0; i < orderToRemove.getListSize(); i++){
@@ -1422,7 +1436,7 @@ public class App implements Serializable
     }
 
     public static void ChooseShipmentForDiscount(){
-        System.out.print("Enter position of order to apply discount: ");
+        System.out.print("Enter position of order to apply discount (from 0): ");
         int posForDiscount = sc.nextInt();
         Shipment shipmentChosen = ordersList.get(posForDiscount);
 
@@ -1448,7 +1462,7 @@ public class App implements Serializable
     }
 
     public static void AdjustShipmentDelivery(){
-        System.out.print("Enter position of order to apply discount: ");
+        System.out.print("Enter position of order to apply discount (from 0): ");
         int posForAdjustment = sc.nextInt();
         Shipment shipmentChosen = ordersList.get(posForAdjustment);
 
@@ -1468,7 +1482,7 @@ public class App implements Serializable
     }
 
     public static void ApplyDiscountAndAdjustDelivery(){
-        System.out.print("Enter position of order: ");
+        System.out.print("Enter position of order (from 0): ");
         int pos = sc.nextInt();
         Shipment shipmentChosen = ordersList.get(pos);
 
@@ -1538,7 +1552,8 @@ public class App implements Serializable
                 pbProductBuilder.setProductCategory(PB_Product.ProdCategory.COMPUTERGAME);
                 ComputerGame cg = (ComputerGame) prod;
                 PB_ComputerGame.Builder pbGameBuilder = PB_ComputerGame.newBuilder();
-                pbGameBuilder.setProduct(pbProductBuilder);
+                pbGameBuilder.setGamePublisher(cg.getPublisher())
+                .setProduct(pbProductBuilder);
                 pbItemBuilder.setProductGame(pbGameBuilder);
             }else if (prod.getCategory().equals("Electronics")){
                 pbProductBuilder.setProductCategory(PB_Product.ProdCategory.ELECTRONIC);
@@ -1678,7 +1693,8 @@ public class App implements Serializable
                     pbProductBuilder.setProductCategory(PB_Product.ProdCategory.COMPUTERGAME);
                     ComputerGame cg = (ComputerGame) prod;
                     PB_ComputerGame.Builder pbGameBuilder = PB_ComputerGame.newBuilder();
-                    pbGameBuilder.setProduct(pbProductBuilder);
+                    pbGameBuilder.setGamePublisher(cg.getPublisher())
+                    .setProduct(pbProductBuilder);
 
                     pbItemOrderedBuilder.setProductGame(pbGameBuilder);
                 }else if (prod.getCategory().equals("Electronics")){
@@ -1834,7 +1850,6 @@ public class App implements Serializable
             PB_Clothing pbCloth = item.getProductCloth();
             PB_ComputerGame pbGame = item.getProductGame();
             PB_Electronics pbElec = item.getProductElec();
-            System.out.println(pbBook.getProduct());
             if (pbBook.getProduct().getProductName().length() > 0){
                 Book inBook = new Book(
                     pbBook.getProduct().getProductID(),
@@ -1848,8 +1863,6 @@ public class App implements Serializable
                 );
 
                 stock.addItem(new StockItem(item.getQuantity(), inBook));
-                System.out.println(inBook.getName());
-                System.out.println(inBook.getPrice());
             }else if (pbCloth.getProduct().getProductName().length() > 0){
                 Clothing inCloth = new Clothing(
                     pbCloth.getProduct().getProductID(),
@@ -1863,20 +1876,17 @@ public class App implements Serializable
                 );
 
                 stock.addItem(new StockItem(item.getQuantity(), inCloth));
-                System.out.println(inCloth.getName());
-                System.out.println(inCloth.getPrice());
             }else if (pbGame.getProduct().getProductName().length() > 0){
                 ComputerGame inGame = new ComputerGame(
                     pbGame.getProduct().getProductID(),
                     pbGame.getProduct().getProductName(),
                     pbGame.getProduct().getProductPrice(),
                     "Computer Game",
-                    pbGame.getProduct().getProductVolume()
+                    pbGame.getProduct().getProductVolume(),
+                    pbGame.getGamePublisher()
                 );
 
                 stock.addItem(new StockItem(item.getQuantity(), inGame));
-                System.out.println(inGame.getName());
-                System.out.println(inGame.getPrice());
             }else if (pbElec.getProduct().getProductName().length() > 0){
                 Electronics inElec = new Electronics(
                     pbElec.getProduct().getProductID(),
@@ -1887,8 +1897,6 @@ public class App implements Serializable
                 );
 
                 stock.addItem(new StockItem(item.getQuantity(), inElec));
-                System.out.println(inElec.getName());
-                System.out.println(inElec.getPrice());
             }
         }
 
@@ -1902,10 +1910,6 @@ public class App implements Serializable
                 pbPackage.getCapacityInPackagingUnits()
             );
             packagesList.add(inPack);
-            System.out.println(inPack.getID());
-            System.out.println(inPack.getCost());
-            System.out.println(inPack.getMaterial());
-            System.out.println(inPack.getCapacity());
         }
 
         // Unpacking vehicle objects
@@ -1924,8 +1928,6 @@ public class App implements Serializable
                 inTruck.addToList(pbMotorway);
             }
             vehiclesList.add(inTruck);
-            System.out.println(inTruck.getSpeed());
-            System.out.println(inTruck.getCost());
         }
 
         // Unpacking all sea vessels
@@ -2071,7 +2073,8 @@ public class App implements Serializable
                         pbGame.getProduct().getProductName(),
                         pbGame.getProduct().getProductPrice(),
                         "Computer Game",
-                        pbGame.getProduct().getProductVolume()
+                        pbGame.getProduct().getProductVolume(),
+                        pbGame.getGamePublisher()
                     );
 
                     inOrder.addItemToList(new StockItem(item.getQuantity(), inGame));

@@ -2909,15 +2909,25 @@ public final class LogisticsManagement {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>.com.task3a_b.PB_Product product = 1;</code>
+     * <code>string gamePublisher = 1;</code>
+     */
+    java.lang.String getGamePublisher();
+    /**
+     * <code>string gamePublisher = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getGamePublisherBytes();
+
+    /**
+     * <code>.com.task3a_b.PB_Product product = 2;</code>
      */
     boolean hasProduct();
     /**
-     * <code>.com.task3a_b.PB_Product product = 1;</code>
+     * <code>.com.task3a_b.PB_Product product = 2;</code>
      */
     com.task3a_b.LogisticsManagement.PB_Product getProduct();
     /**
-     * <code>.com.task3a_b.PB_Product product = 1;</code>
+     * <code>.com.task3a_b.PB_Product product = 2;</code>
      */
     com.task3a_b.LogisticsManagement.PB_ProductOrBuilder getProductOrBuilder();
   }
@@ -2934,6 +2944,7 @@ public final class LogisticsManagement {
       super(builder);
     }
     private PB_ComputerGame() {
+      gamePublisher_ = "";
     }
 
     @java.lang.Override
@@ -2961,6 +2972,12 @@ public final class LogisticsManagement {
               done = true;
               break;
             case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              gamePublisher_ = s;
+              break;
+            }
+            case 18: {
               com.task3a_b.LogisticsManagement.PB_Product.Builder subBuilder = null;
               if (product_ != null) {
                 subBuilder = product_.toBuilder();
@@ -3005,22 +3022,56 @@ public final class LogisticsManagement {
               com.task3a_b.LogisticsManagement.PB_ComputerGame.class, com.task3a_b.LogisticsManagement.PB_ComputerGame.Builder.class);
     }
 
-    public static final int PRODUCT_FIELD_NUMBER = 1;
+    public static final int GAMEPUBLISHER_FIELD_NUMBER = 1;
+    private volatile java.lang.Object gamePublisher_;
+    /**
+     * <code>string gamePublisher = 1;</code>
+     */
+    public java.lang.String getGamePublisher() {
+      java.lang.Object ref = gamePublisher_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        gamePublisher_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string gamePublisher = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getGamePublisherBytes() {
+      java.lang.Object ref = gamePublisher_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        gamePublisher_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PRODUCT_FIELD_NUMBER = 2;
     private com.task3a_b.LogisticsManagement.PB_Product product_;
     /**
-     * <code>.com.task3a_b.PB_Product product = 1;</code>
+     * <code>.com.task3a_b.PB_Product product = 2;</code>
      */
     public boolean hasProduct() {
       return product_ != null;
     }
     /**
-     * <code>.com.task3a_b.PB_Product product = 1;</code>
+     * <code>.com.task3a_b.PB_Product product = 2;</code>
      */
     public com.task3a_b.LogisticsManagement.PB_Product getProduct() {
       return product_ == null ? com.task3a_b.LogisticsManagement.PB_Product.getDefaultInstance() : product_;
     }
     /**
-     * <code>.com.task3a_b.PB_Product product = 1;</code>
+     * <code>.com.task3a_b.PB_Product product = 2;</code>
      */
     public com.task3a_b.LogisticsManagement.PB_ProductOrBuilder getProductOrBuilder() {
       return getProduct();
@@ -3040,8 +3091,11 @@ public final class LogisticsManagement {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (!getGamePublisherBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, gamePublisher_);
+      }
       if (product_ != null) {
-        output.writeMessage(1, getProduct());
+        output.writeMessage(2, getProduct());
       }
       unknownFields.writeTo(output);
     }
@@ -3052,9 +3106,12 @@ public final class LogisticsManagement {
       if (size != -1) return size;
 
       size = 0;
+      if (!getGamePublisherBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, gamePublisher_);
+      }
       if (product_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getProduct());
+          .computeMessageSize(2, getProduct());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3072,6 +3129,8 @@ public final class LogisticsManagement {
       com.task3a_b.LogisticsManagement.PB_ComputerGame other = (com.task3a_b.LogisticsManagement.PB_ComputerGame) obj;
 
       boolean result = true;
+      result = result && getGamePublisher()
+          .equals(other.getGamePublisher());
       result = result && (hasProduct() == other.hasProduct());
       if (hasProduct()) {
         result = result && getProduct()
@@ -3088,6 +3147,8 @@ public final class LogisticsManagement {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + GAMEPUBLISHER_FIELD_NUMBER;
+      hash = (53 * hash) + getGamePublisher().hashCode();
       if (hasProduct()) {
         hash = (37 * hash) + PRODUCT_FIELD_NUMBER;
         hash = (53 * hash) + getProduct().hashCode();
@@ -3225,6 +3286,8 @@ public final class LogisticsManagement {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        gamePublisher_ = "";
+
         if (productBuilder_ == null) {
           product_ = null;
         } else {
@@ -3257,6 +3320,7 @@ public final class LogisticsManagement {
       @java.lang.Override
       public com.task3a_b.LogisticsManagement.PB_ComputerGame buildPartial() {
         com.task3a_b.LogisticsManagement.PB_ComputerGame result = new com.task3a_b.LogisticsManagement.PB_ComputerGame(this);
+        result.gamePublisher_ = gamePublisher_;
         if (productBuilder_ == null) {
           result.product_ = product_;
         } else {
@@ -3310,6 +3374,10 @@ public final class LogisticsManagement {
 
       public Builder mergeFrom(com.task3a_b.LogisticsManagement.PB_ComputerGame other) {
         if (other == com.task3a_b.LogisticsManagement.PB_ComputerGame.getDefaultInstance()) return this;
+        if (!other.getGamePublisher().isEmpty()) {
+          gamePublisher_ = other.gamePublisher_;
+          onChanged();
+        }
         if (other.hasProduct()) {
           mergeProduct(other.getProduct());
         }
@@ -3342,17 +3410,86 @@ public final class LogisticsManagement {
         return this;
       }
 
+      private java.lang.Object gamePublisher_ = "";
+      /**
+       * <code>string gamePublisher = 1;</code>
+       */
+      public java.lang.String getGamePublisher() {
+        java.lang.Object ref = gamePublisher_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          gamePublisher_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string gamePublisher = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getGamePublisherBytes() {
+        java.lang.Object ref = gamePublisher_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          gamePublisher_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string gamePublisher = 1;</code>
+       */
+      public Builder setGamePublisher(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        gamePublisher_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string gamePublisher = 1;</code>
+       */
+      public Builder clearGamePublisher() {
+        
+        gamePublisher_ = getDefaultInstance().getGamePublisher();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string gamePublisher = 1;</code>
+       */
+      public Builder setGamePublisherBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        gamePublisher_ = value;
+        onChanged();
+        return this;
+      }
+
       private com.task3a_b.LogisticsManagement.PB_Product product_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
           com.task3a_b.LogisticsManagement.PB_Product, com.task3a_b.LogisticsManagement.PB_Product.Builder, com.task3a_b.LogisticsManagement.PB_ProductOrBuilder> productBuilder_;
       /**
-       * <code>.com.task3a_b.PB_Product product = 1;</code>
+       * <code>.com.task3a_b.PB_Product product = 2;</code>
        */
       public boolean hasProduct() {
         return productBuilder_ != null || product_ != null;
       }
       /**
-       * <code>.com.task3a_b.PB_Product product = 1;</code>
+       * <code>.com.task3a_b.PB_Product product = 2;</code>
        */
       public com.task3a_b.LogisticsManagement.PB_Product getProduct() {
         if (productBuilder_ == null) {
@@ -3362,7 +3499,7 @@ public final class LogisticsManagement {
         }
       }
       /**
-       * <code>.com.task3a_b.PB_Product product = 1;</code>
+       * <code>.com.task3a_b.PB_Product product = 2;</code>
        */
       public Builder setProduct(com.task3a_b.LogisticsManagement.PB_Product value) {
         if (productBuilder_ == null) {
@@ -3378,7 +3515,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>.com.task3a_b.PB_Product product = 1;</code>
+       * <code>.com.task3a_b.PB_Product product = 2;</code>
        */
       public Builder setProduct(
           com.task3a_b.LogisticsManagement.PB_Product.Builder builderForValue) {
@@ -3392,7 +3529,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>.com.task3a_b.PB_Product product = 1;</code>
+       * <code>.com.task3a_b.PB_Product product = 2;</code>
        */
       public Builder mergeProduct(com.task3a_b.LogisticsManagement.PB_Product value) {
         if (productBuilder_ == null) {
@@ -3410,7 +3547,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>.com.task3a_b.PB_Product product = 1;</code>
+       * <code>.com.task3a_b.PB_Product product = 2;</code>
        */
       public Builder clearProduct() {
         if (productBuilder_ == null) {
@@ -3424,7 +3561,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>.com.task3a_b.PB_Product product = 1;</code>
+       * <code>.com.task3a_b.PB_Product product = 2;</code>
        */
       public com.task3a_b.LogisticsManagement.PB_Product.Builder getProductBuilder() {
         
@@ -3432,7 +3569,7 @@ public final class LogisticsManagement {
         return getProductFieldBuilder().getBuilder();
       }
       /**
-       * <code>.com.task3a_b.PB_Product product = 1;</code>
+       * <code>.com.task3a_b.PB_Product product = 2;</code>
        */
       public com.task3a_b.LogisticsManagement.PB_ProductOrBuilder getProductOrBuilder() {
         if (productBuilder_ != null) {
@@ -3443,7 +3580,7 @@ public final class LogisticsManagement {
         }
       }
       /**
-       * <code>.com.task3a_b.PB_Product product = 1;</code>
+       * <code>.com.task3a_b.PB_Product product = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.task3a_b.LogisticsManagement.PB_Product, com.task3a_b.LogisticsManagement.PB_Product.Builder, com.task3a_b.LogisticsManagement.PB_ProductOrBuilder> 
@@ -17701,54 +17838,55 @@ public final class LogisticsManagement {
       " \001(\0132\030.com.task3a_b.PB_Product\"s\n\013PB_Clo" +
       "thing\022\r\n\005width\030\001 \001(\001\022\016\n\006length\030\002 \001(\001\022\032\n\022" +
       "sizeClassification\030\003 \001(\t\022)\n\007product\030\004 \001(" +
-      "\0132\030.com.task3a_b.PB_Product\"<\n\017PB_Comput" +
-      "erGame\022)\n\007product\030\001 \001(\0132\030.com.task3a_b.P" +
-      "B_Product\";\n\016PB_Electronics\022)\n\007product\030\001" +
-      " \001(\0132\030.com.task3a_b.PB_Product\"\327\001\n\014PB_Tr" +
-      "ansport\022=\n\013vehicleType\030\001 \001(\0162(.com.task3" +
-      "a_b.PB_Transport.TransportType\022\021\n\tvehicl" +
-      "eID\030\002 \001(\005\022\033\n\023transportatoinSpeed\030\003 \001(\001\022\037" +
-      "\n\027transportationCostPerKm\030\004 \001(\001\"7\n\rTrans" +
-      "portType\022\014\n\010AIRCRAFT\020\000\022\r\n\tSEAVESSEL\020\001\022\t\n" +
-      "\005TRUCK\020\002\"d\n\013PB_Aircraft\022\024\n\014airSpaceList\030" +
-      "\001 \003(\t\022\020\n\010airSpace\030\002 \001(\t\022-\n\ttransport\030\003 \001" +
-      "(\0132\032.com.task3a_b.PB_Transport\"_\n\014PB_Sea" +
-      "Vessel\022\021\n\trouteList\030\001 \003(\t\022\r\n\005route\030\002 \001(\t" +
-      "\022-\n\ttransport\030\003 \001(\0132\032.com.task3a_b.PB_Tr" +
-      "ansport\"a\n\010PB_Truck\022\024\n\014motorwayList\030\001 \003(" +
-      "\t\022\020\n\010motorway\030\002 \001(\t\022-\n\ttransport\030\003 \001(\0132\032" +
-      ".com.task3a_b.PB_Transport\"e\n\014PB_Packagi" +
-      "ng\022\023\n\013packagingID\030\001 \001(\005\022\020\n\010material\030\002 \001(" +
-      "\t\022\014\n\004cost\030\003 \001(\001\022 \n\030capacityInPackagingUn" +
-      "its\030\004 \001(\005\"\344\001\n\014PB_StockItem\022*\n\013productBoo" +
-      "k\030\001 \001(\0132\025.com.task3a_b.PB_Book\022/\n\014produc" +
-      "tCloth\030\002 \001(\0132\031.com.task3a_b.PB_Clothing\022" +
-      "2\n\013productGame\030\003 \001(\0132\035.com.task3a_b.PB_C" +
-      "omputerGame\0221\n\013productElec\030\004 \001(\0132\034.com.t" +
-      "ask3a_b.PB_Electronics\022\020\n\010quantity\030\005 \001(\005" +
-      "\"5\n\010PB_Stock\022)\n\005items\030\001 \003(\0132\032.com.task3a" +
-      "_b.PB_StockItem\"}\n\013PB_Customer\022\024\n\014custom" +
-      "erName\030\001 \001(\t\022\022\n\ncustomerID\030\002 \001(\005\022\024\n\014cust" +
-      "omerRoad\030\003 \001(\t\022\024\n\014customerTown\030\004 \001(\t\022\030\n\020" +
-      "customerPostCode\030\005 \001(\t\"\340\002\n\013PB_Shipment\022\022" +
-      "\n\nshipmentID\030\001 \001(\005\022\026\n\016shipmentStatus\030\002 \001" +
-      "(\t\022\024\n\014dispatchDate\030\003 \001(\t\022\021\n\torderDate\030\004 " +
-      "\001(\t\022/\n\013itemsToShip\030\005 \003(\0132\032.com.task3a_b." +
-      "PB_StockItem\0223\n\020shipmentCustomer\030\006 \001(\0132\031" +
-      ".com.task3a_b.PB_Customer\0223\n\020shipmentAir" +
-      "craft\030\007 \001(\0132\031.com.task3a_b.PB_Aircraft\0222" +
-      "\n\016shipmentVessel\030\010 \001(\0132\032.com.task3a_b.PB" +
-      "_SeaVessel\022-\n\rshipmentTruck\030\t \001(\0132\026.com." +
-      "task3a_b.PB_Truck\"@\n\020PB_PackagingList\022,\n" +
-      "\010packages\030\001 \003(\0132\032.com.task3a_b.PB_Packag" +
-      "ing\"\241\001\n\017PB_VehiclesList\022.\n\013vehiclesAir\030\001" +
-      " \003(\0132\031.com.task3a_b.PB_Aircraft\022/\n\013vehic" +
-      "lesSea\030\002 \003(\0132\032.com.task3a_b.PB_SeaVessel" +
-      "\022-\n\rvehiclesTruck\030\003 \003(\0132\026.com.task3a_b.P" +
-      "B_Truck\"@\n\020PB_CustomersList\022,\n\tcustomers" +
-      "\030\001 \003(\0132\031.com.task3a_b.PB_Customer\":\n\rPB_" +
-      "OrdersList\022)\n\006orders\030\001 \003(\0132\031.com.task3a_" +
-      "b.PB_Shipmentb\006proto3"
+      "\0132\030.com.task3a_b.PB_Product\"S\n\017PB_Comput" +
+      "erGame\022\025\n\rgamePublisher\030\001 \001(\t\022)\n\007product" +
+      "\030\002 \001(\0132\030.com.task3a_b.PB_Product\";\n\016PB_E" +
+      "lectronics\022)\n\007product\030\001 \001(\0132\030.com.task3a" +
+      "_b.PB_Product\"\327\001\n\014PB_Transport\022=\n\013vehicl" +
+      "eType\030\001 \001(\0162(.com.task3a_b.PB_Transport." +
+      "TransportType\022\021\n\tvehicleID\030\002 \001(\005\022\033\n\023tran" +
+      "sportatoinSpeed\030\003 \001(\001\022\037\n\027transportationC" +
+      "ostPerKm\030\004 \001(\001\"7\n\rTransportType\022\014\n\010AIRCR" +
+      "AFT\020\000\022\r\n\tSEAVESSEL\020\001\022\t\n\005TRUCK\020\002\"d\n\013PB_Ai" +
+      "rcraft\022\024\n\014airSpaceList\030\001 \003(\t\022\020\n\010airSpace" +
+      "\030\002 \001(\t\022-\n\ttransport\030\003 \001(\0132\032.com.task3a_b" +
+      ".PB_Transport\"_\n\014PB_SeaVessel\022\021\n\trouteLi" +
+      "st\030\001 \003(\t\022\r\n\005route\030\002 \001(\t\022-\n\ttransport\030\003 \001" +
+      "(\0132\032.com.task3a_b.PB_Transport\"a\n\010PB_Tru" +
+      "ck\022\024\n\014motorwayList\030\001 \003(\t\022\020\n\010motorway\030\002 \001" +
+      "(\t\022-\n\ttransport\030\003 \001(\0132\032.com.task3a_b.PB_" +
+      "Transport\"e\n\014PB_Packaging\022\023\n\013packagingID" +
+      "\030\001 \001(\005\022\020\n\010material\030\002 \001(\t\022\014\n\004cost\030\003 \001(\001\022 " +
+      "\n\030capacityInPackagingUnits\030\004 \001(\005\"\344\001\n\014PB_" +
+      "StockItem\022*\n\013productBook\030\001 \001(\0132\025.com.tas" +
+      "k3a_b.PB_Book\022/\n\014productCloth\030\002 \001(\0132\031.co" +
+      "m.task3a_b.PB_Clothing\0222\n\013productGame\030\003 " +
+      "\001(\0132\035.com.task3a_b.PB_ComputerGame\0221\n\013pr" +
+      "oductElec\030\004 \001(\0132\034.com.task3a_b.PB_Electr" +
+      "onics\022\020\n\010quantity\030\005 \001(\005\"5\n\010PB_Stock\022)\n\005i" +
+      "tems\030\001 \003(\0132\032.com.task3a_b.PB_StockItem\"}" +
+      "\n\013PB_Customer\022\024\n\014customerName\030\001 \001(\t\022\022\n\nc" +
+      "ustomerID\030\002 \001(\005\022\024\n\014customerRoad\030\003 \001(\t\022\024\n" +
+      "\014customerTown\030\004 \001(\t\022\030\n\020customerPostCode\030" +
+      "\005 \001(\t\"\340\002\n\013PB_Shipment\022\022\n\nshipmentID\030\001 \001(" +
+      "\005\022\026\n\016shipmentStatus\030\002 \001(\t\022\024\n\014dispatchDat" +
+      "e\030\003 \001(\t\022\021\n\torderDate\030\004 \001(\t\022/\n\013itemsToShi" +
+      "p\030\005 \003(\0132\032.com.task3a_b.PB_StockItem\0223\n\020s" +
+      "hipmentCustomer\030\006 \001(\0132\031.com.task3a_b.PB_" +
+      "Customer\0223\n\020shipmentAircraft\030\007 \001(\0132\031.com" +
+      ".task3a_b.PB_Aircraft\0222\n\016shipmentVessel\030" +
+      "\010 \001(\0132\032.com.task3a_b.PB_SeaVessel\022-\n\rshi" +
+      "pmentTruck\030\t \001(\0132\026.com.task3a_b.PB_Truck" +
+      "\"@\n\020PB_PackagingList\022,\n\010packages\030\001 \003(\0132\032" +
+      ".com.task3a_b.PB_Packaging\"\241\001\n\017PB_Vehicl" +
+      "esList\022.\n\013vehiclesAir\030\001 \003(\0132\031.com.task3a" +
+      "_b.PB_Aircraft\022/\n\013vehiclesSea\030\002 \003(\0132\032.co" +
+      "m.task3a_b.PB_SeaVessel\022-\n\rvehiclesTruck" +
+      "\030\003 \003(\0132\026.com.task3a_b.PB_Truck\"@\n\020PB_Cus" +
+      "tomersList\022,\n\tcustomers\030\001 \003(\0132\031.com.task" +
+      "3a_b.PB_Customer\":\n\rPB_OrdersList\022)\n\006ord" +
+      "ers\030\001 \003(\0132\031.com.task3a_b.PB_Shipmentb\006pr" +
+      "oto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -17785,7 +17923,7 @@ public final class LogisticsManagement {
     internal_static_com_task3a_b_PB_ComputerGame_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_task3a_b_PB_ComputerGame_descriptor,
-        new java.lang.String[] { "Product", });
+        new java.lang.String[] { "GamePublisher", "Product", });
     internal_static_com_task3a_b_PB_Electronics_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_com_task3a_b_PB_Electronics_fieldAccessorTable = new

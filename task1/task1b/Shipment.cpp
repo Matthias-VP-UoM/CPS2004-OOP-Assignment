@@ -8,7 +8,7 @@ Shipment::Shipment(int id, Customer customer): shipmentID(id), shipmentStatus("N
 void Shipment::print_items_list(){
     for (int i = 0; i < itemsToShip.size(); i++){
         Product* prodAtPos = itemsToShip.at(i).getProduct();
-        cout << "Item " << i << ":" << endl;
+        cout << "Item " << (i+1) << ":" << endl;
         cout << "Product Details:" << endl;
         prodAtPos->display_product_info();
         cout << "Product Quantity Ordered: " << itemsToShip.at(i).getQuantity() << endl;
