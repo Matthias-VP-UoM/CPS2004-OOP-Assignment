@@ -1,7 +1,7 @@
 package com.task3a_b;
 
 public interface ShipmentInterface {
-    double calculateTotalCost();
+    double calculateTotalCost(int monthNum);
     String getDeliveryPlan();
     //void dispatch(String dateTime);
 }

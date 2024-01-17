@@ -3,6 +3,9 @@ package com.task3a_b;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import com.task3a_b.LogisticsManagement.PB_Product;
+import com.task3a_b.LogisticsManagement.PB_StockItem;
+
 public class Stock implements Serializable{
     private static final long serialVersionUID = 1L;
 
@@ -36,7 +39,7 @@ public class Stock implements Serializable{
         try {
             if (items.get(pos).quantity > 0){
                 Product prodAtPos = items.get(pos).getProduct();
-                System.out.println("Item " + pos + ":");
+                System.out.println("Item " + (pos+1) + ":");
                 System.out.println("Product Details:");
                 prodAtPos.display_product_info();
                 System.out.println("Product Quantity in Stock: " + items.get(pos).getQuantity());
@@ -49,11 +52,27 @@ public class Stock implements Serializable{
         }
     }
 
+    public void packIntoProtobuf(){
+        for (StockItem item: items){
+            PB_StockItem.Builder pbItemBuilder = PB_StockItem.newBuilder();
+            PB_Product.Builder pbProductBuilder = PB_Product.newBuilder();
+            //pbProductBuilder.setPro
+        }
+    }
+
     public int calculate_product_quantity(StockItem item){
         return item.getQuantity();
     }
 
     public StockItem getItem(int pos){
         return items.get(pos);
+    }
+
+    public int getListSize(){
+        return items.size();
+    }
+
+    public ArrayList<StockItem> getItemsList(){
+        return items;
     }
 }

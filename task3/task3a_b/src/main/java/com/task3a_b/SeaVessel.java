@@ -42,4 +42,8 @@ public class SeaVessel extends Transport{
         String routeAtPos = routeList.get(pos);
         return routeAtPos;
     }
+
+    public ArrayList<String> getList(){
+        return routeList;
+    }
 }

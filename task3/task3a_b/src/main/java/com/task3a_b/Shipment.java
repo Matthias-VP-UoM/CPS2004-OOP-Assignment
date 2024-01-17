@@ -7,7 +7,7 @@ public class Shipment implements Serializable, ShipmentInterface{
     private static final long serialVersionUID = 1L;
 
     private int shipmentID;
-    private String shipmentStatus, dispatchDate;
+    private String shipmentStatus, dispatchDate, orderDate;
     private ArrayList<StockItem> itemsToShip = new ArrayList<StockItem>();
     private Customer shipmentCustomer;
     private Transport shipmentTransport;
@@ -16,9 +16,10 @@ public class Shipment implements Serializable, ShipmentInterface{
         shipmentStatus = "Not Dispatched";
     }
 
-    public Shipment(int id, Customer customer){
+    public Shipment(int id, Customer customer, String date){
         shipmentID = id;
         shipmentStatus = "Not Dispatched";
+        orderDate = date;
         shipmentCustomer = customer;
     }
 
@@ -75,12 +76,15 @@ public class Shipment implements Serializable, ShipmentInterface{
         itemsToShip.remove(pos);
     }
 
-    public double calculateTotalCost(){
+    public double calculateTotalCost(int monthNum){
         double totalCost = 0.0;
 
         for(int i = 0; i < itemsToShip.size(); i++){
             StockItem currentItem = itemsToShip.get(i);
-            totalCost += currentItem.quantity * currentItem.product.getPrice();
+            int purchaseQuantity = currentItem.getQuantity();
+            Product purchaseProduct = currentItem.getProduct();
+            double itemCost = (purchaseQuantity * purchaseProduct.getPrice()) * (1 - purchaseProduct.calculate_discount(purchaseQuantity, monthNum));
+            totalCost += itemCost;
         }
 
         return totalCost;
@@ -97,7 +101,7 @@ public class Shipment implements Serializable, ShipmentInterface{
     }
 
     public void setDate(String date){
-        dispatchDate = date;
+        orderDate = date;
     }
 
     public void setCustomer(Customer customer){
@@ -113,7 +117,11 @@ public class Shipment implements Serializable, ShipmentInterface{
         return shipmentID;
     }
 
-    public String getDate(){
+    public String getOrderDate(){
+        return orderDate;
+    }
+
+    public String getDispatchDate(){
         return dispatchDate;
     }
 
@@ -131,5 +139,21 @@ public class Shipment implements Serializable, ShipmentInterface{
 
     public Transport getTransport(){
         return shipmentTransport;
+    }
+
+    public ArrayList<StockItem> getList(){
+        return itemsToShip;
+    }
+
+    public int getListSize(){
+        return itemsToShip.size();
+    }
+
+    public int getOrderedQuantity(int pos){
+        return itemsToShip.get(pos).getQuantity();
+    }
+
+    public Product getOrderedProduct(int pos){
+        return itemsToShip.get(pos).getProduct();
     }
 }

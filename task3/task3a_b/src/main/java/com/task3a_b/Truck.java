@@ -42,4 +42,8 @@ public class Truck extends Transport{
         return motorwayAtPos;
     }
 
+    public ArrayList<String> getList(){
+        return motorwayList;
+    }
+
 }

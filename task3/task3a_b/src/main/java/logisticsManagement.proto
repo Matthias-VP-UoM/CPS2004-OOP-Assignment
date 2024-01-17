@@ -2,79 +2,100 @@ syntax = "proto3";
 
 package com.task3a_b;
 
-message Product {
+message PB_Product {
+  enum ProdCategory {
+    BOOK = 0;
+    CLOTHING = 1;
+    COMPUTERGAME = 2;
+    ELECTRONIC = 3;
+  }
+
   // Product attributes
   string productName = 1;
   int32 productID = 2;
-  string productCategory = 3;
+  ProdCategory productCategory = 3;
   double productPrice = 4;
   int32 productVolume = 5;
-  // Add other product attributes as needed
 }
 
 // Subclasses of Product
-message Book {
+message PB_Book {
   string bookIBAN = 1;
   string bookAuthor = 2;
   string bookGenre = 3;
+  PB_Product product = 4;
 }
 
-message Clothing{
+message PB_Clothing{
   double width = 1;
   double length = 2;
   string sizeClassification = 3;
+  PB_Product product = 4;
 }
 
-message ComputerGame{}
+message PB_ComputerGame{
+  PB_Product product = 1;
+}
 
-message Electronics{}
+message PB_Electronics{
+  PB_Product product = 1;
+}
 
-message Transport {
+message PB_Transport {
+  enum TransportType {
+    AIRCRAFT = 0;
+    SEAVESSEL = 1;
+    TRUCK = 2;
+  }
+
   // Transport attributes
-  string vehicleType = 1;
+  TransportType vehicleType = 1;
   int32 vehicleID = 2;
   double transportatoinSpeed = 3;
   double transportationCostPerKm = 4;
-  // Add other transport attributes as needed
 }
 
 // Subclasses of Transport
-message Aircraft{
+message PB_Aircraft{
   repeated string airSpaceList = 1;
   string airSpace = 2;
+  PB_Transport transport = 3;
 }
 
-message SeaVessel{
+message PB_SeaVessel{
   repeated string routeList = 1;
   string route = 2;
+  PB_Transport transport = 3;
 }
 
-message Truck{
+message PB_Truck{
   repeated string motorwayList = 1;
   string motorway = 2;
+  PB_Transport transport = 3;
 }
 
-message Packaging {
+message PB_Packaging {
   // Packaging attributes
   int32 packagingID = 1;
   string material = 2;
   double cost = 3;
   int32 capacityInPackagingUnits = 4;
-  // Add other packaging attributes as needed
 }
 
-message StockItem {
+message PB_StockItem {
   // StockItem attributes
-  Product product = 1;
-  int32 quantity = 2;
-  // Add other stock item attributes as needed
+  PB_Book productBook = 1;
+  PB_Clothing productCloth = 2;
+  PB_ComputerGame productGame = 3;
+  PB_Electronics productElec = 4;
+  int32 quantity = 5;
 }
 
-message Stock {
-  repeated StockItem items = 1;
+message PB_Stock {
+  repeated PB_StockItem items = 1;
 }
 
-message Customer {
+message PB_Customer {
   string customerName = 1;
   int32 customerID = 2;
   string customerRoad = 3;
@@ -82,13 +103,34 @@ message Customer {
   string customerPostCode = 5;
 }
 
-message Shipment {
+message PB_Shipment {
   // Shipment attributes
   int32 shipmentID = 1;
   string shipmentStatus = 2;
   string dispatchDate = 3;
-  repeated StockItem itemsToShip = 4;
-  Customer shipmentCustomer = 5;
-  Transport shipmentTransport = 6;
-  // Add other shipment attributes as needed
+  string orderDate = 4;
+  repeated PB_StockItem itemsToShip = 5;
+  PB_Customer shipmentCustomer = 6;
+  PB_Aircraft shipmentAircraft = 7;
+  PB_SeaVessel shipmentVessel = 8;
+  PB_Truck shipmentTruck = 9;
+}
+
+// Lists in main class
+message PB_PackagingList {
+  repeated PB_Packaging packages = 1; 
+}
+
+message PB_VehiclesList {
+  repeated PB_Aircraft vehiclesAir = 1;
+  repeated PB_SeaVessel vehiclesSea = 2;
+  repeated PB_Truck vehiclesTruck = 3;
+}
+
+message PB_CustomersList {
+  repeated PB_Customer customers = 1;
+}
+
+message PB_OrdersList {
+  repeated PB_Shipment orders = 1;
 }

@@ -1,6 +1,26 @@
 package com.task3a_b;
 
 import java.util.*;
+
+import com.task3a_b.LogisticsManagement.PB_Aircraft;
+import com.task3a_b.LogisticsManagement.PB_Book;
+import com.task3a_b.LogisticsManagement.PB_Clothing;
+import com.task3a_b.LogisticsManagement.PB_ComputerGame;
+import com.task3a_b.LogisticsManagement.PB_Customer;
+import com.task3a_b.LogisticsManagement.PB_CustomersList;
+import com.task3a_b.LogisticsManagement.PB_Electronics;
+import com.task3a_b.LogisticsManagement.PB_OrdersList;
+import com.task3a_b.LogisticsManagement.PB_Packaging;
+import com.task3a_b.LogisticsManagement.PB_PackagingList;
+import com.task3a_b.LogisticsManagement.PB_Product;
+import com.task3a_b.LogisticsManagement.PB_SeaVessel;
+import com.task3a_b.LogisticsManagement.PB_Shipment;
+import com.task3a_b.LogisticsManagement.PB_Stock;
+import com.task3a_b.LogisticsManagement.PB_StockItem;
+import com.task3a_b.LogisticsManagement.PB_Transport;
+import com.task3a_b.LogisticsManagement.PB_Truck;
+import com.task3a_b.LogisticsManagement.PB_VehiclesList;
+
 import java.io.*;
 
 public class App implements Serializable
@@ -12,6 +32,12 @@ public class App implements Serializable
     static ArrayList<Packaging> packagesList = new ArrayList<Packaging>();
     static ArrayList<Customer> customersList = new ArrayList<Customer>();
     static ArrayList<Shipment> ordersList = new ArrayList<Shipment>();
+
+    static final String STOCK_FILE = "state_stock.bin";
+    static final String PACKAGING_FILE = "state_packaging.bin";
+    static final String VEHICLES_FILE = "state_vehicles.bin";
+    static final String CUSTOMERS_FILE = "state_customers.bin";
+    static final String ORDERS_FILE = "state_orders.bin";
 
     public static void main( String[] args )
     {
@@ -40,8 +66,8 @@ public class App implements Serializable
                     case 4: AccessSubmenu("Customer", 4); break;
                     case 5: AccessSubmenu("Order", 5); break;
                     case 6: AccessShipmentMenu(); break;
-                    case 7: logFacade.serialize("application_state.pb"); System.out.println("State is saved successfully!"); break;
-                    case 8: logFacade.deserialize("application_state.pb"); System.out.println("State is restored successfully!"); break;
+                    case 7: logFacade.serialize(); System.out.println("State is saved successfully!"); break;
+                    case 8: logFacade.deserialize(); System.out.println("State is restored successfully!"); break;
                     case 9: System.out.println("Thanks for using the program!"); break;
                     default: System.out.println("Invalid choice!");
                 }
@@ -117,6 +143,7 @@ public class App implements Serializable
                 id = sc.nextInt();
 
                 if (!vehiclesList.isEmpty()){
+                    validID = true;
                     for (int i = 0; i < vehiclesList.size(); i++){
                         if (id == vehiclesList.get(i).getID()){
                             validID = false;
@@ -124,8 +151,6 @@ public class App implements Serializable
                             break;
                         }
                     }
-
-                    validID = true;
                 }else{
                     validID = true;
                 }
@@ -312,6 +337,7 @@ public class App implements Serializable
                 id = sc.nextInt();
 
                 if (!packagesList.isEmpty()){
+                    validID = true;
                     for (int i = 0; i < packagesList.size(); i++){
                         if (id == packagesList.get(i).getID()){
                             validID = false;
@@ -319,8 +345,6 @@ public class App implements Serializable
                             break;
                         }
                     }
-
-                    validID = true;
                 }else{
                     validID = true;
                 }
@@ -365,25 +389,24 @@ public class App implements Serializable
 
                 if (!customersList.isEmpty()){
                     for (int i = 0; i < customersList.size(); i++){
+                        validID = true;
                         if (id == customersList.get(i).getID()){
                             validID = false;
                             System.out.println("Customer with same ID already exists! Please enter another one!");
                             break;
                         }
                     }
-
-                    validID = true;
                 }else{
                     validID = true;
                 }
             }while (!validID);
-            System.out.println("Enter name: ");
+            System.out.print("Enter name: ");
             String name = sc.next();
-            System.out.println("Enter road: ");
+            System.out.print("Enter road: ");
             String road = sc.next();
-            System.out.println("Enter town: ");
+            System.out.print("Enter town: ");
             String town = sc.next();
-            System.out.println("Enter post code: ");
+            System.out.print("Enter post code: ");
             String postCode = sc.next();
 
             Customer cust = new Customer(id, name, road, town, postCode);
@@ -399,14 +422,13 @@ public class App implements Serializable
 
                 if (!ordersList.isEmpty()){
                     for (int i = 0; i < ordersList.size(); i++){
+                        validID = true;
                         if (orderID == ordersList.get(i).getID()){
                             validID = false;
                             System.out.println("Order with same ID already exists! Please enter another one!");
                             break;
                         }
                     }
-
-                    validID = true;
                 }else{
                     validID = true;
                 }
@@ -440,22 +462,33 @@ public class App implements Serializable
                 boolean isValid = false;
 
                 do{
-                    System.out.print("Enter index of product to order: ");
+                    System.out.print("Enter index of product to order (from 0): ");
                     int prodIndex = sc.nextInt();
 
                     System.out.print("Enter quantity to order for the product you chose: ");
                     int orderQuantity = sc.nextInt();
 
+                    System.out.print("Enter day of month of order: ");
+                    int day = sc.nextInt();
+
+                    System.out.print("Enter month number of order: ");
+                    int monthNum = sc.nextInt();
+
+                    System.out.print("Enter year of order: ");
+                    int year = sc.nextInt();
+
+                    String date = day+"/"+monthNum+"/"+year;
+
                     if (stock.getItem(prodIndex) != null && orderQuantity <= stock.calculate_product_quantity(stock.getItem(prodIndex))){
                         StockItem itemOrdered = new StockItem(orderQuantity, stock.getItem(prodIndex).getProduct());
-                        Shipment ship = new Shipment(orderID, custOrder);
+                        Shipment ship = new Shipment(orderID, custOrder, date);
                         ship.addItemToList(itemOrdered);
                         stock.getItem(prodIndex).updateQuantity(-orderQuantity);
                         
 
-                        /*if (stock.getItem(prodIndex).getQuantity() == 0){
+                        if (stock.getItem(prodIndex).getQuantity() == 0){
                             stock.removeItem(stock.getItem(prodIndex));
-                        }*/
+                        }
 
                         isValid = true;
 
@@ -536,7 +569,7 @@ public class App implements Serializable
                 do{
                     System.out.println("1. Read entire list of items in stock");
                     System.out.println("2. Read one item in stock");
-                    System.out.println("Enter your choice here: ");
+                    System.out.print("Enter your choice here: ");
                     readChoice = sc.nextInt();
 
                     switch(readChoice){
@@ -562,7 +595,7 @@ public class App implements Serializable
                 do{
                     System.out.println("1. Read entire list of vehicles");
                     System.out.println("2. Read one vehicle");
-                    System.out.println("Enter your choice here: ");
+                    System.out.print("Enter your choice here: ");
                     readChoice = sc.nextInt();
 
                     switch(readChoice){
@@ -607,7 +640,7 @@ public class App implements Serializable
                 do{
                     System.out.println("1. Read entire list of packages");
                     System.out.println("2. Read one package");
-                    System.out.println("Enter your choice here: ");
+                    System.out.print("Enter your choice here: ");
                     readChoice = sc.nextInt();
 
                     switch(readChoice){
@@ -652,7 +685,7 @@ public class App implements Serializable
                 do{
                     System.out.println("1. Read entire list of customers");
                     System.out.println("2. Read one customer");
-                    System.out.println("Enter your choice here: ");
+                    System.out.print("Enter your choice here: ");
                     readChoice = sc.nextInt();
 
                     switch(readChoice){
@@ -697,7 +730,7 @@ public class App implements Serializable
                 do{
                     System.out.println("1. Read entire list of orders");
                     System.out.println("2. Read one order");
-                    System.out.println("Enter your choice here: ");
+                    System.out.print("Enter your choice here: ");
                     readChoice = sc.nextInt();
 
                     switch(readChoice){
@@ -799,7 +832,7 @@ public class App implements Serializable
                         b.setGenre(genre);
                     }
 
-                    System.out.println("Original Author: " + b.getIBAN());
+                    System.out.println("Original Author: " + b.getAuthor());
                     System.out.print("Enter new author (enter nothing to keep same author): ");
                     String author = sc.next();
                     if (author.length() != 0){
@@ -1047,6 +1080,18 @@ public class App implements Serializable
             System.out.print("Enter position of order to update in array: ");
             int posToUpdate = sc.nextInt();
 
+            System.out.println("Original Order Date: "+ordersList.get(posToUpdate).getOrderDate());
+            System.out.print("Enter day of month of order: ");
+            int day = sc.nextInt();
+
+            System.out.print("Enter month number of order: ");
+            int monthNum = sc.nextInt();
+
+            System.out.print("Enter year of order: ");
+            int year = sc.nextInt();
+
+            String date = day+"/"+monthNum+"/"+year;
+
             int orderID = ordersList.get(posToUpdate).getID();
 
             System.out.println("Original Customer: "+ordersList.get(posToUpdate).getCustomer());
@@ -1095,7 +1140,7 @@ public class App implements Serializable
                             case 1:{
                                 validSelection = true;
 
-                                System.out.print("Enter index of product to update: ");
+                                System.out.print("Enter index of product to update (from 0): ");
                                 int prodIndex = sc.nextInt();
 
                                 StockItem itemChosen = ordersList.get(posToUpdate).getItem(prodIndex);
@@ -1108,15 +1153,15 @@ public class App implements Serializable
 
                                 if (itemChosen != null && orderQuantity <= stock.calculate_product_quantity(stock.getItem(prodIndex))){
                                     StockItem itemOrdered = new StockItem(orderQuantity, itemChosen.getProduct());
-                                    Shipment ship = new Shipment(orderID, custOrder);
+                                    Shipment ship = new Shipment(orderID, custOrder, date);
                                     ship.updateItemInList(itemOrdered, posToUpdate);
                                     if (orderQuantity < originalQuantity || orderQuantity > originalQuantity)
                                         stock.getItem(prodIndex).updateQuantity(orderQuantity - originalQuantity);
                                     
 
-                                    /*if (stock.getItem(prodIndex).getQuantity() == 0){
+                                    if (stock.getItem(prodIndex).getQuantity() <= 0){
                                         stock.removeItem(stock.getItem(prodIndex));
-                                    }*/
+                                    }
 
                                     isValid = true;
 
@@ -1131,22 +1176,24 @@ public class App implements Serializable
                             case 2: {
                                 validSelection = true;
 
-                                System.out.print("Enter index of product to order: ");
+                                System.out.print("Enter index of product to order (from 0): ");
                                 int prodIndex = sc.nextInt();
 
                                 System.out.print("Enter quantity to order for the product you chose: ");
                                 int orderQuantity = sc.nextInt();
 
+                                
+
                                 if (stock.getItem(prodIndex) != null && orderQuantity <= stock.calculate_product_quantity(stock.getItem(prodIndex))){
                                     StockItem itemOrdered = new StockItem(orderQuantity, stock.getItem(prodIndex).getProduct());
-                                    Shipment ship = new Shipment(orderID, custOrder);
+                                    Shipment ship = new Shipment(orderID, custOrder, date);
                                     ship.addItemToList(itemOrdered);
                                     stock.getItem(prodIndex).updateQuantity(-orderQuantity);
                                     
 
-                                    /*if (stock.getItem(prodIndex).getQuantity() == 0){
+                                    if (stock.getItem(prodIndex).getQuantity() <= 0){
                                         stock.removeItem(stock.getItem(prodIndex));
-                                    }*/
+                                    }
 
                                     isValid = true;
 
@@ -1224,7 +1271,7 @@ public class App implements Serializable
                         }
                     }while (!validSelection);
 
-                    System.out.print("Enter index of product to order: ");
+                    System.out.print("Enter index of product to order (from 0): ");
                     int prodIndex = sc.nextInt();
 
                     System.out.print("Enter quantity to order for the product you chose: ");
@@ -1232,14 +1279,14 @@ public class App implements Serializable
 
                     if (stock.getItem(prodIndex) != null && orderQuantity <= stock.calculate_product_quantity(stock.getItem(prodIndex))){
                         StockItem itemOrdered = new StockItem(orderQuantity, stock.getItem(prodIndex).getProduct());
-                        Shipment ship = new Shipment(orderID, custOrder);
+                        Shipment ship = new Shipment(orderID, custOrder, date);
                         ship.addItemToList(itemOrdered);
                         stock.getItem(prodIndex).updateQuantity(-orderQuantity);
                         
 
-                        /*if (stock.getItem(prodIndex).getQuantity() == 0){
+                        if (stock.getItem(prodIndex).getQuantity() <= 0){
                             stock.removeItem(stock.getItem(prodIndex));
-                        }*/
+                        }
 
                         isValid = true;
 
@@ -1332,6 +1379,11 @@ public class App implements Serializable
         }else if (choiceEntered == 5){
             System.out.print("Enter position of order to remove: ");
             posToRemove = sc.nextInt();
+            Shipment orderToRemove = ordersList.get(posToRemove);
+            for (int i = 0; i < orderToRemove.getListSize(); i++){
+                orderToRemove.getItem(i).updateQuantity(orderToRemove.getOrderedQuantity(i));
+            }
+            ordersList.get(posToRemove).getItem(posToRemove);
             ordersList.remove(posToRemove);
         }
     }
@@ -1374,6 +1426,9 @@ public class App implements Serializable
         int posForDiscount = sc.nextInt();
         Shipment shipmentChosen = ordersList.get(posForDiscount);
 
+        String monthNumString = shipmentChosen.getOrderDate().substring(3, 5);
+        int monthNum = Integer.parseInt(monthNumString);
+
         System.out.print("Enter discount rate (between 0 and 1): ");
         double discountRate = sc.nextDouble();
 
@@ -1381,7 +1436,7 @@ public class App implements Serializable
             ShipmentInterface discountedShipment = new GlobalDiscountDecorator(shipmentChosen, discountRate);
 
             // Calculate and print the total cost
-            System.out.println("Total Cost: $" + discountedShipment.calculateTotalCost());
+            System.out.println("Total Cost: $" + discountedShipment.calculateTotalCost(monthNum));
 
             // Get and print the delivery plan
             //System.out.println("Delivery Plan: " + discountedShipment.getDeliveryPlan());
@@ -1417,6 +1472,9 @@ public class App implements Serializable
         int pos = sc.nextInt();
         Shipment shipmentChosen = ordersList.get(pos);
 
+        String monthNumString = shipmentChosen.getOrderDate().substring(3, 5);
+        int monthNum = Integer.parseInt(monthNumString);
+
         System.out.print("Enter discount rate (between 0 and 1): ");
         double discountRate = sc.nextDouble();
 
@@ -1429,48 +1487,608 @@ public class App implements Serializable
             ShipmentInterface finalShipment = new MotorwayClosureDecorator(discountedShipment2, closedMotorway);
 
             // Calculate and print the total cost
-            System.out.println("Total Cost: $" + finalShipment.calculateTotalCost());
+            System.out.println("Total Cost: $" + finalShipment.calculateTotalCost(monthNum));
 
             // Get and print the delivery plan
             System.out.println("Delivery Plan: " + finalShipment.getDeliveryPlan());
-        }else if (shipmentChosen == null){
-            System.out.println("Shipment cannot be found!");
         }else if (discountRate < 0 || discountRate > 1){
             System.out.println("Invalid discount rate! Please try again later!");
+        }else{
+            System.out.println("Shipment cannot be found!");
         }
     }
 
     // Example method for serialization
-    public static void save2(String filename) {
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filename))) {
-            // Serialize your data structures here
-            // For example: out.writeObject(member_variable);
-            out.writeObject(stock);
+    public static void save2() {
+        // Packing into protobuf objects
+        PB_Stock.Builder pbStockBuilder = PB_Stock.newBuilder();
 
-            // Serialize the lists
-            out.writeObject(packagesList);
-            out.writeObject(vehiclesList);
-            out.writeObject(customersList);
-            out.writeObject(ordersList);
-        } catch (IOException e) {
-            e.printStackTrace();
+        for (int i = 0; i < stock.getListSize(); i++){
+            PB_StockItem.Builder pbItemBuilder = PB_StockItem.newBuilder();
+            pbItemBuilder.setQuantity(stock.getItem(i).getQuantity());
+
+            Product prod = stock.getItem(i).getProduct();
+            PB_Product.Builder pbProductBuilder = PB_Product.newBuilder();
+            pbProductBuilder.setProductID(prod.getID())
+            .setProductName(prod.getName())
+            .setProductPrice(prod.getPrice())
+            .setProductVolume(prod.getVolume());
+
+            if (prod.getCategory().equals("Book")){
+                pbProductBuilder.setProductCategory(PB_Product.ProdCategory.BOOK);
+                Book b = (Book) prod;
+                PB_Book.Builder pbBookBuilder = PB_Book.newBuilder();
+                pbBookBuilder.setBookIBAN(b.getIBAN())
+                .setBookGenre(b.getGenre())
+                .setBookAuthor(b.getAuthor())
+                .setProduct(pbProductBuilder);
+
+                pbItemBuilder.setProductBook(pbBookBuilder);
+            }else if (prod.getCategory().equals("Clothing")){
+                pbProductBuilder.setProductCategory(PB_Product.ProdCategory.CLOTHING);
+                Clothing c = (Clothing) prod;
+                PB_Clothing.Builder pbClothingBuilder = PB_Clothing.newBuilder();
+                pbClothingBuilder.setWidth(c.getWidth())
+                .setLength(c.getLength())
+                .setSizeClassification(c.getSize())
+                .setProduct(pbProductBuilder);
+
+                pbItemBuilder.setProductCloth(pbClothingBuilder);
+            }else if (prod.getCategory().equals("Computer Game")){
+                pbProductBuilder.setProductCategory(PB_Product.ProdCategory.COMPUTERGAME);
+                ComputerGame cg = (ComputerGame) prod;
+                PB_ComputerGame.Builder pbGameBuilder = PB_ComputerGame.newBuilder();
+                pbGameBuilder.setProduct(pbProductBuilder);
+                pbItemBuilder.setProductGame(pbGameBuilder);
+            }else if (prod.getCategory().equals("Electronics")){
+                pbProductBuilder.setProductCategory(PB_Product.ProdCategory.ELECTRONIC);
+                Electronics e = (Electronics) prod;
+                PB_Electronics.Builder pbElecBuilder = PB_Electronics.newBuilder();
+                pbElecBuilder.setProduct(pbProductBuilder);
+                pbItemBuilder.setProductElec(pbElecBuilder);
+            }
+            pbStockBuilder.addItems(pbItemBuilder);
+        }
+
+        PB_Stock pbStock = pbStockBuilder.build();
+
+        // Packing all packages in list
+        PB_PackagingList.Builder pbPackagingListBuilder = PB_PackagingList.newBuilder();
+
+        for (Packaging pack: packagesList){
+            PB_Packaging.Builder pbPackageBuilder = PB_Packaging.newBuilder();
+            pbPackageBuilder.setPackagingID(pack.getID())
+            .setCost(pack.getCost())
+            .setMaterial(pack.getMaterial())
+            .setCapacityInPackagingUnits(pack.getCapacity());
+
+            pbPackagingListBuilder.addPackages(pbPackageBuilder);
+        }
+
+        PB_PackagingList pbPackagingList = pbPackagingListBuilder.build();
+
+
+        // Packing all vehicles in list
+        PB_VehiclesList.Builder pbVehiclesListBuilder  =PB_VehiclesList.newBuilder();
+
+        for (Transport vehicle: vehiclesList){
+            PB_Transport.Builder pbTransportBuilder = PB_Transport.newBuilder();
+            pbTransportBuilder.setVehicleID(vehicle.getID())
+            .setTransportatoinSpeed(vehicle.getSpeed())
+            .setTransportationCostPerKm(vehicle.getCost());
+
+            if (vehicle.getType().equals("Aircraft")){
+                pbTransportBuilder.setVehicleType(PB_Transport.TransportType.AIRCRAFT);
+                Aircraft ac = (Aircraft) vehicle;
+                PB_Aircraft.Builder pbAircraftBuilder = PB_Aircraft.newBuilder();
+                for (String as: ac.getList()){
+                    pbAircraftBuilder.addAirSpaceList(as);
+                }
+                pbAircraftBuilder.setTransport(pbTransportBuilder);
+
+                pbVehiclesListBuilder.addVehiclesAir(pbAircraftBuilder);
+            }else if (vehicle.getType().equals("Sea Vessel")){
+                pbTransportBuilder.setVehicleType(PB_Transport.TransportType.SEAVESSEL);
+                SeaVessel sv = (SeaVessel) vehicle;
+                PB_SeaVessel.Builder pbSeaVesselBuilder = PB_SeaVessel.newBuilder();
+
+                for (String r: sv.getList()){
+                    pbSeaVesselBuilder.addRouteList(r);
+                }
+                pbSeaVesselBuilder.setTransport(pbTransportBuilder);
+
+                pbVehiclesListBuilder.addVehiclesSea(pbSeaVesselBuilder);
+            }else if (vehicle.getType().equals("Truck")){
+                pbTransportBuilder.setVehicleType(PB_Transport.TransportType.TRUCK);
+                Truck t = (Truck) vehicle;
+                PB_Truck.Builder pbTruckBuilder = PB_Truck.newBuilder();
+
+                for (String mw: t.getList()){
+                    pbTruckBuilder.addMotorwayList(mw);
+                }
+                pbTruckBuilder.setTransport(pbTransportBuilder);
+
+                pbVehiclesListBuilder.addVehiclesTruck(pbTruckBuilder);
+            }
+        }
+
+        PB_VehiclesList pbVehiclesList = pbVehiclesListBuilder.build();
+
+
+        // Packing all customers in list
+        PB_CustomersList.Builder pbCustomersListBuilder = PB_CustomersList.newBuilder();
+
+        for (Customer cust: customersList){
+            PB_Customer.Builder pbCustomerBuilder = PB_Customer.newBuilder();
+            pbCustomerBuilder.setCustomerID(cust.getID())
+            .setCustomerName(cust.getName())
+            .setCustomerRoad(cust.getRoad())
+            .setCustomerTown(cust.getTown())
+            .setCustomerPostCode(cust.getPostCode());
+
+            pbCustomersListBuilder.addCustomers(pbCustomerBuilder);
+        }
+
+        PB_CustomersList pbCustomersList = pbCustomersListBuilder.build();
+
+
+        // Packing all orders in list
+        PB_OrdersList.Builder pbOrdersListBuilder = PB_OrdersList.newBuilder();
+
+        for (Shipment order: ordersList){
+            PB_Shipment.Builder pbShipmentBuilder = PB_Shipment.newBuilder();
+            pbShipmentBuilder.setShipmentID(order.getID())
+            .setShipmentStatus(order.getStatus())
+            .setDispatchDate(order.getDispatchDate())
+            .setOrderDate(order.getOrderDate());
+
+            // Setting ordered items
+            for (int i = 0; i < order.getListSize(); i++){
+                PB_StockItem.Builder pbItemOrderedBuilder = PB_StockItem.newBuilder();
+                pbItemOrderedBuilder.setQuantity(order.getOrderedQuantity(i));
+
+                Product prod = order.getOrderedProduct(i);
+                PB_Product.Builder pbProductBuilder = PB_Product.newBuilder();
+                pbProductBuilder.setProductID(prod.getID())
+                .setProductName(prod.getName())
+                .setProductPrice(prod.getPrice())
+                .setProductVolume(prod.getVolume());
+
+                if (prod.getCategory().equals("Book")){
+                    pbProductBuilder.setProductCategory(PB_Product.ProdCategory.BOOK);
+                    Book b = (Book) prod;
+                    PB_Book.Builder pbBookBuilder = PB_Book.newBuilder();
+                    pbBookBuilder.setBookIBAN(b.getIBAN())
+                    .setBookGenre(b.getGenre())
+                    .setBookAuthor(b.getAuthor())
+                    .setProduct(pbProductBuilder);
+
+                    pbItemOrderedBuilder.setProductBook(pbBookBuilder);
+                }else if (prod.getCategory().equals("Clothing")){
+                    pbProductBuilder.setProductCategory(PB_Product.ProdCategory.CLOTHING);
+                    Clothing c = (Clothing) prod;
+                    PB_Clothing.Builder pbClothingBuilder = PB_Clothing.newBuilder();
+                    pbClothingBuilder.setWidth(c.getWidth())
+                    .setLength(c.getLength())
+                    .setSizeClassification(c.getSize())
+                    .setProduct(pbProductBuilder);
+
+                    pbItemOrderedBuilder.setProductCloth(pbClothingBuilder);
+                }else if (prod.getCategory().equals("Computer Game")){
+                    pbProductBuilder.setProductCategory(PB_Product.ProdCategory.COMPUTERGAME);
+                    ComputerGame cg = (ComputerGame) prod;
+                    PB_ComputerGame.Builder pbGameBuilder = PB_ComputerGame.newBuilder();
+                    pbGameBuilder.setProduct(pbProductBuilder);
+
+                    pbItemOrderedBuilder.setProductGame(pbGameBuilder);
+                }else if (prod.getCategory().equals("Electronics")){
+                    pbProductBuilder.setProductCategory(PB_Product.ProdCategory.ELECTRONIC);
+                    Electronics e = (Electronics) prod;
+                    PB_Electronics.Builder pbElecBuilder = PB_Electronics.newBuilder();
+                    pbElecBuilder.setProduct(pbProductBuilder);
+                    pbItemOrderedBuilder.setProductElec(pbElecBuilder);
+                }
+            }
+
+            // Setting customer
+            Customer cust = order.getCustomer();
+            PB_Customer.Builder pbCustomerBuilder = PB_Customer.newBuilder();
+            pbCustomerBuilder.setCustomerID(cust.getID())
+            .setCustomerName(cust.getName())
+            .setCustomerRoad(cust.getRoad())
+            .setCustomerTown(cust.getTown())
+            .setCustomerPostCode(cust.getPostCode());
+
+            pbShipmentBuilder.setShipmentCustomer(pbCustomerBuilder);
+
+            // Setting transport
+            Transport vehicle = order.getTransport();
+            PB_Transport.Builder pbTransportBuilder = PB_Transport.newBuilder();
+            pbTransportBuilder.setVehicleID(vehicle.getID())
+            .setTransportatoinSpeed(vehicle.getSpeed())
+            .setTransportationCostPerKm(vehicle.getCost());
+
+            if (vehicle.getType().equals("Aircraft")){
+                pbTransportBuilder.setVehicleType(PB_Transport.TransportType.AIRCRAFT);
+                Aircraft ac = (Aircraft) vehicle;
+                PB_Aircraft.Builder pbAircraftBuilder = PB_Aircraft.newBuilder();
+                for (String as: ac.getList()){
+                    pbAircraftBuilder.addAirSpaceList(as);
+                }
+
+                pbAircraftBuilder.setTransport(pbTransportBuilder);
+                pbShipmentBuilder.setShipmentAircraft(pbAircraftBuilder);
+            }else if (vehicle.getType().equals("Sea Vessel")){
+                pbTransportBuilder.setVehicleType(PB_Transport.TransportType.SEAVESSEL);
+                SeaVessel sv = (SeaVessel) vehicle;
+                PB_SeaVessel.Builder pbSeaVesselBuilder = PB_SeaVessel.newBuilder();
+
+                for (String r: sv.getList()){
+                    pbSeaVesselBuilder.addRouteList(r);
+                }
+
+                pbSeaVesselBuilder.setTransport(pbTransportBuilder);
+
+                pbShipmentBuilder.setShipmentVessel(pbSeaVesselBuilder);
+            }else if (vehicle.getType().equals("Truck")){
+                pbTransportBuilder.setVehicleType(PB_Transport.TransportType.TRUCK);
+                Truck t = (Truck) vehicle;
+                PB_Truck.Builder pbTruckBuilder = PB_Truck.newBuilder();
+
+                for (String mw: t.getList()){
+                    pbTruckBuilder.addMotorwayList(mw);
+                }
+
+                pbTruckBuilder.setTransport(pbTransportBuilder);
+                pbShipmentBuilder.setShipmentTruck(pbTruckBuilder);
+            }
+
+            pbOrdersListBuilder.addOrders(pbShipmentBuilder);
+        }
+
+        PB_OrdersList pbOrdersList = pbOrdersListBuilder.build();
+
+        // Serialize the stock
+        try (FileOutputStream out = new FileOutputStream(STOCK_FILE)) {
+            pbStock.writeTo(out);
+        }catch (IOException e) {
+            System.err.println("Failed to write stock to output file!");
+        }
+
+        // Serialize the lists
+        try (FileOutputStream out = new FileOutputStream(VEHICLES_FILE)) {
+            pbVehiclesList.writeTo(out);
+        }catch (IOException e) {
+            System.err.println("Failed to write vehicles to output file!");
+        }
+
+        try (FileOutputStream out = new FileOutputStream(PACKAGING_FILE)) {
+            pbPackagingList.writeTo(out);
+        }catch (IOException e) {
+            System.err.println("Failed to write packages to output file!");
+        }
+
+        try (FileOutputStream out = new FileOutputStream(CUSTOMERS_FILE)) {
+            pbCustomersList.writeTo(out);
+        }catch (IOException e) {
+            System.err.println("Failed to write customers to output file!");
+        }
+
+        try (FileOutputStream out = new FileOutputStream(ORDERS_FILE)) {
+            pbOrdersList.writeTo(out);
+        }catch (IOException e) {
+            System.err.println("Failed to write orders to output file!");
         }
     }
 
     // Example method for deserialization
-    public static void load2(String filename) {
-        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename))) {
-            // Deserialize your data structures here
-            // For example: member_variable = (DataType) in.readObject();
-            stock = (Stock) in.readObject();
+    public static void load2() {
+        PB_Stock pbStock2;
+        PB_PackagingList pbPackagingList2;
+        PB_VehiclesList pbVehiclesList2;
+        PB_CustomersList pbCustomersList2;
+        PB_OrdersList pbOrdersList2;
 
-            // Deserialize the lists
-            packagesList = ((ArrayList<Packaging>) in.readObject());
-            vehiclesList = ((ArrayList<Transport>) in.readObject());
-            customersList = ((ArrayList<Customer>) in.readObject());
-            ordersList = ((ArrayList<Shipment>) in.readObject());
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+        // Deserialize the stock
+        try (FileInputStream in = new FileInputStream(STOCK_FILE)) {
+            pbStock2 = PB_Stock.parseFrom(in);
+        } catch (IOException e) {
+            System.out.println("Failed to read stock from input file!");
+            return;
+        }
+
+        // Deserialize the lists
+        try (FileInputStream in = new FileInputStream(VEHICLES_FILE)) {
+            pbVehiclesList2 = PB_VehiclesList.parseFrom(in);
+        } catch (IOException e) {
+            System.out.println("Failed to read list of vehicles from input file!");
+            return;
+        }
+
+        try (FileInputStream in = new FileInputStream(PACKAGING_FILE)) {
+            pbPackagingList2 = PB_PackagingList.parseFrom(in);
+        } catch (IOException e) {
+            System.out.println("Failed to read list of packages from input file!");
+            return;
+        }
+
+        try (FileInputStream in = new FileInputStream(CUSTOMERS_FILE)) {
+            pbCustomersList2 = PB_CustomersList.parseFrom(in);
+        } catch (IOException e) {
+            System.out.println("Failed to read list of customers from input file!");
+            return;
+        }
+
+        try (FileInputStream in = new FileInputStream(ORDERS_FILE)) {
+            pbOrdersList2 = PB_OrdersList.parseFrom(in);
+        } catch (IOException e) {
+            System.out.println("Failed to read list of orders from input file!");
+            return;
+        }
+
+        // Unpacking stock object
+        stock.getItemsList().clear();
+
+        for (PB_StockItem item: pbStock2.getItemsList()){
+            PB_Book pbBook = item.getProductBook();
+            PB_Clothing pbCloth = item.getProductCloth();
+            PB_ComputerGame pbGame = item.getProductGame();
+            PB_Electronics pbElec = item.getProductElec();
+            System.out.println(pbBook.getProduct());
+            if (pbBook.getProduct().getProductName().length() > 0){
+                Book inBook = new Book(
+                    pbBook.getProduct().getProductID(),
+                    pbBook.getProduct().getProductName(),
+                    pbBook.getProduct().getProductPrice(),
+                    "Book",
+                    pbBook.getProduct().getProductVolume(),
+                    pbBook.getBookIBAN(),
+                    pbBook.getBookGenre(),
+                    pbBook.getBookAuthor()
+                );
+
+                stock.addItem(new StockItem(item.getQuantity(), inBook));
+                System.out.println(inBook.getName());
+                System.out.println(inBook.getPrice());
+            }else if (pbCloth.getProduct().getProductName().length() > 0){
+                Clothing inCloth = new Clothing(
+                    pbCloth.getProduct().getProductID(),
+                    pbCloth.getProduct().getProductName(),
+                    pbCloth.getProduct().getProductPrice(),
+                    "Clothing",
+                    pbCloth.getProduct().getProductVolume(),
+                    pbCloth.getWidth(),
+                    pbCloth.getLength(),
+                    pbCloth.getSizeClassification()
+                );
+
+                stock.addItem(new StockItem(item.getQuantity(), inCloth));
+                System.out.println(inCloth.getName());
+                System.out.println(inCloth.getPrice());
+            }else if (pbGame.getProduct().getProductName().length() > 0){
+                ComputerGame inGame = new ComputerGame(
+                    pbGame.getProduct().getProductID(),
+                    pbGame.getProduct().getProductName(),
+                    pbGame.getProduct().getProductPrice(),
+                    "Computer Game",
+                    pbGame.getProduct().getProductVolume()
+                );
+
+                stock.addItem(new StockItem(item.getQuantity(), inGame));
+                System.out.println(inGame.getName());
+                System.out.println(inGame.getPrice());
+            }else if (pbElec.getProduct().getProductName().length() > 0){
+                Electronics inElec = new Electronics(
+                    pbElec.getProduct().getProductID(),
+                    pbElec.getProduct().getProductName(),
+                    pbElec.getProduct().getProductPrice(),
+                    "Electronics",
+                    pbElec.getProduct().getProductVolume()
+                );
+
+                stock.addItem(new StockItem(item.getQuantity(), inElec));
+                System.out.println(inElec.getName());
+                System.out.println(inElec.getPrice());
+            }
+        }
+
+        // Unpacking packaging objects
+        packagesList.clear();
+        for (PB_Packaging pbPackage : pbPackagingList2.getPackagesList()) {
+            Packaging inPack = new Packaging(
+                pbPackage.getPackagingID(),
+                pbPackage.getCost(),
+                pbPackage.getMaterial(),
+                pbPackage.getCapacityInPackagingUnits()
+            );
+            packagesList.add(inPack);
+            System.out.println(inPack.getID());
+            System.out.println(inPack.getCost());
+            System.out.println(inPack.getMaterial());
+            System.out.println(inPack.getCapacity());
+        }
+
+        // Unpacking vehicle objects
+        vehiclesList.clear();
+
+        // Unpacking all trucks
+        for (PB_Truck pbTruck: pbVehiclesList2.getVehiclesTruckList()) {
+            Truck inTruck = new Truck(
+                pbTruck.getTransport().getVehicleID(),
+                "Truck",
+                pbTruck.getTransport().getTransportatoinSpeed(),
+                pbTruck.getTransport().getTransportationCostPerKm()
+            );
+
+            for (String pbMotorway: pbTruck.getMotorwayListList()){
+                inTruck.addToList(pbMotorway);
+            }
+            vehiclesList.add(inTruck);
+            System.out.println(inTruck.getSpeed());
+            System.out.println(inTruck.getCost());
+        }
+
+        // Unpacking all sea vessels
+        for (PB_SeaVessel pbSeaVessel: pbVehiclesList2.getVehiclesSeaList()) {
+            SeaVessel inVessel = new SeaVessel(
+                pbSeaVessel.getTransport().getVehicleID(),
+                "Sea Vessel",
+                pbSeaVessel.getTransport().getTransportatoinSpeed(),
+                pbSeaVessel.getTransport().getTransportationCostPerKm()
+            );
+
+            for (String pbRoute: pbSeaVessel.getRouteListList()){
+                inVessel.addToList(pbRoute);
+            }
+            vehiclesList.add(inVessel);
+        }
+
+        // Unpacking all aircrafts
+        for (PB_Aircraft pbAircraft: pbVehiclesList2.getVehiclesAirList()) {
+            Aircraft inAir = new Aircraft(
+                pbAircraft.getTransport().getVehicleID(),
+                "Aircraft",
+                pbAircraft.getTransport().getTransportatoinSpeed(),
+                pbAircraft.getTransport().getTransportationCostPerKm()
+            );
+
+            for (String pbAirSpace: pbAircraft.getAirSpaceListList()){
+                inAir.addToList(pbAirSpace);
+            }
+            vehiclesList.add(inAir);
+        }
+
+        // Unpacking customer objects
+        customersList.clear();
+        for (PB_Customer pbCustomer : pbCustomersList2.getCustomersList()) {
+            Customer inCustomer = new Customer(
+                pbCustomer.getCustomerID(),
+                pbCustomer.getCustomerName(),
+                pbCustomer.getCustomerRoad(),
+                pbCustomer.getCustomerTown(),
+                pbCustomer.getCustomerPostCode()
+            );
+            customersList.add(inCustomer);
+        }
+
+        // Unpacking order objects
+        ordersList.clear();
+        for (PB_Shipment pbOrder : pbOrdersList2.getOrdersList()) {
+            PB_Customer pbCustomer = pbOrder.getShipmentCustomer();
+            Customer inCustomer = new Customer(
+                pbCustomer.getCustomerID(),
+                pbCustomer.getCustomerName(),
+                pbCustomer.getCustomerRoad(),
+                pbCustomer.getCustomerTown(),
+                pbCustomer.getCustomerPostCode()
+            );
+
+            Shipment inOrder = new Shipment(
+                pbOrder.getShipmentID(),
+                inCustomer,
+                pbOrder.getOrderDate()
+            );
+
+            PB_Truck pbTruck = pbOrder.getShipmentTruck();
+            PB_SeaVessel pbSeaVessel = pbOrder.getShipmentVessel();
+            PB_Aircraft pbAircraft = pbOrder.getShipmentAircraft();
+
+            if (pbTruck.getTransport().getTransportatoinSpeed() > 0){
+                Truck inTruck = new Truck(
+                    pbTruck.getTransport().getVehicleID(),
+                    "Truck",
+                    pbTruck.getTransport().getTransportatoinSpeed(),
+                    pbTruck.getTransport().getTransportationCostPerKm()
+                );
+
+                for (String pbMotorway: pbTruck.getMotorwayListList()){
+                    inTruck.addToList(pbMotorway);
+                }
+
+                inOrder.setTransport(inTruck);
+            }else if (pbSeaVessel.getTransport().getTransportatoinSpeed() > 0){
+                SeaVessel inVessel = new SeaVessel(
+                    pbSeaVessel.getTransport().getVehicleID(),
+                    "Sea Vessel",
+                    pbSeaVessel.getTransport().getTransportatoinSpeed(),
+                    pbSeaVessel.getTransport().getTransportationCostPerKm()
+                );
+
+                for (String pbRoute: pbSeaVessel.getRouteListList()){
+                    inVessel.addToList(pbRoute);
+                }
+
+                inOrder.setTransport(inVessel);
+            }else if (pbAircraft.getTransport().getTransportatoinSpeed() > 0){
+                Aircraft inAir = new Aircraft(
+                    pbAircraft.getTransport().getVehicleID(),
+                    "Aircraft",
+                    pbAircraft.getTransport().getTransportatoinSpeed(),
+                    pbAircraft.getTransport().getTransportationCostPerKm()
+                );
+
+                for (String pbAirSpace: pbAircraft.getAirSpaceListList()){
+                    inAir.addToList(pbAirSpace);
+                }
+
+                inOrder.setTransport(inAir);
+            }
+
+            for (PB_StockItem item: pbOrder.getItemsToShipList()){
+                PB_Book pbBook = item.getProductBook();
+                PB_Clothing pbCloth = item.getProductCloth();
+                PB_ComputerGame pbGame = item.getProductGame();
+                PB_Electronics pbElec = item.getProductElec();
+                if (pbBook.getProduct().getProductName().length() > 0){
+                    Book inBook = new Book(
+                        pbBook.getProduct().getProductID(),
+                        pbBook.getProduct().getProductName(),
+                        pbBook.getProduct().getProductPrice(),
+                        "Book",
+                        pbBook.getProduct().getProductVolume(),
+                        pbBook.getBookIBAN(),
+                        pbBook.getBookGenre(),
+                        pbBook.getBookAuthor()
+                    );
+
+                    inOrder.addItemToList(new StockItem(item.getQuantity(), inBook));
+                }else if (pbCloth.getProduct().getProductName().length() > 0){
+                    Clothing inCloth = new Clothing(
+                        pbCloth.getProduct().getProductID(),
+                        pbCloth.getProduct().getProductName(),
+                        pbCloth.getProduct().getProductPrice(),
+                        "Clothing",
+                        pbCloth.getProduct().getProductVolume(),
+                        pbCloth.getWidth(),
+                        pbCloth.getLength(),
+                        pbCloth.getSizeClassification()
+                    );
+
+                    inOrder.addItemToList(new StockItem(item.getQuantity(), inCloth));
+                }else if (pbGame.getProduct().getProductName().length() > 0){
+                    ComputerGame inGame = new ComputerGame(
+                        pbGame.getProduct().getProductID(),
+                        pbGame.getProduct().getProductName(),
+                        pbGame.getProduct().getProductPrice(),
+                        "Computer Game",
+                        pbGame.getProduct().getProductVolume()
+                    );
+
+                    inOrder.addItemToList(new StockItem(item.getQuantity(), inGame));
+                }else if (pbElec.getProduct().getProductName().length() > 0){
+                    Electronics inElec = new Electronics(
+                        pbElec.getProduct().getProductID(),
+                        pbElec.getProduct().getProductName(),
+                        pbElec.getProduct().getProductPrice(),
+                        "Electronics",
+                        pbElec.getProduct().getProductVolume()
+                    );
+
+                    inOrder.addItemToList(new StockItem(item.getQuantity(), inElec));
+                }
+            }
+
+            ordersList.add(inOrder);
         }
     }
 }

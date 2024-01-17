@@ -10,14 +10,14 @@ public class LogisticsFacade {
 
     public LogisticsFacade(){}
 
-    public void serialize(String filename) {
+    public void serialize() {
         // Delegate serialization to the main class
-        App.save2(filename);
+        App.save2();
     }
 
-    public void deserialize(String filename) {
+    public void deserialize() {
         // Delegate deserialization to the main class
-        App.load2(filename);
+        App.load2();
     }
 }
 

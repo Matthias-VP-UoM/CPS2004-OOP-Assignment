@@ -41,4 +41,8 @@ public class Aircraft extends Transport{
         String airSpaceAtPos = airSpaceList.get(pos);
         return airSpaceAtPos;
     }
+
+    public ArrayList<String> getList(){
+        return airSpaceList;
+    }
 }

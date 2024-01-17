@@ -10,8 +10,8 @@ abstract class ShipmentDecorator implements ShipmentInterface {
     }
 
     @Override
-    public double calculateTotalCost() {
-        return decoratedShipment.calculateTotalCost();
+    public double calculateTotalCost(int monthNum) {
+        return decoratedShipment.calculateTotalCost(monthNum);
     }
 
     @Override

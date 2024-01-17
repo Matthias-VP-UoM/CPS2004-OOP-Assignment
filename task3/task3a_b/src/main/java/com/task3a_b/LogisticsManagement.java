@@ -14,8 +14,8 @@ public final class LogisticsManagement {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface ProductOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.task3a_b.Product)
+  public interface PB_ProductOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.task3a_b.PB_Product)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -42,14 +42,13 @@ public final class LogisticsManagement {
     int getProductID();
 
     /**
-     * <code>string productCategory = 3;</code>
+     * <code>.com.task3a_b.PB_Product.ProdCategory productCategory = 3;</code>
      */
-    java.lang.String getProductCategory();
+    int getProductCategoryValue();
     /**
-     * <code>string productCategory = 3;</code>
+     * <code>.com.task3a_b.PB_Product.ProdCategory productCategory = 3;</code>
      */
-    com.google.protobuf.ByteString
-        getProductCategoryBytes();
+    com.task3a_b.LogisticsManagement.PB_Product.ProdCategory getProductCategory();
 
     /**
      * <code>double productPrice = 4;</code>
@@ -57,30 +56,26 @@ public final class LogisticsManagement {
     double getProductPrice();
 
     /**
-     * <pre>
-     * Add other product attributes as needed
-     * </pre>
-     *
      * <code>int32 productVolume = 5;</code>
      */
     int getProductVolume();
   }
   /**
-   * Protobuf type {@code com.task3a_b.Product}
+   * Protobuf type {@code com.task3a_b.PB_Product}
    */
-  public  static final class Product extends
+  public  static final class PB_Product extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.task3a_b.Product)
-      ProductOrBuilder {
+      // @@protoc_insertion_point(message_implements:com.task3a_b.PB_Product)
+      PB_ProductOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Product.newBuilder() to construct.
-    private Product(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PB_Product.newBuilder() to construct.
+    private PB_Product(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Product() {
+    private PB_Product() {
       productName_ = "";
       productID_ = 0;
-      productCategory_ = "";
+      productCategory_ = 0;
       productPrice_ = 0D;
       productVolume_ = 0;
     }
@@ -90,7 +85,7 @@ public final class LogisticsManagement {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Product(
+    private PB_Product(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -120,10 +115,10 @@ public final class LogisticsManagement {
               productID_ = input.readInt32();
               break;
             }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 24: {
+              int rawValue = input.readEnum();
 
-              productCategory_ = s;
+              productCategory_ = rawValue;
               break;
             }
             case 33: {
@@ -157,15 +152,131 @@ public final class LogisticsManagement {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Product_descriptor;
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Product_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Product_fieldAccessorTable
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Product_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.task3a_b.LogisticsManagement.Product.class, com.task3a_b.LogisticsManagement.Product.Builder.class);
+              com.task3a_b.LogisticsManagement.PB_Product.class, com.task3a_b.LogisticsManagement.PB_Product.Builder.class);
+    }
+
+    /**
+     * Protobuf enum {@code com.task3a_b.PB_Product.ProdCategory}
+     */
+    public enum ProdCategory
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>BOOK = 0;</code>
+       */
+      BOOK(0),
+      /**
+       * <code>CLOTHING = 1;</code>
+       */
+      CLOTHING(1),
+      /**
+       * <code>COMPUTERGAME = 2;</code>
+       */
+      COMPUTERGAME(2),
+      /**
+       * <code>ELECTRONIC = 3;</code>
+       */
+      ELECTRONIC(3),
+      UNRECOGNIZED(-1),
+      ;
+
+      /**
+       * <code>BOOK = 0;</code>
+       */
+      public static final int BOOK_VALUE = 0;
+      /**
+       * <code>CLOTHING = 1;</code>
+       */
+      public static final int CLOTHING_VALUE = 1;
+      /**
+       * <code>COMPUTERGAME = 2;</code>
+       */
+      public static final int COMPUTERGAME_VALUE = 2;
+      /**
+       * <code>ELECTRONIC = 3;</code>
+       */
+      public static final int ELECTRONIC_VALUE = 3;
+
+
+      public final int getNumber() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalArgumentException(
+              "Can't get the number of an unknown enum value.");
+        }
+        return value;
+      }
+
+      /**
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static ProdCategory valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static ProdCategory forNumber(int value) {
+        switch (value) {
+          case 0: return BOOK;
+          case 1: return CLOTHING;
+          case 2: return COMPUTERGAME;
+          case 3: return ELECTRONIC;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<ProdCategory>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          ProdCategory> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<ProdCategory>() {
+              public ProdCategory findValueByNumber(int number) {
+                return ProdCategory.forNumber(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(ordinal());
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return com.task3a_b.LogisticsManagement.PB_Product.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final ProdCategory[] VALUES = values();
+
+      public static ProdCategory valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        if (desc.getIndex() == -1) {
+          return UNRECOGNIZED;
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int value;
+
+      private ProdCategory(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:com.task3a_b.PB_Product.ProdCategory)
     }
 
     public static final int PRODUCTNAME_FIELD_NUMBER = 1;
@@ -220,37 +331,20 @@ public final class LogisticsManagement {
     }
 
     public static final int PRODUCTCATEGORY_FIELD_NUMBER = 3;
-    private volatile java.lang.Object productCategory_;
+    private int productCategory_;
     /**
-     * <code>string productCategory = 3;</code>
+     * <code>.com.task3a_b.PB_Product.ProdCategory productCategory = 3;</code>
      */
-    public java.lang.String getProductCategory() {
-      java.lang.Object ref = productCategory_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        productCategory_ = s;
-        return s;
-      }
+    public int getProductCategoryValue() {
+      return productCategory_;
     }
     /**
-     * <code>string productCategory = 3;</code>
+     * <code>.com.task3a_b.PB_Product.ProdCategory productCategory = 3;</code>
      */
-    public com.google.protobuf.ByteString
-        getProductCategoryBytes() {
-      java.lang.Object ref = productCategory_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        productCategory_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public com.task3a_b.LogisticsManagement.PB_Product.ProdCategory getProductCategory() {
+      @SuppressWarnings("deprecation")
+      com.task3a_b.LogisticsManagement.PB_Product.ProdCategory result = com.task3a_b.LogisticsManagement.PB_Product.ProdCategory.valueOf(productCategory_);
+      return result == null ? com.task3a_b.LogisticsManagement.PB_Product.ProdCategory.UNRECOGNIZED : result;
     }
 
     public static final int PRODUCTPRICE_FIELD_NUMBER = 4;
@@ -265,10 +359,6 @@ public final class LogisticsManagement {
     public static final int PRODUCTVOLUME_FIELD_NUMBER = 5;
     private int productVolume_;
     /**
-     * <pre>
-     * Add other product attributes as needed
-     * </pre>
-     *
      * <code>int32 productVolume = 5;</code>
      */
     public int getProductVolume() {
@@ -295,8 +385,8 @@ public final class LogisticsManagement {
       if (productID_ != 0) {
         output.writeInt32(2, productID_);
       }
-      if (!getProductCategoryBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, productCategory_);
+      if (productCategory_ != com.task3a_b.LogisticsManagement.PB_Product.ProdCategory.BOOK.getNumber()) {
+        output.writeEnum(3, productCategory_);
       }
       if (productPrice_ != 0D) {
         output.writeDouble(4, productPrice_);
@@ -320,8 +410,9 @@ public final class LogisticsManagement {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, productID_);
       }
-      if (!getProductCategoryBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, productCategory_);
+      if (productCategory_ != com.task3a_b.LogisticsManagement.PB_Product.ProdCategory.BOOK.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, productCategory_);
       }
       if (productPrice_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
@@ -341,18 +432,17 @@ public final class LogisticsManagement {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.task3a_b.LogisticsManagement.Product)) {
+      if (!(obj instanceof com.task3a_b.LogisticsManagement.PB_Product)) {
         return super.equals(obj);
       }
-      com.task3a_b.LogisticsManagement.Product other = (com.task3a_b.LogisticsManagement.Product) obj;
+      com.task3a_b.LogisticsManagement.PB_Product other = (com.task3a_b.LogisticsManagement.PB_Product) obj;
 
       boolean result = true;
       result = result && getProductName()
           .equals(other.getProductName());
       result = result && (getProductID()
           == other.getProductID());
-      result = result && getProductCategory()
-          .equals(other.getProductCategory());
+      result = result && productCategory_ == other.productCategory_;
       result = result && (
           java.lang.Double.doubleToLongBits(getProductPrice())
           == java.lang.Double.doubleToLongBits(
@@ -375,7 +465,7 @@ public final class LogisticsManagement {
       hash = (37 * hash) + PRODUCTID_FIELD_NUMBER;
       hash = (53 * hash) + getProductID();
       hash = (37 * hash) + PRODUCTCATEGORY_FIELD_NUMBER;
-      hash = (53 * hash) + getProductCategory().hashCode();
+      hash = (53 * hash) + productCategory_;
       hash = (37 * hash) + PRODUCTPRICE_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           java.lang.Double.doubleToLongBits(getProductPrice()));
@@ -386,69 +476,69 @@ public final class LogisticsManagement {
       return hash;
     }
 
-    public static com.task3a_b.LogisticsManagement.Product parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Product parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Product parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Product parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Product parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Product parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Product parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Product parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Product parseFrom(byte[] data)
+    public static com.task3a_b.LogisticsManagement.PB_Product parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Product parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Product parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Product parseFrom(java.io.InputStream input)
+    public static com.task3a_b.LogisticsManagement.PB_Product parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Product parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Product parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Product parseDelimitedFrom(java.io.InputStream input)
+    public static com.task3a_b.LogisticsManagement.PB_Product parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Product parseDelimitedFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Product parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Product parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Product parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Product parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Product parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -461,7 +551,7 @@ public final class LogisticsManagement {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.task3a_b.LogisticsManagement.Product prototype) {
+    public static Builder newBuilder(com.task3a_b.LogisticsManagement.PB_Product prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -477,26 +567,26 @@ public final class LogisticsManagement {
       return builder;
     }
     /**
-     * Protobuf type {@code com.task3a_b.Product}
+     * Protobuf type {@code com.task3a_b.PB_Product}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.task3a_b.Product)
-        com.task3a_b.LogisticsManagement.ProductOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.task3a_b.PB_Product)
+        com.task3a_b.LogisticsManagement.PB_ProductOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Product_descriptor;
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Product_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Product_fieldAccessorTable
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Product_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.task3a_b.LogisticsManagement.Product.class, com.task3a_b.LogisticsManagement.Product.Builder.class);
+                com.task3a_b.LogisticsManagement.PB_Product.class, com.task3a_b.LogisticsManagement.PB_Product.Builder.class);
       }
 
-      // Construct using com.task3a_b.LogisticsManagement.Product.newBuilder()
+      // Construct using com.task3a_b.LogisticsManagement.PB_Product.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -518,7 +608,7 @@ public final class LogisticsManagement {
 
         productID_ = 0;
 
-        productCategory_ = "";
+        productCategory_ = 0;
 
         productPrice_ = 0D;
 
@@ -530,17 +620,17 @@ public final class LogisticsManagement {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Product_descriptor;
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Product_descriptor;
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Product getDefaultInstanceForType() {
-        return com.task3a_b.LogisticsManagement.Product.getDefaultInstance();
+      public com.task3a_b.LogisticsManagement.PB_Product getDefaultInstanceForType() {
+        return com.task3a_b.LogisticsManagement.PB_Product.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Product build() {
-        com.task3a_b.LogisticsManagement.Product result = buildPartial();
+      public com.task3a_b.LogisticsManagement.PB_Product build() {
+        com.task3a_b.LogisticsManagement.PB_Product result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -548,8 +638,8 @@ public final class LogisticsManagement {
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Product buildPartial() {
-        com.task3a_b.LogisticsManagement.Product result = new com.task3a_b.LogisticsManagement.Product(this);
+      public com.task3a_b.LogisticsManagement.PB_Product buildPartial() {
+        com.task3a_b.LogisticsManagement.PB_Product result = new com.task3a_b.LogisticsManagement.PB_Product(this);
         result.productName_ = productName_;
         result.productID_ = productID_;
         result.productCategory_ = productCategory_;
@@ -593,16 +683,16 @@ public final class LogisticsManagement {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.task3a_b.LogisticsManagement.Product) {
-          return mergeFrom((com.task3a_b.LogisticsManagement.Product)other);
+        if (other instanceof com.task3a_b.LogisticsManagement.PB_Product) {
+          return mergeFrom((com.task3a_b.LogisticsManagement.PB_Product)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.task3a_b.LogisticsManagement.Product other) {
-        if (other == com.task3a_b.LogisticsManagement.Product.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.task3a_b.LogisticsManagement.PB_Product other) {
+        if (other == com.task3a_b.LogisticsManagement.PB_Product.getDefaultInstance()) return this;
         if (!other.getProductName().isEmpty()) {
           productName_ = other.productName_;
           onChanged();
@@ -610,9 +700,8 @@ public final class LogisticsManagement {
         if (other.getProductID() != 0) {
           setProductID(other.getProductID());
         }
-        if (!other.getProductCategory().isEmpty()) {
-          productCategory_ = other.productCategory_;
-          onChanged();
+        if (other.productCategory_ != 0) {
+          setProductCategoryValue(other.getProductCategoryValue());
         }
         if (other.getProductPrice() != 0D) {
           setProductPrice(other.getProductPrice());
@@ -635,11 +724,11 @@ public final class LogisticsManagement {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.task3a_b.LogisticsManagement.Product parsedMessage = null;
+        com.task3a_b.LogisticsManagement.PB_Product parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.task3a_b.LogisticsManagement.Product) e.getUnfinishedMessage();
+          parsedMessage = (com.task3a_b.LogisticsManagement.PB_Product) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -764,71 +853,47 @@ public final class LogisticsManagement {
         return this;
       }
 
-      private java.lang.Object productCategory_ = "";
+      private int productCategory_ = 0;
       /**
-       * <code>string productCategory = 3;</code>
+       * <code>.com.task3a_b.PB_Product.ProdCategory productCategory = 3;</code>
        */
-      public java.lang.String getProductCategory() {
-        java.lang.Object ref = productCategory_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          productCategory_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public int getProductCategoryValue() {
+        return productCategory_;
       }
       /**
-       * <code>string productCategory = 3;</code>
+       * <code>.com.task3a_b.PB_Product.ProdCategory productCategory = 3;</code>
        */
-      public com.google.protobuf.ByteString
-          getProductCategoryBytes() {
-        java.lang.Object ref = productCategory_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          productCategory_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string productCategory = 3;</code>
-       */
-      public Builder setProductCategory(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+      public Builder setProductCategoryValue(int value) {
         productCategory_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string productCategory = 3;</code>
+       * <code>.com.task3a_b.PB_Product.ProdCategory productCategory = 3;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Product.ProdCategory getProductCategory() {
+        @SuppressWarnings("deprecation")
+        com.task3a_b.LogisticsManagement.PB_Product.ProdCategory result = com.task3a_b.LogisticsManagement.PB_Product.ProdCategory.valueOf(productCategory_);
+        return result == null ? com.task3a_b.LogisticsManagement.PB_Product.ProdCategory.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product.ProdCategory productCategory = 3;</code>
+       */
+      public Builder setProductCategory(com.task3a_b.LogisticsManagement.PB_Product.ProdCategory value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        productCategory_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product.ProdCategory productCategory = 3;</code>
        */
       public Builder clearProductCategory() {
         
-        productCategory_ = getDefaultInstance().getProductCategory();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string productCategory = 3;</code>
-       */
-      public Builder setProductCategoryBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        productCategory_ = value;
+        productCategory_ = 0;
         onChanged();
         return this;
       }
@@ -861,20 +926,12 @@ public final class LogisticsManagement {
 
       private int productVolume_ ;
       /**
-       * <pre>
-       * Add other product attributes as needed
-       * </pre>
-       *
        * <code>int32 productVolume = 5;</code>
        */
       public int getProductVolume() {
         return productVolume_;
       }
       /**
-       * <pre>
-       * Add other product attributes as needed
-       * </pre>
-       *
        * <code>int32 productVolume = 5;</code>
        */
       public Builder setProductVolume(int value) {
@@ -884,10 +941,6 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <pre>
-       * Add other product attributes as needed
-       * </pre>
-       *
        * <code>int32 productVolume = 5;</code>
        */
       public Builder clearProductVolume() {
@@ -909,48 +962,48 @@ public final class LogisticsManagement {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.task3a_b.Product)
+      // @@protoc_insertion_point(builder_scope:com.task3a_b.PB_Product)
     }
 
-    // @@protoc_insertion_point(class_scope:com.task3a_b.Product)
-    private static final com.task3a_b.LogisticsManagement.Product DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.task3a_b.PB_Product)
+    private static final com.task3a_b.LogisticsManagement.PB_Product DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.Product();
+      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.PB_Product();
     }
 
-    public static com.task3a_b.LogisticsManagement.Product getDefaultInstance() {
+    public static com.task3a_b.LogisticsManagement.PB_Product getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Product>
-        PARSER = new com.google.protobuf.AbstractParser<Product>() {
+    private static final com.google.protobuf.Parser<PB_Product>
+        PARSER = new com.google.protobuf.AbstractParser<PB_Product>() {
       @java.lang.Override
-      public Product parsePartialFrom(
+      public PB_Product parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Product(input, extensionRegistry);
+        return new PB_Product(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Product> parser() {
+    public static com.google.protobuf.Parser<PB_Product> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Product> getParserForType() {
+    public com.google.protobuf.Parser<PB_Product> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.task3a_b.LogisticsManagement.Product getDefaultInstanceForType() {
+    public com.task3a_b.LogisticsManagement.PB_Product getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface BookOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.task3a_b.Book)
+  public interface PB_BookOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.task3a_b.PB_Book)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -982,24 +1035,37 @@ public final class LogisticsManagement {
      */
     com.google.protobuf.ByteString
         getBookGenreBytes();
+
+    /**
+     * <code>.com.task3a_b.PB_Product product = 4;</code>
+     */
+    boolean hasProduct();
+    /**
+     * <code>.com.task3a_b.PB_Product product = 4;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_Product getProduct();
+    /**
+     * <code>.com.task3a_b.PB_Product product = 4;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_ProductOrBuilder getProductOrBuilder();
   }
   /**
    * <pre>
    * Subclasses of Product
    * </pre>
    *
-   * Protobuf type {@code com.task3a_b.Book}
+   * Protobuf type {@code com.task3a_b.PB_Book}
    */
-  public  static final class Book extends
+  public  static final class PB_Book extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.task3a_b.Book)
-      BookOrBuilder {
+      // @@protoc_insertion_point(message_implements:com.task3a_b.PB_Book)
+      PB_BookOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Book.newBuilder() to construct.
-    private Book(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PB_Book.newBuilder() to construct.
+    private PB_Book(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Book() {
+    private PB_Book() {
       bookIBAN_ = "";
       bookAuthor_ = "";
       bookGenre_ = "";
@@ -1010,7 +1076,7 @@ public final class LogisticsManagement {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Book(
+    private PB_Book(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1047,6 +1113,19 @@ public final class LogisticsManagement {
               bookGenre_ = s;
               break;
             }
+            case 34: {
+              com.task3a_b.LogisticsManagement.PB_Product.Builder subBuilder = null;
+              if (product_ != null) {
+                subBuilder = product_.toBuilder();
+              }
+              product_ = input.readMessage(com.task3a_b.LogisticsManagement.PB_Product.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(product_);
+                product_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -1068,15 +1147,15 @@ public final class LogisticsManagement {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Book_descriptor;
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Book_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Book_fieldAccessorTable
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Book_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.task3a_b.LogisticsManagement.Book.class, com.task3a_b.LogisticsManagement.Book.Builder.class);
+              com.task3a_b.LogisticsManagement.PB_Book.class, com.task3a_b.LogisticsManagement.PB_Book.Builder.class);
     }
 
     public static final int BOOKIBAN_FIELD_NUMBER = 1;
@@ -1181,6 +1260,27 @@ public final class LogisticsManagement {
       }
     }
 
+    public static final int PRODUCT_FIELD_NUMBER = 4;
+    private com.task3a_b.LogisticsManagement.PB_Product product_;
+    /**
+     * <code>.com.task3a_b.PB_Product product = 4;</code>
+     */
+    public boolean hasProduct() {
+      return product_ != null;
+    }
+    /**
+     * <code>.com.task3a_b.PB_Product product = 4;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_Product getProduct() {
+      return product_ == null ? com.task3a_b.LogisticsManagement.PB_Product.getDefaultInstance() : product_;
+    }
+    /**
+     * <code>.com.task3a_b.PB_Product product = 4;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_ProductOrBuilder getProductOrBuilder() {
+      return getProduct();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -1204,6 +1304,9 @@ public final class LogisticsManagement {
       if (!getBookGenreBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, bookGenre_);
       }
+      if (product_ != null) {
+        output.writeMessage(4, getProduct());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -1222,6 +1325,10 @@ public final class LogisticsManagement {
       if (!getBookGenreBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, bookGenre_);
       }
+      if (product_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getProduct());
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -1232,10 +1339,10 @@ public final class LogisticsManagement {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.task3a_b.LogisticsManagement.Book)) {
+      if (!(obj instanceof com.task3a_b.LogisticsManagement.PB_Book)) {
         return super.equals(obj);
       }
-      com.task3a_b.LogisticsManagement.Book other = (com.task3a_b.LogisticsManagement.Book) obj;
+      com.task3a_b.LogisticsManagement.PB_Book other = (com.task3a_b.LogisticsManagement.PB_Book) obj;
 
       boolean result = true;
       result = result && getBookIBAN()
@@ -1244,6 +1351,11 @@ public final class LogisticsManagement {
           .equals(other.getBookAuthor());
       result = result && getBookGenre()
           .equals(other.getBookGenre());
+      result = result && (hasProduct() == other.hasProduct());
+      if (hasProduct()) {
+        result = result && getProduct()
+            .equals(other.getProduct());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -1261,74 +1373,78 @@ public final class LogisticsManagement {
       hash = (53 * hash) + getBookAuthor().hashCode();
       hash = (37 * hash) + BOOKGENRE_FIELD_NUMBER;
       hash = (53 * hash) + getBookGenre().hashCode();
+      if (hasProduct()) {
+        hash = (37 * hash) + PRODUCT_FIELD_NUMBER;
+        hash = (53 * hash) + getProduct().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static com.task3a_b.LogisticsManagement.Book parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Book parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Book parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Book parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Book parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Book parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Book parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Book parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Book parseFrom(byte[] data)
+    public static com.task3a_b.LogisticsManagement.PB_Book parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Book parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Book parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Book parseFrom(java.io.InputStream input)
+    public static com.task3a_b.LogisticsManagement.PB_Book parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Book parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Book parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Book parseDelimitedFrom(java.io.InputStream input)
+    public static com.task3a_b.LogisticsManagement.PB_Book parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Book parseDelimitedFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Book parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Book parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Book parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Book parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Book parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1341,7 +1457,7 @@ public final class LogisticsManagement {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.task3a_b.LogisticsManagement.Book prototype) {
+    public static Builder newBuilder(com.task3a_b.LogisticsManagement.PB_Book prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1361,26 +1477,26 @@ public final class LogisticsManagement {
      * Subclasses of Product
      * </pre>
      *
-     * Protobuf type {@code com.task3a_b.Book}
+     * Protobuf type {@code com.task3a_b.PB_Book}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.task3a_b.Book)
-        com.task3a_b.LogisticsManagement.BookOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.task3a_b.PB_Book)
+        com.task3a_b.LogisticsManagement.PB_BookOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Book_descriptor;
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Book_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Book_fieldAccessorTable
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Book_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.task3a_b.LogisticsManagement.Book.class, com.task3a_b.LogisticsManagement.Book.Builder.class);
+                com.task3a_b.LogisticsManagement.PB_Book.class, com.task3a_b.LogisticsManagement.PB_Book.Builder.class);
       }
 
-      // Construct using com.task3a_b.LogisticsManagement.Book.newBuilder()
+      // Construct using com.task3a_b.LogisticsManagement.PB_Book.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1404,23 +1520,29 @@ public final class LogisticsManagement {
 
         bookGenre_ = "";
 
+        if (productBuilder_ == null) {
+          product_ = null;
+        } else {
+          product_ = null;
+          productBuilder_ = null;
+        }
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Book_descriptor;
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Book_descriptor;
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Book getDefaultInstanceForType() {
-        return com.task3a_b.LogisticsManagement.Book.getDefaultInstance();
+      public com.task3a_b.LogisticsManagement.PB_Book getDefaultInstanceForType() {
+        return com.task3a_b.LogisticsManagement.PB_Book.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Book build() {
-        com.task3a_b.LogisticsManagement.Book result = buildPartial();
+      public com.task3a_b.LogisticsManagement.PB_Book build() {
+        com.task3a_b.LogisticsManagement.PB_Book result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1428,11 +1550,16 @@ public final class LogisticsManagement {
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Book buildPartial() {
-        com.task3a_b.LogisticsManagement.Book result = new com.task3a_b.LogisticsManagement.Book(this);
+      public com.task3a_b.LogisticsManagement.PB_Book buildPartial() {
+        com.task3a_b.LogisticsManagement.PB_Book result = new com.task3a_b.LogisticsManagement.PB_Book(this);
         result.bookIBAN_ = bookIBAN_;
         result.bookAuthor_ = bookAuthor_;
         result.bookGenre_ = bookGenre_;
+        if (productBuilder_ == null) {
+          result.product_ = product_;
+        } else {
+          result.product_ = productBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -1471,16 +1598,16 @@ public final class LogisticsManagement {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.task3a_b.LogisticsManagement.Book) {
-          return mergeFrom((com.task3a_b.LogisticsManagement.Book)other);
+        if (other instanceof com.task3a_b.LogisticsManagement.PB_Book) {
+          return mergeFrom((com.task3a_b.LogisticsManagement.PB_Book)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.task3a_b.LogisticsManagement.Book other) {
-        if (other == com.task3a_b.LogisticsManagement.Book.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.task3a_b.LogisticsManagement.PB_Book other) {
+        if (other == com.task3a_b.LogisticsManagement.PB_Book.getDefaultInstance()) return this;
         if (!other.getBookIBAN().isEmpty()) {
           bookIBAN_ = other.bookIBAN_;
           onChanged();
@@ -1492,6 +1619,9 @@ public final class LogisticsManagement {
         if (!other.getBookGenre().isEmpty()) {
           bookGenre_ = other.bookGenre_;
           onChanged();
+        }
+        if (other.hasProduct()) {
+          mergeProduct(other.getProduct());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1508,11 +1638,11 @@ public final class LogisticsManagement {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.task3a_b.LogisticsManagement.Book parsedMessage = null;
+        com.task3a_b.LogisticsManagement.PB_Book parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.task3a_b.LogisticsManagement.Book) e.getUnfinishedMessage();
+          parsedMessage = (com.task3a_b.LogisticsManagement.PB_Book) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1728,6 +1858,123 @@ public final class LogisticsManagement {
         onChanged();
         return this;
       }
+
+      private com.task3a_b.LogisticsManagement.PB_Product product_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Product, com.task3a_b.LogisticsManagement.PB_Product.Builder, com.task3a_b.LogisticsManagement.PB_ProductOrBuilder> productBuilder_;
+      /**
+       * <code>.com.task3a_b.PB_Product product = 4;</code>
+       */
+      public boolean hasProduct() {
+        return productBuilder_ != null || product_ != null;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 4;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Product getProduct() {
+        if (productBuilder_ == null) {
+          return product_ == null ? com.task3a_b.LogisticsManagement.PB_Product.getDefaultInstance() : product_;
+        } else {
+          return productBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 4;</code>
+       */
+      public Builder setProduct(com.task3a_b.LogisticsManagement.PB_Product value) {
+        if (productBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          product_ = value;
+          onChanged();
+        } else {
+          productBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 4;</code>
+       */
+      public Builder setProduct(
+          com.task3a_b.LogisticsManagement.PB_Product.Builder builderForValue) {
+        if (productBuilder_ == null) {
+          product_ = builderForValue.build();
+          onChanged();
+        } else {
+          productBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 4;</code>
+       */
+      public Builder mergeProduct(com.task3a_b.LogisticsManagement.PB_Product value) {
+        if (productBuilder_ == null) {
+          if (product_ != null) {
+            product_ =
+              com.task3a_b.LogisticsManagement.PB_Product.newBuilder(product_).mergeFrom(value).buildPartial();
+          } else {
+            product_ = value;
+          }
+          onChanged();
+        } else {
+          productBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 4;</code>
+       */
+      public Builder clearProduct() {
+        if (productBuilder_ == null) {
+          product_ = null;
+          onChanged();
+        } else {
+          product_ = null;
+          productBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 4;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Product.Builder getProductBuilder() {
+        
+        onChanged();
+        return getProductFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 4;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_ProductOrBuilder getProductOrBuilder() {
+        if (productBuilder_ != null) {
+          return productBuilder_.getMessageOrBuilder();
+        } else {
+          return product_ == null ?
+              com.task3a_b.LogisticsManagement.PB_Product.getDefaultInstance() : product_;
+        }
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Product, com.task3a_b.LogisticsManagement.PB_Product.Builder, com.task3a_b.LogisticsManagement.PB_ProductOrBuilder> 
+          getProductFieldBuilder() {
+        if (productBuilder_ == null) {
+          productBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.task3a_b.LogisticsManagement.PB_Product, com.task3a_b.LogisticsManagement.PB_Product.Builder, com.task3a_b.LogisticsManagement.PB_ProductOrBuilder>(
+                  getProduct(),
+                  getParentForChildren(),
+                  isClean());
+          product_ = null;
+        }
+        return productBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1741,48 +1988,48 @@ public final class LogisticsManagement {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.task3a_b.Book)
+      // @@protoc_insertion_point(builder_scope:com.task3a_b.PB_Book)
     }
 
-    // @@protoc_insertion_point(class_scope:com.task3a_b.Book)
-    private static final com.task3a_b.LogisticsManagement.Book DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.task3a_b.PB_Book)
+    private static final com.task3a_b.LogisticsManagement.PB_Book DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.Book();
+      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.PB_Book();
     }
 
-    public static com.task3a_b.LogisticsManagement.Book getDefaultInstance() {
+    public static com.task3a_b.LogisticsManagement.PB_Book getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Book>
-        PARSER = new com.google.protobuf.AbstractParser<Book>() {
+    private static final com.google.protobuf.Parser<PB_Book>
+        PARSER = new com.google.protobuf.AbstractParser<PB_Book>() {
       @java.lang.Override
-      public Book parsePartialFrom(
+      public PB_Book parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Book(input, extensionRegistry);
+        return new PB_Book(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Book> parser() {
+    public static com.google.protobuf.Parser<PB_Book> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Book> getParserForType() {
+    public com.google.protobuf.Parser<PB_Book> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.task3a_b.LogisticsManagement.Book getDefaultInstanceForType() {
+    public com.task3a_b.LogisticsManagement.PB_Book getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface ClothingOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.task3a_b.Clothing)
+  public interface PB_ClothingOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.task3a_b.PB_Clothing)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -1804,20 +2051,33 @@ public final class LogisticsManagement {
      */
     com.google.protobuf.ByteString
         getSizeClassificationBytes();
+
+    /**
+     * <code>.com.task3a_b.PB_Product product = 4;</code>
+     */
+    boolean hasProduct();
+    /**
+     * <code>.com.task3a_b.PB_Product product = 4;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_Product getProduct();
+    /**
+     * <code>.com.task3a_b.PB_Product product = 4;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_ProductOrBuilder getProductOrBuilder();
   }
   /**
-   * Protobuf type {@code com.task3a_b.Clothing}
+   * Protobuf type {@code com.task3a_b.PB_Clothing}
    */
-  public  static final class Clothing extends
+  public  static final class PB_Clothing extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.task3a_b.Clothing)
-      ClothingOrBuilder {
+      // @@protoc_insertion_point(message_implements:com.task3a_b.PB_Clothing)
+      PB_ClothingOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Clothing.newBuilder() to construct.
-    private Clothing(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PB_Clothing.newBuilder() to construct.
+    private PB_Clothing(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Clothing() {
+    private PB_Clothing() {
       width_ = 0D;
       length_ = 0D;
       sizeClassification_ = "";
@@ -1828,7 +2088,7 @@ public final class LogisticsManagement {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Clothing(
+    private PB_Clothing(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1863,6 +2123,19 @@ public final class LogisticsManagement {
               sizeClassification_ = s;
               break;
             }
+            case 34: {
+              com.task3a_b.LogisticsManagement.PB_Product.Builder subBuilder = null;
+              if (product_ != null) {
+                subBuilder = product_.toBuilder();
+              }
+              product_ = input.readMessage(com.task3a_b.LogisticsManagement.PB_Product.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(product_);
+                product_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -1884,15 +2157,15 @@ public final class LogisticsManagement {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Clothing_descriptor;
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Clothing_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Clothing_fieldAccessorTable
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Clothing_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.task3a_b.LogisticsManagement.Clothing.class, com.task3a_b.LogisticsManagement.Clothing.Builder.class);
+              com.task3a_b.LogisticsManagement.PB_Clothing.class, com.task3a_b.LogisticsManagement.PB_Clothing.Builder.class);
     }
 
     public static final int WIDTH_FIELD_NUMBER = 1;
@@ -1947,6 +2220,27 @@ public final class LogisticsManagement {
       }
     }
 
+    public static final int PRODUCT_FIELD_NUMBER = 4;
+    private com.task3a_b.LogisticsManagement.PB_Product product_;
+    /**
+     * <code>.com.task3a_b.PB_Product product = 4;</code>
+     */
+    public boolean hasProduct() {
+      return product_ != null;
+    }
+    /**
+     * <code>.com.task3a_b.PB_Product product = 4;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_Product getProduct() {
+      return product_ == null ? com.task3a_b.LogisticsManagement.PB_Product.getDefaultInstance() : product_;
+    }
+    /**
+     * <code>.com.task3a_b.PB_Product product = 4;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_ProductOrBuilder getProductOrBuilder() {
+      return getProduct();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -1970,6 +2264,9 @@ public final class LogisticsManagement {
       if (!getSizeClassificationBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, sizeClassification_);
       }
+      if (product_ != null) {
+        output.writeMessage(4, getProduct());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -1990,6 +2287,10 @@ public final class LogisticsManagement {
       if (!getSizeClassificationBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, sizeClassification_);
       }
+      if (product_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getProduct());
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -2000,10 +2301,10 @@ public final class LogisticsManagement {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.task3a_b.LogisticsManagement.Clothing)) {
+      if (!(obj instanceof com.task3a_b.LogisticsManagement.PB_Clothing)) {
         return super.equals(obj);
       }
-      com.task3a_b.LogisticsManagement.Clothing other = (com.task3a_b.LogisticsManagement.Clothing) obj;
+      com.task3a_b.LogisticsManagement.PB_Clothing other = (com.task3a_b.LogisticsManagement.PB_Clothing) obj;
 
       boolean result = true;
       result = result && (
@@ -2016,6 +2317,11 @@ public final class LogisticsManagement {
               other.getLength()));
       result = result && getSizeClassification()
           .equals(other.getSizeClassification());
+      result = result && (hasProduct() == other.hasProduct());
+      if (hasProduct()) {
+        result = result && getProduct()
+            .equals(other.getProduct());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -2035,74 +2341,78 @@ public final class LogisticsManagement {
           java.lang.Double.doubleToLongBits(getLength()));
       hash = (37 * hash) + SIZECLASSIFICATION_FIELD_NUMBER;
       hash = (53 * hash) + getSizeClassification().hashCode();
+      if (hasProduct()) {
+        hash = (37 * hash) + PRODUCT_FIELD_NUMBER;
+        hash = (53 * hash) + getProduct().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static com.task3a_b.LogisticsManagement.Clothing parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Clothing parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Clothing parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Clothing parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Clothing parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Clothing parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Clothing parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Clothing parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Clothing parseFrom(byte[] data)
+    public static com.task3a_b.LogisticsManagement.PB_Clothing parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Clothing parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Clothing parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Clothing parseFrom(java.io.InputStream input)
+    public static com.task3a_b.LogisticsManagement.PB_Clothing parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Clothing parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Clothing parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Clothing parseDelimitedFrom(java.io.InputStream input)
+    public static com.task3a_b.LogisticsManagement.PB_Clothing parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Clothing parseDelimitedFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Clothing parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Clothing parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Clothing parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Clothing parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Clothing parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2115,7 +2425,7 @@ public final class LogisticsManagement {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.task3a_b.LogisticsManagement.Clothing prototype) {
+    public static Builder newBuilder(com.task3a_b.LogisticsManagement.PB_Clothing prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -2131,26 +2441,26 @@ public final class LogisticsManagement {
       return builder;
     }
     /**
-     * Protobuf type {@code com.task3a_b.Clothing}
+     * Protobuf type {@code com.task3a_b.PB_Clothing}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.task3a_b.Clothing)
-        com.task3a_b.LogisticsManagement.ClothingOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.task3a_b.PB_Clothing)
+        com.task3a_b.LogisticsManagement.PB_ClothingOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Clothing_descriptor;
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Clothing_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Clothing_fieldAccessorTable
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Clothing_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.task3a_b.LogisticsManagement.Clothing.class, com.task3a_b.LogisticsManagement.Clothing.Builder.class);
+                com.task3a_b.LogisticsManagement.PB_Clothing.class, com.task3a_b.LogisticsManagement.PB_Clothing.Builder.class);
       }
 
-      // Construct using com.task3a_b.LogisticsManagement.Clothing.newBuilder()
+      // Construct using com.task3a_b.LogisticsManagement.PB_Clothing.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2174,23 +2484,29 @@ public final class LogisticsManagement {
 
         sizeClassification_ = "";
 
+        if (productBuilder_ == null) {
+          product_ = null;
+        } else {
+          product_ = null;
+          productBuilder_ = null;
+        }
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Clothing_descriptor;
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Clothing_descriptor;
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Clothing getDefaultInstanceForType() {
-        return com.task3a_b.LogisticsManagement.Clothing.getDefaultInstance();
+      public com.task3a_b.LogisticsManagement.PB_Clothing getDefaultInstanceForType() {
+        return com.task3a_b.LogisticsManagement.PB_Clothing.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Clothing build() {
-        com.task3a_b.LogisticsManagement.Clothing result = buildPartial();
+      public com.task3a_b.LogisticsManagement.PB_Clothing build() {
+        com.task3a_b.LogisticsManagement.PB_Clothing result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -2198,11 +2514,16 @@ public final class LogisticsManagement {
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Clothing buildPartial() {
-        com.task3a_b.LogisticsManagement.Clothing result = new com.task3a_b.LogisticsManagement.Clothing(this);
+      public com.task3a_b.LogisticsManagement.PB_Clothing buildPartial() {
+        com.task3a_b.LogisticsManagement.PB_Clothing result = new com.task3a_b.LogisticsManagement.PB_Clothing(this);
         result.width_ = width_;
         result.length_ = length_;
         result.sizeClassification_ = sizeClassification_;
+        if (productBuilder_ == null) {
+          result.product_ = product_;
+        } else {
+          result.product_ = productBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -2241,16 +2562,16 @@ public final class LogisticsManagement {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.task3a_b.LogisticsManagement.Clothing) {
-          return mergeFrom((com.task3a_b.LogisticsManagement.Clothing)other);
+        if (other instanceof com.task3a_b.LogisticsManagement.PB_Clothing) {
+          return mergeFrom((com.task3a_b.LogisticsManagement.PB_Clothing)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.task3a_b.LogisticsManagement.Clothing other) {
-        if (other == com.task3a_b.LogisticsManagement.Clothing.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.task3a_b.LogisticsManagement.PB_Clothing other) {
+        if (other == com.task3a_b.LogisticsManagement.PB_Clothing.getDefaultInstance()) return this;
         if (other.getWidth() != 0D) {
           setWidth(other.getWidth());
         }
@@ -2260,6 +2581,9 @@ public final class LogisticsManagement {
         if (!other.getSizeClassification().isEmpty()) {
           sizeClassification_ = other.sizeClassification_;
           onChanged();
+        }
+        if (other.hasProduct()) {
+          mergeProduct(other.getProduct());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -2276,11 +2600,11 @@ public final class LogisticsManagement {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.task3a_b.LogisticsManagement.Clothing parsedMessage = null;
+        com.task3a_b.LogisticsManagement.PB_Clothing parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.task3a_b.LogisticsManagement.Clothing) e.getUnfinishedMessage();
+          parsedMessage = (com.task3a_b.LogisticsManagement.PB_Clothing) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2410,829 +2734,122 @@ public final class LogisticsManagement {
         onChanged();
         return this;
       }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+
+      private com.task3a_b.LogisticsManagement.PB_Product product_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Product, com.task3a_b.LogisticsManagement.PB_Product.Builder, com.task3a_b.LogisticsManagement.PB_ProductOrBuilder> productBuilder_;
+      /**
+       * <code>.com.task3a_b.PB_Product product = 4;</code>
+       */
+      public boolean hasProduct() {
+        return productBuilder_ != null || product_ != null;
       }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:com.task3a_b.Clothing)
-    }
-
-    // @@protoc_insertion_point(class_scope:com.task3a_b.Clothing)
-    private static final com.task3a_b.LogisticsManagement.Clothing DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.Clothing();
-    }
-
-    public static com.task3a_b.LogisticsManagement.Clothing getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<Clothing>
-        PARSER = new com.google.protobuf.AbstractParser<Clothing>() {
-      @java.lang.Override
-      public Clothing parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Clothing(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<Clothing> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Clothing> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.task3a_b.LogisticsManagement.Clothing getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface ComputerGameOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.task3a_b.ComputerGame)
-      com.google.protobuf.MessageOrBuilder {
-  }
-  /**
-   * Protobuf type {@code com.task3a_b.ComputerGame}
-   */
-  public  static final class ComputerGame extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.task3a_b.ComputerGame)
-      ComputerGameOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use ComputerGame.newBuilder() to construct.
-    private ComputerGame(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private ComputerGame() {
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private ComputerGame(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_ComputerGame_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_ComputerGame_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.task3a_b.LogisticsManagement.ComputerGame.class, com.task3a_b.LogisticsManagement.ComputerGame.Builder.class);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.task3a_b.LogisticsManagement.ComputerGame)) {
-        return super.equals(obj);
-      }
-      com.task3a_b.LogisticsManagement.ComputerGame other = (com.task3a_b.LogisticsManagement.ComputerGame) obj;
-
-      boolean result = true;
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.task3a_b.LogisticsManagement.ComputerGame parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.task3a_b.LogisticsManagement.ComputerGame parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.task3a_b.LogisticsManagement.ComputerGame parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.task3a_b.LogisticsManagement.ComputerGame parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.task3a_b.LogisticsManagement.ComputerGame parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.task3a_b.LogisticsManagement.ComputerGame parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.task3a_b.LogisticsManagement.ComputerGame parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.task3a_b.LogisticsManagement.ComputerGame parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.task3a_b.LogisticsManagement.ComputerGame parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static com.task3a_b.LogisticsManagement.ComputerGame parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.task3a_b.LogisticsManagement.ComputerGame parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.task3a_b.LogisticsManagement.ComputerGame parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.task3a_b.LogisticsManagement.ComputerGame prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.task3a_b.ComputerGame}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.task3a_b.ComputerGame)
-        com.task3a_b.LogisticsManagement.ComputerGameOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_ComputerGame_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_ComputerGame_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.task3a_b.LogisticsManagement.ComputerGame.class, com.task3a_b.LogisticsManagement.ComputerGame.Builder.class);
-      }
-
-      // Construct using com.task3a_b.LogisticsManagement.ComputerGame.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_ComputerGame_descriptor;
-      }
-
-      @java.lang.Override
-      public com.task3a_b.LogisticsManagement.ComputerGame getDefaultInstanceForType() {
-        return com.task3a_b.LogisticsManagement.ComputerGame.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public com.task3a_b.LogisticsManagement.ComputerGame build() {
-        com.task3a_b.LogisticsManagement.ComputerGame result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public com.task3a_b.LogisticsManagement.ComputerGame buildPartial() {
-        com.task3a_b.LogisticsManagement.ComputerGame result = new com.task3a_b.LogisticsManagement.ComputerGame(this);
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.task3a_b.LogisticsManagement.ComputerGame) {
-          return mergeFrom((com.task3a_b.LogisticsManagement.ComputerGame)other);
+      /**
+       * <code>.com.task3a_b.PB_Product product = 4;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Product getProduct() {
+        if (productBuilder_ == null) {
+          return product_ == null ? com.task3a_b.LogisticsManagement.PB_Product.getDefaultInstance() : product_;
         } else {
-          super.mergeFrom(other);
-          return this;
+          return productBuilder_.getMessage();
         }
       }
-
-      public Builder mergeFrom(com.task3a_b.LogisticsManagement.ComputerGame other) {
-        if (other == com.task3a_b.LogisticsManagement.ComputerGame.getDefaultInstance()) return this;
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.task3a_b.LogisticsManagement.ComputerGame parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.task3a_b.LogisticsManagement.ComputerGame) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+      /**
+       * <code>.com.task3a_b.PB_Product product = 4;</code>
+       */
+      public Builder setProduct(com.task3a_b.LogisticsManagement.PB_Product value) {
+        if (productBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
           }
-        }
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:com.task3a_b.ComputerGame)
-    }
-
-    // @@protoc_insertion_point(class_scope:com.task3a_b.ComputerGame)
-    private static final com.task3a_b.LogisticsManagement.ComputerGame DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.ComputerGame();
-    }
-
-    public static com.task3a_b.LogisticsManagement.ComputerGame getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<ComputerGame>
-        PARSER = new com.google.protobuf.AbstractParser<ComputerGame>() {
-      @java.lang.Override
-      public ComputerGame parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ComputerGame(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<ComputerGame> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ComputerGame> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.task3a_b.LogisticsManagement.ComputerGame getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface ElectronicsOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.task3a_b.Electronics)
-      com.google.protobuf.MessageOrBuilder {
-  }
-  /**
-   * Protobuf type {@code com.task3a_b.Electronics}
-   */
-  public  static final class Electronics extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.task3a_b.Electronics)
-      ElectronicsOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use Electronics.newBuilder() to construct.
-    private Electronics(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private Electronics() {
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private Electronics(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Electronics_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Electronics_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.task3a_b.LogisticsManagement.Electronics.class, com.task3a_b.LogisticsManagement.Electronics.Builder.class);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.task3a_b.LogisticsManagement.Electronics)) {
-        return super.equals(obj);
-      }
-      com.task3a_b.LogisticsManagement.Electronics other = (com.task3a_b.LogisticsManagement.Electronics) obj;
-
-      boolean result = true;
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.task3a_b.LogisticsManagement.Electronics parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.task3a_b.LogisticsManagement.Electronics parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.task3a_b.LogisticsManagement.Electronics parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.task3a_b.LogisticsManagement.Electronics parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.task3a_b.LogisticsManagement.Electronics parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.task3a_b.LogisticsManagement.Electronics parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.task3a_b.LogisticsManagement.Electronics parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.task3a_b.LogisticsManagement.Electronics parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.task3a_b.LogisticsManagement.Electronics parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static com.task3a_b.LogisticsManagement.Electronics parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.task3a_b.LogisticsManagement.Electronics parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.task3a_b.LogisticsManagement.Electronics parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.task3a_b.LogisticsManagement.Electronics prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.task3a_b.Electronics}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.task3a_b.Electronics)
-        com.task3a_b.LogisticsManagement.ElectronicsOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Electronics_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Electronics_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.task3a_b.LogisticsManagement.Electronics.class, com.task3a_b.LogisticsManagement.Electronics.Builder.class);
-      }
-
-      // Construct using com.task3a_b.LogisticsManagement.Electronics.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Electronics_descriptor;
-      }
-
-      @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Electronics getDefaultInstanceForType() {
-        return com.task3a_b.LogisticsManagement.Electronics.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Electronics build() {
-        com.task3a_b.LogisticsManagement.Electronics result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Electronics buildPartial() {
-        com.task3a_b.LogisticsManagement.Electronics result = new com.task3a_b.LogisticsManagement.Electronics(this);
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.task3a_b.LogisticsManagement.Electronics) {
-          return mergeFrom((com.task3a_b.LogisticsManagement.Electronics)other);
+          product_ = value;
+          onChanged();
         } else {
-          super.mergeFrom(other);
-          return this;
+          productBuilder_.setMessage(value);
         }
-      }
 
-      public Builder mergeFrom(com.task3a_b.LogisticsManagement.Electronics other) {
-        if (other == com.task3a_b.LogisticsManagement.Electronics.getDefaultInstance()) return this;
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
         return this;
       }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 4;</code>
+       */
+      public Builder setProduct(
+          com.task3a_b.LogisticsManagement.PB_Product.Builder builderForValue) {
+        if (productBuilder_ == null) {
+          product_ = builderForValue.build();
+          onChanged();
+        } else {
+          productBuilder_.setMessage(builderForValue.build());
+        }
 
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
+        return this;
       }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.task3a_b.LogisticsManagement.Electronics parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.task3a_b.LogisticsManagement.Electronics) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+      /**
+       * <code>.com.task3a_b.PB_Product product = 4;</code>
+       */
+      public Builder mergeProduct(com.task3a_b.LogisticsManagement.PB_Product value) {
+        if (productBuilder_ == null) {
+          if (product_ != null) {
+            product_ =
+              com.task3a_b.LogisticsManagement.PB_Product.newBuilder(product_).mergeFrom(value).buildPartial();
+          } else {
+            product_ = value;
           }
+          onChanged();
+        } else {
+          productBuilder_.mergeFrom(value);
         }
+
         return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 4;</code>
+       */
+      public Builder clearProduct() {
+        if (productBuilder_ == null) {
+          product_ = null;
+          onChanged();
+        } else {
+          product_ = null;
+          productBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 4;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Product.Builder getProductBuilder() {
+        
+        onChanged();
+        return getProductFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 4;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_ProductOrBuilder getProductOrBuilder() {
+        if (productBuilder_ != null) {
+          return productBuilder_.getMessageOrBuilder();
+        } else {
+          return product_ == null ?
+              com.task3a_b.LogisticsManagement.PB_Product.getDefaultInstance() : product_;
+        }
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Product, com.task3a_b.LogisticsManagement.PB_Product.Builder, com.task3a_b.LogisticsManagement.PB_ProductOrBuilder> 
+          getProductFieldBuilder() {
+        if (productBuilder_ == null) {
+          productBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.task3a_b.LogisticsManagement.PB_Product, com.task3a_b.LogisticsManagement.PB_Product.Builder, com.task3a_b.LogisticsManagement.PB_ProductOrBuilder>(
+                  getProduct(),
+                  getParentForChildren(),
+                  isClean());
+          product_ = null;
+        }
+        return productBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -3247,104 +2864,76 @@ public final class LogisticsManagement {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.task3a_b.Electronics)
+      // @@protoc_insertion_point(builder_scope:com.task3a_b.PB_Clothing)
     }
 
-    // @@protoc_insertion_point(class_scope:com.task3a_b.Electronics)
-    private static final com.task3a_b.LogisticsManagement.Electronics DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.task3a_b.PB_Clothing)
+    private static final com.task3a_b.LogisticsManagement.PB_Clothing DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.Electronics();
+      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.PB_Clothing();
     }
 
-    public static com.task3a_b.LogisticsManagement.Electronics getDefaultInstance() {
+    public static com.task3a_b.LogisticsManagement.PB_Clothing getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Electronics>
-        PARSER = new com.google.protobuf.AbstractParser<Electronics>() {
+    private static final com.google.protobuf.Parser<PB_Clothing>
+        PARSER = new com.google.protobuf.AbstractParser<PB_Clothing>() {
       @java.lang.Override
-      public Electronics parsePartialFrom(
+      public PB_Clothing parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Electronics(input, extensionRegistry);
+        return new PB_Clothing(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Electronics> parser() {
+    public static com.google.protobuf.Parser<PB_Clothing> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Electronics> getParserForType() {
+    public com.google.protobuf.Parser<PB_Clothing> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.task3a_b.LogisticsManagement.Electronics getDefaultInstanceForType() {
+    public com.task3a_b.LogisticsManagement.PB_Clothing getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface TransportOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.task3a_b.Transport)
+  public interface PB_ComputerGameOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.task3a_b.PB_ComputerGame)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <pre>
-     * Transport attributes
-     * </pre>
-     *
-     * <code>string vehicleType = 1;</code>
+     * <code>.com.task3a_b.PB_Product product = 1;</code>
      */
-    java.lang.String getVehicleType();
+    boolean hasProduct();
     /**
-     * <pre>
-     * Transport attributes
-     * </pre>
-     *
-     * <code>string vehicleType = 1;</code>
+     * <code>.com.task3a_b.PB_Product product = 1;</code>
      */
-    com.google.protobuf.ByteString
-        getVehicleTypeBytes();
-
+    com.task3a_b.LogisticsManagement.PB_Product getProduct();
     /**
-     * <code>int32 vehicleID = 2;</code>
+     * <code>.com.task3a_b.PB_Product product = 1;</code>
      */
-    int getVehicleID();
-
-    /**
-     * <code>double transportatoinSpeed = 3;</code>
-     */
-    double getTransportatoinSpeed();
-
-    /**
-     * <pre>
-     * Add other transport attributes as needed
-     * </pre>
-     *
-     * <code>double transportationCostPerKm = 4;</code>
-     */
-    double getTransportationCostPerKm();
+    com.task3a_b.LogisticsManagement.PB_ProductOrBuilder getProductOrBuilder();
   }
   /**
-   * Protobuf type {@code com.task3a_b.Transport}
+   * Protobuf type {@code com.task3a_b.PB_ComputerGame}
    */
-  public  static final class Transport extends
+  public  static final class PB_ComputerGame extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.task3a_b.Transport)
-      TransportOrBuilder {
+      // @@protoc_insertion_point(message_implements:com.task3a_b.PB_ComputerGame)
+      PB_ComputerGameOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Transport.newBuilder() to construct.
-    private Transport(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PB_ComputerGame.newBuilder() to construct.
+    private PB_ComputerGame(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Transport() {
-      vehicleType_ = "";
-      vehicleID_ = 0;
-      transportatoinSpeed_ = 0D;
-      transportationCostPerKm_ = 0D;
+    private PB_ComputerGame() {
     }
 
     @java.lang.Override
@@ -3352,7 +2941,7 @@ public final class LogisticsManagement {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Transport(
+    private PB_ComputerGame(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3372,9 +2961,1246 @@ public final class LogisticsManagement {
               done = true;
               break;
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+              com.task3a_b.LogisticsManagement.PB_Product.Builder subBuilder = null;
+              if (product_ != null) {
+                subBuilder = product_.toBuilder();
+              }
+              product_ = input.readMessage(com.task3a_b.LogisticsManagement.PB_Product.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(product_);
+                product_ = subBuilder.buildPartial();
+              }
 
-              vehicleType_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_ComputerGame_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_ComputerGame_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.task3a_b.LogisticsManagement.PB_ComputerGame.class, com.task3a_b.LogisticsManagement.PB_ComputerGame.Builder.class);
+    }
+
+    public static final int PRODUCT_FIELD_NUMBER = 1;
+    private com.task3a_b.LogisticsManagement.PB_Product product_;
+    /**
+     * <code>.com.task3a_b.PB_Product product = 1;</code>
+     */
+    public boolean hasProduct() {
+      return product_ != null;
+    }
+    /**
+     * <code>.com.task3a_b.PB_Product product = 1;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_Product getProduct() {
+      return product_ == null ? com.task3a_b.LogisticsManagement.PB_Product.getDefaultInstance() : product_;
+    }
+    /**
+     * <code>.com.task3a_b.PB_Product product = 1;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_ProductOrBuilder getProductOrBuilder() {
+      return getProduct();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (product_ != null) {
+        output.writeMessage(1, getProduct());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (product_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getProduct());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.task3a_b.LogisticsManagement.PB_ComputerGame)) {
+        return super.equals(obj);
+      }
+      com.task3a_b.LogisticsManagement.PB_ComputerGame other = (com.task3a_b.LogisticsManagement.PB_ComputerGame) obj;
+
+      boolean result = true;
+      result = result && (hasProduct() == other.hasProduct());
+      if (hasProduct()) {
+        result = result && getProduct()
+            .equals(other.getProduct());
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasProduct()) {
+        hash = (37 * hash) + PRODUCT_FIELD_NUMBER;
+        hash = (53 * hash) + getProduct().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.task3a_b.LogisticsManagement.PB_ComputerGame parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_ComputerGame parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_ComputerGame parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_ComputerGame parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_ComputerGame parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_ComputerGame parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_ComputerGame parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_ComputerGame parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_ComputerGame parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_ComputerGame parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_ComputerGame parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_ComputerGame parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.task3a_b.LogisticsManagement.PB_ComputerGame prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.task3a_b.PB_ComputerGame}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.task3a_b.PB_ComputerGame)
+        com.task3a_b.LogisticsManagement.PB_ComputerGameOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_ComputerGame_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_ComputerGame_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.task3a_b.LogisticsManagement.PB_ComputerGame.class, com.task3a_b.LogisticsManagement.PB_ComputerGame.Builder.class);
+      }
+
+      // Construct using com.task3a_b.LogisticsManagement.PB_ComputerGame.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (productBuilder_ == null) {
+          product_ = null;
+        } else {
+          product_ = null;
+          productBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_ComputerGame_descriptor;
+      }
+
+      @java.lang.Override
+      public com.task3a_b.LogisticsManagement.PB_ComputerGame getDefaultInstanceForType() {
+        return com.task3a_b.LogisticsManagement.PB_ComputerGame.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.task3a_b.LogisticsManagement.PB_ComputerGame build() {
+        com.task3a_b.LogisticsManagement.PB_ComputerGame result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.task3a_b.LogisticsManagement.PB_ComputerGame buildPartial() {
+        com.task3a_b.LogisticsManagement.PB_ComputerGame result = new com.task3a_b.LogisticsManagement.PB_ComputerGame(this);
+        if (productBuilder_ == null) {
+          result.product_ = product_;
+        } else {
+          result.product_ = productBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.task3a_b.LogisticsManagement.PB_ComputerGame) {
+          return mergeFrom((com.task3a_b.LogisticsManagement.PB_ComputerGame)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.task3a_b.LogisticsManagement.PB_ComputerGame other) {
+        if (other == com.task3a_b.LogisticsManagement.PB_ComputerGame.getDefaultInstance()) return this;
+        if (other.hasProduct()) {
+          mergeProduct(other.getProduct());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.task3a_b.LogisticsManagement.PB_ComputerGame parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.task3a_b.LogisticsManagement.PB_ComputerGame) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private com.task3a_b.LogisticsManagement.PB_Product product_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Product, com.task3a_b.LogisticsManagement.PB_Product.Builder, com.task3a_b.LogisticsManagement.PB_ProductOrBuilder> productBuilder_;
+      /**
+       * <code>.com.task3a_b.PB_Product product = 1;</code>
+       */
+      public boolean hasProduct() {
+        return productBuilder_ != null || product_ != null;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 1;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Product getProduct() {
+        if (productBuilder_ == null) {
+          return product_ == null ? com.task3a_b.LogisticsManagement.PB_Product.getDefaultInstance() : product_;
+        } else {
+          return productBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 1;</code>
+       */
+      public Builder setProduct(com.task3a_b.LogisticsManagement.PB_Product value) {
+        if (productBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          product_ = value;
+          onChanged();
+        } else {
+          productBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 1;</code>
+       */
+      public Builder setProduct(
+          com.task3a_b.LogisticsManagement.PB_Product.Builder builderForValue) {
+        if (productBuilder_ == null) {
+          product_ = builderForValue.build();
+          onChanged();
+        } else {
+          productBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 1;</code>
+       */
+      public Builder mergeProduct(com.task3a_b.LogisticsManagement.PB_Product value) {
+        if (productBuilder_ == null) {
+          if (product_ != null) {
+            product_ =
+              com.task3a_b.LogisticsManagement.PB_Product.newBuilder(product_).mergeFrom(value).buildPartial();
+          } else {
+            product_ = value;
+          }
+          onChanged();
+        } else {
+          productBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 1;</code>
+       */
+      public Builder clearProduct() {
+        if (productBuilder_ == null) {
+          product_ = null;
+          onChanged();
+        } else {
+          product_ = null;
+          productBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 1;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Product.Builder getProductBuilder() {
+        
+        onChanged();
+        return getProductFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 1;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_ProductOrBuilder getProductOrBuilder() {
+        if (productBuilder_ != null) {
+          return productBuilder_.getMessageOrBuilder();
+        } else {
+          return product_ == null ?
+              com.task3a_b.LogisticsManagement.PB_Product.getDefaultInstance() : product_;
+        }
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Product, com.task3a_b.LogisticsManagement.PB_Product.Builder, com.task3a_b.LogisticsManagement.PB_ProductOrBuilder> 
+          getProductFieldBuilder() {
+        if (productBuilder_ == null) {
+          productBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.task3a_b.LogisticsManagement.PB_Product, com.task3a_b.LogisticsManagement.PB_Product.Builder, com.task3a_b.LogisticsManagement.PB_ProductOrBuilder>(
+                  getProduct(),
+                  getParentForChildren(),
+                  isClean());
+          product_ = null;
+        }
+        return productBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.task3a_b.PB_ComputerGame)
+    }
+
+    // @@protoc_insertion_point(class_scope:com.task3a_b.PB_ComputerGame)
+    private static final com.task3a_b.LogisticsManagement.PB_ComputerGame DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.PB_ComputerGame();
+    }
+
+    public static com.task3a_b.LogisticsManagement.PB_ComputerGame getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<PB_ComputerGame>
+        PARSER = new com.google.protobuf.AbstractParser<PB_ComputerGame>() {
+      @java.lang.Override
+      public PB_ComputerGame parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PB_ComputerGame(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<PB_ComputerGame> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PB_ComputerGame> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.task3a_b.LogisticsManagement.PB_ComputerGame getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface PB_ElectronicsOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.task3a_b.PB_Electronics)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.com.task3a_b.PB_Product product = 1;</code>
+     */
+    boolean hasProduct();
+    /**
+     * <code>.com.task3a_b.PB_Product product = 1;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_Product getProduct();
+    /**
+     * <code>.com.task3a_b.PB_Product product = 1;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_ProductOrBuilder getProductOrBuilder();
+  }
+  /**
+   * Protobuf type {@code com.task3a_b.PB_Electronics}
+   */
+  public  static final class PB_Electronics extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:com.task3a_b.PB_Electronics)
+      PB_ElectronicsOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use PB_Electronics.newBuilder() to construct.
+    private PB_Electronics(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private PB_Electronics() {
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PB_Electronics(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              com.task3a_b.LogisticsManagement.PB_Product.Builder subBuilder = null;
+              if (product_ != null) {
+                subBuilder = product_.toBuilder();
+              }
+              product_ = input.readMessage(com.task3a_b.LogisticsManagement.PB_Product.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(product_);
+                product_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Electronics_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Electronics_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.task3a_b.LogisticsManagement.PB_Electronics.class, com.task3a_b.LogisticsManagement.PB_Electronics.Builder.class);
+    }
+
+    public static final int PRODUCT_FIELD_NUMBER = 1;
+    private com.task3a_b.LogisticsManagement.PB_Product product_;
+    /**
+     * <code>.com.task3a_b.PB_Product product = 1;</code>
+     */
+    public boolean hasProduct() {
+      return product_ != null;
+    }
+    /**
+     * <code>.com.task3a_b.PB_Product product = 1;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_Product getProduct() {
+      return product_ == null ? com.task3a_b.LogisticsManagement.PB_Product.getDefaultInstance() : product_;
+    }
+    /**
+     * <code>.com.task3a_b.PB_Product product = 1;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_ProductOrBuilder getProductOrBuilder() {
+      return getProduct();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (product_ != null) {
+        output.writeMessage(1, getProduct());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (product_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getProduct());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.task3a_b.LogisticsManagement.PB_Electronics)) {
+        return super.equals(obj);
+      }
+      com.task3a_b.LogisticsManagement.PB_Electronics other = (com.task3a_b.LogisticsManagement.PB_Electronics) obj;
+
+      boolean result = true;
+      result = result && (hasProduct() == other.hasProduct());
+      if (hasProduct()) {
+        result = result && getProduct()
+            .equals(other.getProduct());
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasProduct()) {
+        hash = (37 * hash) + PRODUCT_FIELD_NUMBER;
+        hash = (53 * hash) + getProduct().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.task3a_b.LogisticsManagement.PB_Electronics parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_Electronics parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_Electronics parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_Electronics parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_Electronics parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_Electronics parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_Electronics parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_Electronics parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_Electronics parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_Electronics parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_Electronics parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_Electronics parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.task3a_b.LogisticsManagement.PB_Electronics prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.task3a_b.PB_Electronics}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.task3a_b.PB_Electronics)
+        com.task3a_b.LogisticsManagement.PB_ElectronicsOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Electronics_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Electronics_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.task3a_b.LogisticsManagement.PB_Electronics.class, com.task3a_b.LogisticsManagement.PB_Electronics.Builder.class);
+      }
+
+      // Construct using com.task3a_b.LogisticsManagement.PB_Electronics.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (productBuilder_ == null) {
+          product_ = null;
+        } else {
+          product_ = null;
+          productBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Electronics_descriptor;
+      }
+
+      @java.lang.Override
+      public com.task3a_b.LogisticsManagement.PB_Electronics getDefaultInstanceForType() {
+        return com.task3a_b.LogisticsManagement.PB_Electronics.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.task3a_b.LogisticsManagement.PB_Electronics build() {
+        com.task3a_b.LogisticsManagement.PB_Electronics result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.task3a_b.LogisticsManagement.PB_Electronics buildPartial() {
+        com.task3a_b.LogisticsManagement.PB_Electronics result = new com.task3a_b.LogisticsManagement.PB_Electronics(this);
+        if (productBuilder_ == null) {
+          result.product_ = product_;
+        } else {
+          result.product_ = productBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.task3a_b.LogisticsManagement.PB_Electronics) {
+          return mergeFrom((com.task3a_b.LogisticsManagement.PB_Electronics)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.task3a_b.LogisticsManagement.PB_Electronics other) {
+        if (other == com.task3a_b.LogisticsManagement.PB_Electronics.getDefaultInstance()) return this;
+        if (other.hasProduct()) {
+          mergeProduct(other.getProduct());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.task3a_b.LogisticsManagement.PB_Electronics parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.task3a_b.LogisticsManagement.PB_Electronics) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private com.task3a_b.LogisticsManagement.PB_Product product_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Product, com.task3a_b.LogisticsManagement.PB_Product.Builder, com.task3a_b.LogisticsManagement.PB_ProductOrBuilder> productBuilder_;
+      /**
+       * <code>.com.task3a_b.PB_Product product = 1;</code>
+       */
+      public boolean hasProduct() {
+        return productBuilder_ != null || product_ != null;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 1;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Product getProduct() {
+        if (productBuilder_ == null) {
+          return product_ == null ? com.task3a_b.LogisticsManagement.PB_Product.getDefaultInstance() : product_;
+        } else {
+          return productBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 1;</code>
+       */
+      public Builder setProduct(com.task3a_b.LogisticsManagement.PB_Product value) {
+        if (productBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          product_ = value;
+          onChanged();
+        } else {
+          productBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 1;</code>
+       */
+      public Builder setProduct(
+          com.task3a_b.LogisticsManagement.PB_Product.Builder builderForValue) {
+        if (productBuilder_ == null) {
+          product_ = builderForValue.build();
+          onChanged();
+        } else {
+          productBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 1;</code>
+       */
+      public Builder mergeProduct(com.task3a_b.LogisticsManagement.PB_Product value) {
+        if (productBuilder_ == null) {
+          if (product_ != null) {
+            product_ =
+              com.task3a_b.LogisticsManagement.PB_Product.newBuilder(product_).mergeFrom(value).buildPartial();
+          } else {
+            product_ = value;
+          }
+          onChanged();
+        } else {
+          productBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 1;</code>
+       */
+      public Builder clearProduct() {
+        if (productBuilder_ == null) {
+          product_ = null;
+          onChanged();
+        } else {
+          product_ = null;
+          productBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 1;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Product.Builder getProductBuilder() {
+        
+        onChanged();
+        return getProductFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 1;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_ProductOrBuilder getProductOrBuilder() {
+        if (productBuilder_ != null) {
+          return productBuilder_.getMessageOrBuilder();
+        } else {
+          return product_ == null ?
+              com.task3a_b.LogisticsManagement.PB_Product.getDefaultInstance() : product_;
+        }
+      }
+      /**
+       * <code>.com.task3a_b.PB_Product product = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Product, com.task3a_b.LogisticsManagement.PB_Product.Builder, com.task3a_b.LogisticsManagement.PB_ProductOrBuilder> 
+          getProductFieldBuilder() {
+        if (productBuilder_ == null) {
+          productBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.task3a_b.LogisticsManagement.PB_Product, com.task3a_b.LogisticsManagement.PB_Product.Builder, com.task3a_b.LogisticsManagement.PB_ProductOrBuilder>(
+                  getProduct(),
+                  getParentForChildren(),
+                  isClean());
+          product_ = null;
+        }
+        return productBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.task3a_b.PB_Electronics)
+    }
+
+    // @@protoc_insertion_point(class_scope:com.task3a_b.PB_Electronics)
+    private static final com.task3a_b.LogisticsManagement.PB_Electronics DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.PB_Electronics();
+    }
+
+    public static com.task3a_b.LogisticsManagement.PB_Electronics getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<PB_Electronics>
+        PARSER = new com.google.protobuf.AbstractParser<PB_Electronics>() {
+      @java.lang.Override
+      public PB_Electronics parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PB_Electronics(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<PB_Electronics> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PB_Electronics> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.task3a_b.LogisticsManagement.PB_Electronics getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface PB_TransportOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.task3a_b.PB_Transport)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Transport attributes
+     * </pre>
+     *
+     * <code>.com.task3a_b.PB_Transport.TransportType vehicleType = 1;</code>
+     */
+    int getVehicleTypeValue();
+    /**
+     * <pre>
+     * Transport attributes
+     * </pre>
+     *
+     * <code>.com.task3a_b.PB_Transport.TransportType vehicleType = 1;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_Transport.TransportType getVehicleType();
+
+    /**
+     * <code>int32 vehicleID = 2;</code>
+     */
+    int getVehicleID();
+
+    /**
+     * <code>double transportatoinSpeed = 3;</code>
+     */
+    double getTransportatoinSpeed();
+
+    /**
+     * <code>double transportationCostPerKm = 4;</code>
+     */
+    double getTransportationCostPerKm();
+  }
+  /**
+   * Protobuf type {@code com.task3a_b.PB_Transport}
+   */
+  public  static final class PB_Transport extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:com.task3a_b.PB_Transport)
+      PB_TransportOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use PB_Transport.newBuilder() to construct.
+    private PB_Transport(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private PB_Transport() {
+      vehicleType_ = 0;
+      vehicleID_ = 0;
+      transportatoinSpeed_ = 0D;
+      transportationCostPerKm_ = 0D;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PB_Transport(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              int rawValue = input.readEnum();
+
+              vehicleType_ = rawValue;
               break;
             }
             case 16: {
@@ -3413,57 +4239,147 @@ public final class LogisticsManagement {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Transport_descriptor;
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Transport_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Transport_fieldAccessorTable
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Transport_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.task3a_b.LogisticsManagement.Transport.class, com.task3a_b.LogisticsManagement.Transport.Builder.class);
+              com.task3a_b.LogisticsManagement.PB_Transport.class, com.task3a_b.LogisticsManagement.PB_Transport.Builder.class);
+    }
+
+    /**
+     * Protobuf enum {@code com.task3a_b.PB_Transport.TransportType}
+     */
+    public enum TransportType
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>AIRCRAFT = 0;</code>
+       */
+      AIRCRAFT(0),
+      /**
+       * <code>SEAVESSEL = 1;</code>
+       */
+      SEAVESSEL(1),
+      /**
+       * <code>TRUCK = 2;</code>
+       */
+      TRUCK(2),
+      UNRECOGNIZED(-1),
+      ;
+
+      /**
+       * <code>AIRCRAFT = 0;</code>
+       */
+      public static final int AIRCRAFT_VALUE = 0;
+      /**
+       * <code>SEAVESSEL = 1;</code>
+       */
+      public static final int SEAVESSEL_VALUE = 1;
+      /**
+       * <code>TRUCK = 2;</code>
+       */
+      public static final int TRUCK_VALUE = 2;
+
+
+      public final int getNumber() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalArgumentException(
+              "Can't get the number of an unknown enum value.");
+        }
+        return value;
+      }
+
+      /**
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static TransportType valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static TransportType forNumber(int value) {
+        switch (value) {
+          case 0: return AIRCRAFT;
+          case 1: return SEAVESSEL;
+          case 2: return TRUCK;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<TransportType>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          TransportType> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<TransportType>() {
+              public TransportType findValueByNumber(int number) {
+                return TransportType.forNumber(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(ordinal());
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return com.task3a_b.LogisticsManagement.PB_Transport.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final TransportType[] VALUES = values();
+
+      public static TransportType valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        if (desc.getIndex() == -1) {
+          return UNRECOGNIZED;
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int value;
+
+      private TransportType(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:com.task3a_b.PB_Transport.TransportType)
     }
 
     public static final int VEHICLETYPE_FIELD_NUMBER = 1;
-    private volatile java.lang.Object vehicleType_;
+    private int vehicleType_;
     /**
      * <pre>
      * Transport attributes
      * </pre>
      *
-     * <code>string vehicleType = 1;</code>
+     * <code>.com.task3a_b.PB_Transport.TransportType vehicleType = 1;</code>
      */
-    public java.lang.String getVehicleType() {
-      java.lang.Object ref = vehicleType_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        vehicleType_ = s;
-        return s;
-      }
+    public int getVehicleTypeValue() {
+      return vehicleType_;
     }
     /**
      * <pre>
      * Transport attributes
      * </pre>
      *
-     * <code>string vehicleType = 1;</code>
+     * <code>.com.task3a_b.PB_Transport.TransportType vehicleType = 1;</code>
      */
-    public com.google.protobuf.ByteString
-        getVehicleTypeBytes() {
-      java.lang.Object ref = vehicleType_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        vehicleType_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public com.task3a_b.LogisticsManagement.PB_Transport.TransportType getVehicleType() {
+      @SuppressWarnings("deprecation")
+      com.task3a_b.LogisticsManagement.PB_Transport.TransportType result = com.task3a_b.LogisticsManagement.PB_Transport.TransportType.valueOf(vehicleType_);
+      return result == null ? com.task3a_b.LogisticsManagement.PB_Transport.TransportType.UNRECOGNIZED : result;
     }
 
     public static final int VEHICLEID_FIELD_NUMBER = 2;
@@ -3487,10 +4403,6 @@ public final class LogisticsManagement {
     public static final int TRANSPORTATIONCOSTPERKM_FIELD_NUMBER = 4;
     private double transportationCostPerKm_;
     /**
-     * <pre>
-     * Add other transport attributes as needed
-     * </pre>
-     *
      * <code>double transportationCostPerKm = 4;</code>
      */
     public double getTransportationCostPerKm() {
@@ -3511,8 +4423,8 @@ public final class LogisticsManagement {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getVehicleTypeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, vehicleType_);
+      if (vehicleType_ != com.task3a_b.LogisticsManagement.PB_Transport.TransportType.AIRCRAFT.getNumber()) {
+        output.writeEnum(1, vehicleType_);
       }
       if (vehicleID_ != 0) {
         output.writeInt32(2, vehicleID_);
@@ -3532,8 +4444,9 @@ public final class LogisticsManagement {
       if (size != -1) return size;
 
       size = 0;
-      if (!getVehicleTypeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, vehicleType_);
+      if (vehicleType_ != com.task3a_b.LogisticsManagement.PB_Transport.TransportType.AIRCRAFT.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, vehicleType_);
       }
       if (vehicleID_ != 0) {
         size += com.google.protobuf.CodedOutputStream
@@ -3557,14 +4470,13 @@ public final class LogisticsManagement {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.task3a_b.LogisticsManagement.Transport)) {
+      if (!(obj instanceof com.task3a_b.LogisticsManagement.PB_Transport)) {
         return super.equals(obj);
       }
-      com.task3a_b.LogisticsManagement.Transport other = (com.task3a_b.LogisticsManagement.Transport) obj;
+      com.task3a_b.LogisticsManagement.PB_Transport other = (com.task3a_b.LogisticsManagement.PB_Transport) obj;
 
       boolean result = true;
-      result = result && getVehicleType()
-          .equals(other.getVehicleType());
+      result = result && vehicleType_ == other.vehicleType_;
       result = result && (getVehicleID()
           == other.getVehicleID());
       result = result && (
@@ -3587,7 +4499,7 @@ public final class LogisticsManagement {
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + VEHICLETYPE_FIELD_NUMBER;
-      hash = (53 * hash) + getVehicleType().hashCode();
+      hash = (53 * hash) + vehicleType_;
       hash = (37 * hash) + VEHICLEID_FIELD_NUMBER;
       hash = (53 * hash) + getVehicleID();
       hash = (37 * hash) + TRANSPORTATOINSPEED_FIELD_NUMBER;
@@ -3601,69 +4513,69 @@ public final class LogisticsManagement {
       return hash;
     }
 
-    public static com.task3a_b.LogisticsManagement.Transport parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Transport parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Transport parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Transport parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Transport parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Transport parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Transport parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Transport parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Transport parseFrom(byte[] data)
+    public static com.task3a_b.LogisticsManagement.PB_Transport parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Transport parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Transport parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Transport parseFrom(java.io.InputStream input)
+    public static com.task3a_b.LogisticsManagement.PB_Transport parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Transport parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Transport parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Transport parseDelimitedFrom(java.io.InputStream input)
+    public static com.task3a_b.LogisticsManagement.PB_Transport parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Transport parseDelimitedFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Transport parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Transport parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Transport parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Transport parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Transport parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3676,7 +4588,7 @@ public final class LogisticsManagement {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.task3a_b.LogisticsManagement.Transport prototype) {
+    public static Builder newBuilder(com.task3a_b.LogisticsManagement.PB_Transport prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -3692,26 +4604,26 @@ public final class LogisticsManagement {
       return builder;
     }
     /**
-     * Protobuf type {@code com.task3a_b.Transport}
+     * Protobuf type {@code com.task3a_b.PB_Transport}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.task3a_b.Transport)
-        com.task3a_b.LogisticsManagement.TransportOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.task3a_b.PB_Transport)
+        com.task3a_b.LogisticsManagement.PB_TransportOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Transport_descriptor;
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Transport_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Transport_fieldAccessorTable
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Transport_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.task3a_b.LogisticsManagement.Transport.class, com.task3a_b.LogisticsManagement.Transport.Builder.class);
+                com.task3a_b.LogisticsManagement.PB_Transport.class, com.task3a_b.LogisticsManagement.PB_Transport.Builder.class);
       }
 
-      // Construct using com.task3a_b.LogisticsManagement.Transport.newBuilder()
+      // Construct using com.task3a_b.LogisticsManagement.PB_Transport.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3729,7 +4641,7 @@ public final class LogisticsManagement {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        vehicleType_ = "";
+        vehicleType_ = 0;
 
         vehicleID_ = 0;
 
@@ -3743,17 +4655,17 @@ public final class LogisticsManagement {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Transport_descriptor;
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Transport_descriptor;
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Transport getDefaultInstanceForType() {
-        return com.task3a_b.LogisticsManagement.Transport.getDefaultInstance();
+      public com.task3a_b.LogisticsManagement.PB_Transport getDefaultInstanceForType() {
+        return com.task3a_b.LogisticsManagement.PB_Transport.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Transport build() {
-        com.task3a_b.LogisticsManagement.Transport result = buildPartial();
+      public com.task3a_b.LogisticsManagement.PB_Transport build() {
+        com.task3a_b.LogisticsManagement.PB_Transport result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -3761,8 +4673,8 @@ public final class LogisticsManagement {
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Transport buildPartial() {
-        com.task3a_b.LogisticsManagement.Transport result = new com.task3a_b.LogisticsManagement.Transport(this);
+      public com.task3a_b.LogisticsManagement.PB_Transport buildPartial() {
+        com.task3a_b.LogisticsManagement.PB_Transport result = new com.task3a_b.LogisticsManagement.PB_Transport(this);
         result.vehicleType_ = vehicleType_;
         result.vehicleID_ = vehicleID_;
         result.transportatoinSpeed_ = transportatoinSpeed_;
@@ -3805,19 +4717,18 @@ public final class LogisticsManagement {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.task3a_b.LogisticsManagement.Transport) {
-          return mergeFrom((com.task3a_b.LogisticsManagement.Transport)other);
+        if (other instanceof com.task3a_b.LogisticsManagement.PB_Transport) {
+          return mergeFrom((com.task3a_b.LogisticsManagement.PB_Transport)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.task3a_b.LogisticsManagement.Transport other) {
-        if (other == com.task3a_b.LogisticsManagement.Transport.getDefaultInstance()) return this;
-        if (!other.getVehicleType().isEmpty()) {
-          vehicleType_ = other.vehicleType_;
-          onChanged();
+      public Builder mergeFrom(com.task3a_b.LogisticsManagement.PB_Transport other) {
+        if (other == com.task3a_b.LogisticsManagement.PB_Transport.getDefaultInstance()) return this;
+        if (other.vehicleType_ != 0) {
+          setVehicleTypeValue(other.getVehicleTypeValue());
         }
         if (other.getVehicleID() != 0) {
           setVehicleID(other.getVehicleID());
@@ -3843,11 +4754,11 @@ public final class LogisticsManagement {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.task3a_b.LogisticsManagement.Transport parsedMessage = null;
+        com.task3a_b.LogisticsManagement.PB_Transport parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.task3a_b.LogisticsManagement.Transport) e.getUnfinishedMessage();
+          parsedMessage = (com.task3a_b.LogisticsManagement.PB_Transport) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3857,59 +4768,25 @@ public final class LogisticsManagement {
         return this;
       }
 
-      private java.lang.Object vehicleType_ = "";
+      private int vehicleType_ = 0;
       /**
        * <pre>
        * Transport attributes
        * </pre>
        *
-       * <code>string vehicleType = 1;</code>
+       * <code>.com.task3a_b.PB_Transport.TransportType vehicleType = 1;</code>
        */
-      public java.lang.String getVehicleType() {
-        java.lang.Object ref = vehicleType_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          vehicleType_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public int getVehicleTypeValue() {
+        return vehicleType_;
       }
       /**
        * <pre>
        * Transport attributes
        * </pre>
        *
-       * <code>string vehicleType = 1;</code>
+       * <code>.com.task3a_b.PB_Transport.TransportType vehicleType = 1;</code>
        */
-      public com.google.protobuf.ByteString
-          getVehicleTypeBytes() {
-        java.lang.Object ref = vehicleType_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          vehicleType_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <pre>
-       * Transport attributes
-       * </pre>
-       *
-       * <code>string vehicleType = 1;</code>
-       */
-      public Builder setVehicleType(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+      public Builder setVehicleTypeValue(int value) {
         vehicleType_ = value;
         onChanged();
         return this;
@@ -3919,29 +4796,39 @@ public final class LogisticsManagement {
        * Transport attributes
        * </pre>
        *
-       * <code>string vehicleType = 1;</code>
+       * <code>.com.task3a_b.PB_Transport.TransportType vehicleType = 1;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Transport.TransportType getVehicleType() {
+        @SuppressWarnings("deprecation")
+        com.task3a_b.LogisticsManagement.PB_Transport.TransportType result = com.task3a_b.LogisticsManagement.PB_Transport.TransportType.valueOf(vehicleType_);
+        return result == null ? com.task3a_b.LogisticsManagement.PB_Transport.TransportType.UNRECOGNIZED : result;
+      }
+      /**
+       * <pre>
+       * Transport attributes
+       * </pre>
+       *
+       * <code>.com.task3a_b.PB_Transport.TransportType vehicleType = 1;</code>
+       */
+      public Builder setVehicleType(com.task3a_b.LogisticsManagement.PB_Transport.TransportType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        vehicleType_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Transport attributes
+       * </pre>
+       *
+       * <code>.com.task3a_b.PB_Transport.TransportType vehicleType = 1;</code>
        */
       public Builder clearVehicleType() {
         
-        vehicleType_ = getDefaultInstance().getVehicleType();
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * Transport attributes
-       * </pre>
-       *
-       * <code>string vehicleType = 1;</code>
-       */
-      public Builder setVehicleTypeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        vehicleType_ = value;
+        vehicleType_ = 0;
         onChanged();
         return this;
       }
@@ -4000,20 +4887,12 @@ public final class LogisticsManagement {
 
       private double transportationCostPerKm_ ;
       /**
-       * <pre>
-       * Add other transport attributes as needed
-       * </pre>
-       *
        * <code>double transportationCostPerKm = 4;</code>
        */
       public double getTransportationCostPerKm() {
         return transportationCostPerKm_;
       }
       /**
-       * <pre>
-       * Add other transport attributes as needed
-       * </pre>
-       *
        * <code>double transportationCostPerKm = 4;</code>
        */
       public Builder setTransportationCostPerKm(double value) {
@@ -4023,10 +4902,6 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <pre>
-       * Add other transport attributes as needed
-       * </pre>
-       *
        * <code>double transportationCostPerKm = 4;</code>
        */
       public Builder clearTransportationCostPerKm() {
@@ -4048,48 +4923,48 @@ public final class LogisticsManagement {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.task3a_b.Transport)
+      // @@protoc_insertion_point(builder_scope:com.task3a_b.PB_Transport)
     }
 
-    // @@protoc_insertion_point(class_scope:com.task3a_b.Transport)
-    private static final com.task3a_b.LogisticsManagement.Transport DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.task3a_b.PB_Transport)
+    private static final com.task3a_b.LogisticsManagement.PB_Transport DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.Transport();
+      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.PB_Transport();
     }
 
-    public static com.task3a_b.LogisticsManagement.Transport getDefaultInstance() {
+    public static com.task3a_b.LogisticsManagement.PB_Transport getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Transport>
-        PARSER = new com.google.protobuf.AbstractParser<Transport>() {
+    private static final com.google.protobuf.Parser<PB_Transport>
+        PARSER = new com.google.protobuf.AbstractParser<PB_Transport>() {
       @java.lang.Override
-      public Transport parsePartialFrom(
+      public PB_Transport parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Transport(input, extensionRegistry);
+        return new PB_Transport(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Transport> parser() {
+    public static com.google.protobuf.Parser<PB_Transport> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Transport> getParserForType() {
+    public com.google.protobuf.Parser<PB_Transport> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.task3a_b.LogisticsManagement.Transport getDefaultInstanceForType() {
+    public com.task3a_b.LogisticsManagement.PB_Transport getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface AircraftOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.task3a_b.Aircraft)
+  public interface PB_AircraftOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.task3a_b.PB_Aircraft)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -4120,24 +4995,37 @@ public final class LogisticsManagement {
      */
     com.google.protobuf.ByteString
         getAirSpaceBytes();
+
+    /**
+     * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+     */
+    boolean hasTransport();
+    /**
+     * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_Transport getTransport();
+    /**
+     * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_TransportOrBuilder getTransportOrBuilder();
   }
   /**
    * <pre>
    * Subclasses of Transport
    * </pre>
    *
-   * Protobuf type {@code com.task3a_b.Aircraft}
+   * Protobuf type {@code com.task3a_b.PB_Aircraft}
    */
-  public  static final class Aircraft extends
+  public  static final class PB_Aircraft extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.task3a_b.Aircraft)
-      AircraftOrBuilder {
+      // @@protoc_insertion_point(message_implements:com.task3a_b.PB_Aircraft)
+      PB_AircraftOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Aircraft.newBuilder() to construct.
-    private Aircraft(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PB_Aircraft.newBuilder() to construct.
+    private PB_Aircraft(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Aircraft() {
+    private PB_Aircraft() {
       airSpaceList_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       airSpace_ = "";
     }
@@ -4147,7 +5035,7 @@ public final class LogisticsManagement {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Aircraft(
+    private PB_Aircraft(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -4181,6 +5069,19 @@ public final class LogisticsManagement {
               airSpace_ = s;
               break;
             }
+            case 26: {
+              com.task3a_b.LogisticsManagement.PB_Transport.Builder subBuilder = null;
+              if (transport_ != null) {
+                subBuilder = transport_.toBuilder();
+              }
+              transport_ = input.readMessage(com.task3a_b.LogisticsManagement.PB_Transport.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(transport_);
+                transport_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -4205,15 +5106,15 @@ public final class LogisticsManagement {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Aircraft_descriptor;
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Aircraft_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Aircraft_fieldAccessorTable
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Aircraft_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.task3a_b.LogisticsManagement.Aircraft.class, com.task3a_b.LogisticsManagement.Aircraft.Builder.class);
+              com.task3a_b.LogisticsManagement.PB_Aircraft.class, com.task3a_b.LogisticsManagement.PB_Aircraft.Builder.class);
     }
 
     private int bitField0_;
@@ -4280,6 +5181,27 @@ public final class LogisticsManagement {
       }
     }
 
+    public static final int TRANSPORT_FIELD_NUMBER = 3;
+    private com.task3a_b.LogisticsManagement.PB_Transport transport_;
+    /**
+     * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+     */
+    public boolean hasTransport() {
+      return transport_ != null;
+    }
+    /**
+     * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_Transport getTransport() {
+      return transport_ == null ? com.task3a_b.LogisticsManagement.PB_Transport.getDefaultInstance() : transport_;
+    }
+    /**
+     * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_TransportOrBuilder getTransportOrBuilder() {
+      return getTransport();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -4299,6 +5221,9 @@ public final class LogisticsManagement {
       }
       if (!getAirSpaceBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, airSpace_);
+      }
+      if (transport_ != null) {
+        output.writeMessage(3, getTransport());
       }
       unknownFields.writeTo(output);
     }
@@ -4320,6 +5245,10 @@ public final class LogisticsManagement {
       if (!getAirSpaceBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, airSpace_);
       }
+      if (transport_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getTransport());
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -4330,16 +5259,21 @@ public final class LogisticsManagement {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.task3a_b.LogisticsManagement.Aircraft)) {
+      if (!(obj instanceof com.task3a_b.LogisticsManagement.PB_Aircraft)) {
         return super.equals(obj);
       }
-      com.task3a_b.LogisticsManagement.Aircraft other = (com.task3a_b.LogisticsManagement.Aircraft) obj;
+      com.task3a_b.LogisticsManagement.PB_Aircraft other = (com.task3a_b.LogisticsManagement.PB_Aircraft) obj;
 
       boolean result = true;
       result = result && getAirSpaceListList()
           .equals(other.getAirSpaceListList());
       result = result && getAirSpace()
           .equals(other.getAirSpace());
+      result = result && (hasTransport() == other.hasTransport());
+      if (hasTransport()) {
+        result = result && getTransport()
+            .equals(other.getTransport());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -4357,74 +5291,78 @@ public final class LogisticsManagement {
       }
       hash = (37 * hash) + AIRSPACE_FIELD_NUMBER;
       hash = (53 * hash) + getAirSpace().hashCode();
+      if (hasTransport()) {
+        hash = (37 * hash) + TRANSPORT_FIELD_NUMBER;
+        hash = (53 * hash) + getTransport().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static com.task3a_b.LogisticsManagement.Aircraft parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Aircraft parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Aircraft parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Aircraft parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Aircraft parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Aircraft parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Aircraft parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Aircraft parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Aircraft parseFrom(byte[] data)
+    public static com.task3a_b.LogisticsManagement.PB_Aircraft parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Aircraft parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Aircraft parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Aircraft parseFrom(java.io.InputStream input)
+    public static com.task3a_b.LogisticsManagement.PB_Aircraft parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Aircraft parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Aircraft parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Aircraft parseDelimitedFrom(java.io.InputStream input)
+    public static com.task3a_b.LogisticsManagement.PB_Aircraft parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Aircraft parseDelimitedFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Aircraft parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Aircraft parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Aircraft parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Aircraft parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Aircraft parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -4437,7 +5375,7 @@ public final class LogisticsManagement {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.task3a_b.LogisticsManagement.Aircraft prototype) {
+    public static Builder newBuilder(com.task3a_b.LogisticsManagement.PB_Aircraft prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -4457,26 +5395,26 @@ public final class LogisticsManagement {
      * Subclasses of Transport
      * </pre>
      *
-     * Protobuf type {@code com.task3a_b.Aircraft}
+     * Protobuf type {@code com.task3a_b.PB_Aircraft}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.task3a_b.Aircraft)
-        com.task3a_b.LogisticsManagement.AircraftOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.task3a_b.PB_Aircraft)
+        com.task3a_b.LogisticsManagement.PB_AircraftOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Aircraft_descriptor;
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Aircraft_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Aircraft_fieldAccessorTable
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Aircraft_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.task3a_b.LogisticsManagement.Aircraft.class, com.task3a_b.LogisticsManagement.Aircraft.Builder.class);
+                com.task3a_b.LogisticsManagement.PB_Aircraft.class, com.task3a_b.LogisticsManagement.PB_Aircraft.Builder.class);
       }
 
-      // Construct using com.task3a_b.LogisticsManagement.Aircraft.newBuilder()
+      // Construct using com.task3a_b.LogisticsManagement.PB_Aircraft.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -4498,23 +5436,29 @@ public final class LogisticsManagement {
         bitField0_ = (bitField0_ & ~0x00000001);
         airSpace_ = "";
 
+        if (transportBuilder_ == null) {
+          transport_ = null;
+        } else {
+          transport_ = null;
+          transportBuilder_ = null;
+        }
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Aircraft_descriptor;
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Aircraft_descriptor;
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Aircraft getDefaultInstanceForType() {
-        return com.task3a_b.LogisticsManagement.Aircraft.getDefaultInstance();
+      public com.task3a_b.LogisticsManagement.PB_Aircraft getDefaultInstanceForType() {
+        return com.task3a_b.LogisticsManagement.PB_Aircraft.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Aircraft build() {
-        com.task3a_b.LogisticsManagement.Aircraft result = buildPartial();
+      public com.task3a_b.LogisticsManagement.PB_Aircraft build() {
+        com.task3a_b.LogisticsManagement.PB_Aircraft result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -4522,8 +5466,8 @@ public final class LogisticsManagement {
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Aircraft buildPartial() {
-        com.task3a_b.LogisticsManagement.Aircraft result = new com.task3a_b.LogisticsManagement.Aircraft(this);
+      public com.task3a_b.LogisticsManagement.PB_Aircraft buildPartial() {
+        com.task3a_b.LogisticsManagement.PB_Aircraft result = new com.task3a_b.LogisticsManagement.PB_Aircraft(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -4532,6 +5476,11 @@ public final class LogisticsManagement {
         }
         result.airSpaceList_ = airSpaceList_;
         result.airSpace_ = airSpace_;
+        if (transportBuilder_ == null) {
+          result.transport_ = transport_;
+        } else {
+          result.transport_ = transportBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4571,16 +5520,16 @@ public final class LogisticsManagement {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.task3a_b.LogisticsManagement.Aircraft) {
-          return mergeFrom((com.task3a_b.LogisticsManagement.Aircraft)other);
+        if (other instanceof com.task3a_b.LogisticsManagement.PB_Aircraft) {
+          return mergeFrom((com.task3a_b.LogisticsManagement.PB_Aircraft)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.task3a_b.LogisticsManagement.Aircraft other) {
-        if (other == com.task3a_b.LogisticsManagement.Aircraft.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.task3a_b.LogisticsManagement.PB_Aircraft other) {
+        if (other == com.task3a_b.LogisticsManagement.PB_Aircraft.getDefaultInstance()) return this;
         if (!other.airSpaceList_.isEmpty()) {
           if (airSpaceList_.isEmpty()) {
             airSpaceList_ = other.airSpaceList_;
@@ -4594,6 +5543,9 @@ public final class LogisticsManagement {
         if (!other.getAirSpace().isEmpty()) {
           airSpace_ = other.airSpace_;
           onChanged();
+        }
+        if (other.hasTransport()) {
+          mergeTransport(other.getTransport());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4610,11 +5562,11 @@ public final class LogisticsManagement {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.task3a_b.LogisticsManagement.Aircraft parsedMessage = null;
+        com.task3a_b.LogisticsManagement.PB_Aircraft parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.task3a_b.LogisticsManagement.Aircraft) e.getUnfinishedMessage();
+          parsedMessage = (com.task3a_b.LogisticsManagement.PB_Aircraft) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -4787,6 +5739,123 @@ public final class LogisticsManagement {
         onChanged();
         return this;
       }
+
+      private com.task3a_b.LogisticsManagement.PB_Transport transport_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Transport, com.task3a_b.LogisticsManagement.PB_Transport.Builder, com.task3a_b.LogisticsManagement.PB_TransportOrBuilder> transportBuilder_;
+      /**
+       * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+       */
+      public boolean hasTransport() {
+        return transportBuilder_ != null || transport_ != null;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Transport getTransport() {
+        if (transportBuilder_ == null) {
+          return transport_ == null ? com.task3a_b.LogisticsManagement.PB_Transport.getDefaultInstance() : transport_;
+        } else {
+          return transportBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+       */
+      public Builder setTransport(com.task3a_b.LogisticsManagement.PB_Transport value) {
+        if (transportBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          transport_ = value;
+          onChanged();
+        } else {
+          transportBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+       */
+      public Builder setTransport(
+          com.task3a_b.LogisticsManagement.PB_Transport.Builder builderForValue) {
+        if (transportBuilder_ == null) {
+          transport_ = builderForValue.build();
+          onChanged();
+        } else {
+          transportBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+       */
+      public Builder mergeTransport(com.task3a_b.LogisticsManagement.PB_Transport value) {
+        if (transportBuilder_ == null) {
+          if (transport_ != null) {
+            transport_ =
+              com.task3a_b.LogisticsManagement.PB_Transport.newBuilder(transport_).mergeFrom(value).buildPartial();
+          } else {
+            transport_ = value;
+          }
+          onChanged();
+        } else {
+          transportBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+       */
+      public Builder clearTransport() {
+        if (transportBuilder_ == null) {
+          transport_ = null;
+          onChanged();
+        } else {
+          transport_ = null;
+          transportBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Transport.Builder getTransportBuilder() {
+        
+        onChanged();
+        return getTransportFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_TransportOrBuilder getTransportOrBuilder() {
+        if (transportBuilder_ != null) {
+          return transportBuilder_.getMessageOrBuilder();
+        } else {
+          return transport_ == null ?
+              com.task3a_b.LogisticsManagement.PB_Transport.getDefaultInstance() : transport_;
+        }
+      }
+      /**
+       * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Transport, com.task3a_b.LogisticsManagement.PB_Transport.Builder, com.task3a_b.LogisticsManagement.PB_TransportOrBuilder> 
+          getTransportFieldBuilder() {
+        if (transportBuilder_ == null) {
+          transportBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.task3a_b.LogisticsManagement.PB_Transport, com.task3a_b.LogisticsManagement.PB_Transport.Builder, com.task3a_b.LogisticsManagement.PB_TransportOrBuilder>(
+                  getTransport(),
+                  getParentForChildren(),
+                  isClean());
+          transport_ = null;
+        }
+        return transportBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4800,48 +5869,48 @@ public final class LogisticsManagement {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.task3a_b.Aircraft)
+      // @@protoc_insertion_point(builder_scope:com.task3a_b.PB_Aircraft)
     }
 
-    // @@protoc_insertion_point(class_scope:com.task3a_b.Aircraft)
-    private static final com.task3a_b.LogisticsManagement.Aircraft DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.task3a_b.PB_Aircraft)
+    private static final com.task3a_b.LogisticsManagement.PB_Aircraft DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.Aircraft();
+      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.PB_Aircraft();
     }
 
-    public static com.task3a_b.LogisticsManagement.Aircraft getDefaultInstance() {
+    public static com.task3a_b.LogisticsManagement.PB_Aircraft getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Aircraft>
-        PARSER = new com.google.protobuf.AbstractParser<Aircraft>() {
+    private static final com.google.protobuf.Parser<PB_Aircraft>
+        PARSER = new com.google.protobuf.AbstractParser<PB_Aircraft>() {
       @java.lang.Override
-      public Aircraft parsePartialFrom(
+      public PB_Aircraft parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Aircraft(input, extensionRegistry);
+        return new PB_Aircraft(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Aircraft> parser() {
+    public static com.google.protobuf.Parser<PB_Aircraft> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Aircraft> getParserForType() {
+    public com.google.protobuf.Parser<PB_Aircraft> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.task3a_b.LogisticsManagement.Aircraft getDefaultInstanceForType() {
+    public com.task3a_b.LogisticsManagement.PB_Aircraft getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface SeaVesselOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.task3a_b.SeaVessel)
+  public interface PB_SeaVesselOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.task3a_b.PB_SeaVessel)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -4872,20 +5941,33 @@ public final class LogisticsManagement {
      */
     com.google.protobuf.ByteString
         getRouteBytes();
+
+    /**
+     * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+     */
+    boolean hasTransport();
+    /**
+     * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_Transport getTransport();
+    /**
+     * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_TransportOrBuilder getTransportOrBuilder();
   }
   /**
-   * Protobuf type {@code com.task3a_b.SeaVessel}
+   * Protobuf type {@code com.task3a_b.PB_SeaVessel}
    */
-  public  static final class SeaVessel extends
+  public  static final class PB_SeaVessel extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.task3a_b.SeaVessel)
-      SeaVesselOrBuilder {
+      // @@protoc_insertion_point(message_implements:com.task3a_b.PB_SeaVessel)
+      PB_SeaVesselOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use SeaVessel.newBuilder() to construct.
-    private SeaVessel(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PB_SeaVessel.newBuilder() to construct.
+    private PB_SeaVessel(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private SeaVessel() {
+    private PB_SeaVessel() {
       routeList_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       route_ = "";
     }
@@ -4895,7 +5977,7 @@ public final class LogisticsManagement {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private SeaVessel(
+    private PB_SeaVessel(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -4929,6 +6011,19 @@ public final class LogisticsManagement {
               route_ = s;
               break;
             }
+            case 26: {
+              com.task3a_b.LogisticsManagement.PB_Transport.Builder subBuilder = null;
+              if (transport_ != null) {
+                subBuilder = transport_.toBuilder();
+              }
+              transport_ = input.readMessage(com.task3a_b.LogisticsManagement.PB_Transport.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(transport_);
+                transport_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -4953,15 +6048,15 @@ public final class LogisticsManagement {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_SeaVessel_descriptor;
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_SeaVessel_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_SeaVessel_fieldAccessorTable
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_SeaVessel_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.task3a_b.LogisticsManagement.SeaVessel.class, com.task3a_b.LogisticsManagement.SeaVessel.Builder.class);
+              com.task3a_b.LogisticsManagement.PB_SeaVessel.class, com.task3a_b.LogisticsManagement.PB_SeaVessel.Builder.class);
     }
 
     private int bitField0_;
@@ -5028,6 +6123,27 @@ public final class LogisticsManagement {
       }
     }
 
+    public static final int TRANSPORT_FIELD_NUMBER = 3;
+    private com.task3a_b.LogisticsManagement.PB_Transport transport_;
+    /**
+     * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+     */
+    public boolean hasTransport() {
+      return transport_ != null;
+    }
+    /**
+     * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_Transport getTransport() {
+      return transport_ == null ? com.task3a_b.LogisticsManagement.PB_Transport.getDefaultInstance() : transport_;
+    }
+    /**
+     * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_TransportOrBuilder getTransportOrBuilder() {
+      return getTransport();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -5047,6 +6163,9 @@ public final class LogisticsManagement {
       }
       if (!getRouteBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, route_);
+      }
+      if (transport_ != null) {
+        output.writeMessage(3, getTransport());
       }
       unknownFields.writeTo(output);
     }
@@ -5068,6 +6187,10 @@ public final class LogisticsManagement {
       if (!getRouteBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, route_);
       }
+      if (transport_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getTransport());
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -5078,16 +6201,21 @@ public final class LogisticsManagement {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.task3a_b.LogisticsManagement.SeaVessel)) {
+      if (!(obj instanceof com.task3a_b.LogisticsManagement.PB_SeaVessel)) {
         return super.equals(obj);
       }
-      com.task3a_b.LogisticsManagement.SeaVessel other = (com.task3a_b.LogisticsManagement.SeaVessel) obj;
+      com.task3a_b.LogisticsManagement.PB_SeaVessel other = (com.task3a_b.LogisticsManagement.PB_SeaVessel) obj;
 
       boolean result = true;
       result = result && getRouteListList()
           .equals(other.getRouteListList());
       result = result && getRoute()
           .equals(other.getRoute());
+      result = result && (hasTransport() == other.hasTransport());
+      if (hasTransport()) {
+        result = result && getTransport()
+            .equals(other.getTransport());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -5105,74 +6233,78 @@ public final class LogisticsManagement {
       }
       hash = (37 * hash) + ROUTE_FIELD_NUMBER;
       hash = (53 * hash) + getRoute().hashCode();
+      if (hasTransport()) {
+        hash = (37 * hash) + TRANSPORT_FIELD_NUMBER;
+        hash = (53 * hash) + getTransport().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static com.task3a_b.LogisticsManagement.SeaVessel parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_SeaVessel parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.SeaVessel parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_SeaVessel parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.SeaVessel parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_SeaVessel parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.SeaVessel parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_SeaVessel parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.SeaVessel parseFrom(byte[] data)
+    public static com.task3a_b.LogisticsManagement.PB_SeaVessel parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.SeaVessel parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_SeaVessel parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.SeaVessel parseFrom(java.io.InputStream input)
+    public static com.task3a_b.LogisticsManagement.PB_SeaVessel parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.SeaVessel parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_SeaVessel parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.SeaVessel parseDelimitedFrom(java.io.InputStream input)
+    public static com.task3a_b.LogisticsManagement.PB_SeaVessel parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.SeaVessel parseDelimitedFrom(
+    public static com.task3a_b.LogisticsManagement.PB_SeaVessel parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.SeaVessel parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_SeaVessel parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.SeaVessel parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_SeaVessel parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -5185,7 +6317,7 @@ public final class LogisticsManagement {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.task3a_b.LogisticsManagement.SeaVessel prototype) {
+    public static Builder newBuilder(com.task3a_b.LogisticsManagement.PB_SeaVessel prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -5201,26 +6333,26 @@ public final class LogisticsManagement {
       return builder;
     }
     /**
-     * Protobuf type {@code com.task3a_b.SeaVessel}
+     * Protobuf type {@code com.task3a_b.PB_SeaVessel}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.task3a_b.SeaVessel)
-        com.task3a_b.LogisticsManagement.SeaVesselOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.task3a_b.PB_SeaVessel)
+        com.task3a_b.LogisticsManagement.PB_SeaVesselOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_SeaVessel_descriptor;
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_SeaVessel_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_SeaVessel_fieldAccessorTable
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_SeaVessel_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.task3a_b.LogisticsManagement.SeaVessel.class, com.task3a_b.LogisticsManagement.SeaVessel.Builder.class);
+                com.task3a_b.LogisticsManagement.PB_SeaVessel.class, com.task3a_b.LogisticsManagement.PB_SeaVessel.Builder.class);
       }
 
-      // Construct using com.task3a_b.LogisticsManagement.SeaVessel.newBuilder()
+      // Construct using com.task3a_b.LogisticsManagement.PB_SeaVessel.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -5242,23 +6374,29 @@ public final class LogisticsManagement {
         bitField0_ = (bitField0_ & ~0x00000001);
         route_ = "";
 
+        if (transportBuilder_ == null) {
+          transport_ = null;
+        } else {
+          transport_ = null;
+          transportBuilder_ = null;
+        }
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_SeaVessel_descriptor;
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_SeaVessel_descriptor;
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.SeaVessel getDefaultInstanceForType() {
-        return com.task3a_b.LogisticsManagement.SeaVessel.getDefaultInstance();
+      public com.task3a_b.LogisticsManagement.PB_SeaVessel getDefaultInstanceForType() {
+        return com.task3a_b.LogisticsManagement.PB_SeaVessel.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.SeaVessel build() {
-        com.task3a_b.LogisticsManagement.SeaVessel result = buildPartial();
+      public com.task3a_b.LogisticsManagement.PB_SeaVessel build() {
+        com.task3a_b.LogisticsManagement.PB_SeaVessel result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -5266,8 +6404,8 @@ public final class LogisticsManagement {
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.SeaVessel buildPartial() {
-        com.task3a_b.LogisticsManagement.SeaVessel result = new com.task3a_b.LogisticsManagement.SeaVessel(this);
+      public com.task3a_b.LogisticsManagement.PB_SeaVessel buildPartial() {
+        com.task3a_b.LogisticsManagement.PB_SeaVessel result = new com.task3a_b.LogisticsManagement.PB_SeaVessel(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -5276,6 +6414,11 @@ public final class LogisticsManagement {
         }
         result.routeList_ = routeList_;
         result.route_ = route_;
+        if (transportBuilder_ == null) {
+          result.transport_ = transport_;
+        } else {
+          result.transport_ = transportBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -5315,16 +6458,16 @@ public final class LogisticsManagement {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.task3a_b.LogisticsManagement.SeaVessel) {
-          return mergeFrom((com.task3a_b.LogisticsManagement.SeaVessel)other);
+        if (other instanceof com.task3a_b.LogisticsManagement.PB_SeaVessel) {
+          return mergeFrom((com.task3a_b.LogisticsManagement.PB_SeaVessel)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.task3a_b.LogisticsManagement.SeaVessel other) {
-        if (other == com.task3a_b.LogisticsManagement.SeaVessel.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.task3a_b.LogisticsManagement.PB_SeaVessel other) {
+        if (other == com.task3a_b.LogisticsManagement.PB_SeaVessel.getDefaultInstance()) return this;
         if (!other.routeList_.isEmpty()) {
           if (routeList_.isEmpty()) {
             routeList_ = other.routeList_;
@@ -5338,6 +6481,9 @@ public final class LogisticsManagement {
         if (!other.getRoute().isEmpty()) {
           route_ = other.route_;
           onChanged();
+        }
+        if (other.hasTransport()) {
+          mergeTransport(other.getTransport());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -5354,11 +6500,11 @@ public final class LogisticsManagement {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.task3a_b.LogisticsManagement.SeaVessel parsedMessage = null;
+        com.task3a_b.LogisticsManagement.PB_SeaVessel parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.task3a_b.LogisticsManagement.SeaVessel) e.getUnfinishedMessage();
+          parsedMessage = (com.task3a_b.LogisticsManagement.PB_SeaVessel) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -5531,6 +6677,123 @@ public final class LogisticsManagement {
         onChanged();
         return this;
       }
+
+      private com.task3a_b.LogisticsManagement.PB_Transport transport_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Transport, com.task3a_b.LogisticsManagement.PB_Transport.Builder, com.task3a_b.LogisticsManagement.PB_TransportOrBuilder> transportBuilder_;
+      /**
+       * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+       */
+      public boolean hasTransport() {
+        return transportBuilder_ != null || transport_ != null;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Transport getTransport() {
+        if (transportBuilder_ == null) {
+          return transport_ == null ? com.task3a_b.LogisticsManagement.PB_Transport.getDefaultInstance() : transport_;
+        } else {
+          return transportBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+       */
+      public Builder setTransport(com.task3a_b.LogisticsManagement.PB_Transport value) {
+        if (transportBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          transport_ = value;
+          onChanged();
+        } else {
+          transportBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+       */
+      public Builder setTransport(
+          com.task3a_b.LogisticsManagement.PB_Transport.Builder builderForValue) {
+        if (transportBuilder_ == null) {
+          transport_ = builderForValue.build();
+          onChanged();
+        } else {
+          transportBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+       */
+      public Builder mergeTransport(com.task3a_b.LogisticsManagement.PB_Transport value) {
+        if (transportBuilder_ == null) {
+          if (transport_ != null) {
+            transport_ =
+              com.task3a_b.LogisticsManagement.PB_Transport.newBuilder(transport_).mergeFrom(value).buildPartial();
+          } else {
+            transport_ = value;
+          }
+          onChanged();
+        } else {
+          transportBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+       */
+      public Builder clearTransport() {
+        if (transportBuilder_ == null) {
+          transport_ = null;
+          onChanged();
+        } else {
+          transport_ = null;
+          transportBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Transport.Builder getTransportBuilder() {
+        
+        onChanged();
+        return getTransportFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_TransportOrBuilder getTransportOrBuilder() {
+        if (transportBuilder_ != null) {
+          return transportBuilder_.getMessageOrBuilder();
+        } else {
+          return transport_ == null ?
+              com.task3a_b.LogisticsManagement.PB_Transport.getDefaultInstance() : transport_;
+        }
+      }
+      /**
+       * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Transport, com.task3a_b.LogisticsManagement.PB_Transport.Builder, com.task3a_b.LogisticsManagement.PB_TransportOrBuilder> 
+          getTransportFieldBuilder() {
+        if (transportBuilder_ == null) {
+          transportBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.task3a_b.LogisticsManagement.PB_Transport, com.task3a_b.LogisticsManagement.PB_Transport.Builder, com.task3a_b.LogisticsManagement.PB_TransportOrBuilder>(
+                  getTransport(),
+                  getParentForChildren(),
+                  isClean());
+          transport_ = null;
+        }
+        return transportBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -5544,48 +6807,48 @@ public final class LogisticsManagement {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.task3a_b.SeaVessel)
+      // @@protoc_insertion_point(builder_scope:com.task3a_b.PB_SeaVessel)
     }
 
-    // @@protoc_insertion_point(class_scope:com.task3a_b.SeaVessel)
-    private static final com.task3a_b.LogisticsManagement.SeaVessel DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.task3a_b.PB_SeaVessel)
+    private static final com.task3a_b.LogisticsManagement.PB_SeaVessel DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.SeaVessel();
+      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.PB_SeaVessel();
     }
 
-    public static com.task3a_b.LogisticsManagement.SeaVessel getDefaultInstance() {
+    public static com.task3a_b.LogisticsManagement.PB_SeaVessel getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<SeaVessel>
-        PARSER = new com.google.protobuf.AbstractParser<SeaVessel>() {
+    private static final com.google.protobuf.Parser<PB_SeaVessel>
+        PARSER = new com.google.protobuf.AbstractParser<PB_SeaVessel>() {
       @java.lang.Override
-      public SeaVessel parsePartialFrom(
+      public PB_SeaVessel parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SeaVessel(input, extensionRegistry);
+        return new PB_SeaVessel(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<SeaVessel> parser() {
+    public static com.google.protobuf.Parser<PB_SeaVessel> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<SeaVessel> getParserForType() {
+    public com.google.protobuf.Parser<PB_SeaVessel> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.task3a_b.LogisticsManagement.SeaVessel getDefaultInstanceForType() {
+    public com.task3a_b.LogisticsManagement.PB_SeaVessel getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface TruckOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.task3a_b.Truck)
+  public interface PB_TruckOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.task3a_b.PB_Truck)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -5616,20 +6879,33 @@ public final class LogisticsManagement {
      */
     com.google.protobuf.ByteString
         getMotorwayBytes();
+
+    /**
+     * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+     */
+    boolean hasTransport();
+    /**
+     * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_Transport getTransport();
+    /**
+     * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_TransportOrBuilder getTransportOrBuilder();
   }
   /**
-   * Protobuf type {@code com.task3a_b.Truck}
+   * Protobuf type {@code com.task3a_b.PB_Truck}
    */
-  public  static final class Truck extends
+  public  static final class PB_Truck extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.task3a_b.Truck)
-      TruckOrBuilder {
+      // @@protoc_insertion_point(message_implements:com.task3a_b.PB_Truck)
+      PB_TruckOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Truck.newBuilder() to construct.
-    private Truck(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PB_Truck.newBuilder() to construct.
+    private PB_Truck(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Truck() {
+    private PB_Truck() {
       motorwayList_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       motorway_ = "";
     }
@@ -5639,7 +6915,7 @@ public final class LogisticsManagement {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Truck(
+    private PB_Truck(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -5673,6 +6949,19 @@ public final class LogisticsManagement {
               motorway_ = s;
               break;
             }
+            case 26: {
+              com.task3a_b.LogisticsManagement.PB_Transport.Builder subBuilder = null;
+              if (transport_ != null) {
+                subBuilder = transport_.toBuilder();
+              }
+              transport_ = input.readMessage(com.task3a_b.LogisticsManagement.PB_Transport.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(transport_);
+                transport_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -5697,15 +6986,15 @@ public final class LogisticsManagement {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Truck_descriptor;
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Truck_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Truck_fieldAccessorTable
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Truck_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.task3a_b.LogisticsManagement.Truck.class, com.task3a_b.LogisticsManagement.Truck.Builder.class);
+              com.task3a_b.LogisticsManagement.PB_Truck.class, com.task3a_b.LogisticsManagement.PB_Truck.Builder.class);
     }
 
     private int bitField0_;
@@ -5772,6 +7061,27 @@ public final class LogisticsManagement {
       }
     }
 
+    public static final int TRANSPORT_FIELD_NUMBER = 3;
+    private com.task3a_b.LogisticsManagement.PB_Transport transport_;
+    /**
+     * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+     */
+    public boolean hasTransport() {
+      return transport_ != null;
+    }
+    /**
+     * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_Transport getTransport() {
+      return transport_ == null ? com.task3a_b.LogisticsManagement.PB_Transport.getDefaultInstance() : transport_;
+    }
+    /**
+     * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_TransportOrBuilder getTransportOrBuilder() {
+      return getTransport();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -5791,6 +7101,9 @@ public final class LogisticsManagement {
       }
       if (!getMotorwayBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, motorway_);
+      }
+      if (transport_ != null) {
+        output.writeMessage(3, getTransport());
       }
       unknownFields.writeTo(output);
     }
@@ -5812,6 +7125,10 @@ public final class LogisticsManagement {
       if (!getMotorwayBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, motorway_);
       }
+      if (transport_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getTransport());
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -5822,16 +7139,21 @@ public final class LogisticsManagement {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.task3a_b.LogisticsManagement.Truck)) {
+      if (!(obj instanceof com.task3a_b.LogisticsManagement.PB_Truck)) {
         return super.equals(obj);
       }
-      com.task3a_b.LogisticsManagement.Truck other = (com.task3a_b.LogisticsManagement.Truck) obj;
+      com.task3a_b.LogisticsManagement.PB_Truck other = (com.task3a_b.LogisticsManagement.PB_Truck) obj;
 
       boolean result = true;
       result = result && getMotorwayListList()
           .equals(other.getMotorwayListList());
       result = result && getMotorway()
           .equals(other.getMotorway());
+      result = result && (hasTransport() == other.hasTransport());
+      if (hasTransport()) {
+        result = result && getTransport()
+            .equals(other.getTransport());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -5849,74 +7171,78 @@ public final class LogisticsManagement {
       }
       hash = (37 * hash) + MOTORWAY_FIELD_NUMBER;
       hash = (53 * hash) + getMotorway().hashCode();
+      if (hasTransport()) {
+        hash = (37 * hash) + TRANSPORT_FIELD_NUMBER;
+        hash = (53 * hash) + getTransport().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static com.task3a_b.LogisticsManagement.Truck parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Truck parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Truck parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Truck parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Truck parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Truck parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Truck parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Truck parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Truck parseFrom(byte[] data)
+    public static com.task3a_b.LogisticsManagement.PB_Truck parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Truck parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Truck parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Truck parseFrom(java.io.InputStream input)
+    public static com.task3a_b.LogisticsManagement.PB_Truck parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Truck parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Truck parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Truck parseDelimitedFrom(java.io.InputStream input)
+    public static com.task3a_b.LogisticsManagement.PB_Truck parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Truck parseDelimitedFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Truck parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Truck parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Truck parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Truck parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Truck parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -5929,7 +7255,7 @@ public final class LogisticsManagement {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.task3a_b.LogisticsManagement.Truck prototype) {
+    public static Builder newBuilder(com.task3a_b.LogisticsManagement.PB_Truck prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -5945,26 +7271,26 @@ public final class LogisticsManagement {
       return builder;
     }
     /**
-     * Protobuf type {@code com.task3a_b.Truck}
+     * Protobuf type {@code com.task3a_b.PB_Truck}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.task3a_b.Truck)
-        com.task3a_b.LogisticsManagement.TruckOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.task3a_b.PB_Truck)
+        com.task3a_b.LogisticsManagement.PB_TruckOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Truck_descriptor;
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Truck_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Truck_fieldAccessorTable
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Truck_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.task3a_b.LogisticsManagement.Truck.class, com.task3a_b.LogisticsManagement.Truck.Builder.class);
+                com.task3a_b.LogisticsManagement.PB_Truck.class, com.task3a_b.LogisticsManagement.PB_Truck.Builder.class);
       }
 
-      // Construct using com.task3a_b.LogisticsManagement.Truck.newBuilder()
+      // Construct using com.task3a_b.LogisticsManagement.PB_Truck.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -5986,23 +7312,29 @@ public final class LogisticsManagement {
         bitField0_ = (bitField0_ & ~0x00000001);
         motorway_ = "";
 
+        if (transportBuilder_ == null) {
+          transport_ = null;
+        } else {
+          transport_ = null;
+          transportBuilder_ = null;
+        }
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Truck_descriptor;
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Truck_descriptor;
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Truck getDefaultInstanceForType() {
-        return com.task3a_b.LogisticsManagement.Truck.getDefaultInstance();
+      public com.task3a_b.LogisticsManagement.PB_Truck getDefaultInstanceForType() {
+        return com.task3a_b.LogisticsManagement.PB_Truck.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Truck build() {
-        com.task3a_b.LogisticsManagement.Truck result = buildPartial();
+      public com.task3a_b.LogisticsManagement.PB_Truck build() {
+        com.task3a_b.LogisticsManagement.PB_Truck result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -6010,8 +7342,8 @@ public final class LogisticsManagement {
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Truck buildPartial() {
-        com.task3a_b.LogisticsManagement.Truck result = new com.task3a_b.LogisticsManagement.Truck(this);
+      public com.task3a_b.LogisticsManagement.PB_Truck buildPartial() {
+        com.task3a_b.LogisticsManagement.PB_Truck result = new com.task3a_b.LogisticsManagement.PB_Truck(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -6020,6 +7352,11 @@ public final class LogisticsManagement {
         }
         result.motorwayList_ = motorwayList_;
         result.motorway_ = motorway_;
+        if (transportBuilder_ == null) {
+          result.transport_ = transport_;
+        } else {
+          result.transport_ = transportBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -6059,16 +7396,16 @@ public final class LogisticsManagement {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.task3a_b.LogisticsManagement.Truck) {
-          return mergeFrom((com.task3a_b.LogisticsManagement.Truck)other);
+        if (other instanceof com.task3a_b.LogisticsManagement.PB_Truck) {
+          return mergeFrom((com.task3a_b.LogisticsManagement.PB_Truck)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.task3a_b.LogisticsManagement.Truck other) {
-        if (other == com.task3a_b.LogisticsManagement.Truck.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.task3a_b.LogisticsManagement.PB_Truck other) {
+        if (other == com.task3a_b.LogisticsManagement.PB_Truck.getDefaultInstance()) return this;
         if (!other.motorwayList_.isEmpty()) {
           if (motorwayList_.isEmpty()) {
             motorwayList_ = other.motorwayList_;
@@ -6082,6 +7419,9 @@ public final class LogisticsManagement {
         if (!other.getMotorway().isEmpty()) {
           motorway_ = other.motorway_;
           onChanged();
+        }
+        if (other.hasTransport()) {
+          mergeTransport(other.getTransport());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -6098,11 +7438,11 @@ public final class LogisticsManagement {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.task3a_b.LogisticsManagement.Truck parsedMessage = null;
+        com.task3a_b.LogisticsManagement.PB_Truck parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.task3a_b.LogisticsManagement.Truck) e.getUnfinishedMessage();
+          parsedMessage = (com.task3a_b.LogisticsManagement.PB_Truck) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -6275,6 +7615,123 @@ public final class LogisticsManagement {
         onChanged();
         return this;
       }
+
+      private com.task3a_b.LogisticsManagement.PB_Transport transport_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Transport, com.task3a_b.LogisticsManagement.PB_Transport.Builder, com.task3a_b.LogisticsManagement.PB_TransportOrBuilder> transportBuilder_;
+      /**
+       * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+       */
+      public boolean hasTransport() {
+        return transportBuilder_ != null || transport_ != null;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Transport getTransport() {
+        if (transportBuilder_ == null) {
+          return transport_ == null ? com.task3a_b.LogisticsManagement.PB_Transport.getDefaultInstance() : transport_;
+        } else {
+          return transportBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+       */
+      public Builder setTransport(com.task3a_b.LogisticsManagement.PB_Transport value) {
+        if (transportBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          transport_ = value;
+          onChanged();
+        } else {
+          transportBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+       */
+      public Builder setTransport(
+          com.task3a_b.LogisticsManagement.PB_Transport.Builder builderForValue) {
+        if (transportBuilder_ == null) {
+          transport_ = builderForValue.build();
+          onChanged();
+        } else {
+          transportBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+       */
+      public Builder mergeTransport(com.task3a_b.LogisticsManagement.PB_Transport value) {
+        if (transportBuilder_ == null) {
+          if (transport_ != null) {
+            transport_ =
+              com.task3a_b.LogisticsManagement.PB_Transport.newBuilder(transport_).mergeFrom(value).buildPartial();
+          } else {
+            transport_ = value;
+          }
+          onChanged();
+        } else {
+          transportBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+       */
+      public Builder clearTransport() {
+        if (transportBuilder_ == null) {
+          transport_ = null;
+          onChanged();
+        } else {
+          transport_ = null;
+          transportBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Transport.Builder getTransportBuilder() {
+        
+        onChanged();
+        return getTransportFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_TransportOrBuilder getTransportOrBuilder() {
+        if (transportBuilder_ != null) {
+          return transportBuilder_.getMessageOrBuilder();
+        } else {
+          return transport_ == null ?
+              com.task3a_b.LogisticsManagement.PB_Transport.getDefaultInstance() : transport_;
+        }
+      }
+      /**
+       * <code>.com.task3a_b.PB_Transport transport = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Transport, com.task3a_b.LogisticsManagement.PB_Transport.Builder, com.task3a_b.LogisticsManagement.PB_TransportOrBuilder> 
+          getTransportFieldBuilder() {
+        if (transportBuilder_ == null) {
+          transportBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.task3a_b.LogisticsManagement.PB_Transport, com.task3a_b.LogisticsManagement.PB_Transport.Builder, com.task3a_b.LogisticsManagement.PB_TransportOrBuilder>(
+                  getTransport(),
+                  getParentForChildren(),
+                  isClean());
+          transport_ = null;
+        }
+        return transportBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -6288,48 +7745,48 @@ public final class LogisticsManagement {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.task3a_b.Truck)
+      // @@protoc_insertion_point(builder_scope:com.task3a_b.PB_Truck)
     }
 
-    // @@protoc_insertion_point(class_scope:com.task3a_b.Truck)
-    private static final com.task3a_b.LogisticsManagement.Truck DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.task3a_b.PB_Truck)
+    private static final com.task3a_b.LogisticsManagement.PB_Truck DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.Truck();
+      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.PB_Truck();
     }
 
-    public static com.task3a_b.LogisticsManagement.Truck getDefaultInstance() {
+    public static com.task3a_b.LogisticsManagement.PB_Truck getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Truck>
-        PARSER = new com.google.protobuf.AbstractParser<Truck>() {
+    private static final com.google.protobuf.Parser<PB_Truck>
+        PARSER = new com.google.protobuf.AbstractParser<PB_Truck>() {
       @java.lang.Override
-      public Truck parsePartialFrom(
+      public PB_Truck parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Truck(input, extensionRegistry);
+        return new PB_Truck(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Truck> parser() {
+    public static com.google.protobuf.Parser<PB_Truck> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Truck> getParserForType() {
+    public com.google.protobuf.Parser<PB_Truck> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.task3a_b.LogisticsManagement.Truck getDefaultInstanceForType() {
+    public com.task3a_b.LogisticsManagement.PB_Truck getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface PackagingOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.task3a_b.Packaging)
+  public interface PB_PackagingOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.task3a_b.PB_Packaging)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -6357,27 +7814,23 @@ public final class LogisticsManagement {
     double getCost();
 
     /**
-     * <pre>
-     * Add other packaging attributes as needed
-     * </pre>
-     *
      * <code>int32 capacityInPackagingUnits = 4;</code>
      */
     int getCapacityInPackagingUnits();
   }
   /**
-   * Protobuf type {@code com.task3a_b.Packaging}
+   * Protobuf type {@code com.task3a_b.PB_Packaging}
    */
-  public  static final class Packaging extends
+  public  static final class PB_Packaging extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.task3a_b.Packaging)
-      PackagingOrBuilder {
+      // @@protoc_insertion_point(message_implements:com.task3a_b.PB_Packaging)
+      PB_PackagingOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Packaging.newBuilder() to construct.
-    private Packaging(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PB_Packaging.newBuilder() to construct.
+    private PB_Packaging(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Packaging() {
+    private PB_Packaging() {
       packagingID_ = 0;
       material_ = "";
       cost_ = 0D;
@@ -6389,7 +7842,7 @@ public final class LogisticsManagement {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Packaging(
+    private PB_Packaging(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -6450,15 +7903,15 @@ public final class LogisticsManagement {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Packaging_descriptor;
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Packaging_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Packaging_fieldAccessorTable
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Packaging_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.task3a_b.LogisticsManagement.Packaging.class, com.task3a_b.LogisticsManagement.Packaging.Builder.class);
+              com.task3a_b.LogisticsManagement.PB_Packaging.class, com.task3a_b.LogisticsManagement.PB_Packaging.Builder.class);
     }
 
     public static final int PACKAGINGID_FIELD_NUMBER = 1;
@@ -6520,10 +7973,6 @@ public final class LogisticsManagement {
     public static final int CAPACITYINPACKAGINGUNITS_FIELD_NUMBER = 4;
     private int capacityInPackagingUnits_;
     /**
-     * <pre>
-     * Add other packaging attributes as needed
-     * </pre>
-     *
      * <code>int32 capacityInPackagingUnits = 4;</code>
      */
     public int getCapacityInPackagingUnits() {
@@ -6590,10 +8039,10 @@ public final class LogisticsManagement {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.task3a_b.LogisticsManagement.Packaging)) {
+      if (!(obj instanceof com.task3a_b.LogisticsManagement.PB_Packaging)) {
         return super.equals(obj);
       }
-      com.task3a_b.LogisticsManagement.Packaging other = (com.task3a_b.LogisticsManagement.Packaging) obj;
+      com.task3a_b.LogisticsManagement.PB_Packaging other = (com.task3a_b.LogisticsManagement.PB_Packaging) obj;
 
       boolean result = true;
       result = result && (getPackagingID()
@@ -6631,69 +8080,69 @@ public final class LogisticsManagement {
       return hash;
     }
 
-    public static com.task3a_b.LogisticsManagement.Packaging parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Packaging parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Packaging parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Packaging parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Packaging parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Packaging parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Packaging parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Packaging parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Packaging parseFrom(byte[] data)
+    public static com.task3a_b.LogisticsManagement.PB_Packaging parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Packaging parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Packaging parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Packaging parseFrom(java.io.InputStream input)
+    public static com.task3a_b.LogisticsManagement.PB_Packaging parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Packaging parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Packaging parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Packaging parseDelimitedFrom(java.io.InputStream input)
+    public static com.task3a_b.LogisticsManagement.PB_Packaging parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Packaging parseDelimitedFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Packaging parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Packaging parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Packaging parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Packaging parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Packaging parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -6706,7 +8155,7 @@ public final class LogisticsManagement {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.task3a_b.LogisticsManagement.Packaging prototype) {
+    public static Builder newBuilder(com.task3a_b.LogisticsManagement.PB_Packaging prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -6722,26 +8171,26 @@ public final class LogisticsManagement {
       return builder;
     }
     /**
-     * Protobuf type {@code com.task3a_b.Packaging}
+     * Protobuf type {@code com.task3a_b.PB_Packaging}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.task3a_b.Packaging)
-        com.task3a_b.LogisticsManagement.PackagingOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.task3a_b.PB_Packaging)
+        com.task3a_b.LogisticsManagement.PB_PackagingOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Packaging_descriptor;
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Packaging_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Packaging_fieldAccessorTable
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Packaging_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.task3a_b.LogisticsManagement.Packaging.class, com.task3a_b.LogisticsManagement.Packaging.Builder.class);
+                com.task3a_b.LogisticsManagement.PB_Packaging.class, com.task3a_b.LogisticsManagement.PB_Packaging.Builder.class);
       }
 
-      // Construct using com.task3a_b.LogisticsManagement.Packaging.newBuilder()
+      // Construct using com.task3a_b.LogisticsManagement.PB_Packaging.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -6773,17 +8222,17 @@ public final class LogisticsManagement {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Packaging_descriptor;
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Packaging_descriptor;
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Packaging getDefaultInstanceForType() {
-        return com.task3a_b.LogisticsManagement.Packaging.getDefaultInstance();
+      public com.task3a_b.LogisticsManagement.PB_Packaging getDefaultInstanceForType() {
+        return com.task3a_b.LogisticsManagement.PB_Packaging.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Packaging build() {
-        com.task3a_b.LogisticsManagement.Packaging result = buildPartial();
+      public com.task3a_b.LogisticsManagement.PB_Packaging build() {
+        com.task3a_b.LogisticsManagement.PB_Packaging result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -6791,8 +8240,8 @@ public final class LogisticsManagement {
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Packaging buildPartial() {
-        com.task3a_b.LogisticsManagement.Packaging result = new com.task3a_b.LogisticsManagement.Packaging(this);
+      public com.task3a_b.LogisticsManagement.PB_Packaging buildPartial() {
+        com.task3a_b.LogisticsManagement.PB_Packaging result = new com.task3a_b.LogisticsManagement.PB_Packaging(this);
         result.packagingID_ = packagingID_;
         result.material_ = material_;
         result.cost_ = cost_;
@@ -6835,16 +8284,16 @@ public final class LogisticsManagement {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.task3a_b.LogisticsManagement.Packaging) {
-          return mergeFrom((com.task3a_b.LogisticsManagement.Packaging)other);
+        if (other instanceof com.task3a_b.LogisticsManagement.PB_Packaging) {
+          return mergeFrom((com.task3a_b.LogisticsManagement.PB_Packaging)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.task3a_b.LogisticsManagement.Packaging other) {
-        if (other == com.task3a_b.LogisticsManagement.Packaging.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.task3a_b.LogisticsManagement.PB_Packaging other) {
+        if (other == com.task3a_b.LogisticsManagement.PB_Packaging.getDefaultInstance()) return this;
         if (other.getPackagingID() != 0) {
           setPackagingID(other.getPackagingID());
         }
@@ -6873,11 +8322,11 @@ public final class LogisticsManagement {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.task3a_b.LogisticsManagement.Packaging parsedMessage = null;
+        com.task3a_b.LogisticsManagement.PB_Packaging parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.task3a_b.LogisticsManagement.Packaging) e.getUnfinishedMessage();
+          parsedMessage = (com.task3a_b.LogisticsManagement.PB_Packaging) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -7022,20 +8471,12 @@ public final class LogisticsManagement {
 
       private int capacityInPackagingUnits_ ;
       /**
-       * <pre>
-       * Add other packaging attributes as needed
-       * </pre>
-       *
        * <code>int32 capacityInPackagingUnits = 4;</code>
        */
       public int getCapacityInPackagingUnits() {
         return capacityInPackagingUnits_;
       }
       /**
-       * <pre>
-       * Add other packaging attributes as needed
-       * </pre>
-       *
        * <code>int32 capacityInPackagingUnits = 4;</code>
        */
       public Builder setCapacityInPackagingUnits(int value) {
@@ -7045,10 +8486,6 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <pre>
-       * Add other packaging attributes as needed
-       * </pre>
-       *
        * <code>int32 capacityInPackagingUnits = 4;</code>
        */
       public Builder clearCapacityInPackagingUnits() {
@@ -7070,48 +8507,48 @@ public final class LogisticsManagement {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.task3a_b.Packaging)
+      // @@protoc_insertion_point(builder_scope:com.task3a_b.PB_Packaging)
     }
 
-    // @@protoc_insertion_point(class_scope:com.task3a_b.Packaging)
-    private static final com.task3a_b.LogisticsManagement.Packaging DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.task3a_b.PB_Packaging)
+    private static final com.task3a_b.LogisticsManagement.PB_Packaging DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.Packaging();
+      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.PB_Packaging();
     }
 
-    public static com.task3a_b.LogisticsManagement.Packaging getDefaultInstance() {
+    public static com.task3a_b.LogisticsManagement.PB_Packaging getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Packaging>
-        PARSER = new com.google.protobuf.AbstractParser<Packaging>() {
+    private static final com.google.protobuf.Parser<PB_Packaging>
+        PARSER = new com.google.protobuf.AbstractParser<PB_Packaging>() {
       @java.lang.Override
-      public Packaging parsePartialFrom(
+      public PB_Packaging parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Packaging(input, extensionRegistry);
+        return new PB_Packaging(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Packaging> parser() {
+    public static com.google.protobuf.Parser<PB_Packaging> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Packaging> getParserForType() {
+    public com.google.protobuf.Parser<PB_Packaging> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.task3a_b.LogisticsManagement.Packaging getDefaultInstanceForType() {
+    public com.task3a_b.LogisticsManagement.PB_Packaging getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface StockItemOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.task3a_b.StockItem)
+  public interface PB_StockItemOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.task3a_b.PB_StockItem)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -7119,48 +8556,83 @@ public final class LogisticsManagement {
      * StockItem attributes
      * </pre>
      *
-     * <code>.com.task3a_b.Product product = 1;</code>
+     * <code>.com.task3a_b.PB_Book productBook = 1;</code>
      */
-    boolean hasProduct();
+    boolean hasProductBook();
     /**
      * <pre>
      * StockItem attributes
      * </pre>
      *
-     * <code>.com.task3a_b.Product product = 1;</code>
+     * <code>.com.task3a_b.PB_Book productBook = 1;</code>
      */
-    com.task3a_b.LogisticsManagement.Product getProduct();
+    com.task3a_b.LogisticsManagement.PB_Book getProductBook();
     /**
      * <pre>
      * StockItem attributes
      * </pre>
      *
-     * <code>.com.task3a_b.Product product = 1;</code>
+     * <code>.com.task3a_b.PB_Book productBook = 1;</code>
      */
-    com.task3a_b.LogisticsManagement.ProductOrBuilder getProductOrBuilder();
+    com.task3a_b.LogisticsManagement.PB_BookOrBuilder getProductBookOrBuilder();
 
     /**
-     * <pre>
-     * Add other stock item attributes as needed
-     * </pre>
-     *
-     * <code>int32 quantity = 2;</code>
+     * <code>.com.task3a_b.PB_Clothing productCloth = 2;</code>
+     */
+    boolean hasProductCloth();
+    /**
+     * <code>.com.task3a_b.PB_Clothing productCloth = 2;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_Clothing getProductCloth();
+    /**
+     * <code>.com.task3a_b.PB_Clothing productCloth = 2;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_ClothingOrBuilder getProductClothOrBuilder();
+
+    /**
+     * <code>.com.task3a_b.PB_ComputerGame productGame = 3;</code>
+     */
+    boolean hasProductGame();
+    /**
+     * <code>.com.task3a_b.PB_ComputerGame productGame = 3;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_ComputerGame getProductGame();
+    /**
+     * <code>.com.task3a_b.PB_ComputerGame productGame = 3;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_ComputerGameOrBuilder getProductGameOrBuilder();
+
+    /**
+     * <code>.com.task3a_b.PB_Electronics productElec = 4;</code>
+     */
+    boolean hasProductElec();
+    /**
+     * <code>.com.task3a_b.PB_Electronics productElec = 4;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_Electronics getProductElec();
+    /**
+     * <code>.com.task3a_b.PB_Electronics productElec = 4;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_ElectronicsOrBuilder getProductElecOrBuilder();
+
+    /**
+     * <code>int32 quantity = 5;</code>
      */
     int getQuantity();
   }
   /**
-   * Protobuf type {@code com.task3a_b.StockItem}
+   * Protobuf type {@code com.task3a_b.PB_StockItem}
    */
-  public  static final class StockItem extends
+  public  static final class PB_StockItem extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.task3a_b.StockItem)
-      StockItemOrBuilder {
+      // @@protoc_insertion_point(message_implements:com.task3a_b.PB_StockItem)
+      PB_StockItemOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use StockItem.newBuilder() to construct.
-    private StockItem(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PB_StockItem.newBuilder() to construct.
+    private PB_StockItem(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private StockItem() {
+    private PB_StockItem() {
       quantity_ = 0;
     }
 
@@ -7169,7 +8641,7 @@ public final class LogisticsManagement {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private StockItem(
+    private PB_StockItem(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -7189,19 +8661,58 @@ public final class LogisticsManagement {
               done = true;
               break;
             case 10: {
-              com.task3a_b.LogisticsManagement.Product.Builder subBuilder = null;
-              if (product_ != null) {
-                subBuilder = product_.toBuilder();
+              com.task3a_b.LogisticsManagement.PB_Book.Builder subBuilder = null;
+              if (productBook_ != null) {
+                subBuilder = productBook_.toBuilder();
               }
-              product_ = input.readMessage(com.task3a_b.LogisticsManagement.Product.parser(), extensionRegistry);
+              productBook_ = input.readMessage(com.task3a_b.LogisticsManagement.PB_Book.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(product_);
-                product_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(productBook_);
+                productBook_ = subBuilder.buildPartial();
               }
 
               break;
             }
-            case 16: {
+            case 18: {
+              com.task3a_b.LogisticsManagement.PB_Clothing.Builder subBuilder = null;
+              if (productCloth_ != null) {
+                subBuilder = productCloth_.toBuilder();
+              }
+              productCloth_ = input.readMessage(com.task3a_b.LogisticsManagement.PB_Clothing.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(productCloth_);
+                productCloth_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 26: {
+              com.task3a_b.LogisticsManagement.PB_ComputerGame.Builder subBuilder = null;
+              if (productGame_ != null) {
+                subBuilder = productGame_.toBuilder();
+              }
+              productGame_ = input.readMessage(com.task3a_b.LogisticsManagement.PB_ComputerGame.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(productGame_);
+                productGame_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 34: {
+              com.task3a_b.LogisticsManagement.PB_Electronics.Builder subBuilder = null;
+              if (productElec_ != null) {
+                subBuilder = productElec_.toBuilder();
+              }
+              productElec_ = input.readMessage(com.task3a_b.LogisticsManagement.PB_Electronics.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(productElec_);
+                productElec_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 40: {
 
               quantity_ = input.readInt32();
               break;
@@ -7227,58 +8738,117 @@ public final class LogisticsManagement {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_StockItem_descriptor;
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_StockItem_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_StockItem_fieldAccessorTable
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_StockItem_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.task3a_b.LogisticsManagement.StockItem.class, com.task3a_b.LogisticsManagement.StockItem.Builder.class);
+              com.task3a_b.LogisticsManagement.PB_StockItem.class, com.task3a_b.LogisticsManagement.PB_StockItem.Builder.class);
     }
 
-    public static final int PRODUCT_FIELD_NUMBER = 1;
-    private com.task3a_b.LogisticsManagement.Product product_;
+    public static final int PRODUCTBOOK_FIELD_NUMBER = 1;
+    private com.task3a_b.LogisticsManagement.PB_Book productBook_;
     /**
      * <pre>
      * StockItem attributes
      * </pre>
      *
-     * <code>.com.task3a_b.Product product = 1;</code>
+     * <code>.com.task3a_b.PB_Book productBook = 1;</code>
      */
-    public boolean hasProduct() {
-      return product_ != null;
+    public boolean hasProductBook() {
+      return productBook_ != null;
     }
     /**
      * <pre>
      * StockItem attributes
      * </pre>
      *
-     * <code>.com.task3a_b.Product product = 1;</code>
+     * <code>.com.task3a_b.PB_Book productBook = 1;</code>
      */
-    public com.task3a_b.LogisticsManagement.Product getProduct() {
-      return product_ == null ? com.task3a_b.LogisticsManagement.Product.getDefaultInstance() : product_;
+    public com.task3a_b.LogisticsManagement.PB_Book getProductBook() {
+      return productBook_ == null ? com.task3a_b.LogisticsManagement.PB_Book.getDefaultInstance() : productBook_;
     }
     /**
      * <pre>
      * StockItem attributes
      * </pre>
      *
-     * <code>.com.task3a_b.Product product = 1;</code>
+     * <code>.com.task3a_b.PB_Book productBook = 1;</code>
      */
-    public com.task3a_b.LogisticsManagement.ProductOrBuilder getProductOrBuilder() {
-      return getProduct();
+    public com.task3a_b.LogisticsManagement.PB_BookOrBuilder getProductBookOrBuilder() {
+      return getProductBook();
     }
 
-    public static final int QUANTITY_FIELD_NUMBER = 2;
+    public static final int PRODUCTCLOTH_FIELD_NUMBER = 2;
+    private com.task3a_b.LogisticsManagement.PB_Clothing productCloth_;
+    /**
+     * <code>.com.task3a_b.PB_Clothing productCloth = 2;</code>
+     */
+    public boolean hasProductCloth() {
+      return productCloth_ != null;
+    }
+    /**
+     * <code>.com.task3a_b.PB_Clothing productCloth = 2;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_Clothing getProductCloth() {
+      return productCloth_ == null ? com.task3a_b.LogisticsManagement.PB_Clothing.getDefaultInstance() : productCloth_;
+    }
+    /**
+     * <code>.com.task3a_b.PB_Clothing productCloth = 2;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_ClothingOrBuilder getProductClothOrBuilder() {
+      return getProductCloth();
+    }
+
+    public static final int PRODUCTGAME_FIELD_NUMBER = 3;
+    private com.task3a_b.LogisticsManagement.PB_ComputerGame productGame_;
+    /**
+     * <code>.com.task3a_b.PB_ComputerGame productGame = 3;</code>
+     */
+    public boolean hasProductGame() {
+      return productGame_ != null;
+    }
+    /**
+     * <code>.com.task3a_b.PB_ComputerGame productGame = 3;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_ComputerGame getProductGame() {
+      return productGame_ == null ? com.task3a_b.LogisticsManagement.PB_ComputerGame.getDefaultInstance() : productGame_;
+    }
+    /**
+     * <code>.com.task3a_b.PB_ComputerGame productGame = 3;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_ComputerGameOrBuilder getProductGameOrBuilder() {
+      return getProductGame();
+    }
+
+    public static final int PRODUCTELEC_FIELD_NUMBER = 4;
+    private com.task3a_b.LogisticsManagement.PB_Electronics productElec_;
+    /**
+     * <code>.com.task3a_b.PB_Electronics productElec = 4;</code>
+     */
+    public boolean hasProductElec() {
+      return productElec_ != null;
+    }
+    /**
+     * <code>.com.task3a_b.PB_Electronics productElec = 4;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_Electronics getProductElec() {
+      return productElec_ == null ? com.task3a_b.LogisticsManagement.PB_Electronics.getDefaultInstance() : productElec_;
+    }
+    /**
+     * <code>.com.task3a_b.PB_Electronics productElec = 4;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_ElectronicsOrBuilder getProductElecOrBuilder() {
+      return getProductElec();
+    }
+
+    public static final int QUANTITY_FIELD_NUMBER = 5;
     private int quantity_;
     /**
-     * <pre>
-     * Add other stock item attributes as needed
-     * </pre>
-     *
-     * <code>int32 quantity = 2;</code>
+     * <code>int32 quantity = 5;</code>
      */
     public int getQuantity() {
       return quantity_;
@@ -7298,11 +8868,20 @@ public final class LogisticsManagement {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (product_ != null) {
-        output.writeMessage(1, getProduct());
+      if (productBook_ != null) {
+        output.writeMessage(1, getProductBook());
+      }
+      if (productCloth_ != null) {
+        output.writeMessage(2, getProductCloth());
+      }
+      if (productGame_ != null) {
+        output.writeMessage(3, getProductGame());
+      }
+      if (productElec_ != null) {
+        output.writeMessage(4, getProductElec());
       }
       if (quantity_ != 0) {
-        output.writeInt32(2, quantity_);
+        output.writeInt32(5, quantity_);
       }
       unknownFields.writeTo(output);
     }
@@ -7313,13 +8892,25 @@ public final class LogisticsManagement {
       if (size != -1) return size;
 
       size = 0;
-      if (product_ != null) {
+      if (productBook_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, getProduct());
+          .computeMessageSize(1, getProductBook());
+      }
+      if (productCloth_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getProductCloth());
+      }
+      if (productGame_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getProductGame());
+      }
+      if (productElec_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getProductElec());
       }
       if (quantity_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, quantity_);
+          .computeInt32Size(5, quantity_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -7331,16 +8922,31 @@ public final class LogisticsManagement {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.task3a_b.LogisticsManagement.StockItem)) {
+      if (!(obj instanceof com.task3a_b.LogisticsManagement.PB_StockItem)) {
         return super.equals(obj);
       }
-      com.task3a_b.LogisticsManagement.StockItem other = (com.task3a_b.LogisticsManagement.StockItem) obj;
+      com.task3a_b.LogisticsManagement.PB_StockItem other = (com.task3a_b.LogisticsManagement.PB_StockItem) obj;
 
       boolean result = true;
-      result = result && (hasProduct() == other.hasProduct());
-      if (hasProduct()) {
-        result = result && getProduct()
-            .equals(other.getProduct());
+      result = result && (hasProductBook() == other.hasProductBook());
+      if (hasProductBook()) {
+        result = result && getProductBook()
+            .equals(other.getProductBook());
+      }
+      result = result && (hasProductCloth() == other.hasProductCloth());
+      if (hasProductCloth()) {
+        result = result && getProductCloth()
+            .equals(other.getProductCloth());
+      }
+      result = result && (hasProductGame() == other.hasProductGame());
+      if (hasProductGame()) {
+        result = result && getProductGame()
+            .equals(other.getProductGame());
+      }
+      result = result && (hasProductElec() == other.hasProductElec());
+      if (hasProductElec()) {
+        result = result && getProductElec()
+            .equals(other.getProductElec());
       }
       result = result && (getQuantity()
           == other.getQuantity());
@@ -7355,9 +8961,21 @@ public final class LogisticsManagement {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasProduct()) {
-        hash = (37 * hash) + PRODUCT_FIELD_NUMBER;
-        hash = (53 * hash) + getProduct().hashCode();
+      if (hasProductBook()) {
+        hash = (37 * hash) + PRODUCTBOOK_FIELD_NUMBER;
+        hash = (53 * hash) + getProductBook().hashCode();
+      }
+      if (hasProductCloth()) {
+        hash = (37 * hash) + PRODUCTCLOTH_FIELD_NUMBER;
+        hash = (53 * hash) + getProductCloth().hashCode();
+      }
+      if (hasProductGame()) {
+        hash = (37 * hash) + PRODUCTGAME_FIELD_NUMBER;
+        hash = (53 * hash) + getProductGame().hashCode();
+      }
+      if (hasProductElec()) {
+        hash = (37 * hash) + PRODUCTELEC_FIELD_NUMBER;
+        hash = (53 * hash) + getProductElec().hashCode();
       }
       hash = (37 * hash) + QUANTITY_FIELD_NUMBER;
       hash = (53 * hash) + getQuantity();
@@ -7366,69 +8984,69 @@ public final class LogisticsManagement {
       return hash;
     }
 
-    public static com.task3a_b.LogisticsManagement.StockItem parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_StockItem parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.StockItem parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_StockItem parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.StockItem parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_StockItem parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.StockItem parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_StockItem parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.StockItem parseFrom(byte[] data)
+    public static com.task3a_b.LogisticsManagement.PB_StockItem parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.StockItem parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_StockItem parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.StockItem parseFrom(java.io.InputStream input)
+    public static com.task3a_b.LogisticsManagement.PB_StockItem parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.StockItem parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_StockItem parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.StockItem parseDelimitedFrom(java.io.InputStream input)
+    public static com.task3a_b.LogisticsManagement.PB_StockItem parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.StockItem parseDelimitedFrom(
+    public static com.task3a_b.LogisticsManagement.PB_StockItem parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.StockItem parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_StockItem parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.StockItem parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_StockItem parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -7441,7 +9059,7 @@ public final class LogisticsManagement {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.task3a_b.LogisticsManagement.StockItem prototype) {
+    public static Builder newBuilder(com.task3a_b.LogisticsManagement.PB_StockItem prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -7457,26 +9075,26 @@ public final class LogisticsManagement {
       return builder;
     }
     /**
-     * Protobuf type {@code com.task3a_b.StockItem}
+     * Protobuf type {@code com.task3a_b.PB_StockItem}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.task3a_b.StockItem)
-        com.task3a_b.LogisticsManagement.StockItemOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.task3a_b.PB_StockItem)
+        com.task3a_b.LogisticsManagement.PB_StockItemOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_StockItem_descriptor;
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_StockItem_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_StockItem_fieldAccessorTable
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_StockItem_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.task3a_b.LogisticsManagement.StockItem.class, com.task3a_b.LogisticsManagement.StockItem.Builder.class);
+                com.task3a_b.LogisticsManagement.PB_StockItem.class, com.task3a_b.LogisticsManagement.PB_StockItem.Builder.class);
       }
 
-      // Construct using com.task3a_b.LogisticsManagement.StockItem.newBuilder()
+      // Construct using com.task3a_b.LogisticsManagement.PB_StockItem.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -7494,11 +9112,29 @@ public final class LogisticsManagement {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        if (productBuilder_ == null) {
-          product_ = null;
+        if (productBookBuilder_ == null) {
+          productBook_ = null;
         } else {
-          product_ = null;
-          productBuilder_ = null;
+          productBook_ = null;
+          productBookBuilder_ = null;
+        }
+        if (productClothBuilder_ == null) {
+          productCloth_ = null;
+        } else {
+          productCloth_ = null;
+          productClothBuilder_ = null;
+        }
+        if (productGameBuilder_ == null) {
+          productGame_ = null;
+        } else {
+          productGame_ = null;
+          productGameBuilder_ = null;
+        }
+        if (productElecBuilder_ == null) {
+          productElec_ = null;
+        } else {
+          productElec_ = null;
+          productElecBuilder_ = null;
         }
         quantity_ = 0;
 
@@ -7508,17 +9144,17 @@ public final class LogisticsManagement {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_StockItem_descriptor;
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_StockItem_descriptor;
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.StockItem getDefaultInstanceForType() {
-        return com.task3a_b.LogisticsManagement.StockItem.getDefaultInstance();
+      public com.task3a_b.LogisticsManagement.PB_StockItem getDefaultInstanceForType() {
+        return com.task3a_b.LogisticsManagement.PB_StockItem.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.StockItem build() {
-        com.task3a_b.LogisticsManagement.StockItem result = buildPartial();
+      public com.task3a_b.LogisticsManagement.PB_StockItem build() {
+        com.task3a_b.LogisticsManagement.PB_StockItem result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -7526,12 +9162,27 @@ public final class LogisticsManagement {
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.StockItem buildPartial() {
-        com.task3a_b.LogisticsManagement.StockItem result = new com.task3a_b.LogisticsManagement.StockItem(this);
-        if (productBuilder_ == null) {
-          result.product_ = product_;
+      public com.task3a_b.LogisticsManagement.PB_StockItem buildPartial() {
+        com.task3a_b.LogisticsManagement.PB_StockItem result = new com.task3a_b.LogisticsManagement.PB_StockItem(this);
+        if (productBookBuilder_ == null) {
+          result.productBook_ = productBook_;
         } else {
-          result.product_ = productBuilder_.build();
+          result.productBook_ = productBookBuilder_.build();
+        }
+        if (productClothBuilder_ == null) {
+          result.productCloth_ = productCloth_;
+        } else {
+          result.productCloth_ = productClothBuilder_.build();
+        }
+        if (productGameBuilder_ == null) {
+          result.productGame_ = productGame_;
+        } else {
+          result.productGame_ = productGameBuilder_.build();
+        }
+        if (productElecBuilder_ == null) {
+          result.productElec_ = productElec_;
+        } else {
+          result.productElec_ = productElecBuilder_.build();
         }
         result.quantity_ = quantity_;
         onBuilt();
@@ -7572,18 +9223,27 @@ public final class LogisticsManagement {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.task3a_b.LogisticsManagement.StockItem) {
-          return mergeFrom((com.task3a_b.LogisticsManagement.StockItem)other);
+        if (other instanceof com.task3a_b.LogisticsManagement.PB_StockItem) {
+          return mergeFrom((com.task3a_b.LogisticsManagement.PB_StockItem)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.task3a_b.LogisticsManagement.StockItem other) {
-        if (other == com.task3a_b.LogisticsManagement.StockItem.getDefaultInstance()) return this;
-        if (other.hasProduct()) {
-          mergeProduct(other.getProduct());
+      public Builder mergeFrom(com.task3a_b.LogisticsManagement.PB_StockItem other) {
+        if (other == com.task3a_b.LogisticsManagement.PB_StockItem.getDefaultInstance()) return this;
+        if (other.hasProductBook()) {
+          mergeProductBook(other.getProductBook());
+        }
+        if (other.hasProductCloth()) {
+          mergeProductCloth(other.getProductCloth());
+        }
+        if (other.hasProductGame()) {
+          mergeProductGame(other.getProductGame());
+        }
+        if (other.hasProductElec()) {
+          mergeProductElec(other.getProductElec());
         }
         if (other.getQuantity() != 0) {
           setQuantity(other.getQuantity());
@@ -7603,11 +9263,11 @@ public final class LogisticsManagement {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.task3a_b.LogisticsManagement.StockItem parsedMessage = null;
+        com.task3a_b.LogisticsManagement.PB_StockItem parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.task3a_b.LogisticsManagement.StockItem) e.getUnfinishedMessage();
+          parsedMessage = (com.task3a_b.LogisticsManagement.PB_StockItem) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -7617,31 +9277,31 @@ public final class LogisticsManagement {
         return this;
       }
 
-      private com.task3a_b.LogisticsManagement.Product product_ = null;
+      private com.task3a_b.LogisticsManagement.PB_Book productBook_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.task3a_b.LogisticsManagement.Product, com.task3a_b.LogisticsManagement.Product.Builder, com.task3a_b.LogisticsManagement.ProductOrBuilder> productBuilder_;
+          com.task3a_b.LogisticsManagement.PB_Book, com.task3a_b.LogisticsManagement.PB_Book.Builder, com.task3a_b.LogisticsManagement.PB_BookOrBuilder> productBookBuilder_;
       /**
        * <pre>
        * StockItem attributes
        * </pre>
        *
-       * <code>.com.task3a_b.Product product = 1;</code>
+       * <code>.com.task3a_b.PB_Book productBook = 1;</code>
        */
-      public boolean hasProduct() {
-        return productBuilder_ != null || product_ != null;
+      public boolean hasProductBook() {
+        return productBookBuilder_ != null || productBook_ != null;
       }
       /**
        * <pre>
        * StockItem attributes
        * </pre>
        *
-       * <code>.com.task3a_b.Product product = 1;</code>
+       * <code>.com.task3a_b.PB_Book productBook = 1;</code>
        */
-      public com.task3a_b.LogisticsManagement.Product getProduct() {
-        if (productBuilder_ == null) {
-          return product_ == null ? com.task3a_b.LogisticsManagement.Product.getDefaultInstance() : product_;
+      public com.task3a_b.LogisticsManagement.PB_Book getProductBook() {
+        if (productBookBuilder_ == null) {
+          return productBook_ == null ? com.task3a_b.LogisticsManagement.PB_Book.getDefaultInstance() : productBook_;
         } else {
-          return productBuilder_.getMessage();
+          return productBookBuilder_.getMessage();
         }
       }
       /**
@@ -7649,17 +9309,17 @@ public final class LogisticsManagement {
        * StockItem attributes
        * </pre>
        *
-       * <code>.com.task3a_b.Product product = 1;</code>
+       * <code>.com.task3a_b.PB_Book productBook = 1;</code>
        */
-      public Builder setProduct(com.task3a_b.LogisticsManagement.Product value) {
-        if (productBuilder_ == null) {
+      public Builder setProductBook(com.task3a_b.LogisticsManagement.PB_Book value) {
+        if (productBookBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          product_ = value;
+          productBook_ = value;
           onChanged();
         } else {
-          productBuilder_.setMessage(value);
+          productBookBuilder_.setMessage(value);
         }
 
         return this;
@@ -7669,15 +9329,15 @@ public final class LogisticsManagement {
        * StockItem attributes
        * </pre>
        *
-       * <code>.com.task3a_b.Product product = 1;</code>
+       * <code>.com.task3a_b.PB_Book productBook = 1;</code>
        */
-      public Builder setProduct(
-          com.task3a_b.LogisticsManagement.Product.Builder builderForValue) {
-        if (productBuilder_ == null) {
-          product_ = builderForValue.build();
+      public Builder setProductBook(
+          com.task3a_b.LogisticsManagement.PB_Book.Builder builderForValue) {
+        if (productBookBuilder_ == null) {
+          productBook_ = builderForValue.build();
           onChanged();
         } else {
-          productBuilder_.setMessage(builderForValue.build());
+          productBookBuilder_.setMessage(builderForValue.build());
         }
 
         return this;
@@ -7687,19 +9347,19 @@ public final class LogisticsManagement {
        * StockItem attributes
        * </pre>
        *
-       * <code>.com.task3a_b.Product product = 1;</code>
+       * <code>.com.task3a_b.PB_Book productBook = 1;</code>
        */
-      public Builder mergeProduct(com.task3a_b.LogisticsManagement.Product value) {
-        if (productBuilder_ == null) {
-          if (product_ != null) {
-            product_ =
-              com.task3a_b.LogisticsManagement.Product.newBuilder(product_).mergeFrom(value).buildPartial();
+      public Builder mergeProductBook(com.task3a_b.LogisticsManagement.PB_Book value) {
+        if (productBookBuilder_ == null) {
+          if (productBook_ != null) {
+            productBook_ =
+              com.task3a_b.LogisticsManagement.PB_Book.newBuilder(productBook_).mergeFrom(value).buildPartial();
           } else {
-            product_ = value;
+            productBook_ = value;
           }
           onChanged();
         } else {
-          productBuilder_.mergeFrom(value);
+          productBookBuilder_.mergeFrom(value);
         }
 
         return this;
@@ -7709,15 +9369,15 @@ public final class LogisticsManagement {
        * StockItem attributes
        * </pre>
        *
-       * <code>.com.task3a_b.Product product = 1;</code>
+       * <code>.com.task3a_b.PB_Book productBook = 1;</code>
        */
-      public Builder clearProduct() {
-        if (productBuilder_ == null) {
-          product_ = null;
+      public Builder clearProductBook() {
+        if (productBookBuilder_ == null) {
+          productBook_ = null;
           onChanged();
         } else {
-          product_ = null;
-          productBuilder_ = null;
+          productBook_ = null;
+          productBookBuilder_ = null;
         }
 
         return this;
@@ -7727,26 +9387,26 @@ public final class LogisticsManagement {
        * StockItem attributes
        * </pre>
        *
-       * <code>.com.task3a_b.Product product = 1;</code>
+       * <code>.com.task3a_b.PB_Book productBook = 1;</code>
        */
-      public com.task3a_b.LogisticsManagement.Product.Builder getProductBuilder() {
+      public com.task3a_b.LogisticsManagement.PB_Book.Builder getProductBookBuilder() {
         
         onChanged();
-        return getProductFieldBuilder().getBuilder();
+        return getProductBookFieldBuilder().getBuilder();
       }
       /**
        * <pre>
        * StockItem attributes
        * </pre>
        *
-       * <code>.com.task3a_b.Product product = 1;</code>
+       * <code>.com.task3a_b.PB_Book productBook = 1;</code>
        */
-      public com.task3a_b.LogisticsManagement.ProductOrBuilder getProductOrBuilder() {
-        if (productBuilder_ != null) {
-          return productBuilder_.getMessageOrBuilder();
+      public com.task3a_b.LogisticsManagement.PB_BookOrBuilder getProductBookOrBuilder() {
+        if (productBookBuilder_ != null) {
+          return productBookBuilder_.getMessageOrBuilder();
         } else {
-          return product_ == null ?
-              com.task3a_b.LogisticsManagement.Product.getDefaultInstance() : product_;
+          return productBook_ == null ?
+              com.task3a_b.LogisticsManagement.PB_Book.getDefaultInstance() : productBook_;
         }
       }
       /**
@@ -7754,39 +9414,382 @@ public final class LogisticsManagement {
        * StockItem attributes
        * </pre>
        *
-       * <code>.com.task3a_b.Product product = 1;</code>
+       * <code>.com.task3a_b.PB_Book productBook = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.task3a_b.LogisticsManagement.Product, com.task3a_b.LogisticsManagement.Product.Builder, com.task3a_b.LogisticsManagement.ProductOrBuilder> 
-          getProductFieldBuilder() {
-        if (productBuilder_ == null) {
-          productBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.task3a_b.LogisticsManagement.Product, com.task3a_b.LogisticsManagement.Product.Builder, com.task3a_b.LogisticsManagement.ProductOrBuilder>(
-                  getProduct(),
+          com.task3a_b.LogisticsManagement.PB_Book, com.task3a_b.LogisticsManagement.PB_Book.Builder, com.task3a_b.LogisticsManagement.PB_BookOrBuilder> 
+          getProductBookFieldBuilder() {
+        if (productBookBuilder_ == null) {
+          productBookBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.task3a_b.LogisticsManagement.PB_Book, com.task3a_b.LogisticsManagement.PB_Book.Builder, com.task3a_b.LogisticsManagement.PB_BookOrBuilder>(
+                  getProductBook(),
                   getParentForChildren(),
                   isClean());
-          product_ = null;
+          productBook_ = null;
         }
-        return productBuilder_;
+        return productBookBuilder_;
+      }
+
+      private com.task3a_b.LogisticsManagement.PB_Clothing productCloth_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Clothing, com.task3a_b.LogisticsManagement.PB_Clothing.Builder, com.task3a_b.LogisticsManagement.PB_ClothingOrBuilder> productClothBuilder_;
+      /**
+       * <code>.com.task3a_b.PB_Clothing productCloth = 2;</code>
+       */
+      public boolean hasProductCloth() {
+        return productClothBuilder_ != null || productCloth_ != null;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Clothing productCloth = 2;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Clothing getProductCloth() {
+        if (productClothBuilder_ == null) {
+          return productCloth_ == null ? com.task3a_b.LogisticsManagement.PB_Clothing.getDefaultInstance() : productCloth_;
+        } else {
+          return productClothBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.com.task3a_b.PB_Clothing productCloth = 2;</code>
+       */
+      public Builder setProductCloth(com.task3a_b.LogisticsManagement.PB_Clothing value) {
+        if (productClothBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          productCloth_ = value;
+          onChanged();
+        } else {
+          productClothBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Clothing productCloth = 2;</code>
+       */
+      public Builder setProductCloth(
+          com.task3a_b.LogisticsManagement.PB_Clothing.Builder builderForValue) {
+        if (productClothBuilder_ == null) {
+          productCloth_ = builderForValue.build();
+          onChanged();
+        } else {
+          productClothBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Clothing productCloth = 2;</code>
+       */
+      public Builder mergeProductCloth(com.task3a_b.LogisticsManagement.PB_Clothing value) {
+        if (productClothBuilder_ == null) {
+          if (productCloth_ != null) {
+            productCloth_ =
+              com.task3a_b.LogisticsManagement.PB_Clothing.newBuilder(productCloth_).mergeFrom(value).buildPartial();
+          } else {
+            productCloth_ = value;
+          }
+          onChanged();
+        } else {
+          productClothBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Clothing productCloth = 2;</code>
+       */
+      public Builder clearProductCloth() {
+        if (productClothBuilder_ == null) {
+          productCloth_ = null;
+          onChanged();
+        } else {
+          productCloth_ = null;
+          productClothBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Clothing productCloth = 2;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Clothing.Builder getProductClothBuilder() {
+        
+        onChanged();
+        return getProductClothFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.task3a_b.PB_Clothing productCloth = 2;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_ClothingOrBuilder getProductClothOrBuilder() {
+        if (productClothBuilder_ != null) {
+          return productClothBuilder_.getMessageOrBuilder();
+        } else {
+          return productCloth_ == null ?
+              com.task3a_b.LogisticsManagement.PB_Clothing.getDefaultInstance() : productCloth_;
+        }
+      }
+      /**
+       * <code>.com.task3a_b.PB_Clothing productCloth = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Clothing, com.task3a_b.LogisticsManagement.PB_Clothing.Builder, com.task3a_b.LogisticsManagement.PB_ClothingOrBuilder> 
+          getProductClothFieldBuilder() {
+        if (productClothBuilder_ == null) {
+          productClothBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.task3a_b.LogisticsManagement.PB_Clothing, com.task3a_b.LogisticsManagement.PB_Clothing.Builder, com.task3a_b.LogisticsManagement.PB_ClothingOrBuilder>(
+                  getProductCloth(),
+                  getParentForChildren(),
+                  isClean());
+          productCloth_ = null;
+        }
+        return productClothBuilder_;
+      }
+
+      private com.task3a_b.LogisticsManagement.PB_ComputerGame productGame_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_ComputerGame, com.task3a_b.LogisticsManagement.PB_ComputerGame.Builder, com.task3a_b.LogisticsManagement.PB_ComputerGameOrBuilder> productGameBuilder_;
+      /**
+       * <code>.com.task3a_b.PB_ComputerGame productGame = 3;</code>
+       */
+      public boolean hasProductGame() {
+        return productGameBuilder_ != null || productGame_ != null;
+      }
+      /**
+       * <code>.com.task3a_b.PB_ComputerGame productGame = 3;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_ComputerGame getProductGame() {
+        if (productGameBuilder_ == null) {
+          return productGame_ == null ? com.task3a_b.LogisticsManagement.PB_ComputerGame.getDefaultInstance() : productGame_;
+        } else {
+          return productGameBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.com.task3a_b.PB_ComputerGame productGame = 3;</code>
+       */
+      public Builder setProductGame(com.task3a_b.LogisticsManagement.PB_ComputerGame value) {
+        if (productGameBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          productGame_ = value;
+          onChanged();
+        } else {
+          productGameBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_ComputerGame productGame = 3;</code>
+       */
+      public Builder setProductGame(
+          com.task3a_b.LogisticsManagement.PB_ComputerGame.Builder builderForValue) {
+        if (productGameBuilder_ == null) {
+          productGame_ = builderForValue.build();
+          onChanged();
+        } else {
+          productGameBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_ComputerGame productGame = 3;</code>
+       */
+      public Builder mergeProductGame(com.task3a_b.LogisticsManagement.PB_ComputerGame value) {
+        if (productGameBuilder_ == null) {
+          if (productGame_ != null) {
+            productGame_ =
+              com.task3a_b.LogisticsManagement.PB_ComputerGame.newBuilder(productGame_).mergeFrom(value).buildPartial();
+          } else {
+            productGame_ = value;
+          }
+          onChanged();
+        } else {
+          productGameBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_ComputerGame productGame = 3;</code>
+       */
+      public Builder clearProductGame() {
+        if (productGameBuilder_ == null) {
+          productGame_ = null;
+          onChanged();
+        } else {
+          productGame_ = null;
+          productGameBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_ComputerGame productGame = 3;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_ComputerGame.Builder getProductGameBuilder() {
+        
+        onChanged();
+        return getProductGameFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.task3a_b.PB_ComputerGame productGame = 3;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_ComputerGameOrBuilder getProductGameOrBuilder() {
+        if (productGameBuilder_ != null) {
+          return productGameBuilder_.getMessageOrBuilder();
+        } else {
+          return productGame_ == null ?
+              com.task3a_b.LogisticsManagement.PB_ComputerGame.getDefaultInstance() : productGame_;
+        }
+      }
+      /**
+       * <code>.com.task3a_b.PB_ComputerGame productGame = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_ComputerGame, com.task3a_b.LogisticsManagement.PB_ComputerGame.Builder, com.task3a_b.LogisticsManagement.PB_ComputerGameOrBuilder> 
+          getProductGameFieldBuilder() {
+        if (productGameBuilder_ == null) {
+          productGameBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.task3a_b.LogisticsManagement.PB_ComputerGame, com.task3a_b.LogisticsManagement.PB_ComputerGame.Builder, com.task3a_b.LogisticsManagement.PB_ComputerGameOrBuilder>(
+                  getProductGame(),
+                  getParentForChildren(),
+                  isClean());
+          productGame_ = null;
+        }
+        return productGameBuilder_;
+      }
+
+      private com.task3a_b.LogisticsManagement.PB_Electronics productElec_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Electronics, com.task3a_b.LogisticsManagement.PB_Electronics.Builder, com.task3a_b.LogisticsManagement.PB_ElectronicsOrBuilder> productElecBuilder_;
+      /**
+       * <code>.com.task3a_b.PB_Electronics productElec = 4;</code>
+       */
+      public boolean hasProductElec() {
+        return productElecBuilder_ != null || productElec_ != null;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Electronics productElec = 4;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Electronics getProductElec() {
+        if (productElecBuilder_ == null) {
+          return productElec_ == null ? com.task3a_b.LogisticsManagement.PB_Electronics.getDefaultInstance() : productElec_;
+        } else {
+          return productElecBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.com.task3a_b.PB_Electronics productElec = 4;</code>
+       */
+      public Builder setProductElec(com.task3a_b.LogisticsManagement.PB_Electronics value) {
+        if (productElecBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          productElec_ = value;
+          onChanged();
+        } else {
+          productElecBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Electronics productElec = 4;</code>
+       */
+      public Builder setProductElec(
+          com.task3a_b.LogisticsManagement.PB_Electronics.Builder builderForValue) {
+        if (productElecBuilder_ == null) {
+          productElec_ = builderForValue.build();
+          onChanged();
+        } else {
+          productElecBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Electronics productElec = 4;</code>
+       */
+      public Builder mergeProductElec(com.task3a_b.LogisticsManagement.PB_Electronics value) {
+        if (productElecBuilder_ == null) {
+          if (productElec_ != null) {
+            productElec_ =
+              com.task3a_b.LogisticsManagement.PB_Electronics.newBuilder(productElec_).mergeFrom(value).buildPartial();
+          } else {
+            productElec_ = value;
+          }
+          onChanged();
+        } else {
+          productElecBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Electronics productElec = 4;</code>
+       */
+      public Builder clearProductElec() {
+        if (productElecBuilder_ == null) {
+          productElec_ = null;
+          onChanged();
+        } else {
+          productElec_ = null;
+          productElecBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Electronics productElec = 4;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Electronics.Builder getProductElecBuilder() {
+        
+        onChanged();
+        return getProductElecFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.task3a_b.PB_Electronics productElec = 4;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_ElectronicsOrBuilder getProductElecOrBuilder() {
+        if (productElecBuilder_ != null) {
+          return productElecBuilder_.getMessageOrBuilder();
+        } else {
+          return productElec_ == null ?
+              com.task3a_b.LogisticsManagement.PB_Electronics.getDefaultInstance() : productElec_;
+        }
+      }
+      /**
+       * <code>.com.task3a_b.PB_Electronics productElec = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Electronics, com.task3a_b.LogisticsManagement.PB_Electronics.Builder, com.task3a_b.LogisticsManagement.PB_ElectronicsOrBuilder> 
+          getProductElecFieldBuilder() {
+        if (productElecBuilder_ == null) {
+          productElecBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.task3a_b.LogisticsManagement.PB_Electronics, com.task3a_b.LogisticsManagement.PB_Electronics.Builder, com.task3a_b.LogisticsManagement.PB_ElectronicsOrBuilder>(
+                  getProductElec(),
+                  getParentForChildren(),
+                  isClean());
+          productElec_ = null;
+        }
+        return productElecBuilder_;
       }
 
       private int quantity_ ;
       /**
-       * <pre>
-       * Add other stock item attributes as needed
-       * </pre>
-       *
-       * <code>int32 quantity = 2;</code>
+       * <code>int32 quantity = 5;</code>
        */
       public int getQuantity() {
         return quantity_;
       }
       /**
-       * <pre>
-       * Add other stock item attributes as needed
-       * </pre>
-       *
-       * <code>int32 quantity = 2;</code>
+       * <code>int32 quantity = 5;</code>
        */
       public Builder setQuantity(int value) {
         
@@ -7795,11 +9798,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <pre>
-       * Add other stock item attributes as needed
-       * </pre>
-       *
-       * <code>int32 quantity = 2;</code>
+       * <code>int32 quantity = 5;</code>
        */
       public Builder clearQuantity() {
         
@@ -7820,87 +9819,87 @@ public final class LogisticsManagement {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.task3a_b.StockItem)
+      // @@protoc_insertion_point(builder_scope:com.task3a_b.PB_StockItem)
     }
 
-    // @@protoc_insertion_point(class_scope:com.task3a_b.StockItem)
-    private static final com.task3a_b.LogisticsManagement.StockItem DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.task3a_b.PB_StockItem)
+    private static final com.task3a_b.LogisticsManagement.PB_StockItem DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.StockItem();
+      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.PB_StockItem();
     }
 
-    public static com.task3a_b.LogisticsManagement.StockItem getDefaultInstance() {
+    public static com.task3a_b.LogisticsManagement.PB_StockItem getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<StockItem>
-        PARSER = new com.google.protobuf.AbstractParser<StockItem>() {
+    private static final com.google.protobuf.Parser<PB_StockItem>
+        PARSER = new com.google.protobuf.AbstractParser<PB_StockItem>() {
       @java.lang.Override
-      public StockItem parsePartialFrom(
+      public PB_StockItem parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new StockItem(input, extensionRegistry);
+        return new PB_StockItem(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<StockItem> parser() {
+    public static com.google.protobuf.Parser<PB_StockItem> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<StockItem> getParserForType() {
+    public com.google.protobuf.Parser<PB_StockItem> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.task3a_b.LogisticsManagement.StockItem getDefaultInstanceForType() {
+    public com.task3a_b.LogisticsManagement.PB_StockItem getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface StockOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.task3a_b.Stock)
+  public interface PB_StockOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.task3a_b.PB_Stock)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+     * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
      */
-    java.util.List<com.task3a_b.LogisticsManagement.StockItem> 
+    java.util.List<com.task3a_b.LogisticsManagement.PB_StockItem> 
         getItemsList();
     /**
-     * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+     * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
      */
-    com.task3a_b.LogisticsManagement.StockItem getItems(int index);
+    com.task3a_b.LogisticsManagement.PB_StockItem getItems(int index);
     /**
-     * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+     * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
      */
     int getItemsCount();
     /**
-     * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+     * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
      */
-    java.util.List<? extends com.task3a_b.LogisticsManagement.StockItemOrBuilder> 
+    java.util.List<? extends com.task3a_b.LogisticsManagement.PB_StockItemOrBuilder> 
         getItemsOrBuilderList();
     /**
-     * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+     * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
      */
-    com.task3a_b.LogisticsManagement.StockItemOrBuilder getItemsOrBuilder(
+    com.task3a_b.LogisticsManagement.PB_StockItemOrBuilder getItemsOrBuilder(
         int index);
   }
   /**
-   * Protobuf type {@code com.task3a_b.Stock}
+   * Protobuf type {@code com.task3a_b.PB_Stock}
    */
-  public  static final class Stock extends
+  public  static final class PB_Stock extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.task3a_b.Stock)
-      StockOrBuilder {
+      // @@protoc_insertion_point(message_implements:com.task3a_b.PB_Stock)
+      PB_StockOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Stock.newBuilder() to construct.
-    private Stock(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PB_Stock.newBuilder() to construct.
+    private PB_Stock(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Stock() {
+    private PB_Stock() {
       items_ = java.util.Collections.emptyList();
     }
 
@@ -7909,7 +9908,7 @@ public final class LogisticsManagement {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Stock(
+    private PB_Stock(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -7930,11 +9929,11 @@ public final class LogisticsManagement {
               break;
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                items_ = new java.util.ArrayList<com.task3a_b.LogisticsManagement.StockItem>();
+                items_ = new java.util.ArrayList<com.task3a_b.LogisticsManagement.PB_StockItem>();
                 mutable_bitField0_ |= 0x00000001;
               }
               items_.add(
-                  input.readMessage(com.task3a_b.LogisticsManagement.StockItem.parser(), extensionRegistry));
+                  input.readMessage(com.task3a_b.LogisticsManagement.PB_StockItem.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -7961,48 +9960,48 @@ public final class LogisticsManagement {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Stock_descriptor;
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Stock_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Stock_fieldAccessorTable
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Stock_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.task3a_b.LogisticsManagement.Stock.class, com.task3a_b.LogisticsManagement.Stock.Builder.class);
+              com.task3a_b.LogisticsManagement.PB_Stock.class, com.task3a_b.LogisticsManagement.PB_Stock.Builder.class);
     }
 
     public static final int ITEMS_FIELD_NUMBER = 1;
-    private java.util.List<com.task3a_b.LogisticsManagement.StockItem> items_;
+    private java.util.List<com.task3a_b.LogisticsManagement.PB_StockItem> items_;
     /**
-     * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+     * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
      */
-    public java.util.List<com.task3a_b.LogisticsManagement.StockItem> getItemsList() {
+    public java.util.List<com.task3a_b.LogisticsManagement.PB_StockItem> getItemsList() {
       return items_;
     }
     /**
-     * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+     * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
      */
-    public java.util.List<? extends com.task3a_b.LogisticsManagement.StockItemOrBuilder> 
+    public java.util.List<? extends com.task3a_b.LogisticsManagement.PB_StockItemOrBuilder> 
         getItemsOrBuilderList() {
       return items_;
     }
     /**
-     * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+     * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
      */
     public int getItemsCount() {
       return items_.size();
     }
     /**
-     * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+     * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
      */
-    public com.task3a_b.LogisticsManagement.StockItem getItems(int index) {
+    public com.task3a_b.LogisticsManagement.PB_StockItem getItems(int index) {
       return items_.get(index);
     }
     /**
-     * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+     * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
      */
-    public com.task3a_b.LogisticsManagement.StockItemOrBuilder getItemsOrBuilder(
+    public com.task3a_b.LogisticsManagement.PB_StockItemOrBuilder getItemsOrBuilder(
         int index) {
       return items_.get(index);
     }
@@ -8047,10 +10046,10 @@ public final class LogisticsManagement {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.task3a_b.LogisticsManagement.Stock)) {
+      if (!(obj instanceof com.task3a_b.LogisticsManagement.PB_Stock)) {
         return super.equals(obj);
       }
-      com.task3a_b.LogisticsManagement.Stock other = (com.task3a_b.LogisticsManagement.Stock) obj;
+      com.task3a_b.LogisticsManagement.PB_Stock other = (com.task3a_b.LogisticsManagement.PB_Stock) obj;
 
       boolean result = true;
       result = result && getItemsList()
@@ -8075,69 +10074,69 @@ public final class LogisticsManagement {
       return hash;
     }
 
-    public static com.task3a_b.LogisticsManagement.Stock parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Stock parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Stock parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Stock parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Stock parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Stock parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Stock parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Stock parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Stock parseFrom(byte[] data)
+    public static com.task3a_b.LogisticsManagement.PB_Stock parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Stock parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Stock parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Stock parseFrom(java.io.InputStream input)
+    public static com.task3a_b.LogisticsManagement.PB_Stock parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Stock parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Stock parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Stock parseDelimitedFrom(java.io.InputStream input)
+    public static com.task3a_b.LogisticsManagement.PB_Stock parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Stock parseDelimitedFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Stock parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Stock parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Stock parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Stock parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Stock parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -8150,7 +10149,7 @@ public final class LogisticsManagement {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.task3a_b.LogisticsManagement.Stock prototype) {
+    public static Builder newBuilder(com.task3a_b.LogisticsManagement.PB_Stock prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -8166,26 +10165,26 @@ public final class LogisticsManagement {
       return builder;
     }
     /**
-     * Protobuf type {@code com.task3a_b.Stock}
+     * Protobuf type {@code com.task3a_b.PB_Stock}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.task3a_b.Stock)
-        com.task3a_b.LogisticsManagement.StockOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.task3a_b.PB_Stock)
+        com.task3a_b.LogisticsManagement.PB_StockOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Stock_descriptor;
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Stock_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Stock_fieldAccessorTable
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Stock_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.task3a_b.LogisticsManagement.Stock.class, com.task3a_b.LogisticsManagement.Stock.Builder.class);
+                com.task3a_b.LogisticsManagement.PB_Stock.class, com.task3a_b.LogisticsManagement.PB_Stock.Builder.class);
       }
 
-      // Construct using com.task3a_b.LogisticsManagement.Stock.newBuilder()
+      // Construct using com.task3a_b.LogisticsManagement.PB_Stock.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -8216,17 +10215,17 @@ public final class LogisticsManagement {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Stock_descriptor;
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Stock_descriptor;
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Stock getDefaultInstanceForType() {
-        return com.task3a_b.LogisticsManagement.Stock.getDefaultInstance();
+      public com.task3a_b.LogisticsManagement.PB_Stock getDefaultInstanceForType() {
+        return com.task3a_b.LogisticsManagement.PB_Stock.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Stock build() {
-        com.task3a_b.LogisticsManagement.Stock result = buildPartial();
+      public com.task3a_b.LogisticsManagement.PB_Stock build() {
+        com.task3a_b.LogisticsManagement.PB_Stock result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -8234,8 +10233,8 @@ public final class LogisticsManagement {
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Stock buildPartial() {
-        com.task3a_b.LogisticsManagement.Stock result = new com.task3a_b.LogisticsManagement.Stock(this);
+      public com.task3a_b.LogisticsManagement.PB_Stock buildPartial() {
+        com.task3a_b.LogisticsManagement.PB_Stock result = new com.task3a_b.LogisticsManagement.PB_Stock(this);
         int from_bitField0_ = bitField0_;
         if (itemsBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -8284,16 +10283,16 @@ public final class LogisticsManagement {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.task3a_b.LogisticsManagement.Stock) {
-          return mergeFrom((com.task3a_b.LogisticsManagement.Stock)other);
+        if (other instanceof com.task3a_b.LogisticsManagement.PB_Stock) {
+          return mergeFrom((com.task3a_b.LogisticsManagement.PB_Stock)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.task3a_b.LogisticsManagement.Stock other) {
-        if (other == com.task3a_b.LogisticsManagement.Stock.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.task3a_b.LogisticsManagement.PB_Stock other) {
+        if (other == com.task3a_b.LogisticsManagement.PB_Stock.getDefaultInstance()) return this;
         if (itemsBuilder_ == null) {
           if (!other.items_.isEmpty()) {
             if (items_.isEmpty()) {
@@ -8335,11 +10334,11 @@ public final class LogisticsManagement {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.task3a_b.LogisticsManagement.Stock parsedMessage = null;
+        com.task3a_b.LogisticsManagement.PB_Stock parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.task3a_b.LogisticsManagement.Stock) e.getUnfinishedMessage();
+          parsedMessage = (com.task3a_b.LogisticsManagement.PB_Stock) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -8350,22 +10349,22 @@ public final class LogisticsManagement {
       }
       private int bitField0_;
 
-      private java.util.List<com.task3a_b.LogisticsManagement.StockItem> items_ =
+      private java.util.List<com.task3a_b.LogisticsManagement.PB_StockItem> items_ =
         java.util.Collections.emptyList();
       private void ensureItemsIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          items_ = new java.util.ArrayList<com.task3a_b.LogisticsManagement.StockItem>(items_);
+          items_ = new java.util.ArrayList<com.task3a_b.LogisticsManagement.PB_StockItem>(items_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.task3a_b.LogisticsManagement.StockItem, com.task3a_b.LogisticsManagement.StockItem.Builder, com.task3a_b.LogisticsManagement.StockItemOrBuilder> itemsBuilder_;
+          com.task3a_b.LogisticsManagement.PB_StockItem, com.task3a_b.LogisticsManagement.PB_StockItem.Builder, com.task3a_b.LogisticsManagement.PB_StockItemOrBuilder> itemsBuilder_;
 
       /**
-       * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
        */
-      public java.util.List<com.task3a_b.LogisticsManagement.StockItem> getItemsList() {
+      public java.util.List<com.task3a_b.LogisticsManagement.PB_StockItem> getItemsList() {
         if (itemsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(items_);
         } else {
@@ -8373,7 +10372,7 @@ public final class LogisticsManagement {
         }
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
        */
       public int getItemsCount() {
         if (itemsBuilder_ == null) {
@@ -8383,9 +10382,9 @@ public final class LogisticsManagement {
         }
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
        */
-      public com.task3a_b.LogisticsManagement.StockItem getItems(int index) {
+      public com.task3a_b.LogisticsManagement.PB_StockItem getItems(int index) {
         if (itemsBuilder_ == null) {
           return items_.get(index);
         } else {
@@ -8393,10 +10392,10 @@ public final class LogisticsManagement {
         }
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
        */
       public Builder setItems(
-          int index, com.task3a_b.LogisticsManagement.StockItem value) {
+          int index, com.task3a_b.LogisticsManagement.PB_StockItem value) {
         if (itemsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -8410,10 +10409,10 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
        */
       public Builder setItems(
-          int index, com.task3a_b.LogisticsManagement.StockItem.Builder builderForValue) {
+          int index, com.task3a_b.LogisticsManagement.PB_StockItem.Builder builderForValue) {
         if (itemsBuilder_ == null) {
           ensureItemsIsMutable();
           items_.set(index, builderForValue.build());
@@ -8424,9 +10423,9 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
        */
-      public Builder addItems(com.task3a_b.LogisticsManagement.StockItem value) {
+      public Builder addItems(com.task3a_b.LogisticsManagement.PB_StockItem value) {
         if (itemsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -8440,10 +10439,10 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
        */
       public Builder addItems(
-          int index, com.task3a_b.LogisticsManagement.StockItem value) {
+          int index, com.task3a_b.LogisticsManagement.PB_StockItem value) {
         if (itemsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -8457,10 +10456,10 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
        */
       public Builder addItems(
-          com.task3a_b.LogisticsManagement.StockItem.Builder builderForValue) {
+          com.task3a_b.LogisticsManagement.PB_StockItem.Builder builderForValue) {
         if (itemsBuilder_ == null) {
           ensureItemsIsMutable();
           items_.add(builderForValue.build());
@@ -8471,10 +10470,10 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
        */
       public Builder addItems(
-          int index, com.task3a_b.LogisticsManagement.StockItem.Builder builderForValue) {
+          int index, com.task3a_b.LogisticsManagement.PB_StockItem.Builder builderForValue) {
         if (itemsBuilder_ == null) {
           ensureItemsIsMutable();
           items_.add(index, builderForValue.build());
@@ -8485,10 +10484,10 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
        */
       public Builder addAllItems(
-          java.lang.Iterable<? extends com.task3a_b.LogisticsManagement.StockItem> values) {
+          java.lang.Iterable<? extends com.task3a_b.LogisticsManagement.PB_StockItem> values) {
         if (itemsBuilder_ == null) {
           ensureItemsIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -8500,7 +10499,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
        */
       public Builder clearItems() {
         if (itemsBuilder_ == null) {
@@ -8513,7 +10512,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
        */
       public Builder removeItems(int index) {
         if (itemsBuilder_ == null) {
@@ -8526,16 +10525,16 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
        */
-      public com.task3a_b.LogisticsManagement.StockItem.Builder getItemsBuilder(
+      public com.task3a_b.LogisticsManagement.PB_StockItem.Builder getItemsBuilder(
           int index) {
         return getItemsFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
        */
-      public com.task3a_b.LogisticsManagement.StockItemOrBuilder getItemsOrBuilder(
+      public com.task3a_b.LogisticsManagement.PB_StockItemOrBuilder getItemsOrBuilder(
           int index) {
         if (itemsBuilder_ == null) {
           return items_.get(index);  } else {
@@ -8543,9 +10542,9 @@ public final class LogisticsManagement {
         }
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
        */
-      public java.util.List<? extends com.task3a_b.LogisticsManagement.StockItemOrBuilder> 
+      public java.util.List<? extends com.task3a_b.LogisticsManagement.PB_StockItemOrBuilder> 
            getItemsOrBuilderList() {
         if (itemsBuilder_ != null) {
           return itemsBuilder_.getMessageOrBuilderList();
@@ -8554,33 +10553,33 @@ public final class LogisticsManagement {
         }
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
        */
-      public com.task3a_b.LogisticsManagement.StockItem.Builder addItemsBuilder() {
+      public com.task3a_b.LogisticsManagement.PB_StockItem.Builder addItemsBuilder() {
         return getItemsFieldBuilder().addBuilder(
-            com.task3a_b.LogisticsManagement.StockItem.getDefaultInstance());
+            com.task3a_b.LogisticsManagement.PB_StockItem.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
        */
-      public com.task3a_b.LogisticsManagement.StockItem.Builder addItemsBuilder(
+      public com.task3a_b.LogisticsManagement.PB_StockItem.Builder addItemsBuilder(
           int index) {
         return getItemsFieldBuilder().addBuilder(
-            index, com.task3a_b.LogisticsManagement.StockItem.getDefaultInstance());
+            index, com.task3a_b.LogisticsManagement.PB_StockItem.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem items = 1;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem items = 1;</code>
        */
-      public java.util.List<com.task3a_b.LogisticsManagement.StockItem.Builder> 
+      public java.util.List<com.task3a_b.LogisticsManagement.PB_StockItem.Builder> 
            getItemsBuilderList() {
         return getItemsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.task3a_b.LogisticsManagement.StockItem, com.task3a_b.LogisticsManagement.StockItem.Builder, com.task3a_b.LogisticsManagement.StockItemOrBuilder> 
+          com.task3a_b.LogisticsManagement.PB_StockItem, com.task3a_b.LogisticsManagement.PB_StockItem.Builder, com.task3a_b.LogisticsManagement.PB_StockItemOrBuilder> 
           getItemsFieldBuilder() {
         if (itemsBuilder_ == null) {
           itemsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              com.task3a_b.LogisticsManagement.StockItem, com.task3a_b.LogisticsManagement.StockItem.Builder, com.task3a_b.LogisticsManagement.StockItemOrBuilder>(
+              com.task3a_b.LogisticsManagement.PB_StockItem, com.task3a_b.LogisticsManagement.PB_StockItem.Builder, com.task3a_b.LogisticsManagement.PB_StockItemOrBuilder>(
                   items_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
@@ -8602,48 +10601,48 @@ public final class LogisticsManagement {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.task3a_b.Stock)
+      // @@protoc_insertion_point(builder_scope:com.task3a_b.PB_Stock)
     }
 
-    // @@protoc_insertion_point(class_scope:com.task3a_b.Stock)
-    private static final com.task3a_b.LogisticsManagement.Stock DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.task3a_b.PB_Stock)
+    private static final com.task3a_b.LogisticsManagement.PB_Stock DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.Stock();
+      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.PB_Stock();
     }
 
-    public static com.task3a_b.LogisticsManagement.Stock getDefaultInstance() {
+    public static com.task3a_b.LogisticsManagement.PB_Stock getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Stock>
-        PARSER = new com.google.protobuf.AbstractParser<Stock>() {
+    private static final com.google.protobuf.Parser<PB_Stock>
+        PARSER = new com.google.protobuf.AbstractParser<PB_Stock>() {
       @java.lang.Override
-      public Stock parsePartialFrom(
+      public PB_Stock parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Stock(input, extensionRegistry);
+        return new PB_Stock(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Stock> parser() {
+    public static com.google.protobuf.Parser<PB_Stock> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Stock> getParserForType() {
+    public com.google.protobuf.Parser<PB_Stock> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.task3a_b.LogisticsManagement.Stock getDefaultInstanceForType() {
+    public com.task3a_b.LogisticsManagement.PB_Stock getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface CustomerOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.task3a_b.Customer)
+  public interface PB_CustomerOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.task3a_b.PB_Customer)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -8692,18 +10691,18 @@ public final class LogisticsManagement {
         getCustomerPostCodeBytes();
   }
   /**
-   * Protobuf type {@code com.task3a_b.Customer}
+   * Protobuf type {@code com.task3a_b.PB_Customer}
    */
-  public  static final class Customer extends
+  public  static final class PB_Customer extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.task3a_b.Customer)
-      CustomerOrBuilder {
+      // @@protoc_insertion_point(message_implements:com.task3a_b.PB_Customer)
+      PB_CustomerOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Customer.newBuilder() to construct.
-    private Customer(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PB_Customer.newBuilder() to construct.
+    private PB_Customer(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Customer() {
+    private PB_Customer() {
       customerName_ = "";
       customerID_ = 0;
       customerRoad_ = "";
@@ -8716,7 +10715,7 @@ public final class LogisticsManagement {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Customer(
+    private PB_Customer(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -8785,15 +10784,15 @@ public final class LogisticsManagement {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Customer_descriptor;
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Customer_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Customer_fieldAccessorTable
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Customer_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.task3a_b.LogisticsManagement.Customer.class, com.task3a_b.LogisticsManagement.Customer.Builder.class);
+              com.task3a_b.LogisticsManagement.PB_Customer.class, com.task3a_b.LogisticsManagement.PB_Customer.Builder.class);
     }
 
     public static final int CUSTOMERNAME_FIELD_NUMBER = 1;
@@ -9005,10 +11004,10 @@ public final class LogisticsManagement {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.task3a_b.LogisticsManagement.Customer)) {
+      if (!(obj instanceof com.task3a_b.LogisticsManagement.PB_Customer)) {
         return super.equals(obj);
       }
-      com.task3a_b.LogisticsManagement.Customer other = (com.task3a_b.LogisticsManagement.Customer) obj;
+      com.task3a_b.LogisticsManagement.PB_Customer other = (com.task3a_b.LogisticsManagement.PB_Customer) obj;
 
       boolean result = true;
       result = result && getCustomerName()
@@ -9047,69 +11046,69 @@ public final class LogisticsManagement {
       return hash;
     }
 
-    public static com.task3a_b.LogisticsManagement.Customer parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Customer parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Customer parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Customer parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Customer parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Customer parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Customer parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Customer parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Customer parseFrom(byte[] data)
+    public static com.task3a_b.LogisticsManagement.PB_Customer parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Customer parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Customer parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Customer parseFrom(java.io.InputStream input)
+    public static com.task3a_b.LogisticsManagement.PB_Customer parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Customer parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Customer parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Customer parseDelimitedFrom(java.io.InputStream input)
+    public static com.task3a_b.LogisticsManagement.PB_Customer parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Customer parseDelimitedFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Customer parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Customer parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Customer parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Customer parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Customer parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -9122,7 +11121,7 @@ public final class LogisticsManagement {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.task3a_b.LogisticsManagement.Customer prototype) {
+    public static Builder newBuilder(com.task3a_b.LogisticsManagement.PB_Customer prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -9138,26 +11137,26 @@ public final class LogisticsManagement {
       return builder;
     }
     /**
-     * Protobuf type {@code com.task3a_b.Customer}
+     * Protobuf type {@code com.task3a_b.PB_Customer}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.task3a_b.Customer)
-        com.task3a_b.LogisticsManagement.CustomerOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.task3a_b.PB_Customer)
+        com.task3a_b.LogisticsManagement.PB_CustomerOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Customer_descriptor;
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Customer_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Customer_fieldAccessorTable
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Customer_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.task3a_b.LogisticsManagement.Customer.class, com.task3a_b.LogisticsManagement.Customer.Builder.class);
+                com.task3a_b.LogisticsManagement.PB_Customer.class, com.task3a_b.LogisticsManagement.PB_Customer.Builder.class);
       }
 
-      // Construct using com.task3a_b.LogisticsManagement.Customer.newBuilder()
+      // Construct using com.task3a_b.LogisticsManagement.PB_Customer.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -9191,17 +11190,17 @@ public final class LogisticsManagement {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Customer_descriptor;
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Customer_descriptor;
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Customer getDefaultInstanceForType() {
-        return com.task3a_b.LogisticsManagement.Customer.getDefaultInstance();
+      public com.task3a_b.LogisticsManagement.PB_Customer getDefaultInstanceForType() {
+        return com.task3a_b.LogisticsManagement.PB_Customer.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Customer build() {
-        com.task3a_b.LogisticsManagement.Customer result = buildPartial();
+      public com.task3a_b.LogisticsManagement.PB_Customer build() {
+        com.task3a_b.LogisticsManagement.PB_Customer result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -9209,8 +11208,8 @@ public final class LogisticsManagement {
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Customer buildPartial() {
-        com.task3a_b.LogisticsManagement.Customer result = new com.task3a_b.LogisticsManagement.Customer(this);
+      public com.task3a_b.LogisticsManagement.PB_Customer buildPartial() {
+        com.task3a_b.LogisticsManagement.PB_Customer result = new com.task3a_b.LogisticsManagement.PB_Customer(this);
         result.customerName_ = customerName_;
         result.customerID_ = customerID_;
         result.customerRoad_ = customerRoad_;
@@ -9254,16 +11253,16 @@ public final class LogisticsManagement {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.task3a_b.LogisticsManagement.Customer) {
-          return mergeFrom((com.task3a_b.LogisticsManagement.Customer)other);
+        if (other instanceof com.task3a_b.LogisticsManagement.PB_Customer) {
+          return mergeFrom((com.task3a_b.LogisticsManagement.PB_Customer)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.task3a_b.LogisticsManagement.Customer other) {
-        if (other == com.task3a_b.LogisticsManagement.Customer.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.task3a_b.LogisticsManagement.PB_Customer other) {
+        if (other == com.task3a_b.LogisticsManagement.PB_Customer.getDefaultInstance()) return this;
         if (!other.getCustomerName().isEmpty()) {
           customerName_ = other.customerName_;
           onChanged();
@@ -9298,11 +11297,11 @@ public final class LogisticsManagement {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.task3a_b.LogisticsManagement.Customer parsedMessage = null;
+        com.task3a_b.LogisticsManagement.PB_Customer parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.task3a_b.LogisticsManagement.Customer) e.getUnfinishedMessage();
+          parsedMessage = (com.task3a_b.LogisticsManagement.PB_Customer) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -9626,48 +11625,48 @@ public final class LogisticsManagement {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.task3a_b.Customer)
+      // @@protoc_insertion_point(builder_scope:com.task3a_b.PB_Customer)
     }
 
-    // @@protoc_insertion_point(class_scope:com.task3a_b.Customer)
-    private static final com.task3a_b.LogisticsManagement.Customer DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.task3a_b.PB_Customer)
+    private static final com.task3a_b.LogisticsManagement.PB_Customer DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.Customer();
+      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.PB_Customer();
     }
 
-    public static com.task3a_b.LogisticsManagement.Customer getDefaultInstance() {
+    public static com.task3a_b.LogisticsManagement.PB_Customer getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Customer>
-        PARSER = new com.google.protobuf.AbstractParser<Customer>() {
+    private static final com.google.protobuf.Parser<PB_Customer>
+        PARSER = new com.google.protobuf.AbstractParser<PB_Customer>() {
       @java.lang.Override
-      public Customer parsePartialFrom(
+      public PB_Customer parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Customer(input, extensionRegistry);
+        return new PB_Customer(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Customer> parser() {
+    public static com.google.protobuf.Parser<PB_Customer> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Customer> getParserForType() {
+    public com.google.protobuf.Parser<PB_Customer> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.task3a_b.LogisticsManagement.Customer getDefaultInstanceForType() {
+    public com.task3a_b.LogisticsManagement.PB_Customer getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface ShipmentOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.task3a_b.Shipment)
+  public interface PB_ShipmentOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.task3a_b.PB_Shipment)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -9700,83 +11699,108 @@ public final class LogisticsManagement {
         getDispatchDateBytes();
 
     /**
-     * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+     * <code>string orderDate = 4;</code>
      */
-    java.util.List<com.task3a_b.LogisticsManagement.StockItem> 
+    java.lang.String getOrderDate();
+    /**
+     * <code>string orderDate = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getOrderDateBytes();
+
+    /**
+     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+     */
+    java.util.List<com.task3a_b.LogisticsManagement.PB_StockItem> 
         getItemsToShipList();
     /**
-     * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
      */
-    com.task3a_b.LogisticsManagement.StockItem getItemsToShip(int index);
+    com.task3a_b.LogisticsManagement.PB_StockItem getItemsToShip(int index);
     /**
-     * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
      */
     int getItemsToShipCount();
     /**
-     * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
      */
-    java.util.List<? extends com.task3a_b.LogisticsManagement.StockItemOrBuilder> 
+    java.util.List<? extends com.task3a_b.LogisticsManagement.PB_StockItemOrBuilder> 
         getItemsToShipOrBuilderList();
     /**
-     * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
      */
-    com.task3a_b.LogisticsManagement.StockItemOrBuilder getItemsToShipOrBuilder(
+    com.task3a_b.LogisticsManagement.PB_StockItemOrBuilder getItemsToShipOrBuilder(
         int index);
 
     /**
-     * <code>.com.task3a_b.Customer shipmentCustomer = 5;</code>
+     * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
      */
     boolean hasShipmentCustomer();
     /**
-     * <code>.com.task3a_b.Customer shipmentCustomer = 5;</code>
+     * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
      */
-    com.task3a_b.LogisticsManagement.Customer getShipmentCustomer();
+    com.task3a_b.LogisticsManagement.PB_Customer getShipmentCustomer();
     /**
-     * <code>.com.task3a_b.Customer shipmentCustomer = 5;</code>
+     * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
      */
-    com.task3a_b.LogisticsManagement.CustomerOrBuilder getShipmentCustomerOrBuilder();
+    com.task3a_b.LogisticsManagement.PB_CustomerOrBuilder getShipmentCustomerOrBuilder();
 
     /**
-     * <pre>
-     * Add other shipment attributes as needed
-     * </pre>
-     *
-     * <code>.com.task3a_b.Transport shipmentTransport = 6;</code>
+     * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
      */
-    boolean hasShipmentTransport();
+    boolean hasShipmentAircraft();
     /**
-     * <pre>
-     * Add other shipment attributes as needed
-     * </pre>
-     *
-     * <code>.com.task3a_b.Transport shipmentTransport = 6;</code>
+     * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
      */
-    com.task3a_b.LogisticsManagement.Transport getShipmentTransport();
+    com.task3a_b.LogisticsManagement.PB_Aircraft getShipmentAircraft();
     /**
-     * <pre>
-     * Add other shipment attributes as needed
-     * </pre>
-     *
-     * <code>.com.task3a_b.Transport shipmentTransport = 6;</code>
+     * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
      */
-    com.task3a_b.LogisticsManagement.TransportOrBuilder getShipmentTransportOrBuilder();
+    com.task3a_b.LogisticsManagement.PB_AircraftOrBuilder getShipmentAircraftOrBuilder();
+
+    /**
+     * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+     */
+    boolean hasShipmentVessel();
+    /**
+     * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_SeaVessel getShipmentVessel();
+    /**
+     * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_SeaVesselOrBuilder getShipmentVesselOrBuilder();
+
+    /**
+     * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+     */
+    boolean hasShipmentTruck();
+    /**
+     * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_Truck getShipmentTruck();
+    /**
+     * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_TruckOrBuilder getShipmentTruckOrBuilder();
   }
   /**
-   * Protobuf type {@code com.task3a_b.Shipment}
+   * Protobuf type {@code com.task3a_b.PB_Shipment}
    */
-  public  static final class Shipment extends
+  public  static final class PB_Shipment extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.task3a_b.Shipment)
-      ShipmentOrBuilder {
+      // @@protoc_insertion_point(message_implements:com.task3a_b.PB_Shipment)
+      PB_ShipmentOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Shipment.newBuilder() to construct.
-    private Shipment(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PB_Shipment.newBuilder() to construct.
+    private PB_Shipment(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Shipment() {
+    private PB_Shipment() {
       shipmentID_ = 0;
       shipmentStatus_ = "";
       dispatchDate_ = "";
+      orderDate_ = "";
       itemsToShip_ = java.util.Collections.emptyList();
     }
 
@@ -9785,7 +11809,7 @@ public final class LogisticsManagement {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Shipment(
+    private PB_Shipment(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -9822,20 +11846,26 @@ public final class LogisticsManagement {
               break;
             }
             case 34: {
-              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
-                itemsToShip_ = new java.util.ArrayList<com.task3a_b.LogisticsManagement.StockItem>();
-                mutable_bitField0_ |= 0x00000008;
-              }
-              itemsToShip_.add(
-                  input.readMessage(com.task3a_b.LogisticsManagement.StockItem.parser(), extensionRegistry));
+              java.lang.String s = input.readStringRequireUtf8();
+
+              orderDate_ = s;
               break;
             }
             case 42: {
-              com.task3a_b.LogisticsManagement.Customer.Builder subBuilder = null;
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                itemsToShip_ = new java.util.ArrayList<com.task3a_b.LogisticsManagement.PB_StockItem>();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              itemsToShip_.add(
+                  input.readMessage(com.task3a_b.LogisticsManagement.PB_StockItem.parser(), extensionRegistry));
+              break;
+            }
+            case 50: {
+              com.task3a_b.LogisticsManagement.PB_Customer.Builder subBuilder = null;
               if (shipmentCustomer_ != null) {
                 subBuilder = shipmentCustomer_.toBuilder();
               }
-              shipmentCustomer_ = input.readMessage(com.task3a_b.LogisticsManagement.Customer.parser(), extensionRegistry);
+              shipmentCustomer_ = input.readMessage(com.task3a_b.LogisticsManagement.PB_Customer.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(shipmentCustomer_);
                 shipmentCustomer_ = subBuilder.buildPartial();
@@ -9843,15 +11873,41 @@ public final class LogisticsManagement {
 
               break;
             }
-            case 50: {
-              com.task3a_b.LogisticsManagement.Transport.Builder subBuilder = null;
-              if (shipmentTransport_ != null) {
-                subBuilder = shipmentTransport_.toBuilder();
+            case 58: {
+              com.task3a_b.LogisticsManagement.PB_Aircraft.Builder subBuilder = null;
+              if (shipmentAircraft_ != null) {
+                subBuilder = shipmentAircraft_.toBuilder();
               }
-              shipmentTransport_ = input.readMessage(com.task3a_b.LogisticsManagement.Transport.parser(), extensionRegistry);
+              shipmentAircraft_ = input.readMessage(com.task3a_b.LogisticsManagement.PB_Aircraft.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(shipmentTransport_);
-                shipmentTransport_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(shipmentAircraft_);
+                shipmentAircraft_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 66: {
+              com.task3a_b.LogisticsManagement.PB_SeaVessel.Builder subBuilder = null;
+              if (shipmentVessel_ != null) {
+                subBuilder = shipmentVessel_.toBuilder();
+              }
+              shipmentVessel_ = input.readMessage(com.task3a_b.LogisticsManagement.PB_SeaVessel.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(shipmentVessel_);
+                shipmentVessel_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 74: {
+              com.task3a_b.LogisticsManagement.PB_Truck.Builder subBuilder = null;
+              if (shipmentTruck_ != null) {
+                subBuilder = shipmentTruck_.toBuilder();
+              }
+              shipmentTruck_ = input.readMessage(com.task3a_b.LogisticsManagement.PB_Truck.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(shipmentTruck_);
+                shipmentTruck_ = subBuilder.buildPartial();
               }
 
               break;
@@ -9871,7 +11927,7 @@ public final class LogisticsManagement {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
           itemsToShip_ = java.util.Collections.unmodifiableList(itemsToShip_);
         }
         this.unknownFields = unknownFields.build();
@@ -9880,15 +11936,15 @@ public final class LogisticsManagement {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Shipment_descriptor;
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Shipment_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Shipment_fieldAccessorTable
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Shipment_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.task3a_b.LogisticsManagement.Shipment.class, com.task3a_b.LogisticsManagement.Shipment.Builder.class);
+              com.task3a_b.LogisticsManagement.PB_Shipment.class, com.task3a_b.LogisticsManagement.PB_Shipment.Builder.class);
     }
 
     private int bitField0_;
@@ -9973,93 +12029,157 @@ public final class LogisticsManagement {
       }
     }
 
-    public static final int ITEMSTOSHIP_FIELD_NUMBER = 4;
-    private java.util.List<com.task3a_b.LogisticsManagement.StockItem> itemsToShip_;
+    public static final int ORDERDATE_FIELD_NUMBER = 4;
+    private volatile java.lang.Object orderDate_;
     /**
-     * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+     * <code>string orderDate = 4;</code>
      */
-    public java.util.List<com.task3a_b.LogisticsManagement.StockItem> getItemsToShipList() {
+    public java.lang.String getOrderDate() {
+      java.lang.Object ref = orderDate_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        orderDate_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string orderDate = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getOrderDateBytes() {
+      java.lang.Object ref = orderDate_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        orderDate_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ITEMSTOSHIP_FIELD_NUMBER = 5;
+    private java.util.List<com.task3a_b.LogisticsManagement.PB_StockItem> itemsToShip_;
+    /**
+     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+     */
+    public java.util.List<com.task3a_b.LogisticsManagement.PB_StockItem> getItemsToShipList() {
       return itemsToShip_;
     }
     /**
-     * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
      */
-    public java.util.List<? extends com.task3a_b.LogisticsManagement.StockItemOrBuilder> 
+    public java.util.List<? extends com.task3a_b.LogisticsManagement.PB_StockItemOrBuilder> 
         getItemsToShipOrBuilderList() {
       return itemsToShip_;
     }
     /**
-     * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
      */
     public int getItemsToShipCount() {
       return itemsToShip_.size();
     }
     /**
-     * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
      */
-    public com.task3a_b.LogisticsManagement.StockItem getItemsToShip(int index) {
+    public com.task3a_b.LogisticsManagement.PB_StockItem getItemsToShip(int index) {
       return itemsToShip_.get(index);
     }
     /**
-     * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
      */
-    public com.task3a_b.LogisticsManagement.StockItemOrBuilder getItemsToShipOrBuilder(
+    public com.task3a_b.LogisticsManagement.PB_StockItemOrBuilder getItemsToShipOrBuilder(
         int index) {
       return itemsToShip_.get(index);
     }
 
-    public static final int SHIPMENTCUSTOMER_FIELD_NUMBER = 5;
-    private com.task3a_b.LogisticsManagement.Customer shipmentCustomer_;
+    public static final int SHIPMENTCUSTOMER_FIELD_NUMBER = 6;
+    private com.task3a_b.LogisticsManagement.PB_Customer shipmentCustomer_;
     /**
-     * <code>.com.task3a_b.Customer shipmentCustomer = 5;</code>
+     * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
      */
     public boolean hasShipmentCustomer() {
       return shipmentCustomer_ != null;
     }
     /**
-     * <code>.com.task3a_b.Customer shipmentCustomer = 5;</code>
+     * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
      */
-    public com.task3a_b.LogisticsManagement.Customer getShipmentCustomer() {
-      return shipmentCustomer_ == null ? com.task3a_b.LogisticsManagement.Customer.getDefaultInstance() : shipmentCustomer_;
+    public com.task3a_b.LogisticsManagement.PB_Customer getShipmentCustomer() {
+      return shipmentCustomer_ == null ? com.task3a_b.LogisticsManagement.PB_Customer.getDefaultInstance() : shipmentCustomer_;
     }
     /**
-     * <code>.com.task3a_b.Customer shipmentCustomer = 5;</code>
+     * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
      */
-    public com.task3a_b.LogisticsManagement.CustomerOrBuilder getShipmentCustomerOrBuilder() {
+    public com.task3a_b.LogisticsManagement.PB_CustomerOrBuilder getShipmentCustomerOrBuilder() {
       return getShipmentCustomer();
     }
 
-    public static final int SHIPMENTTRANSPORT_FIELD_NUMBER = 6;
-    private com.task3a_b.LogisticsManagement.Transport shipmentTransport_;
+    public static final int SHIPMENTAIRCRAFT_FIELD_NUMBER = 7;
+    private com.task3a_b.LogisticsManagement.PB_Aircraft shipmentAircraft_;
     /**
-     * <pre>
-     * Add other shipment attributes as needed
-     * </pre>
-     *
-     * <code>.com.task3a_b.Transport shipmentTransport = 6;</code>
+     * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
      */
-    public boolean hasShipmentTransport() {
-      return shipmentTransport_ != null;
+    public boolean hasShipmentAircraft() {
+      return shipmentAircraft_ != null;
     }
     /**
-     * <pre>
-     * Add other shipment attributes as needed
-     * </pre>
-     *
-     * <code>.com.task3a_b.Transport shipmentTransport = 6;</code>
+     * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
      */
-    public com.task3a_b.LogisticsManagement.Transport getShipmentTransport() {
-      return shipmentTransport_ == null ? com.task3a_b.LogisticsManagement.Transport.getDefaultInstance() : shipmentTransport_;
+    public com.task3a_b.LogisticsManagement.PB_Aircraft getShipmentAircraft() {
+      return shipmentAircraft_ == null ? com.task3a_b.LogisticsManagement.PB_Aircraft.getDefaultInstance() : shipmentAircraft_;
     }
     /**
-     * <pre>
-     * Add other shipment attributes as needed
-     * </pre>
-     *
-     * <code>.com.task3a_b.Transport shipmentTransport = 6;</code>
+     * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
      */
-    public com.task3a_b.LogisticsManagement.TransportOrBuilder getShipmentTransportOrBuilder() {
-      return getShipmentTransport();
+    public com.task3a_b.LogisticsManagement.PB_AircraftOrBuilder getShipmentAircraftOrBuilder() {
+      return getShipmentAircraft();
+    }
+
+    public static final int SHIPMENTVESSEL_FIELD_NUMBER = 8;
+    private com.task3a_b.LogisticsManagement.PB_SeaVessel shipmentVessel_;
+    /**
+     * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+     */
+    public boolean hasShipmentVessel() {
+      return shipmentVessel_ != null;
+    }
+    /**
+     * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_SeaVessel getShipmentVessel() {
+      return shipmentVessel_ == null ? com.task3a_b.LogisticsManagement.PB_SeaVessel.getDefaultInstance() : shipmentVessel_;
+    }
+    /**
+     * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_SeaVesselOrBuilder getShipmentVesselOrBuilder() {
+      return getShipmentVessel();
+    }
+
+    public static final int SHIPMENTTRUCK_FIELD_NUMBER = 9;
+    private com.task3a_b.LogisticsManagement.PB_Truck shipmentTruck_;
+    /**
+     * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+     */
+    public boolean hasShipmentTruck() {
+      return shipmentTruck_ != null;
+    }
+    /**
+     * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_Truck getShipmentTruck() {
+      return shipmentTruck_ == null ? com.task3a_b.LogisticsManagement.PB_Truck.getDefaultInstance() : shipmentTruck_;
+    }
+    /**
+     * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_TruckOrBuilder getShipmentTruckOrBuilder() {
+      return getShipmentTruck();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -10085,14 +12205,23 @@ public final class LogisticsManagement {
       if (!getDispatchDateBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, dispatchDate_);
       }
+      if (!getOrderDateBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, orderDate_);
+      }
       for (int i = 0; i < itemsToShip_.size(); i++) {
-        output.writeMessage(4, itemsToShip_.get(i));
+        output.writeMessage(5, itemsToShip_.get(i));
       }
       if (shipmentCustomer_ != null) {
-        output.writeMessage(5, getShipmentCustomer());
+        output.writeMessage(6, getShipmentCustomer());
       }
-      if (shipmentTransport_ != null) {
-        output.writeMessage(6, getShipmentTransport());
+      if (shipmentAircraft_ != null) {
+        output.writeMessage(7, getShipmentAircraft());
+      }
+      if (shipmentVessel_ != null) {
+        output.writeMessage(8, getShipmentVessel());
+      }
+      if (shipmentTruck_ != null) {
+        output.writeMessage(9, getShipmentTruck());
       }
       unknownFields.writeTo(output);
     }
@@ -10113,17 +12242,28 @@ public final class LogisticsManagement {
       if (!getDispatchDateBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, dispatchDate_);
       }
+      if (!getOrderDateBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, orderDate_);
+      }
       for (int i = 0; i < itemsToShip_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, itemsToShip_.get(i));
+          .computeMessageSize(5, itemsToShip_.get(i));
       }
       if (shipmentCustomer_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, getShipmentCustomer());
+          .computeMessageSize(6, getShipmentCustomer());
       }
-      if (shipmentTransport_ != null) {
+      if (shipmentAircraft_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, getShipmentTransport());
+          .computeMessageSize(7, getShipmentAircraft());
+      }
+      if (shipmentVessel_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, getShipmentVessel());
+      }
+      if (shipmentTruck_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, getShipmentTruck());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -10135,10 +12275,10 @@ public final class LogisticsManagement {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.task3a_b.LogisticsManagement.Shipment)) {
+      if (!(obj instanceof com.task3a_b.LogisticsManagement.PB_Shipment)) {
         return super.equals(obj);
       }
-      com.task3a_b.LogisticsManagement.Shipment other = (com.task3a_b.LogisticsManagement.Shipment) obj;
+      com.task3a_b.LogisticsManagement.PB_Shipment other = (com.task3a_b.LogisticsManagement.PB_Shipment) obj;
 
       boolean result = true;
       result = result && (getShipmentID()
@@ -10147,6 +12287,8 @@ public final class LogisticsManagement {
           .equals(other.getShipmentStatus());
       result = result && getDispatchDate()
           .equals(other.getDispatchDate());
+      result = result && getOrderDate()
+          .equals(other.getOrderDate());
       result = result && getItemsToShipList()
           .equals(other.getItemsToShipList());
       result = result && (hasShipmentCustomer() == other.hasShipmentCustomer());
@@ -10154,10 +12296,20 @@ public final class LogisticsManagement {
         result = result && getShipmentCustomer()
             .equals(other.getShipmentCustomer());
       }
-      result = result && (hasShipmentTransport() == other.hasShipmentTransport());
-      if (hasShipmentTransport()) {
-        result = result && getShipmentTransport()
-            .equals(other.getShipmentTransport());
+      result = result && (hasShipmentAircraft() == other.hasShipmentAircraft());
+      if (hasShipmentAircraft()) {
+        result = result && getShipmentAircraft()
+            .equals(other.getShipmentAircraft());
+      }
+      result = result && (hasShipmentVessel() == other.hasShipmentVessel());
+      if (hasShipmentVessel()) {
+        result = result && getShipmentVessel()
+            .equals(other.getShipmentVessel());
+      }
+      result = result && (hasShipmentTruck() == other.hasShipmentTruck());
+      if (hasShipmentTruck()) {
+        result = result && getShipmentTruck()
+            .equals(other.getShipmentTruck());
       }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
@@ -10176,6 +12328,8 @@ public final class LogisticsManagement {
       hash = (53 * hash) + getShipmentStatus().hashCode();
       hash = (37 * hash) + DISPATCHDATE_FIELD_NUMBER;
       hash = (53 * hash) + getDispatchDate().hashCode();
+      hash = (37 * hash) + ORDERDATE_FIELD_NUMBER;
+      hash = (53 * hash) + getOrderDate().hashCode();
       if (getItemsToShipCount() > 0) {
         hash = (37 * hash) + ITEMSTOSHIP_FIELD_NUMBER;
         hash = (53 * hash) + getItemsToShipList().hashCode();
@@ -10184,78 +12338,86 @@ public final class LogisticsManagement {
         hash = (37 * hash) + SHIPMENTCUSTOMER_FIELD_NUMBER;
         hash = (53 * hash) + getShipmentCustomer().hashCode();
       }
-      if (hasShipmentTransport()) {
-        hash = (37 * hash) + SHIPMENTTRANSPORT_FIELD_NUMBER;
-        hash = (53 * hash) + getShipmentTransport().hashCode();
+      if (hasShipmentAircraft()) {
+        hash = (37 * hash) + SHIPMENTAIRCRAFT_FIELD_NUMBER;
+        hash = (53 * hash) + getShipmentAircraft().hashCode();
+      }
+      if (hasShipmentVessel()) {
+        hash = (37 * hash) + SHIPMENTVESSEL_FIELD_NUMBER;
+        hash = (53 * hash) + getShipmentVessel().hashCode();
+      }
+      if (hasShipmentTruck()) {
+        hash = (37 * hash) + SHIPMENTTRUCK_FIELD_NUMBER;
+        hash = (53 * hash) + getShipmentTruck().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static com.task3a_b.LogisticsManagement.Shipment parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Shipment parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Shipment parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Shipment parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Shipment parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Shipment parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Shipment parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Shipment parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Shipment parseFrom(byte[] data)
+    public static com.task3a_b.LogisticsManagement.PB_Shipment parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.task3a_b.LogisticsManagement.Shipment parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Shipment parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Shipment parseFrom(java.io.InputStream input)
+    public static com.task3a_b.LogisticsManagement.PB_Shipment parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Shipment parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Shipment parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Shipment parseDelimitedFrom(java.io.InputStream input)
+    public static com.task3a_b.LogisticsManagement.PB_Shipment parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Shipment parseDelimitedFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Shipment parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.task3a_b.LogisticsManagement.Shipment parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Shipment parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.task3a_b.LogisticsManagement.Shipment parseFrom(
+    public static com.task3a_b.LogisticsManagement.PB_Shipment parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -10268,7 +12430,7 @@ public final class LogisticsManagement {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.task3a_b.LogisticsManagement.Shipment prototype) {
+    public static Builder newBuilder(com.task3a_b.LogisticsManagement.PB_Shipment prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -10284,26 +12446,26 @@ public final class LogisticsManagement {
       return builder;
     }
     /**
-     * Protobuf type {@code com.task3a_b.Shipment}
+     * Protobuf type {@code com.task3a_b.PB_Shipment}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.task3a_b.Shipment)
-        com.task3a_b.LogisticsManagement.ShipmentOrBuilder {
+        // @@protoc_insertion_point(builder_implements:com.task3a_b.PB_Shipment)
+        com.task3a_b.LogisticsManagement.PB_ShipmentOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Shipment_descriptor;
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Shipment_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Shipment_fieldAccessorTable
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Shipment_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.task3a_b.LogisticsManagement.Shipment.class, com.task3a_b.LogisticsManagement.Shipment.Builder.class);
+                com.task3a_b.LogisticsManagement.PB_Shipment.class, com.task3a_b.LogisticsManagement.PB_Shipment.Builder.class);
       }
 
-      // Construct using com.task3a_b.LogisticsManagement.Shipment.newBuilder()
+      // Construct using com.task3a_b.LogisticsManagement.PB_Shipment.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -10328,9 +12490,11 @@ public final class LogisticsManagement {
 
         dispatchDate_ = "";
 
+        orderDate_ = "";
+
         if (itemsToShipBuilder_ == null) {
           itemsToShip_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000010);
         } else {
           itemsToShipBuilder_.clear();
         }
@@ -10340,11 +12504,23 @@ public final class LogisticsManagement {
           shipmentCustomer_ = null;
           shipmentCustomerBuilder_ = null;
         }
-        if (shipmentTransportBuilder_ == null) {
-          shipmentTransport_ = null;
+        if (shipmentAircraftBuilder_ == null) {
+          shipmentAircraft_ = null;
         } else {
-          shipmentTransport_ = null;
-          shipmentTransportBuilder_ = null;
+          shipmentAircraft_ = null;
+          shipmentAircraftBuilder_ = null;
+        }
+        if (shipmentVesselBuilder_ == null) {
+          shipmentVessel_ = null;
+        } else {
+          shipmentVessel_ = null;
+          shipmentVesselBuilder_ = null;
+        }
+        if (shipmentTruckBuilder_ == null) {
+          shipmentTruck_ = null;
+        } else {
+          shipmentTruck_ = null;
+          shipmentTruckBuilder_ = null;
         }
         return this;
       }
@@ -10352,17 +12528,17 @@ public final class LogisticsManagement {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_Shipment_descriptor;
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_Shipment_descriptor;
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Shipment getDefaultInstanceForType() {
-        return com.task3a_b.LogisticsManagement.Shipment.getDefaultInstance();
+      public com.task3a_b.LogisticsManagement.PB_Shipment getDefaultInstanceForType() {
+        return com.task3a_b.LogisticsManagement.PB_Shipment.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Shipment build() {
-        com.task3a_b.LogisticsManagement.Shipment result = buildPartial();
+      public com.task3a_b.LogisticsManagement.PB_Shipment build() {
+        com.task3a_b.LogisticsManagement.PB_Shipment result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -10370,17 +12546,18 @@ public final class LogisticsManagement {
       }
 
       @java.lang.Override
-      public com.task3a_b.LogisticsManagement.Shipment buildPartial() {
-        com.task3a_b.LogisticsManagement.Shipment result = new com.task3a_b.LogisticsManagement.Shipment(this);
+      public com.task3a_b.LogisticsManagement.PB_Shipment buildPartial() {
+        com.task3a_b.LogisticsManagement.PB_Shipment result = new com.task3a_b.LogisticsManagement.PB_Shipment(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         result.shipmentID_ = shipmentID_;
         result.shipmentStatus_ = shipmentStatus_;
         result.dispatchDate_ = dispatchDate_;
+        result.orderDate_ = orderDate_;
         if (itemsToShipBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          if (((bitField0_ & 0x00000010) == 0x00000010)) {
             itemsToShip_ = java.util.Collections.unmodifiableList(itemsToShip_);
-            bitField0_ = (bitField0_ & ~0x00000008);
+            bitField0_ = (bitField0_ & ~0x00000010);
           }
           result.itemsToShip_ = itemsToShip_;
         } else {
@@ -10391,10 +12568,20 @@ public final class LogisticsManagement {
         } else {
           result.shipmentCustomer_ = shipmentCustomerBuilder_.build();
         }
-        if (shipmentTransportBuilder_ == null) {
-          result.shipmentTransport_ = shipmentTransport_;
+        if (shipmentAircraftBuilder_ == null) {
+          result.shipmentAircraft_ = shipmentAircraft_;
         } else {
-          result.shipmentTransport_ = shipmentTransportBuilder_.build();
+          result.shipmentAircraft_ = shipmentAircraftBuilder_.build();
+        }
+        if (shipmentVesselBuilder_ == null) {
+          result.shipmentVessel_ = shipmentVessel_;
+        } else {
+          result.shipmentVessel_ = shipmentVesselBuilder_.build();
+        }
+        if (shipmentTruckBuilder_ == null) {
+          result.shipmentTruck_ = shipmentTruck_;
+        } else {
+          result.shipmentTruck_ = shipmentTruckBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -10435,16 +12622,16 @@ public final class LogisticsManagement {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.task3a_b.LogisticsManagement.Shipment) {
-          return mergeFrom((com.task3a_b.LogisticsManagement.Shipment)other);
+        if (other instanceof com.task3a_b.LogisticsManagement.PB_Shipment) {
+          return mergeFrom((com.task3a_b.LogisticsManagement.PB_Shipment)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.task3a_b.LogisticsManagement.Shipment other) {
-        if (other == com.task3a_b.LogisticsManagement.Shipment.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.task3a_b.LogisticsManagement.PB_Shipment other) {
+        if (other == com.task3a_b.LogisticsManagement.PB_Shipment.getDefaultInstance()) return this;
         if (other.getShipmentID() != 0) {
           setShipmentID(other.getShipmentID());
         }
@@ -10456,11 +12643,15 @@ public final class LogisticsManagement {
           dispatchDate_ = other.dispatchDate_;
           onChanged();
         }
+        if (!other.getOrderDate().isEmpty()) {
+          orderDate_ = other.orderDate_;
+          onChanged();
+        }
         if (itemsToShipBuilder_ == null) {
           if (!other.itemsToShip_.isEmpty()) {
             if (itemsToShip_.isEmpty()) {
               itemsToShip_ = other.itemsToShip_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000010);
             } else {
               ensureItemsToShipIsMutable();
               itemsToShip_.addAll(other.itemsToShip_);
@@ -10473,7 +12664,7 @@ public final class LogisticsManagement {
               itemsToShipBuilder_.dispose();
               itemsToShipBuilder_ = null;
               itemsToShip_ = other.itemsToShip_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000010);
               itemsToShipBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getItemsToShipFieldBuilder() : null;
@@ -10485,8 +12676,14 @@ public final class LogisticsManagement {
         if (other.hasShipmentCustomer()) {
           mergeShipmentCustomer(other.getShipmentCustomer());
         }
-        if (other.hasShipmentTransport()) {
-          mergeShipmentTransport(other.getShipmentTransport());
+        if (other.hasShipmentAircraft()) {
+          mergeShipmentAircraft(other.getShipmentAircraft());
+        }
+        if (other.hasShipmentVessel()) {
+          mergeShipmentVessel(other.getShipmentVessel());
+        }
+        if (other.hasShipmentTruck()) {
+          mergeShipmentTruck(other.getShipmentTruck());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -10503,11 +12700,11 @@ public final class LogisticsManagement {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.task3a_b.LogisticsManagement.Shipment parsedMessage = null;
+        com.task3a_b.LogisticsManagement.PB_Shipment parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.task3a_b.LogisticsManagement.Shipment) e.getUnfinishedMessage();
+          parsedMessage = (com.task3a_b.LogisticsManagement.PB_Shipment) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -10694,22 +12891,91 @@ public final class LogisticsManagement {
         return this;
       }
 
-      private java.util.List<com.task3a_b.LogisticsManagement.StockItem> itemsToShip_ =
+      private java.lang.Object orderDate_ = "";
+      /**
+       * <code>string orderDate = 4;</code>
+       */
+      public java.lang.String getOrderDate() {
+        java.lang.Object ref = orderDate_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          orderDate_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string orderDate = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getOrderDateBytes() {
+        java.lang.Object ref = orderDate_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          orderDate_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string orderDate = 4;</code>
+       */
+      public Builder setOrderDate(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        orderDate_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string orderDate = 4;</code>
+       */
+      public Builder clearOrderDate() {
+        
+        orderDate_ = getDefaultInstance().getOrderDate();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string orderDate = 4;</code>
+       */
+      public Builder setOrderDateBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        orderDate_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<com.task3a_b.LogisticsManagement.PB_StockItem> itemsToShip_ =
         java.util.Collections.emptyList();
       private void ensureItemsToShipIsMutable() {
-        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
-          itemsToShip_ = new java.util.ArrayList<com.task3a_b.LogisticsManagement.StockItem>(itemsToShip_);
-          bitField0_ |= 0x00000008;
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          itemsToShip_ = new java.util.ArrayList<com.task3a_b.LogisticsManagement.PB_StockItem>(itemsToShip_);
+          bitField0_ |= 0x00000010;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.task3a_b.LogisticsManagement.StockItem, com.task3a_b.LogisticsManagement.StockItem.Builder, com.task3a_b.LogisticsManagement.StockItemOrBuilder> itemsToShipBuilder_;
+          com.task3a_b.LogisticsManagement.PB_StockItem, com.task3a_b.LogisticsManagement.PB_StockItem.Builder, com.task3a_b.LogisticsManagement.PB_StockItemOrBuilder> itemsToShipBuilder_;
 
       /**
-       * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
        */
-      public java.util.List<com.task3a_b.LogisticsManagement.StockItem> getItemsToShipList() {
+      public java.util.List<com.task3a_b.LogisticsManagement.PB_StockItem> getItemsToShipList() {
         if (itemsToShipBuilder_ == null) {
           return java.util.Collections.unmodifiableList(itemsToShip_);
         } else {
@@ -10717,7 +12983,7 @@ public final class LogisticsManagement {
         }
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
        */
       public int getItemsToShipCount() {
         if (itemsToShipBuilder_ == null) {
@@ -10727,9 +12993,9 @@ public final class LogisticsManagement {
         }
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
        */
-      public com.task3a_b.LogisticsManagement.StockItem getItemsToShip(int index) {
+      public com.task3a_b.LogisticsManagement.PB_StockItem getItemsToShip(int index) {
         if (itemsToShipBuilder_ == null) {
           return itemsToShip_.get(index);
         } else {
@@ -10737,10 +13003,10 @@ public final class LogisticsManagement {
         }
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
        */
       public Builder setItemsToShip(
-          int index, com.task3a_b.LogisticsManagement.StockItem value) {
+          int index, com.task3a_b.LogisticsManagement.PB_StockItem value) {
         if (itemsToShipBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -10754,10 +13020,10 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
        */
       public Builder setItemsToShip(
-          int index, com.task3a_b.LogisticsManagement.StockItem.Builder builderForValue) {
+          int index, com.task3a_b.LogisticsManagement.PB_StockItem.Builder builderForValue) {
         if (itemsToShipBuilder_ == null) {
           ensureItemsToShipIsMutable();
           itemsToShip_.set(index, builderForValue.build());
@@ -10768,9 +13034,9 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
        */
-      public Builder addItemsToShip(com.task3a_b.LogisticsManagement.StockItem value) {
+      public Builder addItemsToShip(com.task3a_b.LogisticsManagement.PB_StockItem value) {
         if (itemsToShipBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -10784,10 +13050,10 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
        */
       public Builder addItemsToShip(
-          int index, com.task3a_b.LogisticsManagement.StockItem value) {
+          int index, com.task3a_b.LogisticsManagement.PB_StockItem value) {
         if (itemsToShipBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -10801,10 +13067,10 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
        */
       public Builder addItemsToShip(
-          com.task3a_b.LogisticsManagement.StockItem.Builder builderForValue) {
+          com.task3a_b.LogisticsManagement.PB_StockItem.Builder builderForValue) {
         if (itemsToShipBuilder_ == null) {
           ensureItemsToShipIsMutable();
           itemsToShip_.add(builderForValue.build());
@@ -10815,10 +13081,10 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
        */
       public Builder addItemsToShip(
-          int index, com.task3a_b.LogisticsManagement.StockItem.Builder builderForValue) {
+          int index, com.task3a_b.LogisticsManagement.PB_StockItem.Builder builderForValue) {
         if (itemsToShipBuilder_ == null) {
           ensureItemsToShipIsMutable();
           itemsToShip_.add(index, builderForValue.build());
@@ -10829,10 +13095,10 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
        */
       public Builder addAllItemsToShip(
-          java.lang.Iterable<? extends com.task3a_b.LogisticsManagement.StockItem> values) {
+          java.lang.Iterable<? extends com.task3a_b.LogisticsManagement.PB_StockItem> values) {
         if (itemsToShipBuilder_ == null) {
           ensureItemsToShipIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -10844,12 +13110,12 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
        */
       public Builder clearItemsToShip() {
         if (itemsToShipBuilder_ == null) {
           itemsToShip_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000010);
           onChanged();
         } else {
           itemsToShipBuilder_.clear();
@@ -10857,7 +13123,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
        */
       public Builder removeItemsToShip(int index) {
         if (itemsToShipBuilder_ == null) {
@@ -10870,16 +13136,16 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
        */
-      public com.task3a_b.LogisticsManagement.StockItem.Builder getItemsToShipBuilder(
+      public com.task3a_b.LogisticsManagement.PB_StockItem.Builder getItemsToShipBuilder(
           int index) {
         return getItemsToShipFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
        */
-      public com.task3a_b.LogisticsManagement.StockItemOrBuilder getItemsToShipOrBuilder(
+      public com.task3a_b.LogisticsManagement.PB_StockItemOrBuilder getItemsToShipOrBuilder(
           int index) {
         if (itemsToShipBuilder_ == null) {
           return itemsToShip_.get(index);  } else {
@@ -10887,9 +13153,9 @@ public final class LogisticsManagement {
         }
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
        */
-      public java.util.List<? extends com.task3a_b.LogisticsManagement.StockItemOrBuilder> 
+      public java.util.List<? extends com.task3a_b.LogisticsManagement.PB_StockItemOrBuilder> 
            getItemsToShipOrBuilderList() {
         if (itemsToShipBuilder_ != null) {
           return itemsToShipBuilder_.getMessageOrBuilderList();
@@ -10898,35 +13164,35 @@ public final class LogisticsManagement {
         }
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
        */
-      public com.task3a_b.LogisticsManagement.StockItem.Builder addItemsToShipBuilder() {
+      public com.task3a_b.LogisticsManagement.PB_StockItem.Builder addItemsToShipBuilder() {
         return getItemsToShipFieldBuilder().addBuilder(
-            com.task3a_b.LogisticsManagement.StockItem.getDefaultInstance());
+            com.task3a_b.LogisticsManagement.PB_StockItem.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
        */
-      public com.task3a_b.LogisticsManagement.StockItem.Builder addItemsToShipBuilder(
+      public com.task3a_b.LogisticsManagement.PB_StockItem.Builder addItemsToShipBuilder(
           int index) {
         return getItemsToShipFieldBuilder().addBuilder(
-            index, com.task3a_b.LogisticsManagement.StockItem.getDefaultInstance());
+            index, com.task3a_b.LogisticsManagement.PB_StockItem.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.task3a_b.StockItem itemsToShip = 4;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
        */
-      public java.util.List<com.task3a_b.LogisticsManagement.StockItem.Builder> 
+      public java.util.List<com.task3a_b.LogisticsManagement.PB_StockItem.Builder> 
            getItemsToShipBuilderList() {
         return getItemsToShipFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.task3a_b.LogisticsManagement.StockItem, com.task3a_b.LogisticsManagement.StockItem.Builder, com.task3a_b.LogisticsManagement.StockItemOrBuilder> 
+          com.task3a_b.LogisticsManagement.PB_StockItem, com.task3a_b.LogisticsManagement.PB_StockItem.Builder, com.task3a_b.LogisticsManagement.PB_StockItemOrBuilder> 
           getItemsToShipFieldBuilder() {
         if (itemsToShipBuilder_ == null) {
           itemsToShipBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              com.task3a_b.LogisticsManagement.StockItem, com.task3a_b.LogisticsManagement.StockItem.Builder, com.task3a_b.LogisticsManagement.StockItemOrBuilder>(
+              com.task3a_b.LogisticsManagement.PB_StockItem, com.task3a_b.LogisticsManagement.PB_StockItem.Builder, com.task3a_b.LogisticsManagement.PB_StockItemOrBuilder>(
                   itemsToShip_,
-                  ((bitField0_ & 0x00000008) == 0x00000008),
+                  ((bitField0_ & 0x00000010) == 0x00000010),
                   getParentForChildren(),
                   isClean());
           itemsToShip_ = null;
@@ -10934,29 +13200,29 @@ public final class LogisticsManagement {
         return itemsToShipBuilder_;
       }
 
-      private com.task3a_b.LogisticsManagement.Customer shipmentCustomer_ = null;
+      private com.task3a_b.LogisticsManagement.PB_Customer shipmentCustomer_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.task3a_b.LogisticsManagement.Customer, com.task3a_b.LogisticsManagement.Customer.Builder, com.task3a_b.LogisticsManagement.CustomerOrBuilder> shipmentCustomerBuilder_;
+          com.task3a_b.LogisticsManagement.PB_Customer, com.task3a_b.LogisticsManagement.PB_Customer.Builder, com.task3a_b.LogisticsManagement.PB_CustomerOrBuilder> shipmentCustomerBuilder_;
       /**
-       * <code>.com.task3a_b.Customer shipmentCustomer = 5;</code>
+       * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
        */
       public boolean hasShipmentCustomer() {
         return shipmentCustomerBuilder_ != null || shipmentCustomer_ != null;
       }
       /**
-       * <code>.com.task3a_b.Customer shipmentCustomer = 5;</code>
+       * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
        */
-      public com.task3a_b.LogisticsManagement.Customer getShipmentCustomer() {
+      public com.task3a_b.LogisticsManagement.PB_Customer getShipmentCustomer() {
         if (shipmentCustomerBuilder_ == null) {
-          return shipmentCustomer_ == null ? com.task3a_b.LogisticsManagement.Customer.getDefaultInstance() : shipmentCustomer_;
+          return shipmentCustomer_ == null ? com.task3a_b.LogisticsManagement.PB_Customer.getDefaultInstance() : shipmentCustomer_;
         } else {
           return shipmentCustomerBuilder_.getMessage();
         }
       }
       /**
-       * <code>.com.task3a_b.Customer shipmentCustomer = 5;</code>
+       * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
        */
-      public Builder setShipmentCustomer(com.task3a_b.LogisticsManagement.Customer value) {
+      public Builder setShipmentCustomer(com.task3a_b.LogisticsManagement.PB_Customer value) {
         if (shipmentCustomerBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -10970,10 +13236,10 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>.com.task3a_b.Customer shipmentCustomer = 5;</code>
+       * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
        */
       public Builder setShipmentCustomer(
-          com.task3a_b.LogisticsManagement.Customer.Builder builderForValue) {
+          com.task3a_b.LogisticsManagement.PB_Customer.Builder builderForValue) {
         if (shipmentCustomerBuilder_ == null) {
           shipmentCustomer_ = builderForValue.build();
           onChanged();
@@ -10984,13 +13250,13 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>.com.task3a_b.Customer shipmentCustomer = 5;</code>
+       * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
        */
-      public Builder mergeShipmentCustomer(com.task3a_b.LogisticsManagement.Customer value) {
+      public Builder mergeShipmentCustomer(com.task3a_b.LogisticsManagement.PB_Customer value) {
         if (shipmentCustomerBuilder_ == null) {
           if (shipmentCustomer_ != null) {
             shipmentCustomer_ =
-              com.task3a_b.LogisticsManagement.Customer.newBuilder(shipmentCustomer_).mergeFrom(value).buildPartial();
+              com.task3a_b.LogisticsManagement.PB_Customer.newBuilder(shipmentCustomer_).mergeFrom(value).buildPartial();
           } else {
             shipmentCustomer_ = value;
           }
@@ -11002,7 +13268,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>.com.task3a_b.Customer shipmentCustomer = 5;</code>
+       * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
        */
       public Builder clearShipmentCustomer() {
         if (shipmentCustomerBuilder_ == null) {
@@ -11016,33 +13282,33 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>.com.task3a_b.Customer shipmentCustomer = 5;</code>
+       * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
        */
-      public com.task3a_b.LogisticsManagement.Customer.Builder getShipmentCustomerBuilder() {
+      public com.task3a_b.LogisticsManagement.PB_Customer.Builder getShipmentCustomerBuilder() {
         
         onChanged();
         return getShipmentCustomerFieldBuilder().getBuilder();
       }
       /**
-       * <code>.com.task3a_b.Customer shipmentCustomer = 5;</code>
+       * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
        */
-      public com.task3a_b.LogisticsManagement.CustomerOrBuilder getShipmentCustomerOrBuilder() {
+      public com.task3a_b.LogisticsManagement.PB_CustomerOrBuilder getShipmentCustomerOrBuilder() {
         if (shipmentCustomerBuilder_ != null) {
           return shipmentCustomerBuilder_.getMessageOrBuilder();
         } else {
           return shipmentCustomer_ == null ?
-              com.task3a_b.LogisticsManagement.Customer.getDefaultInstance() : shipmentCustomer_;
+              com.task3a_b.LogisticsManagement.PB_Customer.getDefaultInstance() : shipmentCustomer_;
         }
       }
       /**
-       * <code>.com.task3a_b.Customer shipmentCustomer = 5;</code>
+       * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.task3a_b.LogisticsManagement.Customer, com.task3a_b.LogisticsManagement.Customer.Builder, com.task3a_b.LogisticsManagement.CustomerOrBuilder> 
+          com.task3a_b.LogisticsManagement.PB_Customer, com.task3a_b.LogisticsManagement.PB_Customer.Builder, com.task3a_b.LogisticsManagement.PB_CustomerOrBuilder> 
           getShipmentCustomerFieldBuilder() {
         if (shipmentCustomerBuilder_ == null) {
           shipmentCustomerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.task3a_b.LogisticsManagement.Customer, com.task3a_b.LogisticsManagement.Customer.Builder, com.task3a_b.LogisticsManagement.CustomerOrBuilder>(
+              com.task3a_b.LogisticsManagement.PB_Customer, com.task3a_b.LogisticsManagement.PB_Customer.Builder, com.task3a_b.LogisticsManagement.PB_CustomerOrBuilder>(
                   getShipmentCustomer(),
                   getParentForChildren(),
                   isClean());
@@ -11051,157 +13317,355 @@ public final class LogisticsManagement {
         return shipmentCustomerBuilder_;
       }
 
-      private com.task3a_b.LogisticsManagement.Transport shipmentTransport_ = null;
+      private com.task3a_b.LogisticsManagement.PB_Aircraft shipmentAircraft_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.task3a_b.LogisticsManagement.Transport, com.task3a_b.LogisticsManagement.Transport.Builder, com.task3a_b.LogisticsManagement.TransportOrBuilder> shipmentTransportBuilder_;
+          com.task3a_b.LogisticsManagement.PB_Aircraft, com.task3a_b.LogisticsManagement.PB_Aircraft.Builder, com.task3a_b.LogisticsManagement.PB_AircraftOrBuilder> shipmentAircraftBuilder_;
       /**
-       * <pre>
-       * Add other shipment attributes as needed
-       * </pre>
-       *
-       * <code>.com.task3a_b.Transport shipmentTransport = 6;</code>
+       * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
        */
-      public boolean hasShipmentTransport() {
-        return shipmentTransportBuilder_ != null || shipmentTransport_ != null;
+      public boolean hasShipmentAircraft() {
+        return shipmentAircraftBuilder_ != null || shipmentAircraft_ != null;
       }
       /**
-       * <pre>
-       * Add other shipment attributes as needed
-       * </pre>
-       *
-       * <code>.com.task3a_b.Transport shipmentTransport = 6;</code>
+       * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
        */
-      public com.task3a_b.LogisticsManagement.Transport getShipmentTransport() {
-        if (shipmentTransportBuilder_ == null) {
-          return shipmentTransport_ == null ? com.task3a_b.LogisticsManagement.Transport.getDefaultInstance() : shipmentTransport_;
+      public com.task3a_b.LogisticsManagement.PB_Aircraft getShipmentAircraft() {
+        if (shipmentAircraftBuilder_ == null) {
+          return shipmentAircraft_ == null ? com.task3a_b.LogisticsManagement.PB_Aircraft.getDefaultInstance() : shipmentAircraft_;
         } else {
-          return shipmentTransportBuilder_.getMessage();
+          return shipmentAircraftBuilder_.getMessage();
         }
       }
       /**
-       * <pre>
-       * Add other shipment attributes as needed
-       * </pre>
-       *
-       * <code>.com.task3a_b.Transport shipmentTransport = 6;</code>
+       * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
        */
-      public Builder setShipmentTransport(com.task3a_b.LogisticsManagement.Transport value) {
-        if (shipmentTransportBuilder_ == null) {
+      public Builder setShipmentAircraft(com.task3a_b.LogisticsManagement.PB_Aircraft value) {
+        if (shipmentAircraftBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          shipmentTransport_ = value;
+          shipmentAircraft_ = value;
           onChanged();
         } else {
-          shipmentTransportBuilder_.setMessage(value);
+          shipmentAircraftBuilder_.setMessage(value);
         }
 
         return this;
       }
       /**
-       * <pre>
-       * Add other shipment attributes as needed
-       * </pre>
-       *
-       * <code>.com.task3a_b.Transport shipmentTransport = 6;</code>
+       * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
        */
-      public Builder setShipmentTransport(
-          com.task3a_b.LogisticsManagement.Transport.Builder builderForValue) {
-        if (shipmentTransportBuilder_ == null) {
-          shipmentTransport_ = builderForValue.build();
+      public Builder setShipmentAircraft(
+          com.task3a_b.LogisticsManagement.PB_Aircraft.Builder builderForValue) {
+        if (shipmentAircraftBuilder_ == null) {
+          shipmentAircraft_ = builderForValue.build();
           onChanged();
         } else {
-          shipmentTransportBuilder_.setMessage(builderForValue.build());
+          shipmentAircraftBuilder_.setMessage(builderForValue.build());
         }
 
         return this;
       }
       /**
-       * <pre>
-       * Add other shipment attributes as needed
-       * </pre>
-       *
-       * <code>.com.task3a_b.Transport shipmentTransport = 6;</code>
+       * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
        */
-      public Builder mergeShipmentTransport(com.task3a_b.LogisticsManagement.Transport value) {
-        if (shipmentTransportBuilder_ == null) {
-          if (shipmentTransport_ != null) {
-            shipmentTransport_ =
-              com.task3a_b.LogisticsManagement.Transport.newBuilder(shipmentTransport_).mergeFrom(value).buildPartial();
+      public Builder mergeShipmentAircraft(com.task3a_b.LogisticsManagement.PB_Aircraft value) {
+        if (shipmentAircraftBuilder_ == null) {
+          if (shipmentAircraft_ != null) {
+            shipmentAircraft_ =
+              com.task3a_b.LogisticsManagement.PB_Aircraft.newBuilder(shipmentAircraft_).mergeFrom(value).buildPartial();
           } else {
-            shipmentTransport_ = value;
+            shipmentAircraft_ = value;
           }
           onChanged();
         } else {
-          shipmentTransportBuilder_.mergeFrom(value);
+          shipmentAircraftBuilder_.mergeFrom(value);
         }
 
         return this;
       }
       /**
-       * <pre>
-       * Add other shipment attributes as needed
-       * </pre>
-       *
-       * <code>.com.task3a_b.Transport shipmentTransport = 6;</code>
+       * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
        */
-      public Builder clearShipmentTransport() {
-        if (shipmentTransportBuilder_ == null) {
-          shipmentTransport_ = null;
+      public Builder clearShipmentAircraft() {
+        if (shipmentAircraftBuilder_ == null) {
+          shipmentAircraft_ = null;
           onChanged();
         } else {
-          shipmentTransport_ = null;
-          shipmentTransportBuilder_ = null;
+          shipmentAircraft_ = null;
+          shipmentAircraftBuilder_ = null;
         }
 
         return this;
       }
       /**
-       * <pre>
-       * Add other shipment attributes as needed
-       * </pre>
-       *
-       * <code>.com.task3a_b.Transport shipmentTransport = 6;</code>
+       * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
        */
-      public com.task3a_b.LogisticsManagement.Transport.Builder getShipmentTransportBuilder() {
+      public com.task3a_b.LogisticsManagement.PB_Aircraft.Builder getShipmentAircraftBuilder() {
         
         onChanged();
-        return getShipmentTransportFieldBuilder().getBuilder();
+        return getShipmentAircraftFieldBuilder().getBuilder();
       }
       /**
-       * <pre>
-       * Add other shipment attributes as needed
-       * </pre>
-       *
-       * <code>.com.task3a_b.Transport shipmentTransport = 6;</code>
+       * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
        */
-      public com.task3a_b.LogisticsManagement.TransportOrBuilder getShipmentTransportOrBuilder() {
-        if (shipmentTransportBuilder_ != null) {
-          return shipmentTransportBuilder_.getMessageOrBuilder();
+      public com.task3a_b.LogisticsManagement.PB_AircraftOrBuilder getShipmentAircraftOrBuilder() {
+        if (shipmentAircraftBuilder_ != null) {
+          return shipmentAircraftBuilder_.getMessageOrBuilder();
         } else {
-          return shipmentTransport_ == null ?
-              com.task3a_b.LogisticsManagement.Transport.getDefaultInstance() : shipmentTransport_;
+          return shipmentAircraft_ == null ?
+              com.task3a_b.LogisticsManagement.PB_Aircraft.getDefaultInstance() : shipmentAircraft_;
         }
       }
       /**
-       * <pre>
-       * Add other shipment attributes as needed
-       * </pre>
-       *
-       * <code>.com.task3a_b.Transport shipmentTransport = 6;</code>
+       * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.task3a_b.LogisticsManagement.Transport, com.task3a_b.LogisticsManagement.Transport.Builder, com.task3a_b.LogisticsManagement.TransportOrBuilder> 
-          getShipmentTransportFieldBuilder() {
-        if (shipmentTransportBuilder_ == null) {
-          shipmentTransportBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.task3a_b.LogisticsManagement.Transport, com.task3a_b.LogisticsManagement.Transport.Builder, com.task3a_b.LogisticsManagement.TransportOrBuilder>(
-                  getShipmentTransport(),
+          com.task3a_b.LogisticsManagement.PB_Aircraft, com.task3a_b.LogisticsManagement.PB_Aircraft.Builder, com.task3a_b.LogisticsManagement.PB_AircraftOrBuilder> 
+          getShipmentAircraftFieldBuilder() {
+        if (shipmentAircraftBuilder_ == null) {
+          shipmentAircraftBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.task3a_b.LogisticsManagement.PB_Aircraft, com.task3a_b.LogisticsManagement.PB_Aircraft.Builder, com.task3a_b.LogisticsManagement.PB_AircraftOrBuilder>(
+                  getShipmentAircraft(),
                   getParentForChildren(),
                   isClean());
-          shipmentTransport_ = null;
+          shipmentAircraft_ = null;
         }
-        return shipmentTransportBuilder_;
+        return shipmentAircraftBuilder_;
+      }
+
+      private com.task3a_b.LogisticsManagement.PB_SeaVessel shipmentVessel_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_SeaVessel, com.task3a_b.LogisticsManagement.PB_SeaVessel.Builder, com.task3a_b.LogisticsManagement.PB_SeaVesselOrBuilder> shipmentVesselBuilder_;
+      /**
+       * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+       */
+      public boolean hasShipmentVessel() {
+        return shipmentVesselBuilder_ != null || shipmentVessel_ != null;
+      }
+      /**
+       * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_SeaVessel getShipmentVessel() {
+        if (shipmentVesselBuilder_ == null) {
+          return shipmentVessel_ == null ? com.task3a_b.LogisticsManagement.PB_SeaVessel.getDefaultInstance() : shipmentVessel_;
+        } else {
+          return shipmentVesselBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+       */
+      public Builder setShipmentVessel(com.task3a_b.LogisticsManagement.PB_SeaVessel value) {
+        if (shipmentVesselBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          shipmentVessel_ = value;
+          onChanged();
+        } else {
+          shipmentVesselBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+       */
+      public Builder setShipmentVessel(
+          com.task3a_b.LogisticsManagement.PB_SeaVessel.Builder builderForValue) {
+        if (shipmentVesselBuilder_ == null) {
+          shipmentVessel_ = builderForValue.build();
+          onChanged();
+        } else {
+          shipmentVesselBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+       */
+      public Builder mergeShipmentVessel(com.task3a_b.LogisticsManagement.PB_SeaVessel value) {
+        if (shipmentVesselBuilder_ == null) {
+          if (shipmentVessel_ != null) {
+            shipmentVessel_ =
+              com.task3a_b.LogisticsManagement.PB_SeaVessel.newBuilder(shipmentVessel_).mergeFrom(value).buildPartial();
+          } else {
+            shipmentVessel_ = value;
+          }
+          onChanged();
+        } else {
+          shipmentVesselBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+       */
+      public Builder clearShipmentVessel() {
+        if (shipmentVesselBuilder_ == null) {
+          shipmentVessel_ = null;
+          onChanged();
+        } else {
+          shipmentVessel_ = null;
+          shipmentVesselBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_SeaVessel.Builder getShipmentVesselBuilder() {
+        
+        onChanged();
+        return getShipmentVesselFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_SeaVesselOrBuilder getShipmentVesselOrBuilder() {
+        if (shipmentVesselBuilder_ != null) {
+          return shipmentVesselBuilder_.getMessageOrBuilder();
+        } else {
+          return shipmentVessel_ == null ?
+              com.task3a_b.LogisticsManagement.PB_SeaVessel.getDefaultInstance() : shipmentVessel_;
+        }
+      }
+      /**
+       * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_SeaVessel, com.task3a_b.LogisticsManagement.PB_SeaVessel.Builder, com.task3a_b.LogisticsManagement.PB_SeaVesselOrBuilder> 
+          getShipmentVesselFieldBuilder() {
+        if (shipmentVesselBuilder_ == null) {
+          shipmentVesselBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.task3a_b.LogisticsManagement.PB_SeaVessel, com.task3a_b.LogisticsManagement.PB_SeaVessel.Builder, com.task3a_b.LogisticsManagement.PB_SeaVesselOrBuilder>(
+                  getShipmentVessel(),
+                  getParentForChildren(),
+                  isClean());
+          shipmentVessel_ = null;
+        }
+        return shipmentVesselBuilder_;
+      }
+
+      private com.task3a_b.LogisticsManagement.PB_Truck shipmentTruck_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Truck, com.task3a_b.LogisticsManagement.PB_Truck.Builder, com.task3a_b.LogisticsManagement.PB_TruckOrBuilder> shipmentTruckBuilder_;
+      /**
+       * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+       */
+      public boolean hasShipmentTruck() {
+        return shipmentTruckBuilder_ != null || shipmentTruck_ != null;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Truck getShipmentTruck() {
+        if (shipmentTruckBuilder_ == null) {
+          return shipmentTruck_ == null ? com.task3a_b.LogisticsManagement.PB_Truck.getDefaultInstance() : shipmentTruck_;
+        } else {
+          return shipmentTruckBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+       */
+      public Builder setShipmentTruck(com.task3a_b.LogisticsManagement.PB_Truck value) {
+        if (shipmentTruckBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          shipmentTruck_ = value;
+          onChanged();
+        } else {
+          shipmentTruckBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+       */
+      public Builder setShipmentTruck(
+          com.task3a_b.LogisticsManagement.PB_Truck.Builder builderForValue) {
+        if (shipmentTruckBuilder_ == null) {
+          shipmentTruck_ = builderForValue.build();
+          onChanged();
+        } else {
+          shipmentTruckBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+       */
+      public Builder mergeShipmentTruck(com.task3a_b.LogisticsManagement.PB_Truck value) {
+        if (shipmentTruckBuilder_ == null) {
+          if (shipmentTruck_ != null) {
+            shipmentTruck_ =
+              com.task3a_b.LogisticsManagement.PB_Truck.newBuilder(shipmentTruck_).mergeFrom(value).buildPartial();
+          } else {
+            shipmentTruck_ = value;
+          }
+          onChanged();
+        } else {
+          shipmentTruckBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+       */
+      public Builder clearShipmentTruck() {
+        if (shipmentTruckBuilder_ == null) {
+          shipmentTruck_ = null;
+          onChanged();
+        } else {
+          shipmentTruck_ = null;
+          shipmentTruckBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Truck.Builder getShipmentTruckBuilder() {
+        
+        onChanged();
+        return getShipmentTruckFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_TruckOrBuilder getShipmentTruckOrBuilder() {
+        if (shipmentTruckBuilder_ != null) {
+          return shipmentTruckBuilder_.getMessageOrBuilder();
+        } else {
+          return shipmentTruck_ == null ?
+              com.task3a_b.LogisticsManagement.PB_Truck.getDefaultInstance() : shipmentTruck_;
+        }
+      }
+      /**
+       * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Truck, com.task3a_b.LogisticsManagement.PB_Truck.Builder, com.task3a_b.LogisticsManagement.PB_TruckOrBuilder> 
+          getShipmentTruckFieldBuilder() {
+        if (shipmentTruckBuilder_ == null) {
+          shipmentTruckBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.task3a_b.LogisticsManagement.PB_Truck, com.task3a_b.LogisticsManagement.PB_Truck.Builder, com.task3a_b.LogisticsManagement.PB_TruckOrBuilder>(
+                  getShipmentTruck(),
+                  getParentForChildren(),
+                  isClean());
+          shipmentTruck_ = null;
+        }
+        return shipmentTruckBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -11216,116 +13680,4006 @@ public final class LogisticsManagement {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.task3a_b.Shipment)
+      // @@protoc_insertion_point(builder_scope:com.task3a_b.PB_Shipment)
     }
 
-    // @@protoc_insertion_point(class_scope:com.task3a_b.Shipment)
-    private static final com.task3a_b.LogisticsManagement.Shipment DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:com.task3a_b.PB_Shipment)
+    private static final com.task3a_b.LogisticsManagement.PB_Shipment DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.Shipment();
+      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.PB_Shipment();
     }
 
-    public static com.task3a_b.LogisticsManagement.Shipment getDefaultInstance() {
+    public static com.task3a_b.LogisticsManagement.PB_Shipment getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Shipment>
-        PARSER = new com.google.protobuf.AbstractParser<Shipment>() {
+    private static final com.google.protobuf.Parser<PB_Shipment>
+        PARSER = new com.google.protobuf.AbstractParser<PB_Shipment>() {
       @java.lang.Override
-      public Shipment parsePartialFrom(
+      public PB_Shipment parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Shipment(input, extensionRegistry);
+        return new PB_Shipment(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Shipment> parser() {
+    public static com.google.protobuf.Parser<PB_Shipment> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Shipment> getParserForType() {
+    public com.google.protobuf.Parser<PB_Shipment> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.task3a_b.LogisticsManagement.Shipment getDefaultInstanceForType() {
+    public com.task3a_b.LogisticsManagement.PB_Shipment getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface PB_PackagingListOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.task3a_b.PB_PackagingList)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+     */
+    java.util.List<com.task3a_b.LogisticsManagement.PB_Packaging> 
+        getPackagesList();
+    /**
+     * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_Packaging getPackages(int index);
+    /**
+     * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+     */
+    int getPackagesCount();
+    /**
+     * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+     */
+    java.util.List<? extends com.task3a_b.LogisticsManagement.PB_PackagingOrBuilder> 
+        getPackagesOrBuilderList();
+    /**
+     * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_PackagingOrBuilder getPackagesOrBuilder(
+        int index);
+  }
+  /**
+   * <pre>
+   * Lists in main class
+   * </pre>
+   *
+   * Protobuf type {@code com.task3a_b.PB_PackagingList}
+   */
+  public  static final class PB_PackagingList extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:com.task3a_b.PB_PackagingList)
+      PB_PackagingListOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use PB_PackagingList.newBuilder() to construct.
+    private PB_PackagingList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private PB_PackagingList() {
+      packages_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PB_PackagingList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                packages_ = new java.util.ArrayList<com.task3a_b.LogisticsManagement.PB_Packaging>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              packages_.add(
+                  input.readMessage(com.task3a_b.LogisticsManagement.PB_Packaging.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          packages_ = java.util.Collections.unmodifiableList(packages_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_PackagingList_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_PackagingList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.task3a_b.LogisticsManagement.PB_PackagingList.class, com.task3a_b.LogisticsManagement.PB_PackagingList.Builder.class);
+    }
+
+    public static final int PACKAGES_FIELD_NUMBER = 1;
+    private java.util.List<com.task3a_b.LogisticsManagement.PB_Packaging> packages_;
+    /**
+     * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+     */
+    public java.util.List<com.task3a_b.LogisticsManagement.PB_Packaging> getPackagesList() {
+      return packages_;
+    }
+    /**
+     * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+     */
+    public java.util.List<? extends com.task3a_b.LogisticsManagement.PB_PackagingOrBuilder> 
+        getPackagesOrBuilderList() {
+      return packages_;
+    }
+    /**
+     * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+     */
+    public int getPackagesCount() {
+      return packages_.size();
+    }
+    /**
+     * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_Packaging getPackages(int index) {
+      return packages_.get(index);
+    }
+    /**
+     * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_PackagingOrBuilder getPackagesOrBuilder(
+        int index) {
+      return packages_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < packages_.size(); i++) {
+        output.writeMessage(1, packages_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < packages_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, packages_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.task3a_b.LogisticsManagement.PB_PackagingList)) {
+        return super.equals(obj);
+      }
+      com.task3a_b.LogisticsManagement.PB_PackagingList other = (com.task3a_b.LogisticsManagement.PB_PackagingList) obj;
+
+      boolean result = true;
+      result = result && getPackagesList()
+          .equals(other.getPackagesList());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getPackagesCount() > 0) {
+        hash = (37 * hash) + PACKAGES_FIELD_NUMBER;
+        hash = (53 * hash) + getPackagesList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.task3a_b.LogisticsManagement.PB_PackagingList parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_PackagingList parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_PackagingList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_PackagingList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_PackagingList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_PackagingList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_PackagingList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_PackagingList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_PackagingList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_PackagingList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_PackagingList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_PackagingList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.task3a_b.LogisticsManagement.PB_PackagingList prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Lists in main class
+     * </pre>
+     *
+     * Protobuf type {@code com.task3a_b.PB_PackagingList}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.task3a_b.PB_PackagingList)
+        com.task3a_b.LogisticsManagement.PB_PackagingListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_PackagingList_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_PackagingList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.task3a_b.LogisticsManagement.PB_PackagingList.class, com.task3a_b.LogisticsManagement.PB_PackagingList.Builder.class);
+      }
+
+      // Construct using com.task3a_b.LogisticsManagement.PB_PackagingList.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getPackagesFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (packagesBuilder_ == null) {
+          packages_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          packagesBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_PackagingList_descriptor;
+      }
+
+      @java.lang.Override
+      public com.task3a_b.LogisticsManagement.PB_PackagingList getDefaultInstanceForType() {
+        return com.task3a_b.LogisticsManagement.PB_PackagingList.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.task3a_b.LogisticsManagement.PB_PackagingList build() {
+        com.task3a_b.LogisticsManagement.PB_PackagingList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.task3a_b.LogisticsManagement.PB_PackagingList buildPartial() {
+        com.task3a_b.LogisticsManagement.PB_PackagingList result = new com.task3a_b.LogisticsManagement.PB_PackagingList(this);
+        int from_bitField0_ = bitField0_;
+        if (packagesBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            packages_ = java.util.Collections.unmodifiableList(packages_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.packages_ = packages_;
+        } else {
+          result.packages_ = packagesBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.task3a_b.LogisticsManagement.PB_PackagingList) {
+          return mergeFrom((com.task3a_b.LogisticsManagement.PB_PackagingList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.task3a_b.LogisticsManagement.PB_PackagingList other) {
+        if (other == com.task3a_b.LogisticsManagement.PB_PackagingList.getDefaultInstance()) return this;
+        if (packagesBuilder_ == null) {
+          if (!other.packages_.isEmpty()) {
+            if (packages_.isEmpty()) {
+              packages_ = other.packages_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensurePackagesIsMutable();
+              packages_.addAll(other.packages_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.packages_.isEmpty()) {
+            if (packagesBuilder_.isEmpty()) {
+              packagesBuilder_.dispose();
+              packagesBuilder_ = null;
+              packages_ = other.packages_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              packagesBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getPackagesFieldBuilder() : null;
+            } else {
+              packagesBuilder_.addAllMessages(other.packages_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.task3a_b.LogisticsManagement.PB_PackagingList parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.task3a_b.LogisticsManagement.PB_PackagingList) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<com.task3a_b.LogisticsManagement.PB_Packaging> packages_ =
+        java.util.Collections.emptyList();
+      private void ensurePackagesIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          packages_ = new java.util.ArrayList<com.task3a_b.LogisticsManagement.PB_Packaging>(packages_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Packaging, com.task3a_b.LogisticsManagement.PB_Packaging.Builder, com.task3a_b.LogisticsManagement.PB_PackagingOrBuilder> packagesBuilder_;
+
+      /**
+       * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+       */
+      public java.util.List<com.task3a_b.LogisticsManagement.PB_Packaging> getPackagesList() {
+        if (packagesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(packages_);
+        } else {
+          return packagesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+       */
+      public int getPackagesCount() {
+        if (packagesBuilder_ == null) {
+          return packages_.size();
+        } else {
+          return packagesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Packaging getPackages(int index) {
+        if (packagesBuilder_ == null) {
+          return packages_.get(index);
+        } else {
+          return packagesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+       */
+      public Builder setPackages(
+          int index, com.task3a_b.LogisticsManagement.PB_Packaging value) {
+        if (packagesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePackagesIsMutable();
+          packages_.set(index, value);
+          onChanged();
+        } else {
+          packagesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+       */
+      public Builder setPackages(
+          int index, com.task3a_b.LogisticsManagement.PB_Packaging.Builder builderForValue) {
+        if (packagesBuilder_ == null) {
+          ensurePackagesIsMutable();
+          packages_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          packagesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+       */
+      public Builder addPackages(com.task3a_b.LogisticsManagement.PB_Packaging value) {
+        if (packagesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePackagesIsMutable();
+          packages_.add(value);
+          onChanged();
+        } else {
+          packagesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+       */
+      public Builder addPackages(
+          int index, com.task3a_b.LogisticsManagement.PB_Packaging value) {
+        if (packagesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePackagesIsMutable();
+          packages_.add(index, value);
+          onChanged();
+        } else {
+          packagesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+       */
+      public Builder addPackages(
+          com.task3a_b.LogisticsManagement.PB_Packaging.Builder builderForValue) {
+        if (packagesBuilder_ == null) {
+          ensurePackagesIsMutable();
+          packages_.add(builderForValue.build());
+          onChanged();
+        } else {
+          packagesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+       */
+      public Builder addPackages(
+          int index, com.task3a_b.LogisticsManagement.PB_Packaging.Builder builderForValue) {
+        if (packagesBuilder_ == null) {
+          ensurePackagesIsMutable();
+          packages_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          packagesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+       */
+      public Builder addAllPackages(
+          java.lang.Iterable<? extends com.task3a_b.LogisticsManagement.PB_Packaging> values) {
+        if (packagesBuilder_ == null) {
+          ensurePackagesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, packages_);
+          onChanged();
+        } else {
+          packagesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+       */
+      public Builder clearPackages() {
+        if (packagesBuilder_ == null) {
+          packages_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          packagesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+       */
+      public Builder removePackages(int index) {
+        if (packagesBuilder_ == null) {
+          ensurePackagesIsMutable();
+          packages_.remove(index);
+          onChanged();
+        } else {
+          packagesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Packaging.Builder getPackagesBuilder(
+          int index) {
+        return getPackagesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_PackagingOrBuilder getPackagesOrBuilder(
+          int index) {
+        if (packagesBuilder_ == null) {
+          return packages_.get(index);  } else {
+          return packagesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+       */
+      public java.util.List<? extends com.task3a_b.LogisticsManagement.PB_PackagingOrBuilder> 
+           getPackagesOrBuilderList() {
+        if (packagesBuilder_ != null) {
+          return packagesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(packages_);
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Packaging.Builder addPackagesBuilder() {
+        return getPackagesFieldBuilder().addBuilder(
+            com.task3a_b.LogisticsManagement.PB_Packaging.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Packaging.Builder addPackagesBuilder(
+          int index) {
+        return getPackagesFieldBuilder().addBuilder(
+            index, com.task3a_b.LogisticsManagement.PB_Packaging.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Packaging packages = 1;</code>
+       */
+      public java.util.List<com.task3a_b.LogisticsManagement.PB_Packaging.Builder> 
+           getPackagesBuilderList() {
+        return getPackagesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Packaging, com.task3a_b.LogisticsManagement.PB_Packaging.Builder, com.task3a_b.LogisticsManagement.PB_PackagingOrBuilder> 
+          getPackagesFieldBuilder() {
+        if (packagesBuilder_ == null) {
+          packagesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              com.task3a_b.LogisticsManagement.PB_Packaging, com.task3a_b.LogisticsManagement.PB_Packaging.Builder, com.task3a_b.LogisticsManagement.PB_PackagingOrBuilder>(
+                  packages_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          packages_ = null;
+        }
+        return packagesBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.task3a_b.PB_PackagingList)
+    }
+
+    // @@protoc_insertion_point(class_scope:com.task3a_b.PB_PackagingList)
+    private static final com.task3a_b.LogisticsManagement.PB_PackagingList DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.PB_PackagingList();
+    }
+
+    public static com.task3a_b.LogisticsManagement.PB_PackagingList getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<PB_PackagingList>
+        PARSER = new com.google.protobuf.AbstractParser<PB_PackagingList>() {
+      @java.lang.Override
+      public PB_PackagingList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PB_PackagingList(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<PB_PackagingList> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PB_PackagingList> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.task3a_b.LogisticsManagement.PB_PackagingList getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface PB_VehiclesListOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.task3a_b.PB_VehiclesList)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+     */
+    java.util.List<com.task3a_b.LogisticsManagement.PB_Aircraft> 
+        getVehiclesAirList();
+    /**
+     * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_Aircraft getVehiclesAir(int index);
+    /**
+     * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+     */
+    int getVehiclesAirCount();
+    /**
+     * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+     */
+    java.util.List<? extends com.task3a_b.LogisticsManagement.PB_AircraftOrBuilder> 
+        getVehiclesAirOrBuilderList();
+    /**
+     * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_AircraftOrBuilder getVehiclesAirOrBuilder(
+        int index);
+
+    /**
+     * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+     */
+    java.util.List<com.task3a_b.LogisticsManagement.PB_SeaVessel> 
+        getVehiclesSeaList();
+    /**
+     * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_SeaVessel getVehiclesSea(int index);
+    /**
+     * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+     */
+    int getVehiclesSeaCount();
+    /**
+     * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+     */
+    java.util.List<? extends com.task3a_b.LogisticsManagement.PB_SeaVesselOrBuilder> 
+        getVehiclesSeaOrBuilderList();
+    /**
+     * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_SeaVesselOrBuilder getVehiclesSeaOrBuilder(
+        int index);
+
+    /**
+     * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+     */
+    java.util.List<com.task3a_b.LogisticsManagement.PB_Truck> 
+        getVehiclesTruckList();
+    /**
+     * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_Truck getVehiclesTruck(int index);
+    /**
+     * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+     */
+    int getVehiclesTruckCount();
+    /**
+     * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+     */
+    java.util.List<? extends com.task3a_b.LogisticsManagement.PB_TruckOrBuilder> 
+        getVehiclesTruckOrBuilderList();
+    /**
+     * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_TruckOrBuilder getVehiclesTruckOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code com.task3a_b.PB_VehiclesList}
+   */
+  public  static final class PB_VehiclesList extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:com.task3a_b.PB_VehiclesList)
+      PB_VehiclesListOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use PB_VehiclesList.newBuilder() to construct.
+    private PB_VehiclesList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private PB_VehiclesList() {
+      vehiclesAir_ = java.util.Collections.emptyList();
+      vehiclesSea_ = java.util.Collections.emptyList();
+      vehiclesTruck_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PB_VehiclesList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                vehiclesAir_ = new java.util.ArrayList<com.task3a_b.LogisticsManagement.PB_Aircraft>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              vehiclesAir_.add(
+                  input.readMessage(com.task3a_b.LogisticsManagement.PB_Aircraft.parser(), extensionRegistry));
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                vehiclesSea_ = new java.util.ArrayList<com.task3a_b.LogisticsManagement.PB_SeaVessel>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              vehiclesSea_.add(
+                  input.readMessage(com.task3a_b.LogisticsManagement.PB_SeaVessel.parser(), extensionRegistry));
+              break;
+            }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                vehiclesTruck_ = new java.util.ArrayList<com.task3a_b.LogisticsManagement.PB_Truck>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              vehiclesTruck_.add(
+                  input.readMessage(com.task3a_b.LogisticsManagement.PB_Truck.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          vehiclesAir_ = java.util.Collections.unmodifiableList(vehiclesAir_);
+        }
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          vehiclesSea_ = java.util.Collections.unmodifiableList(vehiclesSea_);
+        }
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          vehiclesTruck_ = java.util.Collections.unmodifiableList(vehiclesTruck_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_VehiclesList_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_VehiclesList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.task3a_b.LogisticsManagement.PB_VehiclesList.class, com.task3a_b.LogisticsManagement.PB_VehiclesList.Builder.class);
+    }
+
+    public static final int VEHICLESAIR_FIELD_NUMBER = 1;
+    private java.util.List<com.task3a_b.LogisticsManagement.PB_Aircraft> vehiclesAir_;
+    /**
+     * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+     */
+    public java.util.List<com.task3a_b.LogisticsManagement.PB_Aircraft> getVehiclesAirList() {
+      return vehiclesAir_;
+    }
+    /**
+     * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+     */
+    public java.util.List<? extends com.task3a_b.LogisticsManagement.PB_AircraftOrBuilder> 
+        getVehiclesAirOrBuilderList() {
+      return vehiclesAir_;
+    }
+    /**
+     * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+     */
+    public int getVehiclesAirCount() {
+      return vehiclesAir_.size();
+    }
+    /**
+     * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_Aircraft getVehiclesAir(int index) {
+      return vehiclesAir_.get(index);
+    }
+    /**
+     * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_AircraftOrBuilder getVehiclesAirOrBuilder(
+        int index) {
+      return vehiclesAir_.get(index);
+    }
+
+    public static final int VEHICLESSEA_FIELD_NUMBER = 2;
+    private java.util.List<com.task3a_b.LogisticsManagement.PB_SeaVessel> vehiclesSea_;
+    /**
+     * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+     */
+    public java.util.List<com.task3a_b.LogisticsManagement.PB_SeaVessel> getVehiclesSeaList() {
+      return vehiclesSea_;
+    }
+    /**
+     * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+     */
+    public java.util.List<? extends com.task3a_b.LogisticsManagement.PB_SeaVesselOrBuilder> 
+        getVehiclesSeaOrBuilderList() {
+      return vehiclesSea_;
+    }
+    /**
+     * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+     */
+    public int getVehiclesSeaCount() {
+      return vehiclesSea_.size();
+    }
+    /**
+     * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_SeaVessel getVehiclesSea(int index) {
+      return vehiclesSea_.get(index);
+    }
+    /**
+     * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_SeaVesselOrBuilder getVehiclesSeaOrBuilder(
+        int index) {
+      return vehiclesSea_.get(index);
+    }
+
+    public static final int VEHICLESTRUCK_FIELD_NUMBER = 3;
+    private java.util.List<com.task3a_b.LogisticsManagement.PB_Truck> vehiclesTruck_;
+    /**
+     * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+     */
+    public java.util.List<com.task3a_b.LogisticsManagement.PB_Truck> getVehiclesTruckList() {
+      return vehiclesTruck_;
+    }
+    /**
+     * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+     */
+    public java.util.List<? extends com.task3a_b.LogisticsManagement.PB_TruckOrBuilder> 
+        getVehiclesTruckOrBuilderList() {
+      return vehiclesTruck_;
+    }
+    /**
+     * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+     */
+    public int getVehiclesTruckCount() {
+      return vehiclesTruck_.size();
+    }
+    /**
+     * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_Truck getVehiclesTruck(int index) {
+      return vehiclesTruck_.get(index);
+    }
+    /**
+     * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_TruckOrBuilder getVehiclesTruckOrBuilder(
+        int index) {
+      return vehiclesTruck_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < vehiclesAir_.size(); i++) {
+        output.writeMessage(1, vehiclesAir_.get(i));
+      }
+      for (int i = 0; i < vehiclesSea_.size(); i++) {
+        output.writeMessage(2, vehiclesSea_.get(i));
+      }
+      for (int i = 0; i < vehiclesTruck_.size(); i++) {
+        output.writeMessage(3, vehiclesTruck_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < vehiclesAir_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, vehiclesAir_.get(i));
+      }
+      for (int i = 0; i < vehiclesSea_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, vehiclesSea_.get(i));
+      }
+      for (int i = 0; i < vehiclesTruck_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, vehiclesTruck_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.task3a_b.LogisticsManagement.PB_VehiclesList)) {
+        return super.equals(obj);
+      }
+      com.task3a_b.LogisticsManagement.PB_VehiclesList other = (com.task3a_b.LogisticsManagement.PB_VehiclesList) obj;
+
+      boolean result = true;
+      result = result && getVehiclesAirList()
+          .equals(other.getVehiclesAirList());
+      result = result && getVehiclesSeaList()
+          .equals(other.getVehiclesSeaList());
+      result = result && getVehiclesTruckList()
+          .equals(other.getVehiclesTruckList());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getVehiclesAirCount() > 0) {
+        hash = (37 * hash) + VEHICLESAIR_FIELD_NUMBER;
+        hash = (53 * hash) + getVehiclesAirList().hashCode();
+      }
+      if (getVehiclesSeaCount() > 0) {
+        hash = (37 * hash) + VEHICLESSEA_FIELD_NUMBER;
+        hash = (53 * hash) + getVehiclesSeaList().hashCode();
+      }
+      if (getVehiclesTruckCount() > 0) {
+        hash = (37 * hash) + VEHICLESTRUCK_FIELD_NUMBER;
+        hash = (53 * hash) + getVehiclesTruckList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.task3a_b.LogisticsManagement.PB_VehiclesList parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_VehiclesList parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_VehiclesList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_VehiclesList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_VehiclesList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_VehiclesList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_VehiclesList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_VehiclesList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_VehiclesList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_VehiclesList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_VehiclesList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_VehiclesList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.task3a_b.LogisticsManagement.PB_VehiclesList prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.task3a_b.PB_VehiclesList}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.task3a_b.PB_VehiclesList)
+        com.task3a_b.LogisticsManagement.PB_VehiclesListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_VehiclesList_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_VehiclesList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.task3a_b.LogisticsManagement.PB_VehiclesList.class, com.task3a_b.LogisticsManagement.PB_VehiclesList.Builder.class);
+      }
+
+      // Construct using com.task3a_b.LogisticsManagement.PB_VehiclesList.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getVehiclesAirFieldBuilder();
+          getVehiclesSeaFieldBuilder();
+          getVehiclesTruckFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (vehiclesAirBuilder_ == null) {
+          vehiclesAir_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          vehiclesAirBuilder_.clear();
+        }
+        if (vehiclesSeaBuilder_ == null) {
+          vehiclesSea_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          vehiclesSeaBuilder_.clear();
+        }
+        if (vehiclesTruckBuilder_ == null) {
+          vehiclesTruck_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          vehiclesTruckBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_VehiclesList_descriptor;
+      }
+
+      @java.lang.Override
+      public com.task3a_b.LogisticsManagement.PB_VehiclesList getDefaultInstanceForType() {
+        return com.task3a_b.LogisticsManagement.PB_VehiclesList.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.task3a_b.LogisticsManagement.PB_VehiclesList build() {
+        com.task3a_b.LogisticsManagement.PB_VehiclesList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.task3a_b.LogisticsManagement.PB_VehiclesList buildPartial() {
+        com.task3a_b.LogisticsManagement.PB_VehiclesList result = new com.task3a_b.LogisticsManagement.PB_VehiclesList(this);
+        int from_bitField0_ = bitField0_;
+        if (vehiclesAirBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            vehiclesAir_ = java.util.Collections.unmodifiableList(vehiclesAir_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.vehiclesAir_ = vehiclesAir_;
+        } else {
+          result.vehiclesAir_ = vehiclesAirBuilder_.build();
+        }
+        if (vehiclesSeaBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            vehiclesSea_ = java.util.Collections.unmodifiableList(vehiclesSea_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.vehiclesSea_ = vehiclesSea_;
+        } else {
+          result.vehiclesSea_ = vehiclesSeaBuilder_.build();
+        }
+        if (vehiclesTruckBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            vehiclesTruck_ = java.util.Collections.unmodifiableList(vehiclesTruck_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.vehiclesTruck_ = vehiclesTruck_;
+        } else {
+          result.vehiclesTruck_ = vehiclesTruckBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.task3a_b.LogisticsManagement.PB_VehiclesList) {
+          return mergeFrom((com.task3a_b.LogisticsManagement.PB_VehiclesList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.task3a_b.LogisticsManagement.PB_VehiclesList other) {
+        if (other == com.task3a_b.LogisticsManagement.PB_VehiclesList.getDefaultInstance()) return this;
+        if (vehiclesAirBuilder_ == null) {
+          if (!other.vehiclesAir_.isEmpty()) {
+            if (vehiclesAir_.isEmpty()) {
+              vehiclesAir_ = other.vehiclesAir_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureVehiclesAirIsMutable();
+              vehiclesAir_.addAll(other.vehiclesAir_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.vehiclesAir_.isEmpty()) {
+            if (vehiclesAirBuilder_.isEmpty()) {
+              vehiclesAirBuilder_.dispose();
+              vehiclesAirBuilder_ = null;
+              vehiclesAir_ = other.vehiclesAir_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              vehiclesAirBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getVehiclesAirFieldBuilder() : null;
+            } else {
+              vehiclesAirBuilder_.addAllMessages(other.vehiclesAir_);
+            }
+          }
+        }
+        if (vehiclesSeaBuilder_ == null) {
+          if (!other.vehiclesSea_.isEmpty()) {
+            if (vehiclesSea_.isEmpty()) {
+              vehiclesSea_ = other.vehiclesSea_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureVehiclesSeaIsMutable();
+              vehiclesSea_.addAll(other.vehiclesSea_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.vehiclesSea_.isEmpty()) {
+            if (vehiclesSeaBuilder_.isEmpty()) {
+              vehiclesSeaBuilder_.dispose();
+              vehiclesSeaBuilder_ = null;
+              vehiclesSea_ = other.vehiclesSea_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              vehiclesSeaBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getVehiclesSeaFieldBuilder() : null;
+            } else {
+              vehiclesSeaBuilder_.addAllMessages(other.vehiclesSea_);
+            }
+          }
+        }
+        if (vehiclesTruckBuilder_ == null) {
+          if (!other.vehiclesTruck_.isEmpty()) {
+            if (vehiclesTruck_.isEmpty()) {
+              vehiclesTruck_ = other.vehiclesTruck_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureVehiclesTruckIsMutable();
+              vehiclesTruck_.addAll(other.vehiclesTruck_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.vehiclesTruck_.isEmpty()) {
+            if (vehiclesTruckBuilder_.isEmpty()) {
+              vehiclesTruckBuilder_.dispose();
+              vehiclesTruckBuilder_ = null;
+              vehiclesTruck_ = other.vehiclesTruck_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              vehiclesTruckBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getVehiclesTruckFieldBuilder() : null;
+            } else {
+              vehiclesTruckBuilder_.addAllMessages(other.vehiclesTruck_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.task3a_b.LogisticsManagement.PB_VehiclesList parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.task3a_b.LogisticsManagement.PB_VehiclesList) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<com.task3a_b.LogisticsManagement.PB_Aircraft> vehiclesAir_ =
+        java.util.Collections.emptyList();
+      private void ensureVehiclesAirIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          vehiclesAir_ = new java.util.ArrayList<com.task3a_b.LogisticsManagement.PB_Aircraft>(vehiclesAir_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Aircraft, com.task3a_b.LogisticsManagement.PB_Aircraft.Builder, com.task3a_b.LogisticsManagement.PB_AircraftOrBuilder> vehiclesAirBuilder_;
+
+      /**
+       * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+       */
+      public java.util.List<com.task3a_b.LogisticsManagement.PB_Aircraft> getVehiclesAirList() {
+        if (vehiclesAirBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(vehiclesAir_);
+        } else {
+          return vehiclesAirBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+       */
+      public int getVehiclesAirCount() {
+        if (vehiclesAirBuilder_ == null) {
+          return vehiclesAir_.size();
+        } else {
+          return vehiclesAirBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Aircraft getVehiclesAir(int index) {
+        if (vehiclesAirBuilder_ == null) {
+          return vehiclesAir_.get(index);
+        } else {
+          return vehiclesAirBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+       */
+      public Builder setVehiclesAir(
+          int index, com.task3a_b.LogisticsManagement.PB_Aircraft value) {
+        if (vehiclesAirBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureVehiclesAirIsMutable();
+          vehiclesAir_.set(index, value);
+          onChanged();
+        } else {
+          vehiclesAirBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+       */
+      public Builder setVehiclesAir(
+          int index, com.task3a_b.LogisticsManagement.PB_Aircraft.Builder builderForValue) {
+        if (vehiclesAirBuilder_ == null) {
+          ensureVehiclesAirIsMutable();
+          vehiclesAir_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          vehiclesAirBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+       */
+      public Builder addVehiclesAir(com.task3a_b.LogisticsManagement.PB_Aircraft value) {
+        if (vehiclesAirBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureVehiclesAirIsMutable();
+          vehiclesAir_.add(value);
+          onChanged();
+        } else {
+          vehiclesAirBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+       */
+      public Builder addVehiclesAir(
+          int index, com.task3a_b.LogisticsManagement.PB_Aircraft value) {
+        if (vehiclesAirBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureVehiclesAirIsMutable();
+          vehiclesAir_.add(index, value);
+          onChanged();
+        } else {
+          vehiclesAirBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+       */
+      public Builder addVehiclesAir(
+          com.task3a_b.LogisticsManagement.PB_Aircraft.Builder builderForValue) {
+        if (vehiclesAirBuilder_ == null) {
+          ensureVehiclesAirIsMutable();
+          vehiclesAir_.add(builderForValue.build());
+          onChanged();
+        } else {
+          vehiclesAirBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+       */
+      public Builder addVehiclesAir(
+          int index, com.task3a_b.LogisticsManagement.PB_Aircraft.Builder builderForValue) {
+        if (vehiclesAirBuilder_ == null) {
+          ensureVehiclesAirIsMutable();
+          vehiclesAir_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          vehiclesAirBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+       */
+      public Builder addAllVehiclesAir(
+          java.lang.Iterable<? extends com.task3a_b.LogisticsManagement.PB_Aircraft> values) {
+        if (vehiclesAirBuilder_ == null) {
+          ensureVehiclesAirIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, vehiclesAir_);
+          onChanged();
+        } else {
+          vehiclesAirBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+       */
+      public Builder clearVehiclesAir() {
+        if (vehiclesAirBuilder_ == null) {
+          vehiclesAir_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          vehiclesAirBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+       */
+      public Builder removeVehiclesAir(int index) {
+        if (vehiclesAirBuilder_ == null) {
+          ensureVehiclesAirIsMutable();
+          vehiclesAir_.remove(index);
+          onChanged();
+        } else {
+          vehiclesAirBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Aircraft.Builder getVehiclesAirBuilder(
+          int index) {
+        return getVehiclesAirFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_AircraftOrBuilder getVehiclesAirOrBuilder(
+          int index) {
+        if (vehiclesAirBuilder_ == null) {
+          return vehiclesAir_.get(index);  } else {
+          return vehiclesAirBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+       */
+      public java.util.List<? extends com.task3a_b.LogisticsManagement.PB_AircraftOrBuilder> 
+           getVehiclesAirOrBuilderList() {
+        if (vehiclesAirBuilder_ != null) {
+          return vehiclesAirBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(vehiclesAir_);
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Aircraft.Builder addVehiclesAirBuilder() {
+        return getVehiclesAirFieldBuilder().addBuilder(
+            com.task3a_b.LogisticsManagement.PB_Aircraft.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Aircraft.Builder addVehiclesAirBuilder(
+          int index) {
+        return getVehiclesAirFieldBuilder().addBuilder(
+            index, com.task3a_b.LogisticsManagement.PB_Aircraft.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Aircraft vehiclesAir = 1;</code>
+       */
+      public java.util.List<com.task3a_b.LogisticsManagement.PB_Aircraft.Builder> 
+           getVehiclesAirBuilderList() {
+        return getVehiclesAirFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Aircraft, com.task3a_b.LogisticsManagement.PB_Aircraft.Builder, com.task3a_b.LogisticsManagement.PB_AircraftOrBuilder> 
+          getVehiclesAirFieldBuilder() {
+        if (vehiclesAirBuilder_ == null) {
+          vehiclesAirBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              com.task3a_b.LogisticsManagement.PB_Aircraft, com.task3a_b.LogisticsManagement.PB_Aircraft.Builder, com.task3a_b.LogisticsManagement.PB_AircraftOrBuilder>(
+                  vehiclesAir_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          vehiclesAir_ = null;
+        }
+        return vehiclesAirBuilder_;
+      }
+
+      private java.util.List<com.task3a_b.LogisticsManagement.PB_SeaVessel> vehiclesSea_ =
+        java.util.Collections.emptyList();
+      private void ensureVehiclesSeaIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          vehiclesSea_ = new java.util.ArrayList<com.task3a_b.LogisticsManagement.PB_SeaVessel>(vehiclesSea_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_SeaVessel, com.task3a_b.LogisticsManagement.PB_SeaVessel.Builder, com.task3a_b.LogisticsManagement.PB_SeaVesselOrBuilder> vehiclesSeaBuilder_;
+
+      /**
+       * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+       */
+      public java.util.List<com.task3a_b.LogisticsManagement.PB_SeaVessel> getVehiclesSeaList() {
+        if (vehiclesSeaBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(vehiclesSea_);
+        } else {
+          return vehiclesSeaBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+       */
+      public int getVehiclesSeaCount() {
+        if (vehiclesSeaBuilder_ == null) {
+          return vehiclesSea_.size();
+        } else {
+          return vehiclesSeaBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_SeaVessel getVehiclesSea(int index) {
+        if (vehiclesSeaBuilder_ == null) {
+          return vehiclesSea_.get(index);
+        } else {
+          return vehiclesSeaBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+       */
+      public Builder setVehiclesSea(
+          int index, com.task3a_b.LogisticsManagement.PB_SeaVessel value) {
+        if (vehiclesSeaBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureVehiclesSeaIsMutable();
+          vehiclesSea_.set(index, value);
+          onChanged();
+        } else {
+          vehiclesSeaBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+       */
+      public Builder setVehiclesSea(
+          int index, com.task3a_b.LogisticsManagement.PB_SeaVessel.Builder builderForValue) {
+        if (vehiclesSeaBuilder_ == null) {
+          ensureVehiclesSeaIsMutable();
+          vehiclesSea_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          vehiclesSeaBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+       */
+      public Builder addVehiclesSea(com.task3a_b.LogisticsManagement.PB_SeaVessel value) {
+        if (vehiclesSeaBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureVehiclesSeaIsMutable();
+          vehiclesSea_.add(value);
+          onChanged();
+        } else {
+          vehiclesSeaBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+       */
+      public Builder addVehiclesSea(
+          int index, com.task3a_b.LogisticsManagement.PB_SeaVessel value) {
+        if (vehiclesSeaBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureVehiclesSeaIsMutable();
+          vehiclesSea_.add(index, value);
+          onChanged();
+        } else {
+          vehiclesSeaBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+       */
+      public Builder addVehiclesSea(
+          com.task3a_b.LogisticsManagement.PB_SeaVessel.Builder builderForValue) {
+        if (vehiclesSeaBuilder_ == null) {
+          ensureVehiclesSeaIsMutable();
+          vehiclesSea_.add(builderForValue.build());
+          onChanged();
+        } else {
+          vehiclesSeaBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+       */
+      public Builder addVehiclesSea(
+          int index, com.task3a_b.LogisticsManagement.PB_SeaVessel.Builder builderForValue) {
+        if (vehiclesSeaBuilder_ == null) {
+          ensureVehiclesSeaIsMutable();
+          vehiclesSea_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          vehiclesSeaBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+       */
+      public Builder addAllVehiclesSea(
+          java.lang.Iterable<? extends com.task3a_b.LogisticsManagement.PB_SeaVessel> values) {
+        if (vehiclesSeaBuilder_ == null) {
+          ensureVehiclesSeaIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, vehiclesSea_);
+          onChanged();
+        } else {
+          vehiclesSeaBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+       */
+      public Builder clearVehiclesSea() {
+        if (vehiclesSeaBuilder_ == null) {
+          vehiclesSea_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          vehiclesSeaBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+       */
+      public Builder removeVehiclesSea(int index) {
+        if (vehiclesSeaBuilder_ == null) {
+          ensureVehiclesSeaIsMutable();
+          vehiclesSea_.remove(index);
+          onChanged();
+        } else {
+          vehiclesSeaBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_SeaVessel.Builder getVehiclesSeaBuilder(
+          int index) {
+        return getVehiclesSeaFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_SeaVesselOrBuilder getVehiclesSeaOrBuilder(
+          int index) {
+        if (vehiclesSeaBuilder_ == null) {
+          return vehiclesSea_.get(index);  } else {
+          return vehiclesSeaBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+       */
+      public java.util.List<? extends com.task3a_b.LogisticsManagement.PB_SeaVesselOrBuilder> 
+           getVehiclesSeaOrBuilderList() {
+        if (vehiclesSeaBuilder_ != null) {
+          return vehiclesSeaBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(vehiclesSea_);
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_SeaVessel.Builder addVehiclesSeaBuilder() {
+        return getVehiclesSeaFieldBuilder().addBuilder(
+            com.task3a_b.LogisticsManagement.PB_SeaVessel.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_SeaVessel.Builder addVehiclesSeaBuilder(
+          int index) {
+        return getVehiclesSeaFieldBuilder().addBuilder(
+            index, com.task3a_b.LogisticsManagement.PB_SeaVessel.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_SeaVessel vehiclesSea = 2;</code>
+       */
+      public java.util.List<com.task3a_b.LogisticsManagement.PB_SeaVessel.Builder> 
+           getVehiclesSeaBuilderList() {
+        return getVehiclesSeaFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_SeaVessel, com.task3a_b.LogisticsManagement.PB_SeaVessel.Builder, com.task3a_b.LogisticsManagement.PB_SeaVesselOrBuilder> 
+          getVehiclesSeaFieldBuilder() {
+        if (vehiclesSeaBuilder_ == null) {
+          vehiclesSeaBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              com.task3a_b.LogisticsManagement.PB_SeaVessel, com.task3a_b.LogisticsManagement.PB_SeaVessel.Builder, com.task3a_b.LogisticsManagement.PB_SeaVesselOrBuilder>(
+                  vehiclesSea_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getParentForChildren(),
+                  isClean());
+          vehiclesSea_ = null;
+        }
+        return vehiclesSeaBuilder_;
+      }
+
+      private java.util.List<com.task3a_b.LogisticsManagement.PB_Truck> vehiclesTruck_ =
+        java.util.Collections.emptyList();
+      private void ensureVehiclesTruckIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          vehiclesTruck_ = new java.util.ArrayList<com.task3a_b.LogisticsManagement.PB_Truck>(vehiclesTruck_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Truck, com.task3a_b.LogisticsManagement.PB_Truck.Builder, com.task3a_b.LogisticsManagement.PB_TruckOrBuilder> vehiclesTruckBuilder_;
+
+      /**
+       * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+       */
+      public java.util.List<com.task3a_b.LogisticsManagement.PB_Truck> getVehiclesTruckList() {
+        if (vehiclesTruckBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(vehiclesTruck_);
+        } else {
+          return vehiclesTruckBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+       */
+      public int getVehiclesTruckCount() {
+        if (vehiclesTruckBuilder_ == null) {
+          return vehiclesTruck_.size();
+        } else {
+          return vehiclesTruckBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Truck getVehiclesTruck(int index) {
+        if (vehiclesTruckBuilder_ == null) {
+          return vehiclesTruck_.get(index);
+        } else {
+          return vehiclesTruckBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+       */
+      public Builder setVehiclesTruck(
+          int index, com.task3a_b.LogisticsManagement.PB_Truck value) {
+        if (vehiclesTruckBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureVehiclesTruckIsMutable();
+          vehiclesTruck_.set(index, value);
+          onChanged();
+        } else {
+          vehiclesTruckBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+       */
+      public Builder setVehiclesTruck(
+          int index, com.task3a_b.LogisticsManagement.PB_Truck.Builder builderForValue) {
+        if (vehiclesTruckBuilder_ == null) {
+          ensureVehiclesTruckIsMutable();
+          vehiclesTruck_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          vehiclesTruckBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+       */
+      public Builder addVehiclesTruck(com.task3a_b.LogisticsManagement.PB_Truck value) {
+        if (vehiclesTruckBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureVehiclesTruckIsMutable();
+          vehiclesTruck_.add(value);
+          onChanged();
+        } else {
+          vehiclesTruckBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+       */
+      public Builder addVehiclesTruck(
+          int index, com.task3a_b.LogisticsManagement.PB_Truck value) {
+        if (vehiclesTruckBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureVehiclesTruckIsMutable();
+          vehiclesTruck_.add(index, value);
+          onChanged();
+        } else {
+          vehiclesTruckBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+       */
+      public Builder addVehiclesTruck(
+          com.task3a_b.LogisticsManagement.PB_Truck.Builder builderForValue) {
+        if (vehiclesTruckBuilder_ == null) {
+          ensureVehiclesTruckIsMutable();
+          vehiclesTruck_.add(builderForValue.build());
+          onChanged();
+        } else {
+          vehiclesTruckBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+       */
+      public Builder addVehiclesTruck(
+          int index, com.task3a_b.LogisticsManagement.PB_Truck.Builder builderForValue) {
+        if (vehiclesTruckBuilder_ == null) {
+          ensureVehiclesTruckIsMutable();
+          vehiclesTruck_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          vehiclesTruckBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+       */
+      public Builder addAllVehiclesTruck(
+          java.lang.Iterable<? extends com.task3a_b.LogisticsManagement.PB_Truck> values) {
+        if (vehiclesTruckBuilder_ == null) {
+          ensureVehiclesTruckIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, vehiclesTruck_);
+          onChanged();
+        } else {
+          vehiclesTruckBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+       */
+      public Builder clearVehiclesTruck() {
+        if (vehiclesTruckBuilder_ == null) {
+          vehiclesTruck_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          vehiclesTruckBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+       */
+      public Builder removeVehiclesTruck(int index) {
+        if (vehiclesTruckBuilder_ == null) {
+          ensureVehiclesTruckIsMutable();
+          vehiclesTruck_.remove(index);
+          onChanged();
+        } else {
+          vehiclesTruckBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Truck.Builder getVehiclesTruckBuilder(
+          int index) {
+        return getVehiclesTruckFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_TruckOrBuilder getVehiclesTruckOrBuilder(
+          int index) {
+        if (vehiclesTruckBuilder_ == null) {
+          return vehiclesTruck_.get(index);  } else {
+          return vehiclesTruckBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+       */
+      public java.util.List<? extends com.task3a_b.LogisticsManagement.PB_TruckOrBuilder> 
+           getVehiclesTruckOrBuilderList() {
+        if (vehiclesTruckBuilder_ != null) {
+          return vehiclesTruckBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(vehiclesTruck_);
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Truck.Builder addVehiclesTruckBuilder() {
+        return getVehiclesTruckFieldBuilder().addBuilder(
+            com.task3a_b.LogisticsManagement.PB_Truck.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Truck.Builder addVehiclesTruckBuilder(
+          int index) {
+        return getVehiclesTruckFieldBuilder().addBuilder(
+            index, com.task3a_b.LogisticsManagement.PB_Truck.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Truck vehiclesTruck = 3;</code>
+       */
+      public java.util.List<com.task3a_b.LogisticsManagement.PB_Truck.Builder> 
+           getVehiclesTruckBuilderList() {
+        return getVehiclesTruckFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Truck, com.task3a_b.LogisticsManagement.PB_Truck.Builder, com.task3a_b.LogisticsManagement.PB_TruckOrBuilder> 
+          getVehiclesTruckFieldBuilder() {
+        if (vehiclesTruckBuilder_ == null) {
+          vehiclesTruckBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              com.task3a_b.LogisticsManagement.PB_Truck, com.task3a_b.LogisticsManagement.PB_Truck.Builder, com.task3a_b.LogisticsManagement.PB_TruckOrBuilder>(
+                  vehiclesTruck_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  getParentForChildren(),
+                  isClean());
+          vehiclesTruck_ = null;
+        }
+        return vehiclesTruckBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.task3a_b.PB_VehiclesList)
+    }
+
+    // @@protoc_insertion_point(class_scope:com.task3a_b.PB_VehiclesList)
+    private static final com.task3a_b.LogisticsManagement.PB_VehiclesList DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.PB_VehiclesList();
+    }
+
+    public static com.task3a_b.LogisticsManagement.PB_VehiclesList getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<PB_VehiclesList>
+        PARSER = new com.google.protobuf.AbstractParser<PB_VehiclesList>() {
+      @java.lang.Override
+      public PB_VehiclesList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PB_VehiclesList(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<PB_VehiclesList> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PB_VehiclesList> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.task3a_b.LogisticsManagement.PB_VehiclesList getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface PB_CustomersListOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.task3a_b.PB_CustomersList)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+     */
+    java.util.List<com.task3a_b.LogisticsManagement.PB_Customer> 
+        getCustomersList();
+    /**
+     * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_Customer getCustomers(int index);
+    /**
+     * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+     */
+    int getCustomersCount();
+    /**
+     * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+     */
+    java.util.List<? extends com.task3a_b.LogisticsManagement.PB_CustomerOrBuilder> 
+        getCustomersOrBuilderList();
+    /**
+     * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_CustomerOrBuilder getCustomersOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code com.task3a_b.PB_CustomersList}
+   */
+  public  static final class PB_CustomersList extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:com.task3a_b.PB_CustomersList)
+      PB_CustomersListOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use PB_CustomersList.newBuilder() to construct.
+    private PB_CustomersList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private PB_CustomersList() {
+      customers_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PB_CustomersList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                customers_ = new java.util.ArrayList<com.task3a_b.LogisticsManagement.PB_Customer>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              customers_.add(
+                  input.readMessage(com.task3a_b.LogisticsManagement.PB_Customer.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          customers_ = java.util.Collections.unmodifiableList(customers_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_CustomersList_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_CustomersList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.task3a_b.LogisticsManagement.PB_CustomersList.class, com.task3a_b.LogisticsManagement.PB_CustomersList.Builder.class);
+    }
+
+    public static final int CUSTOMERS_FIELD_NUMBER = 1;
+    private java.util.List<com.task3a_b.LogisticsManagement.PB_Customer> customers_;
+    /**
+     * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+     */
+    public java.util.List<com.task3a_b.LogisticsManagement.PB_Customer> getCustomersList() {
+      return customers_;
+    }
+    /**
+     * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+     */
+    public java.util.List<? extends com.task3a_b.LogisticsManagement.PB_CustomerOrBuilder> 
+        getCustomersOrBuilderList() {
+      return customers_;
+    }
+    /**
+     * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+     */
+    public int getCustomersCount() {
+      return customers_.size();
+    }
+    /**
+     * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_Customer getCustomers(int index) {
+      return customers_.get(index);
+    }
+    /**
+     * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_CustomerOrBuilder getCustomersOrBuilder(
+        int index) {
+      return customers_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < customers_.size(); i++) {
+        output.writeMessage(1, customers_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < customers_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, customers_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.task3a_b.LogisticsManagement.PB_CustomersList)) {
+        return super.equals(obj);
+      }
+      com.task3a_b.LogisticsManagement.PB_CustomersList other = (com.task3a_b.LogisticsManagement.PB_CustomersList) obj;
+
+      boolean result = true;
+      result = result && getCustomersList()
+          .equals(other.getCustomersList());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getCustomersCount() > 0) {
+        hash = (37 * hash) + CUSTOMERS_FIELD_NUMBER;
+        hash = (53 * hash) + getCustomersList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.task3a_b.LogisticsManagement.PB_CustomersList parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_CustomersList parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_CustomersList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_CustomersList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_CustomersList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_CustomersList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_CustomersList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_CustomersList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_CustomersList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_CustomersList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_CustomersList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_CustomersList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.task3a_b.LogisticsManagement.PB_CustomersList prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.task3a_b.PB_CustomersList}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.task3a_b.PB_CustomersList)
+        com.task3a_b.LogisticsManagement.PB_CustomersListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_CustomersList_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_CustomersList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.task3a_b.LogisticsManagement.PB_CustomersList.class, com.task3a_b.LogisticsManagement.PB_CustomersList.Builder.class);
+      }
+
+      // Construct using com.task3a_b.LogisticsManagement.PB_CustomersList.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getCustomersFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (customersBuilder_ == null) {
+          customers_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          customersBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_CustomersList_descriptor;
+      }
+
+      @java.lang.Override
+      public com.task3a_b.LogisticsManagement.PB_CustomersList getDefaultInstanceForType() {
+        return com.task3a_b.LogisticsManagement.PB_CustomersList.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.task3a_b.LogisticsManagement.PB_CustomersList build() {
+        com.task3a_b.LogisticsManagement.PB_CustomersList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.task3a_b.LogisticsManagement.PB_CustomersList buildPartial() {
+        com.task3a_b.LogisticsManagement.PB_CustomersList result = new com.task3a_b.LogisticsManagement.PB_CustomersList(this);
+        int from_bitField0_ = bitField0_;
+        if (customersBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            customers_ = java.util.Collections.unmodifiableList(customers_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.customers_ = customers_;
+        } else {
+          result.customers_ = customersBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.task3a_b.LogisticsManagement.PB_CustomersList) {
+          return mergeFrom((com.task3a_b.LogisticsManagement.PB_CustomersList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.task3a_b.LogisticsManagement.PB_CustomersList other) {
+        if (other == com.task3a_b.LogisticsManagement.PB_CustomersList.getDefaultInstance()) return this;
+        if (customersBuilder_ == null) {
+          if (!other.customers_.isEmpty()) {
+            if (customers_.isEmpty()) {
+              customers_ = other.customers_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureCustomersIsMutable();
+              customers_.addAll(other.customers_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.customers_.isEmpty()) {
+            if (customersBuilder_.isEmpty()) {
+              customersBuilder_.dispose();
+              customersBuilder_ = null;
+              customers_ = other.customers_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              customersBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getCustomersFieldBuilder() : null;
+            } else {
+              customersBuilder_.addAllMessages(other.customers_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.task3a_b.LogisticsManagement.PB_CustomersList parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.task3a_b.LogisticsManagement.PB_CustomersList) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<com.task3a_b.LogisticsManagement.PB_Customer> customers_ =
+        java.util.Collections.emptyList();
+      private void ensureCustomersIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          customers_ = new java.util.ArrayList<com.task3a_b.LogisticsManagement.PB_Customer>(customers_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Customer, com.task3a_b.LogisticsManagement.PB_Customer.Builder, com.task3a_b.LogisticsManagement.PB_CustomerOrBuilder> customersBuilder_;
+
+      /**
+       * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+       */
+      public java.util.List<com.task3a_b.LogisticsManagement.PB_Customer> getCustomersList() {
+        if (customersBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(customers_);
+        } else {
+          return customersBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+       */
+      public int getCustomersCount() {
+        if (customersBuilder_ == null) {
+          return customers_.size();
+        } else {
+          return customersBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Customer getCustomers(int index) {
+        if (customersBuilder_ == null) {
+          return customers_.get(index);
+        } else {
+          return customersBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+       */
+      public Builder setCustomers(
+          int index, com.task3a_b.LogisticsManagement.PB_Customer value) {
+        if (customersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCustomersIsMutable();
+          customers_.set(index, value);
+          onChanged();
+        } else {
+          customersBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+       */
+      public Builder setCustomers(
+          int index, com.task3a_b.LogisticsManagement.PB_Customer.Builder builderForValue) {
+        if (customersBuilder_ == null) {
+          ensureCustomersIsMutable();
+          customers_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          customersBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+       */
+      public Builder addCustomers(com.task3a_b.LogisticsManagement.PB_Customer value) {
+        if (customersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCustomersIsMutable();
+          customers_.add(value);
+          onChanged();
+        } else {
+          customersBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+       */
+      public Builder addCustomers(
+          int index, com.task3a_b.LogisticsManagement.PB_Customer value) {
+        if (customersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCustomersIsMutable();
+          customers_.add(index, value);
+          onChanged();
+        } else {
+          customersBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+       */
+      public Builder addCustomers(
+          com.task3a_b.LogisticsManagement.PB_Customer.Builder builderForValue) {
+        if (customersBuilder_ == null) {
+          ensureCustomersIsMutable();
+          customers_.add(builderForValue.build());
+          onChanged();
+        } else {
+          customersBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+       */
+      public Builder addCustomers(
+          int index, com.task3a_b.LogisticsManagement.PB_Customer.Builder builderForValue) {
+        if (customersBuilder_ == null) {
+          ensureCustomersIsMutable();
+          customers_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          customersBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+       */
+      public Builder addAllCustomers(
+          java.lang.Iterable<? extends com.task3a_b.LogisticsManagement.PB_Customer> values) {
+        if (customersBuilder_ == null) {
+          ensureCustomersIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, customers_);
+          onChanged();
+        } else {
+          customersBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+       */
+      public Builder clearCustomers() {
+        if (customersBuilder_ == null) {
+          customers_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          customersBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+       */
+      public Builder removeCustomers(int index) {
+        if (customersBuilder_ == null) {
+          ensureCustomersIsMutable();
+          customers_.remove(index);
+          onChanged();
+        } else {
+          customersBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Customer.Builder getCustomersBuilder(
+          int index) {
+        return getCustomersFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_CustomerOrBuilder getCustomersOrBuilder(
+          int index) {
+        if (customersBuilder_ == null) {
+          return customers_.get(index);  } else {
+          return customersBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+       */
+      public java.util.List<? extends com.task3a_b.LogisticsManagement.PB_CustomerOrBuilder> 
+           getCustomersOrBuilderList() {
+        if (customersBuilder_ != null) {
+          return customersBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(customers_);
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Customer.Builder addCustomersBuilder() {
+        return getCustomersFieldBuilder().addBuilder(
+            com.task3a_b.LogisticsManagement.PB_Customer.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Customer.Builder addCustomersBuilder(
+          int index) {
+        return getCustomersFieldBuilder().addBuilder(
+            index, com.task3a_b.LogisticsManagement.PB_Customer.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Customer customers = 1;</code>
+       */
+      public java.util.List<com.task3a_b.LogisticsManagement.PB_Customer.Builder> 
+           getCustomersBuilderList() {
+        return getCustomersFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Customer, com.task3a_b.LogisticsManagement.PB_Customer.Builder, com.task3a_b.LogisticsManagement.PB_CustomerOrBuilder> 
+          getCustomersFieldBuilder() {
+        if (customersBuilder_ == null) {
+          customersBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              com.task3a_b.LogisticsManagement.PB_Customer, com.task3a_b.LogisticsManagement.PB_Customer.Builder, com.task3a_b.LogisticsManagement.PB_CustomerOrBuilder>(
+                  customers_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          customers_ = null;
+        }
+        return customersBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.task3a_b.PB_CustomersList)
+    }
+
+    // @@protoc_insertion_point(class_scope:com.task3a_b.PB_CustomersList)
+    private static final com.task3a_b.LogisticsManagement.PB_CustomersList DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.PB_CustomersList();
+    }
+
+    public static com.task3a_b.LogisticsManagement.PB_CustomersList getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<PB_CustomersList>
+        PARSER = new com.google.protobuf.AbstractParser<PB_CustomersList>() {
+      @java.lang.Override
+      public PB_CustomersList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PB_CustomersList(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<PB_CustomersList> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PB_CustomersList> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.task3a_b.LogisticsManagement.PB_CustomersList getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface PB_OrdersListOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.task3a_b.PB_OrdersList)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+     */
+    java.util.List<com.task3a_b.LogisticsManagement.PB_Shipment> 
+        getOrdersList();
+    /**
+     * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_Shipment getOrders(int index);
+    /**
+     * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+     */
+    int getOrdersCount();
+    /**
+     * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+     */
+    java.util.List<? extends com.task3a_b.LogisticsManagement.PB_ShipmentOrBuilder> 
+        getOrdersOrBuilderList();
+    /**
+     * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_ShipmentOrBuilder getOrdersOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code com.task3a_b.PB_OrdersList}
+   */
+  public  static final class PB_OrdersList extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:com.task3a_b.PB_OrdersList)
+      PB_OrdersListOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use PB_OrdersList.newBuilder() to construct.
+    private PB_OrdersList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private PB_OrdersList() {
+      orders_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PB_OrdersList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                orders_ = new java.util.ArrayList<com.task3a_b.LogisticsManagement.PB_Shipment>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              orders_.add(
+                  input.readMessage(com.task3a_b.LogisticsManagement.PB_Shipment.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          orders_ = java.util.Collections.unmodifiableList(orders_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_OrdersList_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_OrdersList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.task3a_b.LogisticsManagement.PB_OrdersList.class, com.task3a_b.LogisticsManagement.PB_OrdersList.Builder.class);
+    }
+
+    public static final int ORDERS_FIELD_NUMBER = 1;
+    private java.util.List<com.task3a_b.LogisticsManagement.PB_Shipment> orders_;
+    /**
+     * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+     */
+    public java.util.List<com.task3a_b.LogisticsManagement.PB_Shipment> getOrdersList() {
+      return orders_;
+    }
+    /**
+     * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+     */
+    public java.util.List<? extends com.task3a_b.LogisticsManagement.PB_ShipmentOrBuilder> 
+        getOrdersOrBuilderList() {
+      return orders_;
+    }
+    /**
+     * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+     */
+    public int getOrdersCount() {
+      return orders_.size();
+    }
+    /**
+     * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_Shipment getOrders(int index) {
+      return orders_.get(index);
+    }
+    /**
+     * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_ShipmentOrBuilder getOrdersOrBuilder(
+        int index) {
+      return orders_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < orders_.size(); i++) {
+        output.writeMessage(1, orders_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < orders_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, orders_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.task3a_b.LogisticsManagement.PB_OrdersList)) {
+        return super.equals(obj);
+      }
+      com.task3a_b.LogisticsManagement.PB_OrdersList other = (com.task3a_b.LogisticsManagement.PB_OrdersList) obj;
+
+      boolean result = true;
+      result = result && getOrdersList()
+          .equals(other.getOrdersList());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getOrdersCount() > 0) {
+        hash = (37 * hash) + ORDERS_FIELD_NUMBER;
+        hash = (53 * hash) + getOrdersList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.task3a_b.LogisticsManagement.PB_OrdersList parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_OrdersList parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_OrdersList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_OrdersList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_OrdersList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_OrdersList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_OrdersList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_OrdersList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_OrdersList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_OrdersList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_OrdersList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.task3a_b.LogisticsManagement.PB_OrdersList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.task3a_b.LogisticsManagement.PB_OrdersList prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.task3a_b.PB_OrdersList}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.task3a_b.PB_OrdersList)
+        com.task3a_b.LogisticsManagement.PB_OrdersListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_OrdersList_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_OrdersList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.task3a_b.LogisticsManagement.PB_OrdersList.class, com.task3a_b.LogisticsManagement.PB_OrdersList.Builder.class);
+      }
+
+      // Construct using com.task3a_b.LogisticsManagement.PB_OrdersList.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getOrdersFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (ordersBuilder_ == null) {
+          orders_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          ordersBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.task3a_b.LogisticsManagement.internal_static_com_task3a_b_PB_OrdersList_descriptor;
+      }
+
+      @java.lang.Override
+      public com.task3a_b.LogisticsManagement.PB_OrdersList getDefaultInstanceForType() {
+        return com.task3a_b.LogisticsManagement.PB_OrdersList.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.task3a_b.LogisticsManagement.PB_OrdersList build() {
+        com.task3a_b.LogisticsManagement.PB_OrdersList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.task3a_b.LogisticsManagement.PB_OrdersList buildPartial() {
+        com.task3a_b.LogisticsManagement.PB_OrdersList result = new com.task3a_b.LogisticsManagement.PB_OrdersList(this);
+        int from_bitField0_ = bitField0_;
+        if (ordersBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            orders_ = java.util.Collections.unmodifiableList(orders_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.orders_ = orders_;
+        } else {
+          result.orders_ = ordersBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.task3a_b.LogisticsManagement.PB_OrdersList) {
+          return mergeFrom((com.task3a_b.LogisticsManagement.PB_OrdersList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.task3a_b.LogisticsManagement.PB_OrdersList other) {
+        if (other == com.task3a_b.LogisticsManagement.PB_OrdersList.getDefaultInstance()) return this;
+        if (ordersBuilder_ == null) {
+          if (!other.orders_.isEmpty()) {
+            if (orders_.isEmpty()) {
+              orders_ = other.orders_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureOrdersIsMutable();
+              orders_.addAll(other.orders_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.orders_.isEmpty()) {
+            if (ordersBuilder_.isEmpty()) {
+              ordersBuilder_.dispose();
+              ordersBuilder_ = null;
+              orders_ = other.orders_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              ordersBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getOrdersFieldBuilder() : null;
+            } else {
+              ordersBuilder_.addAllMessages(other.orders_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.task3a_b.LogisticsManagement.PB_OrdersList parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.task3a_b.LogisticsManagement.PB_OrdersList) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<com.task3a_b.LogisticsManagement.PB_Shipment> orders_ =
+        java.util.Collections.emptyList();
+      private void ensureOrdersIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          orders_ = new java.util.ArrayList<com.task3a_b.LogisticsManagement.PB_Shipment>(orders_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Shipment, com.task3a_b.LogisticsManagement.PB_Shipment.Builder, com.task3a_b.LogisticsManagement.PB_ShipmentOrBuilder> ordersBuilder_;
+
+      /**
+       * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+       */
+      public java.util.List<com.task3a_b.LogisticsManagement.PB_Shipment> getOrdersList() {
+        if (ordersBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(orders_);
+        } else {
+          return ordersBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+       */
+      public int getOrdersCount() {
+        if (ordersBuilder_ == null) {
+          return orders_.size();
+        } else {
+          return ordersBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Shipment getOrders(int index) {
+        if (ordersBuilder_ == null) {
+          return orders_.get(index);
+        } else {
+          return ordersBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+       */
+      public Builder setOrders(
+          int index, com.task3a_b.LogisticsManagement.PB_Shipment value) {
+        if (ordersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureOrdersIsMutable();
+          orders_.set(index, value);
+          onChanged();
+        } else {
+          ordersBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+       */
+      public Builder setOrders(
+          int index, com.task3a_b.LogisticsManagement.PB_Shipment.Builder builderForValue) {
+        if (ordersBuilder_ == null) {
+          ensureOrdersIsMutable();
+          orders_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          ordersBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+       */
+      public Builder addOrders(com.task3a_b.LogisticsManagement.PB_Shipment value) {
+        if (ordersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureOrdersIsMutable();
+          orders_.add(value);
+          onChanged();
+        } else {
+          ordersBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+       */
+      public Builder addOrders(
+          int index, com.task3a_b.LogisticsManagement.PB_Shipment value) {
+        if (ordersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureOrdersIsMutable();
+          orders_.add(index, value);
+          onChanged();
+        } else {
+          ordersBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+       */
+      public Builder addOrders(
+          com.task3a_b.LogisticsManagement.PB_Shipment.Builder builderForValue) {
+        if (ordersBuilder_ == null) {
+          ensureOrdersIsMutable();
+          orders_.add(builderForValue.build());
+          onChanged();
+        } else {
+          ordersBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+       */
+      public Builder addOrders(
+          int index, com.task3a_b.LogisticsManagement.PB_Shipment.Builder builderForValue) {
+        if (ordersBuilder_ == null) {
+          ensureOrdersIsMutable();
+          orders_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          ordersBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+       */
+      public Builder addAllOrders(
+          java.lang.Iterable<? extends com.task3a_b.LogisticsManagement.PB_Shipment> values) {
+        if (ordersBuilder_ == null) {
+          ensureOrdersIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, orders_);
+          onChanged();
+        } else {
+          ordersBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+       */
+      public Builder clearOrders() {
+        if (ordersBuilder_ == null) {
+          orders_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          ordersBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+       */
+      public Builder removeOrders(int index) {
+        if (ordersBuilder_ == null) {
+          ensureOrdersIsMutable();
+          orders_.remove(index);
+          onChanged();
+        } else {
+          ordersBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Shipment.Builder getOrdersBuilder(
+          int index) {
+        return getOrdersFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_ShipmentOrBuilder getOrdersOrBuilder(
+          int index) {
+        if (ordersBuilder_ == null) {
+          return orders_.get(index);  } else {
+          return ordersBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+       */
+      public java.util.List<? extends com.task3a_b.LogisticsManagement.PB_ShipmentOrBuilder> 
+           getOrdersOrBuilderList() {
+        if (ordersBuilder_ != null) {
+          return ordersBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(orders_);
+        }
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Shipment.Builder addOrdersBuilder() {
+        return getOrdersFieldBuilder().addBuilder(
+            com.task3a_b.LogisticsManagement.PB_Shipment.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Shipment.Builder addOrdersBuilder(
+          int index) {
+        return getOrdersFieldBuilder().addBuilder(
+            index, com.task3a_b.LogisticsManagement.PB_Shipment.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.task3a_b.PB_Shipment orders = 1;</code>
+       */
+      public java.util.List<com.task3a_b.LogisticsManagement.PB_Shipment.Builder> 
+           getOrdersBuilderList() {
+        return getOrdersFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Shipment, com.task3a_b.LogisticsManagement.PB_Shipment.Builder, com.task3a_b.LogisticsManagement.PB_ShipmentOrBuilder> 
+          getOrdersFieldBuilder() {
+        if (ordersBuilder_ == null) {
+          ordersBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              com.task3a_b.LogisticsManagement.PB_Shipment, com.task3a_b.LogisticsManagement.PB_Shipment.Builder, com.task3a_b.LogisticsManagement.PB_ShipmentOrBuilder>(
+                  orders_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          orders_ = null;
+        }
+        return ordersBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.task3a_b.PB_OrdersList)
+    }
+
+    // @@protoc_insertion_point(class_scope:com.task3a_b.PB_OrdersList)
+    private static final com.task3a_b.LogisticsManagement.PB_OrdersList DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.task3a_b.LogisticsManagement.PB_OrdersList();
+    }
+
+    public static com.task3a_b.LogisticsManagement.PB_OrdersList getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<PB_OrdersList>
+        PARSER = new com.google.protobuf.AbstractParser<PB_OrdersList>() {
+      @java.lang.Override
+      public PB_OrdersList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PB_OrdersList(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<PB_OrdersList> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PB_OrdersList> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.task3a_b.LogisticsManagement.PB_OrdersList getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_task3a_b_Product_descriptor;
+    internal_static_com_task3a_b_PB_Product_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_task3a_b_Product_fieldAccessorTable;
+      internal_static_com_task3a_b_PB_Product_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_task3a_b_Book_descriptor;
+    internal_static_com_task3a_b_PB_Book_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_task3a_b_Book_fieldAccessorTable;
+      internal_static_com_task3a_b_PB_Book_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_task3a_b_Clothing_descriptor;
+    internal_static_com_task3a_b_PB_Clothing_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_task3a_b_Clothing_fieldAccessorTable;
+      internal_static_com_task3a_b_PB_Clothing_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_task3a_b_ComputerGame_descriptor;
+    internal_static_com_task3a_b_PB_ComputerGame_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_task3a_b_ComputerGame_fieldAccessorTable;
+      internal_static_com_task3a_b_PB_ComputerGame_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_task3a_b_Electronics_descriptor;
+    internal_static_com_task3a_b_PB_Electronics_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_task3a_b_Electronics_fieldAccessorTable;
+      internal_static_com_task3a_b_PB_Electronics_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_task3a_b_Transport_descriptor;
+    internal_static_com_task3a_b_PB_Transport_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_task3a_b_Transport_fieldAccessorTable;
+      internal_static_com_task3a_b_PB_Transport_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_task3a_b_Aircraft_descriptor;
+    internal_static_com_task3a_b_PB_Aircraft_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_task3a_b_Aircraft_fieldAccessorTable;
+      internal_static_com_task3a_b_PB_Aircraft_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_task3a_b_SeaVessel_descriptor;
+    internal_static_com_task3a_b_PB_SeaVessel_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_task3a_b_SeaVessel_fieldAccessorTable;
+      internal_static_com_task3a_b_PB_SeaVessel_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_task3a_b_Truck_descriptor;
+    internal_static_com_task3a_b_PB_Truck_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_task3a_b_Truck_fieldAccessorTable;
+      internal_static_com_task3a_b_PB_Truck_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_task3a_b_Packaging_descriptor;
+    internal_static_com_task3a_b_PB_Packaging_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_task3a_b_Packaging_fieldAccessorTable;
+      internal_static_com_task3a_b_PB_Packaging_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_task3a_b_StockItem_descriptor;
+    internal_static_com_task3a_b_PB_StockItem_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_task3a_b_StockItem_fieldAccessorTable;
+      internal_static_com_task3a_b_PB_StockItem_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_task3a_b_Stock_descriptor;
+    internal_static_com_task3a_b_PB_Stock_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_task3a_b_Stock_fieldAccessorTable;
+      internal_static_com_task3a_b_PB_Stock_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_task3a_b_Customer_descriptor;
+    internal_static_com_task3a_b_PB_Customer_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_task3a_b_Customer_fieldAccessorTable;
+      internal_static_com_task3a_b_PB_Customer_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_task3a_b_Shipment_descriptor;
+    internal_static_com_task3a_b_PB_Shipment_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_task3a_b_Shipment_fieldAccessorTable;
+      internal_static_com_task3a_b_PB_Shipment_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_task3a_b_PB_PackagingList_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_task3a_b_PB_PackagingList_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_task3a_b_PB_VehiclesList_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_task3a_b_PB_VehiclesList_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_task3a_b_PB_CustomersList_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_task3a_b_PB_CustomersList_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_task3a_b_PB_OrdersList_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_task3a_b_PB_OrdersList_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -11336,35 +17690,65 @@ public final class LogisticsManagement {
   static {
     java.lang.String[] descriptorData = {
       "\n\031logisticsManagement.proto\022\014com.task3a_" +
-      "b\"w\n\007Product\022\023\n\013productName\030\001 \001(\t\022\021\n\tpro" +
-      "ductID\030\002 \001(\005\022\027\n\017productCategory\030\003 \001(\t\022\024\n" +
-      "\014productPrice\030\004 \001(\001\022\025\n\rproductVolume\030\005 \001" +
-      "(\005\"?\n\004Book\022\020\n\010bookIBAN\030\001 \001(\t\022\022\n\nbookAuth" +
-      "or\030\002 \001(\t\022\021\n\tbookGenre\030\003 \001(\t\"E\n\010Clothing\022" +
-      "\r\n\005width\030\001 \001(\001\022\016\n\006length\030\002 \001(\001\022\032\n\022sizeCl" +
-      "assification\030\003 \001(\t\"\016\n\014ComputerGame\"\r\n\013El" +
-      "ectronics\"q\n\tTransport\022\023\n\013vehicleType\030\001 " +
-      "\001(\t\022\021\n\tvehicleID\030\002 \001(\005\022\033\n\023transportatoin" +
-      "Speed\030\003 \001(\001\022\037\n\027transportationCostPerKm\030\004" +
-      " \001(\001\"2\n\010Aircraft\022\024\n\014airSpaceList\030\001 \003(\t\022\020" +
-      "\n\010airSpace\030\002 \001(\t\"-\n\tSeaVessel\022\021\n\trouteLi" +
-      "st\030\001 \003(\t\022\r\n\005route\030\002 \001(\t\"/\n\005Truck\022\024\n\014moto" +
-      "rwayList\030\001 \003(\t\022\020\n\010motorway\030\002 \001(\t\"b\n\tPack" +
-      "aging\022\023\n\013packagingID\030\001 \001(\005\022\020\n\010material\030\002" +
-      " \001(\t\022\014\n\004cost\030\003 \001(\001\022 \n\030capacityInPackagin" +
-      "gUnits\030\004 \001(\005\"E\n\tStockItem\022&\n\007product\030\001 \001" +
-      "(\0132\025.com.task3a_b.Product\022\020\n\010quantity\030\002 " +
-      "\001(\005\"/\n\005Stock\022&\n\005items\030\001 \003(\0132\027.com.task3a" +
-      "_b.StockItem\"z\n\010Customer\022\024\n\014customerName" +
-      "\030\001 \001(\t\022\022\n\ncustomerID\030\002 \001(\005\022\024\n\014customerRo" +
-      "ad\030\003 \001(\t\022\024\n\014customerTown\030\004 \001(\t\022\030\n\020custom" +
-      "erPostCode\030\005 \001(\t\"\340\001\n\010Shipment\022\022\n\nshipmen" +
-      "tID\030\001 \001(\005\022\026\n\016shipmentStatus\030\002 \001(\t\022\024\n\014dis" +
-      "patchDate\030\003 \001(\t\022,\n\013itemsToShip\030\004 \003(\0132\027.c" +
-      "om.task3a_b.StockItem\0220\n\020shipmentCustome" +
-      "r\030\005 \001(\0132\026.com.task3a_b.Customer\0222\n\021shipm" +
-      "entTransport\030\006 \001(\0132\027.com.task3a_b.Transp" +
-      "ortb\006proto3"
+      "b\"\353\001\n\nPB_Product\022\023\n\013productName\030\001 \001(\t\022\021\n" +
+      "\tproductID\030\002 \001(\005\022>\n\017productCategory\030\003 \001(" +
+      "\0162%.com.task3a_b.PB_Product.ProdCategory" +
+      "\022\024\n\014productPrice\030\004 \001(\001\022\025\n\rproductVolume\030" +
+      "\005 \001(\005\"H\n\014ProdCategory\022\010\n\004BOOK\020\000\022\014\n\010CLOTH" +
+      "ING\020\001\022\020\n\014COMPUTERGAME\020\002\022\016\n\nELECTRONIC\020\003\"" +
+      "m\n\007PB_Book\022\020\n\010bookIBAN\030\001 \001(\t\022\022\n\nbookAuth" +
+      "or\030\002 \001(\t\022\021\n\tbookGenre\030\003 \001(\t\022)\n\007product\030\004" +
+      " \001(\0132\030.com.task3a_b.PB_Product\"s\n\013PB_Clo" +
+      "thing\022\r\n\005width\030\001 \001(\001\022\016\n\006length\030\002 \001(\001\022\032\n\022" +
+      "sizeClassification\030\003 \001(\t\022)\n\007product\030\004 \001(" +
+      "\0132\030.com.task3a_b.PB_Product\"<\n\017PB_Comput" +
+      "erGame\022)\n\007product\030\001 \001(\0132\030.com.task3a_b.P" +
+      "B_Product\";\n\016PB_Electronics\022)\n\007product\030\001" +
+      " \001(\0132\030.com.task3a_b.PB_Product\"\327\001\n\014PB_Tr" +
+      "ansport\022=\n\013vehicleType\030\001 \001(\0162(.com.task3" +
+      "a_b.PB_Transport.TransportType\022\021\n\tvehicl" +
+      "eID\030\002 \001(\005\022\033\n\023transportatoinSpeed\030\003 \001(\001\022\037" +
+      "\n\027transportationCostPerKm\030\004 \001(\001\"7\n\rTrans" +
+      "portType\022\014\n\010AIRCRAFT\020\000\022\r\n\tSEAVESSEL\020\001\022\t\n" +
+      "\005TRUCK\020\002\"d\n\013PB_Aircraft\022\024\n\014airSpaceList\030" +
+      "\001 \003(\t\022\020\n\010airSpace\030\002 \001(\t\022-\n\ttransport\030\003 \001" +
+      "(\0132\032.com.task3a_b.PB_Transport\"_\n\014PB_Sea" +
+      "Vessel\022\021\n\trouteList\030\001 \003(\t\022\r\n\005route\030\002 \001(\t" +
+      "\022-\n\ttransport\030\003 \001(\0132\032.com.task3a_b.PB_Tr" +
+      "ansport\"a\n\010PB_Truck\022\024\n\014motorwayList\030\001 \003(" +
+      "\t\022\020\n\010motorway\030\002 \001(\t\022-\n\ttransport\030\003 \001(\0132\032" +
+      ".com.task3a_b.PB_Transport\"e\n\014PB_Packagi" +
+      "ng\022\023\n\013packagingID\030\001 \001(\005\022\020\n\010material\030\002 \001(" +
+      "\t\022\014\n\004cost\030\003 \001(\001\022 \n\030capacityInPackagingUn" +
+      "its\030\004 \001(\005\"\344\001\n\014PB_StockItem\022*\n\013productBoo" +
+      "k\030\001 \001(\0132\025.com.task3a_b.PB_Book\022/\n\014produc" +
+      "tCloth\030\002 \001(\0132\031.com.task3a_b.PB_Clothing\022" +
+      "2\n\013productGame\030\003 \001(\0132\035.com.task3a_b.PB_C" +
+      "omputerGame\0221\n\013productElec\030\004 \001(\0132\034.com.t" +
+      "ask3a_b.PB_Electronics\022\020\n\010quantity\030\005 \001(\005" +
+      "\"5\n\010PB_Stock\022)\n\005items\030\001 \003(\0132\032.com.task3a" +
+      "_b.PB_StockItem\"}\n\013PB_Customer\022\024\n\014custom" +
+      "erName\030\001 \001(\t\022\022\n\ncustomerID\030\002 \001(\005\022\024\n\014cust" +
+      "omerRoad\030\003 \001(\t\022\024\n\014customerTown\030\004 \001(\t\022\030\n\020" +
+      "customerPostCode\030\005 \001(\t\"\340\002\n\013PB_Shipment\022\022" +
+      "\n\nshipmentID\030\001 \001(\005\022\026\n\016shipmentStatus\030\002 \001" +
+      "(\t\022\024\n\014dispatchDate\030\003 \001(\t\022\021\n\torderDate\030\004 " +
+      "\001(\t\022/\n\013itemsToShip\030\005 \003(\0132\032.com.task3a_b." +
+      "PB_StockItem\0223\n\020shipmentCustomer\030\006 \001(\0132\031" +
+      ".com.task3a_b.PB_Customer\0223\n\020shipmentAir" +
+      "craft\030\007 \001(\0132\031.com.task3a_b.PB_Aircraft\0222" +
+      "\n\016shipmentVessel\030\010 \001(\0132\032.com.task3a_b.PB" +
+      "_SeaVessel\022-\n\rshipmentTruck\030\t \001(\0132\026.com." +
+      "task3a_b.PB_Truck\"@\n\020PB_PackagingList\022,\n" +
+      "\010packages\030\001 \003(\0132\032.com.task3a_b.PB_Packag" +
+      "ing\"\241\001\n\017PB_VehiclesList\022.\n\013vehiclesAir\030\001" +
+      " \003(\0132\031.com.task3a_b.PB_Aircraft\022/\n\013vehic" +
+      "lesSea\030\002 \003(\0132\032.com.task3a_b.PB_SeaVessel" +
+      "\022-\n\rvehiclesTruck\030\003 \003(\0132\026.com.task3a_b.P" +
+      "B_Truck\"@\n\020PB_CustomersList\022,\n\tcustomers" +
+      "\030\001 \003(\0132\031.com.task3a_b.PB_Customer\":\n\rPB_" +
+      "OrdersList\022)\n\006orders\030\001 \003(\0132\031.com.task3a_" +
+      "b.PB_Shipmentb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -11378,90 +17762,114 @@ public final class LogisticsManagement {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_com_task3a_b_Product_descriptor =
+    internal_static_com_task3a_b_PB_Product_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_com_task3a_b_Product_fieldAccessorTable = new
+    internal_static_com_task3a_b_PB_Product_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_task3a_b_Product_descriptor,
+        internal_static_com_task3a_b_PB_Product_descriptor,
         new java.lang.String[] { "ProductName", "ProductID", "ProductCategory", "ProductPrice", "ProductVolume", });
-    internal_static_com_task3a_b_Book_descriptor =
+    internal_static_com_task3a_b_PB_Book_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_com_task3a_b_Book_fieldAccessorTable = new
+    internal_static_com_task3a_b_PB_Book_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_task3a_b_Book_descriptor,
-        new java.lang.String[] { "BookIBAN", "BookAuthor", "BookGenre", });
-    internal_static_com_task3a_b_Clothing_descriptor =
+        internal_static_com_task3a_b_PB_Book_descriptor,
+        new java.lang.String[] { "BookIBAN", "BookAuthor", "BookGenre", "Product", });
+    internal_static_com_task3a_b_PB_Clothing_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_com_task3a_b_Clothing_fieldAccessorTable = new
+    internal_static_com_task3a_b_PB_Clothing_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_task3a_b_Clothing_descriptor,
-        new java.lang.String[] { "Width", "Length", "SizeClassification", });
-    internal_static_com_task3a_b_ComputerGame_descriptor =
+        internal_static_com_task3a_b_PB_Clothing_descriptor,
+        new java.lang.String[] { "Width", "Length", "SizeClassification", "Product", });
+    internal_static_com_task3a_b_PB_ComputerGame_descriptor =
       getDescriptor().getMessageTypes().get(3);
-    internal_static_com_task3a_b_ComputerGame_fieldAccessorTable = new
+    internal_static_com_task3a_b_PB_ComputerGame_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_task3a_b_ComputerGame_descriptor,
-        new java.lang.String[] { });
-    internal_static_com_task3a_b_Electronics_descriptor =
+        internal_static_com_task3a_b_PB_ComputerGame_descriptor,
+        new java.lang.String[] { "Product", });
+    internal_static_com_task3a_b_PB_Electronics_descriptor =
       getDescriptor().getMessageTypes().get(4);
-    internal_static_com_task3a_b_Electronics_fieldAccessorTable = new
+    internal_static_com_task3a_b_PB_Electronics_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_task3a_b_Electronics_descriptor,
-        new java.lang.String[] { });
-    internal_static_com_task3a_b_Transport_descriptor =
+        internal_static_com_task3a_b_PB_Electronics_descriptor,
+        new java.lang.String[] { "Product", });
+    internal_static_com_task3a_b_PB_Transport_descriptor =
       getDescriptor().getMessageTypes().get(5);
-    internal_static_com_task3a_b_Transport_fieldAccessorTable = new
+    internal_static_com_task3a_b_PB_Transport_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_task3a_b_Transport_descriptor,
+        internal_static_com_task3a_b_PB_Transport_descriptor,
         new java.lang.String[] { "VehicleType", "VehicleID", "TransportatoinSpeed", "TransportationCostPerKm", });
-    internal_static_com_task3a_b_Aircraft_descriptor =
+    internal_static_com_task3a_b_PB_Aircraft_descriptor =
       getDescriptor().getMessageTypes().get(6);
-    internal_static_com_task3a_b_Aircraft_fieldAccessorTable = new
+    internal_static_com_task3a_b_PB_Aircraft_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_task3a_b_Aircraft_descriptor,
-        new java.lang.String[] { "AirSpaceList", "AirSpace", });
-    internal_static_com_task3a_b_SeaVessel_descriptor =
+        internal_static_com_task3a_b_PB_Aircraft_descriptor,
+        new java.lang.String[] { "AirSpaceList", "AirSpace", "Transport", });
+    internal_static_com_task3a_b_PB_SeaVessel_descriptor =
       getDescriptor().getMessageTypes().get(7);
-    internal_static_com_task3a_b_SeaVessel_fieldAccessorTable = new
+    internal_static_com_task3a_b_PB_SeaVessel_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_task3a_b_SeaVessel_descriptor,
-        new java.lang.String[] { "RouteList", "Route", });
-    internal_static_com_task3a_b_Truck_descriptor =
+        internal_static_com_task3a_b_PB_SeaVessel_descriptor,
+        new java.lang.String[] { "RouteList", "Route", "Transport", });
+    internal_static_com_task3a_b_PB_Truck_descriptor =
       getDescriptor().getMessageTypes().get(8);
-    internal_static_com_task3a_b_Truck_fieldAccessorTable = new
+    internal_static_com_task3a_b_PB_Truck_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_task3a_b_Truck_descriptor,
-        new java.lang.String[] { "MotorwayList", "Motorway", });
-    internal_static_com_task3a_b_Packaging_descriptor =
+        internal_static_com_task3a_b_PB_Truck_descriptor,
+        new java.lang.String[] { "MotorwayList", "Motorway", "Transport", });
+    internal_static_com_task3a_b_PB_Packaging_descriptor =
       getDescriptor().getMessageTypes().get(9);
-    internal_static_com_task3a_b_Packaging_fieldAccessorTable = new
+    internal_static_com_task3a_b_PB_Packaging_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_task3a_b_Packaging_descriptor,
+        internal_static_com_task3a_b_PB_Packaging_descriptor,
         new java.lang.String[] { "PackagingID", "Material", "Cost", "CapacityInPackagingUnits", });
-    internal_static_com_task3a_b_StockItem_descriptor =
+    internal_static_com_task3a_b_PB_StockItem_descriptor =
       getDescriptor().getMessageTypes().get(10);
-    internal_static_com_task3a_b_StockItem_fieldAccessorTable = new
+    internal_static_com_task3a_b_PB_StockItem_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_task3a_b_StockItem_descriptor,
-        new java.lang.String[] { "Product", "Quantity", });
-    internal_static_com_task3a_b_Stock_descriptor =
+        internal_static_com_task3a_b_PB_StockItem_descriptor,
+        new java.lang.String[] { "ProductBook", "ProductCloth", "ProductGame", "ProductElec", "Quantity", });
+    internal_static_com_task3a_b_PB_Stock_descriptor =
       getDescriptor().getMessageTypes().get(11);
-    internal_static_com_task3a_b_Stock_fieldAccessorTable = new
+    internal_static_com_task3a_b_PB_Stock_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_task3a_b_Stock_descriptor,
+        internal_static_com_task3a_b_PB_Stock_descriptor,
         new java.lang.String[] { "Items", });
-    internal_static_com_task3a_b_Customer_descriptor =
+    internal_static_com_task3a_b_PB_Customer_descriptor =
       getDescriptor().getMessageTypes().get(12);
-    internal_static_com_task3a_b_Customer_fieldAccessorTable = new
+    internal_static_com_task3a_b_PB_Customer_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_task3a_b_Customer_descriptor,
+        internal_static_com_task3a_b_PB_Customer_descriptor,
         new java.lang.String[] { "CustomerName", "CustomerID", "CustomerRoad", "CustomerTown", "CustomerPostCode", });
-    internal_static_com_task3a_b_Shipment_descriptor =
+    internal_static_com_task3a_b_PB_Shipment_descriptor =
       getDescriptor().getMessageTypes().get(13);
-    internal_static_com_task3a_b_Shipment_fieldAccessorTable = new
+    internal_static_com_task3a_b_PB_Shipment_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_task3a_b_Shipment_descriptor,
-        new java.lang.String[] { "ShipmentID", "ShipmentStatus", "DispatchDate", "ItemsToShip", "ShipmentCustomer", "ShipmentTransport", });
+        internal_static_com_task3a_b_PB_Shipment_descriptor,
+        new java.lang.String[] { "ShipmentID", "ShipmentStatus", "DispatchDate", "OrderDate", "ItemsToShip", "ShipmentCustomer", "ShipmentAircraft", "ShipmentVessel", "ShipmentTruck", });
+    internal_static_com_task3a_b_PB_PackagingList_descriptor =
+      getDescriptor().getMessageTypes().get(14);
+    internal_static_com_task3a_b_PB_PackagingList_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_task3a_b_PB_PackagingList_descriptor,
+        new java.lang.String[] { "Packages", });
+    internal_static_com_task3a_b_PB_VehiclesList_descriptor =
+      getDescriptor().getMessageTypes().get(15);
+    internal_static_com_task3a_b_PB_VehiclesList_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_task3a_b_PB_VehiclesList_descriptor,
+        new java.lang.String[] { "VehiclesAir", "VehiclesSea", "VehiclesTruck", });
+    internal_static_com_task3a_b_PB_CustomersList_descriptor =
+      getDescriptor().getMessageTypes().get(16);
+    internal_static_com_task3a_b_PB_CustomersList_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_task3a_b_PB_CustomersList_descriptor,
+        new java.lang.String[] { "Customers", });
+    internal_static_com_task3a_b_PB_OrdersList_descriptor =
+      getDescriptor().getMessageTypes().get(17);
+    internal_static_com_task3a_b_PB_OrdersList_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_task3a_b_PB_OrdersList_descriptor,
+        new java.lang.String[] { "Orders", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
