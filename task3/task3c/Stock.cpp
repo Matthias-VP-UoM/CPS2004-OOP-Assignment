@@ -22,7 +22,7 @@ bool Stock::checkIfEmptyList(){
 
 
 void Stock::read_stock_list(){
-    for (int i = 0; i < MAXITEMS; i++){
+    for (int i = 0; i < items.size(); i++){
         print_item_details(i);
     }
 }

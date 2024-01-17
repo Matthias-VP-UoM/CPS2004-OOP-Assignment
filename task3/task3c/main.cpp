@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <filesystem>
 #include <vector>
 
 #include "Stock.h"
@@ -10,49 +11,44 @@
 #include "Electronics.h"
 
 using namespace std;
+namespace fs = std::filesystem;
 
+void copyFile(const string& sourceFileName, const string& destFileName){
+    ofstream(sourceFileName).put('x');
+    fs::copy_file(sourceFileName, destFileName);
 
-bool copyFile(const string& sourceFileName, const string& destFileName){
-    ifstream sourceFile(sourceFileName, ios::binary);
-    ofstream destFile(destFileName, ios::binary);
-
-    if (!sourceFile.is_open() || !destFile.is_open()){
-        cerr << "Error opening source file." << endl;
-        return false;
-    }
-
-    destFile << sourceFile.rdbuf();
-
-    if (!sourceFile.good() || !destFile.good()){
-        cout << "Error occurred during file copy!" << endl;
-        return false;
-    }
+    cout << ifstream(destFileName).rdbuf() << endl;
 
     cout << "File has been copied successfully!" << endl;
-    return true;
 }
 
 void loadStock(Stock* &stock, const string& filename) {
-    std::ifstream inFile(filename, std::ios::binary);
+    std::fstream inFile;
+    inFile.open(filename, std::ios::out | std::ios::binary);
     if (!inFile) {
         std::cerr << "Error: Could not open file for reading.\n";
         return;
     }
 
     // Deserialize the stock
-    inFile.read(reinterpret_cast<char*>(&stock), sizeof(stock));
+    if(inFile.read((char*)(&stock), sizeof(stock))){
+        cout << "Stock Viewer App:" << endl;
+        cout << "--------------------------------" << endl;
+        stock->read_stock_list();
+    }
 }
 
 
 int main(int, char**){
     Stock* stock = new Stock();
-    copyFile("", "");
+    copyFile(fs::current_path().parent_path().parent_path().string()+"/task3a_b/state_stock.bin", "state_stock.bin");
 
-    loadStock(stock, "");
+    loadStock(stock, "state_stock.bin");
 
-    cout << "Stock Viewer App:" << endl;
-    cout << "--------------------------------" << endl;
-    stock->read_stock_list();
+    /* std::cout << "Current path is " << fs::current_path().parent_path().parent_path() << '\n';
+    for (fs::path p : {"build/state_stock.bin", "/", "/var/tmp/."}){
+        std::cout << "The parent path of " << p << " is " << p.parent_path() << '\n';
+    } */
 
 
     return 0;
