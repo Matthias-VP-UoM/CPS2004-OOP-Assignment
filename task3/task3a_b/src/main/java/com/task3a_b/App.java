@@ -1631,7 +1631,7 @@ public class App implements Serializable
         }
     }
 
-    // Example method for serialization
+    // Method for saving (serialization)
     public static void save2() {
         // Packing into protobuf objects
         PB_Stock.Builder pbStockBuilder = PB_Stock.newBuilder();
@@ -1895,14 +1895,14 @@ public class App implements Serializable
 
         PB_OrdersList pbOrdersList = pbOrdersListBuilder.build();
 
-        // Serialize the stock
+        // Serializing stock
         try (FileOutputStream out = new FileOutputStream(STOCK_FILE)) {
             pbStock.writeTo(out);
         }catch (IOException e) {
             System.err.println("Failed to write stock to output file!");
         }
 
-        // Serialize the lists
+        // Serializing the lists
         try (FileOutputStream out = new FileOutputStream(VEHICLES_FILE)) {
             pbVehiclesList.writeTo(out);
         }catch (IOException e) {
@@ -1928,7 +1928,7 @@ public class App implements Serializable
         }
     }
 
-    // Example method for deserialization
+    // Method for loading (deserialization)
     public static void load2() {
         PB_Stock pbStock2;
         PB_PackagingList pbPackagingList2;
@@ -1936,7 +1936,7 @@ public class App implements Serializable
         PB_CustomersList pbCustomersList2;
         PB_OrdersList pbOrdersList2;
 
-        // Deserialize the stock
+        // Deserializing stock
         try (FileInputStream in = new FileInputStream(STOCK_FILE)) {
             pbStock2 = PB_Stock.parseFrom(in);
         } catch (IOException e) {
@@ -1944,7 +1944,7 @@ public class App implements Serializable
             return;
         }
 
-        // Deserialize the lists
+        // Deserializing the lists
         try (FileInputStream in = new FileInputStream(VEHICLES_FILE)) {
             pbVehiclesList2 = PB_VehiclesList.parseFrom(in);
         } catch (IOException e) {

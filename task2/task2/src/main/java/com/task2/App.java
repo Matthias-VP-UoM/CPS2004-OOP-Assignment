@@ -1514,7 +1514,12 @@ public class App implements Serializable
 
             String date = day+"/"+monthNum+"/"+year;
 
-            double totalCost = ordersList.get(posOfShipment).calculateTotalCost(monthNum);
+            double totalCost;
+            if (!giveDiscount){
+                totalCost = ordersList.get(posOfShipment).calculateTotalCost(monthNum);
+            }else{
+                totalCost = ApplyDiscountToShipment(ordersList.get(posOfShipment));
+            }
             System.out.println("Total Cost: €"+totalCost);
 			
 			double dist = ordersList.get(posOfShipment).getDistance();
@@ -1526,7 +1531,7 @@ public class App implements Serializable
         }
     }
 
-    public static double ChooseShipmentForDiscount(Shipment shipmentChosen){
+    public static double ApplyDiscountToShipment(Shipment shipmentChosen){
 
         String monthNumString = shipmentChosen.getOrderDate().substring(3, 5);
         int monthNum = Integer.parseInt(monthNumString);
@@ -1596,14 +1601,13 @@ public class App implements Serializable
         }
     }
 
-    // Example method for serialization
+    // Method for saving (serialization)
     public static void save2(String filename) {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filename))) {
-            // Serialize your data structures here
-            // For example: out.writeObject(member_variable);
+            // Serializing stock
             out.writeObject(stock);
 
-            // Serialize the lists
+            // Serializing the lists
             out.writeObject(packagesList);
             out.writeObject(vehiclesList);
             out.writeObject(customersList);
@@ -1613,14 +1617,13 @@ public class App implements Serializable
         }
     }
 
-    // Example method for deserialization
+    // Method for loading (deserialization)
     public static void load2(String filename) {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename))) {
-            // Deserialize your data structures here
-            // For example: member_variable = (DataType) in.readObject();
+            // Deserializing stock
             stock = (Stock) in.readObject();
 
-            // Deserialize the lists
+            // Deserializing the lists
             packagesList = ((ArrayList<Packaging>) in.readObject());
             vehiclesList = ((ArrayList<Transport>) in.readObject());
             customersList = ((ArrayList<Customer>) in.readObject());
