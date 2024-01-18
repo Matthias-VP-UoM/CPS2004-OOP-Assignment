@@ -8,19 +8,22 @@ public class Shipment implements Serializable{
 
     private int shipmentID;
     private String shipmentStatus, dispatchDate, orderDate;
+    private double shipmentDistance;
     private ArrayList<StockItem> itemsToShip = new ArrayList<StockItem>();
     private Customer shipmentCustomer;
     private Transport shipmentTransport;
+    private Packaging shipmentPackaging;
 
     public Shipment(){
         shipmentStatus = "Not Dispatched";
     }
 
-    public Shipment(int id, Customer customer, String date){
+    public Shipment(int id, Customer customer, String date, Packaging pack){
         shipmentID = id;
         shipmentStatus = "Not Dispatched";
         orderDate = date;
         shipmentCustomer = customer;
+        shipmentPackaging = pack;
     }
 
     public void display_shipment_details(){
@@ -30,6 +33,8 @@ public class Shipment implements Serializable{
         print_items_list();
 
         System.out.println("Transport Used: " + shipmentTransport);
+        System.out.println("Packaging Used: " + shipmentPackaging);
+		System.out.println("Order Date: "+orderDate);
     }
 
     public void print_items_list(){
@@ -83,7 +88,7 @@ public class Shipment implements Serializable{
             StockItem currentItem = itemsToShip.get(i);
             int purchaseQuantity = currentItem.getQuantity();
             Product purchaseProduct = currentItem.getProduct();
-            double itemCost = (purchaseQuantity * purchaseProduct.getPrice()) - purchaseProduct.calculate_discount(purchaseQuantity, monthNum);
+            double itemCost = ((purchaseQuantity * purchaseProduct.getPrice()) - purchaseProduct.calculate_discount(purchaseQuantity, monthNum)) + shipmentTransport.calculate_delivery_cost(shipmentDistance) + shipmentPackaging.getCost();
             totalCost += itemCost;
         }
 
@@ -106,6 +111,14 @@ public class Shipment implements Serializable{
 
     public void setTransport(Transport vehicle){
         shipmentTransport = vehicle;
+    }
+
+    public void setPackaging(Packaging pack){
+        shipmentPackaging = pack;
+    }
+
+    public void setDistance(double distance){
+        shipmentDistance = distance;
     }
 
     // Getters
@@ -135,6 +148,14 @@ public class Shipment implements Serializable{
 
     public Transport getTransport(){
         return shipmentTransport;
+    }
+
+    public Packaging getPackaging(){
+        return shipmentPackaging;
+    }
+
+    public double getDistance(){
+        return shipmentDistance;
     }
 
     public int getListSize(){

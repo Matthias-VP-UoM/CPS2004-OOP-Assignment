@@ -248,13 +248,14 @@ void AddObject(int choiceEntered){
         }while(!validChoice);
 
         Packaging package(id, cost, material, capacity);
+        packagesList.push_back(package);
     }else if (choiceEntered == 4){
         int id;
 
         bool validID = false;
 
         do{
-            cout << "Enter customer ID: " << endl;
+            cout << "Enter customer ID: ";
             cin >> id;
 
             if (!customersList.empty()){
@@ -309,6 +310,32 @@ void AddObject(int choiceEntered){
             }
         }while (!validID);
 
+        for (int i = 0; i < packagesList.size(); i++){
+            packagesList.at(i).display_package_details();
+        }
+
+        int packID;
+        cout << "Enter ID of packaging to use: ";
+        cin >> packID;
+
+        int counter = 0, posOfPack = 0;
+        bool isFound = false;
+        do{
+            if (packagesList.at(counter).getID() == packID){
+                isFound = true;
+                posOfPack = counter;
+            }else{
+                isFound = false;
+                counter++;
+            }
+        }while (!isFound);
+
+        if (!isFound){
+            cout << "ID of packaging could not be found! Please try again!" << endl;
+            return;
+        }
+        Packaging packOrder = packagesList.at(posOfPack);
+
         for (int i = 0; i < customersList.size(); i++){
             customersList.at(i).display_customer_info();
         }
@@ -317,8 +344,9 @@ void AddObject(int choiceEntered){
         cout << "Enter ID of customer that ordered: ";
         cin >> custID;
 
-        int counter = 0, posOfCust = 0;
-        bool isFound = false;
+        int posOfCust = 0;
+        counter = 0;
+        isFound = false;
         do{
             if (customersList.at(counter).getID() == custID){
                 isFound = true;
@@ -345,11 +373,23 @@ void AddObject(int choiceEntered){
                 cout << "Enter quantity to order for the product you chose: ";
                 cin >> orderQuantity;
 
+                int day, monthNum, year;
+                cout << "Enter day of month of order: ";
+                cin >> day;
+
+                cout << "Enter month number of order: ";
+                cin >> monthNum;
+
+                cout << "Enter year of order: ";
+                cin >> year;
+
+                string date = to_string(day)+"/"+to_string(monthNum)+"/"+to_string(year);
+
                 StockItem i = stock.getItem(prodIndex);
                 StockItem *p = &i;
                 if (p != NULL && orderQuantity <= stock.calculate_product_quantity(i)){
                     StockItem itemOrdered(orderQuantity, i.getProduct());
-                    Shipment ship(orderID, custOrder);
+                    Shipment ship(orderID, custOrder, date, packOrder);
                     ship.addItemToList(itemOrdered);
                     stock.getItem(prodIndex).updateQuantity(-orderQuantity);
                     
@@ -517,6 +557,7 @@ void ReadObject(int choiceEntered){
                         for (int i = 0; i < packagesList.size(); i++){
                             packagesList[i].display_package_details();
                         }
+                        validOption = true;
                     } break;
                     case 2:{
                         int posToRead;
@@ -534,6 +575,7 @@ void ReadObject(int choiceEntered){
                         }catch(const exception& e){
                             cout << "Package does not exist in list!" << endl;
                         }
+                        validOption = true;
                     } break;
                     default: cout << "Invalid option! Please try again!" << endl;
                 }
@@ -973,6 +1015,47 @@ void UpdateObject(int choiceEntered){
 
         int orderID = ordersList.at(posToUpdate).getID();
 
+        int day, monthNum, year;
+        cout << "Original Order Date: " << ordersList.at(posToUpdate).getOrderDate() << endl;;
+        cout << "Enter day of month of order: ";
+        cin >> day;
+
+        cout << "Enter month number of order: ";
+        cin >> monthNum;
+
+        cout << "Enter year of order: ";
+        cin >> year;
+
+        string date = to_string(day)+"/"+to_string(monthNum)+"/"+to_string(year);
+
+        cout << "Original Packaging: " << ordersList.at(posToUpdate).getPackaging().getMaterial() << endl;
+
+        for (int i = 0; i < packagesList.size(); i++){
+            packagesList.at(i).display_package_details();
+        }
+
+        int packID;
+        cout << "Enter new ID of packaging (enter same value to keep current packaging): ";
+        cin >> packID;
+
+        int counter = 0, posOfPack = 0;
+        bool isFound = false;
+        do{
+            if (packagesList.at(counter).getID() == packID){
+                isFound = true;
+                posOfPack = counter;
+            }else{
+                isFound = false;
+                counter++;
+            }
+        }while (!isFound);
+
+        if (!isFound){
+            cout << "ID of customer could not be found! Please try again!" << endl;
+            return;
+        }
+        Packaging packOrder = packagesList.at(posOfPack);
+
         cout << "Original Customer: " << ordersList.at(posToUpdate).getCustomer().getName() << endl;
 
         for (int i = 0; i < customersList.size(); i++){
@@ -983,8 +1066,9 @@ void UpdateObject(int choiceEntered){
         cout << "Enter new ID of customer that ordered (enter same value to keep current customer): ";
         cin >> custID;
 
-        int counter = 0, posOfCust = 0;
-        bool isFound = false;
+        int posOfCust = 0;
+        counter = 0;
+        isFound = false;
         do{
             if (customersList.at(counter).getID() == custID){
                 isFound = true;
@@ -1038,15 +1122,15 @@ void UpdateObject(int choiceEntered){
 
                             if (p != NULL && orderQuantity <= stock.calculate_product_quantity(stock.getItem(prodIndex))){
                                 StockItem itemOrdered(orderQuantity, itemChosen.getProduct());
-                                Shipment ship(orderID, custOrder);
+                                Shipment ship(orderID, custOrder, date, packOrder);
                                 ship.updateItemInList(itemOrdered, posToUpdate);
                                 if (orderQuantity < originalQuantity || orderQuantity > originalQuantity)
                                     stock.getItem(prodIndex).updateQuantity(orderQuantity - originalQuantity);
                                 
 
-                                /*if (stock.getItem(prodIndex).getQuantity() == 0){
-                                    stock.removeItem(stock.getItem(prodIndex));
-                                }*/
+                                if (stock.getItem(prodIndex).getQuantity() <= 0){
+                                    stock.removeItem(prodIndex);
+                                }
 
                                 isValid = true;
 
@@ -1074,14 +1158,14 @@ void UpdateObject(int choiceEntered){
 
                             if (p2 != NULL && orderQuantity <= stock.calculate_product_quantity(i)){
                                 StockItem itemOrdered(orderQuantity, i.getProduct());
-                                Shipment ship(orderID, custOrder);
+                                Shipment ship(orderID, custOrder, date, packOrder);
                                 ship.addItemToList(itemOrdered);
                                 stock.getItem(prodIndex).updateQuantity(-orderQuantity);
                                 
 
-                                /*if (stock.getItem(prodIndex).getQuantity() == 0){
-                                    stock.removeItem(stock.getItem(prodIndex));
-                                }*/
+                                if (stock.getItem(prodIndex).getQuantity() <= 0){
+                                    stock.removeItem(prodIndex);
+                                }
 
                                 isValid = true;
 
@@ -1147,7 +1231,7 @@ void UpdateObject(int choiceEntered){
                                 }
                                 ordersList.push_back(ship);
 
-                                cout << "Item has been put to cart!" << endl;;
+                                cout << "Item has been put to cart!" << endl;
                             }else{
                                 isValid = false;
                                 cout << "Please try again!" << endl;
@@ -1336,7 +1420,10 @@ void ChooseShipmentToDispatch(){
         string date = to_string(day)+"/"+to_string(monthNum)+"/"+to_string(year);
 
         double totalCost = ordersList.at(posOfShipment).calculate_total_cost(monthNum);
-        cout << "Total Cost: " << totalCost << endl;
+        cout << "Total Cost: €" << totalCost << endl;
+
+        double dist = ordersList.at(posOfShipment).getDistance();
+        cout << "Estimated Delivery Time: " << ordersList.at(posOfShipment).getTransport()->calculate_delivery_time(dist) << " days" << endl;
 
         string dispatchConfirmation;
         cout << "Confirm Dispatch of Shipment (Yes or No): ";

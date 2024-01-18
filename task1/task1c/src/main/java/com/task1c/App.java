@@ -132,7 +132,7 @@ public class App implements Serializable
                 boolean isFinished = false;
                 do{
                     String ans;
-                    System.out.println("Do you want to add in an airspace (Yes or No): ");
+                    System.out.print("Do you want to add in an airspace (Yes or No): ");
                     ans = sc.next();
     
                     if (ans.toUpperCase().charAt(0) == 'Y'){
@@ -385,6 +385,31 @@ public class App implements Serializable
                 }
             }while (!validID);
 
+            for (int i = 0; i < packagesList.size(); i++){
+                packagesList.get(i).display_package_details();
+            }
+
+            System.out.print("Enter ID of packaging to use: ");
+            int packID = sc.nextInt();
+
+            int counter = 0, posOfPack = 0;
+            boolean isFound = false;
+            do{
+                if (packagesList.get(counter).getID() == packID){
+                    isFound = true;
+                    posOfPack = counter;
+                }else{
+                    isFound = false;
+                    counter++;
+                }
+            }while (!isFound);
+
+            if (!isFound){
+                System.out.println("ID of packaging could not be found! Please try again!");
+                return;
+            }
+            Packaging packOrder = packagesList.get(posOfPack);
+
             for (int i = 0; i < customersList.size(); i++){
                 System.out.println(customersList.get(i).toString());
             }
@@ -392,8 +417,9 @@ public class App implements Serializable
             System.out.print("Enter ID of customer that ordered: ");
             int custID = sc.nextInt();
 
-            int counter = 0, posOfCust = 0;
-            boolean isFound = false;
+            int posOfCust = 0;
+            counter = 0; 
+            isFound = false;
             do{
                 if (customersList.get(counter).getID() == custID){
                     isFound = true;
@@ -432,7 +458,7 @@ public class App implements Serializable
 
                     if (stock.getItem(prodIndex) != null && orderQuantity <= stock.calculate_product_quantity(stock.getItem(prodIndex))){
                         StockItem itemOrdered = new StockItem(orderQuantity, stock.getItem(prodIndex).getProduct());
-                        Shipment ship = new Shipment(orderID, custOrder, date);
+                        Shipment ship = new Shipment(orderID, custOrder, date, packOrder);
                         ship.addItemToList(itemOrdered);
                         stock.getItem(prodIndex).updateQuantity(-orderQuantity);
                         
@@ -445,6 +471,7 @@ public class App implements Serializable
 
                         System.out.println("Enter distance between customer and warehouse: ");
                         double distance = sc.nextDouble();
+                        ship.setDistance(distance);
 
                         String transportType = ship.stateTransportType(distance);
 
@@ -1057,6 +1084,33 @@ public class App implements Serializable
 
             int orderID = ordersList.get(posToUpdate).getID();
 
+            System.out.println("Original Packaging: "+ordersList.get(posToUpdate).getPackaging());
+
+            for (int i = 0; i < packagesList.size(); i++){
+                packagesList.get(i).display_package_details();
+            }
+
+            System.out.print("Enter new ID of packaging (enter same value to keep current packaging): ");
+            int packID = sc.nextInt();
+
+            int counter = 0, posOfPack = 0;
+            boolean isFound = false;
+            do{
+                if (packagesList.get(counter).getID() == packID){
+                    isFound = true;
+                    posOfPack = counter;
+                }else{
+                    isFound = false;
+                    counter++;
+                }
+            }while (!isFound);
+
+            if (!isFound){
+                System.out.println("ID of customer could not be found! Please try again!");
+                return;
+            }
+            Packaging packOrder = packagesList.get(posOfPack);
+
             System.out.println("Original Customer: "+ordersList.get(posToUpdate).getCustomer());
 
             for (int i = 0; i < customersList.size(); i++){
@@ -1066,8 +1120,9 @@ public class App implements Serializable
             System.out.print("Enter new ID of customer that ordered (enter same value to keep current customer): ");
             int custID = sc.nextInt();
 
-            int counter = 0, posOfCust = 0;
-            boolean isFound = false;
+            int posOfCust = 0;
+            counter = 0;
+            isFound = false;
             do{
                 if (customersList.get(counter).getID() == custID){
                     isFound = true;
@@ -1116,7 +1171,7 @@ public class App implements Serializable
 
                                 if (itemChosen != null && orderQuantity <= stock.calculate_product_quantity(stock.getItem(prodIndex))){
                                     StockItem itemOrdered = new StockItem(orderQuantity, itemChosen.getProduct());
-                                    Shipment ship = new Shipment(orderID, custOrder, date);
+                                    Shipment ship = new Shipment(orderID, custOrder, date, packOrder);
                                     ship.updateItemInList(itemOrdered, posToUpdate);
                                     if (orderQuantity < originalQuantity || orderQuantity > originalQuantity)
                                         stock.getItem(prodIndex).updateQuantity(orderQuantity - originalQuantity);
@@ -1149,7 +1204,7 @@ public class App implements Serializable
 
                                 if (stock.getItem(prodIndex) != null && orderQuantity <= stock.calculate_product_quantity(stock.getItem(prodIndex))){
                                     StockItem itemOrdered = new StockItem(orderQuantity, stock.getItem(prodIndex).getProduct());
-                                    Shipment ship = new Shipment(orderID, custOrder, date);
+                                    Shipment ship = new Shipment(orderID, custOrder, date, packOrder);
                                     ship.addItemToList(itemOrdered);
                                     stock.getItem(prodIndex).updateQuantity(-orderQuantity);
                                     
@@ -1242,7 +1297,7 @@ public class App implements Serializable
 
                     if (stock.getItem(prodIndex) != null && orderQuantity <= stock.calculate_product_quantity(stock.getItem(prodIndex))){
                         StockItem itemOrdered = new StockItem(orderQuantity, stock.getItem(prodIndex).getProduct());
-                        Shipment ship = new Shipment(orderID, custOrder, date);
+                        Shipment ship = new Shipment(orderID, custOrder, date, packOrder);
                         ship.addItemToList(itemOrdered);
                         stock.getItem(prodIndex).updateQuantity(-orderQuantity);
                         
@@ -1389,6 +1444,9 @@ public class App implements Serializable
 
             double totalCost = ordersList.get(posOfShipment).calculateTotalCost(monthNum);
             System.out.println("Total Cost: €"+totalCost);
+
+            double dist = ordersList.get(posOfShipment).getDistance();
+            System.out.println("Estimated Delivery Time: "+ordersList.get(posOfShipment).getTransport().calculate_delivery_time(dist) + " days");
 
             ordersList.get(posOfShipment).dispatch(date);
             System.out.println("Order has been dispatched!");

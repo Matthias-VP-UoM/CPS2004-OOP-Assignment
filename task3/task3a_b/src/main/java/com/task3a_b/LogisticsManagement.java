@@ -11846,80 +11846,98 @@ public final class LogisticsManagement {
         getOrderDateBytes();
 
     /**
-     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+     * <code>double shipmentDistance = 5;</code>
+     */
+    double getShipmentDistance();
+
+    /**
+     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
      */
     java.util.List<com.task3a_b.LogisticsManagement.PB_StockItem> 
         getItemsToShipList();
     /**
-     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
      */
     com.task3a_b.LogisticsManagement.PB_StockItem getItemsToShip(int index);
     /**
-     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
      */
     int getItemsToShipCount();
     /**
-     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
      */
     java.util.List<? extends com.task3a_b.LogisticsManagement.PB_StockItemOrBuilder> 
         getItemsToShipOrBuilderList();
     /**
-     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
      */
     com.task3a_b.LogisticsManagement.PB_StockItemOrBuilder getItemsToShipOrBuilder(
         int index);
 
     /**
-     * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
+     * <code>.com.task3a_b.PB_Customer shipmentCustomer = 7;</code>
      */
     boolean hasShipmentCustomer();
     /**
-     * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
+     * <code>.com.task3a_b.PB_Customer shipmentCustomer = 7;</code>
      */
     com.task3a_b.LogisticsManagement.PB_Customer getShipmentCustomer();
     /**
-     * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
+     * <code>.com.task3a_b.PB_Customer shipmentCustomer = 7;</code>
      */
     com.task3a_b.LogisticsManagement.PB_CustomerOrBuilder getShipmentCustomerOrBuilder();
 
     /**
-     * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
+     * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 8;</code>
      */
     boolean hasShipmentAircraft();
     /**
-     * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
+     * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 8;</code>
      */
     com.task3a_b.LogisticsManagement.PB_Aircraft getShipmentAircraft();
     /**
-     * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
+     * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 8;</code>
      */
     com.task3a_b.LogisticsManagement.PB_AircraftOrBuilder getShipmentAircraftOrBuilder();
 
     /**
-     * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+     * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 9;</code>
      */
     boolean hasShipmentVessel();
     /**
-     * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+     * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 9;</code>
      */
     com.task3a_b.LogisticsManagement.PB_SeaVessel getShipmentVessel();
     /**
-     * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+     * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 9;</code>
      */
     com.task3a_b.LogisticsManagement.PB_SeaVesselOrBuilder getShipmentVesselOrBuilder();
 
     /**
-     * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+     * <code>.com.task3a_b.PB_Truck shipmentTruck = 10;</code>
      */
     boolean hasShipmentTruck();
     /**
-     * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+     * <code>.com.task3a_b.PB_Truck shipmentTruck = 10;</code>
      */
     com.task3a_b.LogisticsManagement.PB_Truck getShipmentTruck();
     /**
-     * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+     * <code>.com.task3a_b.PB_Truck shipmentTruck = 10;</code>
      */
     com.task3a_b.LogisticsManagement.PB_TruckOrBuilder getShipmentTruckOrBuilder();
+
+    /**
+     * <code>.com.task3a_b.PB_Packaging shipmentPackaging = 11;</code>
+     */
+    boolean hasShipmentPackaging();
+    /**
+     * <code>.com.task3a_b.PB_Packaging shipmentPackaging = 11;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_Packaging getShipmentPackaging();
+    /**
+     * <code>.com.task3a_b.PB_Packaging shipmentPackaging = 11;</code>
+     */
+    com.task3a_b.LogisticsManagement.PB_PackagingOrBuilder getShipmentPackagingOrBuilder();
   }
   /**
    * Protobuf type {@code com.task3a_b.PB_Shipment}
@@ -11938,6 +11956,7 @@ public final class LogisticsManagement {
       shipmentStatus_ = "";
       dispatchDate_ = "";
       orderDate_ = "";
+      shipmentDistance_ = 0D;
       itemsToShip_ = java.util.Collections.emptyList();
     }
 
@@ -11988,16 +12007,21 @@ public final class LogisticsManagement {
               orderDate_ = s;
               break;
             }
-            case 42: {
-              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+            case 41: {
+
+              shipmentDistance_ = input.readDouble();
+              break;
+            }
+            case 50: {
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
                 itemsToShip_ = new java.util.ArrayList<com.task3a_b.LogisticsManagement.PB_StockItem>();
-                mutable_bitField0_ |= 0x00000010;
+                mutable_bitField0_ |= 0x00000020;
               }
               itemsToShip_.add(
                   input.readMessage(com.task3a_b.LogisticsManagement.PB_StockItem.parser(), extensionRegistry));
               break;
             }
-            case 50: {
+            case 58: {
               com.task3a_b.LogisticsManagement.PB_Customer.Builder subBuilder = null;
               if (shipmentCustomer_ != null) {
                 subBuilder = shipmentCustomer_.toBuilder();
@@ -12010,7 +12034,7 @@ public final class LogisticsManagement {
 
               break;
             }
-            case 58: {
+            case 66: {
               com.task3a_b.LogisticsManagement.PB_Aircraft.Builder subBuilder = null;
               if (shipmentAircraft_ != null) {
                 subBuilder = shipmentAircraft_.toBuilder();
@@ -12023,7 +12047,7 @@ public final class LogisticsManagement {
 
               break;
             }
-            case 66: {
+            case 74: {
               com.task3a_b.LogisticsManagement.PB_SeaVessel.Builder subBuilder = null;
               if (shipmentVessel_ != null) {
                 subBuilder = shipmentVessel_.toBuilder();
@@ -12036,7 +12060,7 @@ public final class LogisticsManagement {
 
               break;
             }
-            case 74: {
+            case 82: {
               com.task3a_b.LogisticsManagement.PB_Truck.Builder subBuilder = null;
               if (shipmentTruck_ != null) {
                 subBuilder = shipmentTruck_.toBuilder();
@@ -12045,6 +12069,19 @@ public final class LogisticsManagement {
               if (subBuilder != null) {
                 subBuilder.mergeFrom(shipmentTruck_);
                 shipmentTruck_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 90: {
+              com.task3a_b.LogisticsManagement.PB_Packaging.Builder subBuilder = null;
+              if (shipmentPackaging_ != null) {
+                subBuilder = shipmentPackaging_.toBuilder();
+              }
+              shipmentPackaging_ = input.readMessage(com.task3a_b.LogisticsManagement.PB_Packaging.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(shipmentPackaging_);
+                shipmentPackaging_ = subBuilder.buildPartial();
               }
 
               break;
@@ -12064,7 +12101,7 @@ public final class LogisticsManagement {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
           itemsToShip_ = java.util.Collections.unmodifiableList(itemsToShip_);
         }
         this.unknownFields = unknownFields.build();
@@ -12200,123 +12237,153 @@ public final class LogisticsManagement {
       }
     }
 
-    public static final int ITEMSTOSHIP_FIELD_NUMBER = 5;
+    public static final int SHIPMENTDISTANCE_FIELD_NUMBER = 5;
+    private double shipmentDistance_;
+    /**
+     * <code>double shipmentDistance = 5;</code>
+     */
+    public double getShipmentDistance() {
+      return shipmentDistance_;
+    }
+
+    public static final int ITEMSTOSHIP_FIELD_NUMBER = 6;
     private java.util.List<com.task3a_b.LogisticsManagement.PB_StockItem> itemsToShip_;
     /**
-     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
      */
     public java.util.List<com.task3a_b.LogisticsManagement.PB_StockItem> getItemsToShipList() {
       return itemsToShip_;
     }
     /**
-     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
      */
     public java.util.List<? extends com.task3a_b.LogisticsManagement.PB_StockItemOrBuilder> 
         getItemsToShipOrBuilderList() {
       return itemsToShip_;
     }
     /**
-     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
      */
     public int getItemsToShipCount() {
       return itemsToShip_.size();
     }
     /**
-     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
      */
     public com.task3a_b.LogisticsManagement.PB_StockItem getItemsToShip(int index) {
       return itemsToShip_.get(index);
     }
     /**
-     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+     * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
      */
     public com.task3a_b.LogisticsManagement.PB_StockItemOrBuilder getItemsToShipOrBuilder(
         int index) {
       return itemsToShip_.get(index);
     }
 
-    public static final int SHIPMENTCUSTOMER_FIELD_NUMBER = 6;
+    public static final int SHIPMENTCUSTOMER_FIELD_NUMBER = 7;
     private com.task3a_b.LogisticsManagement.PB_Customer shipmentCustomer_;
     /**
-     * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
+     * <code>.com.task3a_b.PB_Customer shipmentCustomer = 7;</code>
      */
     public boolean hasShipmentCustomer() {
       return shipmentCustomer_ != null;
     }
     /**
-     * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
+     * <code>.com.task3a_b.PB_Customer shipmentCustomer = 7;</code>
      */
     public com.task3a_b.LogisticsManagement.PB_Customer getShipmentCustomer() {
       return shipmentCustomer_ == null ? com.task3a_b.LogisticsManagement.PB_Customer.getDefaultInstance() : shipmentCustomer_;
     }
     /**
-     * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
+     * <code>.com.task3a_b.PB_Customer shipmentCustomer = 7;</code>
      */
     public com.task3a_b.LogisticsManagement.PB_CustomerOrBuilder getShipmentCustomerOrBuilder() {
       return getShipmentCustomer();
     }
 
-    public static final int SHIPMENTAIRCRAFT_FIELD_NUMBER = 7;
+    public static final int SHIPMENTAIRCRAFT_FIELD_NUMBER = 8;
     private com.task3a_b.LogisticsManagement.PB_Aircraft shipmentAircraft_;
     /**
-     * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
+     * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 8;</code>
      */
     public boolean hasShipmentAircraft() {
       return shipmentAircraft_ != null;
     }
     /**
-     * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
+     * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 8;</code>
      */
     public com.task3a_b.LogisticsManagement.PB_Aircraft getShipmentAircraft() {
       return shipmentAircraft_ == null ? com.task3a_b.LogisticsManagement.PB_Aircraft.getDefaultInstance() : shipmentAircraft_;
     }
     /**
-     * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
+     * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 8;</code>
      */
     public com.task3a_b.LogisticsManagement.PB_AircraftOrBuilder getShipmentAircraftOrBuilder() {
       return getShipmentAircraft();
     }
 
-    public static final int SHIPMENTVESSEL_FIELD_NUMBER = 8;
+    public static final int SHIPMENTVESSEL_FIELD_NUMBER = 9;
     private com.task3a_b.LogisticsManagement.PB_SeaVessel shipmentVessel_;
     /**
-     * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+     * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 9;</code>
      */
     public boolean hasShipmentVessel() {
       return shipmentVessel_ != null;
     }
     /**
-     * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+     * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 9;</code>
      */
     public com.task3a_b.LogisticsManagement.PB_SeaVessel getShipmentVessel() {
       return shipmentVessel_ == null ? com.task3a_b.LogisticsManagement.PB_SeaVessel.getDefaultInstance() : shipmentVessel_;
     }
     /**
-     * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+     * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 9;</code>
      */
     public com.task3a_b.LogisticsManagement.PB_SeaVesselOrBuilder getShipmentVesselOrBuilder() {
       return getShipmentVessel();
     }
 
-    public static final int SHIPMENTTRUCK_FIELD_NUMBER = 9;
+    public static final int SHIPMENTTRUCK_FIELD_NUMBER = 10;
     private com.task3a_b.LogisticsManagement.PB_Truck shipmentTruck_;
     /**
-     * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+     * <code>.com.task3a_b.PB_Truck shipmentTruck = 10;</code>
      */
     public boolean hasShipmentTruck() {
       return shipmentTruck_ != null;
     }
     /**
-     * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+     * <code>.com.task3a_b.PB_Truck shipmentTruck = 10;</code>
      */
     public com.task3a_b.LogisticsManagement.PB_Truck getShipmentTruck() {
       return shipmentTruck_ == null ? com.task3a_b.LogisticsManagement.PB_Truck.getDefaultInstance() : shipmentTruck_;
     }
     /**
-     * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+     * <code>.com.task3a_b.PB_Truck shipmentTruck = 10;</code>
      */
     public com.task3a_b.LogisticsManagement.PB_TruckOrBuilder getShipmentTruckOrBuilder() {
       return getShipmentTruck();
+    }
+
+    public static final int SHIPMENTPACKAGING_FIELD_NUMBER = 11;
+    private com.task3a_b.LogisticsManagement.PB_Packaging shipmentPackaging_;
+    /**
+     * <code>.com.task3a_b.PB_Packaging shipmentPackaging = 11;</code>
+     */
+    public boolean hasShipmentPackaging() {
+      return shipmentPackaging_ != null;
+    }
+    /**
+     * <code>.com.task3a_b.PB_Packaging shipmentPackaging = 11;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_Packaging getShipmentPackaging() {
+      return shipmentPackaging_ == null ? com.task3a_b.LogisticsManagement.PB_Packaging.getDefaultInstance() : shipmentPackaging_;
+    }
+    /**
+     * <code>.com.task3a_b.PB_Packaging shipmentPackaging = 11;</code>
+     */
+    public com.task3a_b.LogisticsManagement.PB_PackagingOrBuilder getShipmentPackagingOrBuilder() {
+      return getShipmentPackaging();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -12345,20 +12412,26 @@ public final class LogisticsManagement {
       if (!getOrderDateBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, orderDate_);
       }
+      if (shipmentDistance_ != 0D) {
+        output.writeDouble(5, shipmentDistance_);
+      }
       for (int i = 0; i < itemsToShip_.size(); i++) {
-        output.writeMessage(5, itemsToShip_.get(i));
+        output.writeMessage(6, itemsToShip_.get(i));
       }
       if (shipmentCustomer_ != null) {
-        output.writeMessage(6, getShipmentCustomer());
+        output.writeMessage(7, getShipmentCustomer());
       }
       if (shipmentAircraft_ != null) {
-        output.writeMessage(7, getShipmentAircraft());
+        output.writeMessage(8, getShipmentAircraft());
       }
       if (shipmentVessel_ != null) {
-        output.writeMessage(8, getShipmentVessel());
+        output.writeMessage(9, getShipmentVessel());
       }
       if (shipmentTruck_ != null) {
-        output.writeMessage(9, getShipmentTruck());
+        output.writeMessage(10, getShipmentTruck());
+      }
+      if (shipmentPackaging_ != null) {
+        output.writeMessage(11, getShipmentPackaging());
       }
       unknownFields.writeTo(output);
     }
@@ -12382,25 +12455,33 @@ public final class LogisticsManagement {
       if (!getOrderDateBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, orderDate_);
       }
+      if (shipmentDistance_ != 0D) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(5, shipmentDistance_);
+      }
       for (int i = 0; i < itemsToShip_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, itemsToShip_.get(i));
+          .computeMessageSize(6, itemsToShip_.get(i));
       }
       if (shipmentCustomer_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, getShipmentCustomer());
+          .computeMessageSize(7, getShipmentCustomer());
       }
       if (shipmentAircraft_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(7, getShipmentAircraft());
+          .computeMessageSize(8, getShipmentAircraft());
       }
       if (shipmentVessel_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(8, getShipmentVessel());
+          .computeMessageSize(9, getShipmentVessel());
       }
       if (shipmentTruck_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(9, getShipmentTruck());
+          .computeMessageSize(10, getShipmentTruck());
+      }
+      if (shipmentPackaging_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(11, getShipmentPackaging());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -12426,6 +12507,10 @@ public final class LogisticsManagement {
           .equals(other.getDispatchDate());
       result = result && getOrderDate()
           .equals(other.getOrderDate());
+      result = result && (
+          java.lang.Double.doubleToLongBits(getShipmentDistance())
+          == java.lang.Double.doubleToLongBits(
+              other.getShipmentDistance()));
       result = result && getItemsToShipList()
           .equals(other.getItemsToShipList());
       result = result && (hasShipmentCustomer() == other.hasShipmentCustomer());
@@ -12448,6 +12533,11 @@ public final class LogisticsManagement {
         result = result && getShipmentTruck()
             .equals(other.getShipmentTruck());
       }
+      result = result && (hasShipmentPackaging() == other.hasShipmentPackaging());
+      if (hasShipmentPackaging()) {
+        result = result && getShipmentPackaging()
+            .equals(other.getShipmentPackaging());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -12467,6 +12557,9 @@ public final class LogisticsManagement {
       hash = (53 * hash) + getDispatchDate().hashCode();
       hash = (37 * hash) + ORDERDATE_FIELD_NUMBER;
       hash = (53 * hash) + getOrderDate().hashCode();
+      hash = (37 * hash) + SHIPMENTDISTANCE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getShipmentDistance()));
       if (getItemsToShipCount() > 0) {
         hash = (37 * hash) + ITEMSTOSHIP_FIELD_NUMBER;
         hash = (53 * hash) + getItemsToShipList().hashCode();
@@ -12486,6 +12579,10 @@ public final class LogisticsManagement {
       if (hasShipmentTruck()) {
         hash = (37 * hash) + SHIPMENTTRUCK_FIELD_NUMBER;
         hash = (53 * hash) + getShipmentTruck().hashCode();
+      }
+      if (hasShipmentPackaging()) {
+        hash = (37 * hash) + SHIPMENTPACKAGING_FIELD_NUMBER;
+        hash = (53 * hash) + getShipmentPackaging().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -12629,9 +12726,11 @@ public final class LogisticsManagement {
 
         orderDate_ = "";
 
+        shipmentDistance_ = 0D;
+
         if (itemsToShipBuilder_ == null) {
           itemsToShip_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000020);
         } else {
           itemsToShipBuilder_.clear();
         }
@@ -12658,6 +12757,12 @@ public final class LogisticsManagement {
         } else {
           shipmentTruck_ = null;
           shipmentTruckBuilder_ = null;
+        }
+        if (shipmentPackagingBuilder_ == null) {
+          shipmentPackaging_ = null;
+        } else {
+          shipmentPackaging_ = null;
+          shipmentPackagingBuilder_ = null;
         }
         return this;
       }
@@ -12691,10 +12796,11 @@ public final class LogisticsManagement {
         result.shipmentStatus_ = shipmentStatus_;
         result.dispatchDate_ = dispatchDate_;
         result.orderDate_ = orderDate_;
+        result.shipmentDistance_ = shipmentDistance_;
         if (itemsToShipBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          if (((bitField0_ & 0x00000020) == 0x00000020)) {
             itemsToShip_ = java.util.Collections.unmodifiableList(itemsToShip_);
-            bitField0_ = (bitField0_ & ~0x00000010);
+            bitField0_ = (bitField0_ & ~0x00000020);
           }
           result.itemsToShip_ = itemsToShip_;
         } else {
@@ -12719,6 +12825,11 @@ public final class LogisticsManagement {
           result.shipmentTruck_ = shipmentTruck_;
         } else {
           result.shipmentTruck_ = shipmentTruckBuilder_.build();
+        }
+        if (shipmentPackagingBuilder_ == null) {
+          result.shipmentPackaging_ = shipmentPackaging_;
+        } else {
+          result.shipmentPackaging_ = shipmentPackagingBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -12784,11 +12895,14 @@ public final class LogisticsManagement {
           orderDate_ = other.orderDate_;
           onChanged();
         }
+        if (other.getShipmentDistance() != 0D) {
+          setShipmentDistance(other.getShipmentDistance());
+        }
         if (itemsToShipBuilder_ == null) {
           if (!other.itemsToShip_.isEmpty()) {
             if (itemsToShip_.isEmpty()) {
               itemsToShip_ = other.itemsToShip_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000020);
             } else {
               ensureItemsToShipIsMutable();
               itemsToShip_.addAll(other.itemsToShip_);
@@ -12801,7 +12915,7 @@ public final class LogisticsManagement {
               itemsToShipBuilder_.dispose();
               itemsToShipBuilder_ = null;
               itemsToShip_ = other.itemsToShip_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000020);
               itemsToShipBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getItemsToShipFieldBuilder() : null;
@@ -12821,6 +12935,9 @@ public final class LogisticsManagement {
         }
         if (other.hasShipmentTruck()) {
           mergeShipmentTruck(other.getShipmentTruck());
+        }
+        if (other.hasShipmentPackaging()) {
+          mergeShipmentPackaging(other.getShipmentPackaging());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -13097,12 +13214,38 @@ public final class LogisticsManagement {
         return this;
       }
 
+      private double shipmentDistance_ ;
+      /**
+       * <code>double shipmentDistance = 5;</code>
+       */
+      public double getShipmentDistance() {
+        return shipmentDistance_;
+      }
+      /**
+       * <code>double shipmentDistance = 5;</code>
+       */
+      public Builder setShipmentDistance(double value) {
+        
+        shipmentDistance_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double shipmentDistance = 5;</code>
+       */
+      public Builder clearShipmentDistance() {
+        
+        shipmentDistance_ = 0D;
+        onChanged();
+        return this;
+      }
+
       private java.util.List<com.task3a_b.LogisticsManagement.PB_StockItem> itemsToShip_ =
         java.util.Collections.emptyList();
       private void ensureItemsToShipIsMutable() {
-        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
           itemsToShip_ = new java.util.ArrayList<com.task3a_b.LogisticsManagement.PB_StockItem>(itemsToShip_);
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000020;
          }
       }
 
@@ -13110,7 +13253,7 @@ public final class LogisticsManagement {
           com.task3a_b.LogisticsManagement.PB_StockItem, com.task3a_b.LogisticsManagement.PB_StockItem.Builder, com.task3a_b.LogisticsManagement.PB_StockItemOrBuilder> itemsToShipBuilder_;
 
       /**
-       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
        */
       public java.util.List<com.task3a_b.LogisticsManagement.PB_StockItem> getItemsToShipList() {
         if (itemsToShipBuilder_ == null) {
@@ -13120,7 +13263,7 @@ public final class LogisticsManagement {
         }
       }
       /**
-       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
        */
       public int getItemsToShipCount() {
         if (itemsToShipBuilder_ == null) {
@@ -13130,7 +13273,7 @@ public final class LogisticsManagement {
         }
       }
       /**
-       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
        */
       public com.task3a_b.LogisticsManagement.PB_StockItem getItemsToShip(int index) {
         if (itemsToShipBuilder_ == null) {
@@ -13140,7 +13283,7 @@ public final class LogisticsManagement {
         }
       }
       /**
-       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
        */
       public Builder setItemsToShip(
           int index, com.task3a_b.LogisticsManagement.PB_StockItem value) {
@@ -13157,7 +13300,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
        */
       public Builder setItemsToShip(
           int index, com.task3a_b.LogisticsManagement.PB_StockItem.Builder builderForValue) {
@@ -13171,7 +13314,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
        */
       public Builder addItemsToShip(com.task3a_b.LogisticsManagement.PB_StockItem value) {
         if (itemsToShipBuilder_ == null) {
@@ -13187,7 +13330,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
        */
       public Builder addItemsToShip(
           int index, com.task3a_b.LogisticsManagement.PB_StockItem value) {
@@ -13204,7 +13347,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
        */
       public Builder addItemsToShip(
           com.task3a_b.LogisticsManagement.PB_StockItem.Builder builderForValue) {
@@ -13218,7 +13361,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
        */
       public Builder addItemsToShip(
           int index, com.task3a_b.LogisticsManagement.PB_StockItem.Builder builderForValue) {
@@ -13232,7 +13375,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
        */
       public Builder addAllItemsToShip(
           java.lang.Iterable<? extends com.task3a_b.LogisticsManagement.PB_StockItem> values) {
@@ -13247,12 +13390,12 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
        */
       public Builder clearItemsToShip() {
         if (itemsToShipBuilder_ == null) {
           itemsToShip_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000020);
           onChanged();
         } else {
           itemsToShipBuilder_.clear();
@@ -13260,7 +13403,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
        */
       public Builder removeItemsToShip(int index) {
         if (itemsToShipBuilder_ == null) {
@@ -13273,14 +13416,14 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
        */
       public com.task3a_b.LogisticsManagement.PB_StockItem.Builder getItemsToShipBuilder(
           int index) {
         return getItemsToShipFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
        */
       public com.task3a_b.LogisticsManagement.PB_StockItemOrBuilder getItemsToShipOrBuilder(
           int index) {
@@ -13290,7 +13433,7 @@ public final class LogisticsManagement {
         }
       }
       /**
-       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
        */
       public java.util.List<? extends com.task3a_b.LogisticsManagement.PB_StockItemOrBuilder> 
            getItemsToShipOrBuilderList() {
@@ -13301,14 +13444,14 @@ public final class LogisticsManagement {
         }
       }
       /**
-       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
        */
       public com.task3a_b.LogisticsManagement.PB_StockItem.Builder addItemsToShipBuilder() {
         return getItemsToShipFieldBuilder().addBuilder(
             com.task3a_b.LogisticsManagement.PB_StockItem.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
        */
       public com.task3a_b.LogisticsManagement.PB_StockItem.Builder addItemsToShipBuilder(
           int index) {
@@ -13316,7 +13459,7 @@ public final class LogisticsManagement {
             index, com.task3a_b.LogisticsManagement.PB_StockItem.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 5;</code>
+       * <code>repeated .com.task3a_b.PB_StockItem itemsToShip = 6;</code>
        */
       public java.util.List<com.task3a_b.LogisticsManagement.PB_StockItem.Builder> 
            getItemsToShipBuilderList() {
@@ -13329,7 +13472,7 @@ public final class LogisticsManagement {
           itemsToShipBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               com.task3a_b.LogisticsManagement.PB_StockItem, com.task3a_b.LogisticsManagement.PB_StockItem.Builder, com.task3a_b.LogisticsManagement.PB_StockItemOrBuilder>(
                   itemsToShip_,
-                  ((bitField0_ & 0x00000010) == 0x00000010),
+                  ((bitField0_ & 0x00000020) == 0x00000020),
                   getParentForChildren(),
                   isClean());
           itemsToShip_ = null;
@@ -13341,13 +13484,13 @@ public final class LogisticsManagement {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.task3a_b.LogisticsManagement.PB_Customer, com.task3a_b.LogisticsManagement.PB_Customer.Builder, com.task3a_b.LogisticsManagement.PB_CustomerOrBuilder> shipmentCustomerBuilder_;
       /**
-       * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
+       * <code>.com.task3a_b.PB_Customer shipmentCustomer = 7;</code>
        */
       public boolean hasShipmentCustomer() {
         return shipmentCustomerBuilder_ != null || shipmentCustomer_ != null;
       }
       /**
-       * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
+       * <code>.com.task3a_b.PB_Customer shipmentCustomer = 7;</code>
        */
       public com.task3a_b.LogisticsManagement.PB_Customer getShipmentCustomer() {
         if (shipmentCustomerBuilder_ == null) {
@@ -13357,7 +13500,7 @@ public final class LogisticsManagement {
         }
       }
       /**
-       * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
+       * <code>.com.task3a_b.PB_Customer shipmentCustomer = 7;</code>
        */
       public Builder setShipmentCustomer(com.task3a_b.LogisticsManagement.PB_Customer value) {
         if (shipmentCustomerBuilder_ == null) {
@@ -13373,7 +13516,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
+       * <code>.com.task3a_b.PB_Customer shipmentCustomer = 7;</code>
        */
       public Builder setShipmentCustomer(
           com.task3a_b.LogisticsManagement.PB_Customer.Builder builderForValue) {
@@ -13387,7 +13530,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
+       * <code>.com.task3a_b.PB_Customer shipmentCustomer = 7;</code>
        */
       public Builder mergeShipmentCustomer(com.task3a_b.LogisticsManagement.PB_Customer value) {
         if (shipmentCustomerBuilder_ == null) {
@@ -13405,7 +13548,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
+       * <code>.com.task3a_b.PB_Customer shipmentCustomer = 7;</code>
        */
       public Builder clearShipmentCustomer() {
         if (shipmentCustomerBuilder_ == null) {
@@ -13419,7 +13562,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
+       * <code>.com.task3a_b.PB_Customer shipmentCustomer = 7;</code>
        */
       public com.task3a_b.LogisticsManagement.PB_Customer.Builder getShipmentCustomerBuilder() {
         
@@ -13427,7 +13570,7 @@ public final class LogisticsManagement {
         return getShipmentCustomerFieldBuilder().getBuilder();
       }
       /**
-       * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
+       * <code>.com.task3a_b.PB_Customer shipmentCustomer = 7;</code>
        */
       public com.task3a_b.LogisticsManagement.PB_CustomerOrBuilder getShipmentCustomerOrBuilder() {
         if (shipmentCustomerBuilder_ != null) {
@@ -13438,7 +13581,7 @@ public final class LogisticsManagement {
         }
       }
       /**
-       * <code>.com.task3a_b.PB_Customer shipmentCustomer = 6;</code>
+       * <code>.com.task3a_b.PB_Customer shipmentCustomer = 7;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.task3a_b.LogisticsManagement.PB_Customer, com.task3a_b.LogisticsManagement.PB_Customer.Builder, com.task3a_b.LogisticsManagement.PB_CustomerOrBuilder> 
@@ -13458,13 +13601,13 @@ public final class LogisticsManagement {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.task3a_b.LogisticsManagement.PB_Aircraft, com.task3a_b.LogisticsManagement.PB_Aircraft.Builder, com.task3a_b.LogisticsManagement.PB_AircraftOrBuilder> shipmentAircraftBuilder_;
       /**
-       * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
+       * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 8;</code>
        */
       public boolean hasShipmentAircraft() {
         return shipmentAircraftBuilder_ != null || shipmentAircraft_ != null;
       }
       /**
-       * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
+       * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 8;</code>
        */
       public com.task3a_b.LogisticsManagement.PB_Aircraft getShipmentAircraft() {
         if (shipmentAircraftBuilder_ == null) {
@@ -13474,7 +13617,7 @@ public final class LogisticsManagement {
         }
       }
       /**
-       * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
+       * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 8;</code>
        */
       public Builder setShipmentAircraft(com.task3a_b.LogisticsManagement.PB_Aircraft value) {
         if (shipmentAircraftBuilder_ == null) {
@@ -13490,7 +13633,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
+       * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 8;</code>
        */
       public Builder setShipmentAircraft(
           com.task3a_b.LogisticsManagement.PB_Aircraft.Builder builderForValue) {
@@ -13504,7 +13647,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
+       * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 8;</code>
        */
       public Builder mergeShipmentAircraft(com.task3a_b.LogisticsManagement.PB_Aircraft value) {
         if (shipmentAircraftBuilder_ == null) {
@@ -13522,7 +13665,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
+       * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 8;</code>
        */
       public Builder clearShipmentAircraft() {
         if (shipmentAircraftBuilder_ == null) {
@@ -13536,7 +13679,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
+       * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 8;</code>
        */
       public com.task3a_b.LogisticsManagement.PB_Aircraft.Builder getShipmentAircraftBuilder() {
         
@@ -13544,7 +13687,7 @@ public final class LogisticsManagement {
         return getShipmentAircraftFieldBuilder().getBuilder();
       }
       /**
-       * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
+       * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 8;</code>
        */
       public com.task3a_b.LogisticsManagement.PB_AircraftOrBuilder getShipmentAircraftOrBuilder() {
         if (shipmentAircraftBuilder_ != null) {
@@ -13555,7 +13698,7 @@ public final class LogisticsManagement {
         }
       }
       /**
-       * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 7;</code>
+       * <code>.com.task3a_b.PB_Aircraft shipmentAircraft = 8;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.task3a_b.LogisticsManagement.PB_Aircraft, com.task3a_b.LogisticsManagement.PB_Aircraft.Builder, com.task3a_b.LogisticsManagement.PB_AircraftOrBuilder> 
@@ -13575,13 +13718,13 @@ public final class LogisticsManagement {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.task3a_b.LogisticsManagement.PB_SeaVessel, com.task3a_b.LogisticsManagement.PB_SeaVessel.Builder, com.task3a_b.LogisticsManagement.PB_SeaVesselOrBuilder> shipmentVesselBuilder_;
       /**
-       * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+       * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 9;</code>
        */
       public boolean hasShipmentVessel() {
         return shipmentVesselBuilder_ != null || shipmentVessel_ != null;
       }
       /**
-       * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+       * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 9;</code>
        */
       public com.task3a_b.LogisticsManagement.PB_SeaVessel getShipmentVessel() {
         if (shipmentVesselBuilder_ == null) {
@@ -13591,7 +13734,7 @@ public final class LogisticsManagement {
         }
       }
       /**
-       * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+       * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 9;</code>
        */
       public Builder setShipmentVessel(com.task3a_b.LogisticsManagement.PB_SeaVessel value) {
         if (shipmentVesselBuilder_ == null) {
@@ -13607,7 +13750,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+       * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 9;</code>
        */
       public Builder setShipmentVessel(
           com.task3a_b.LogisticsManagement.PB_SeaVessel.Builder builderForValue) {
@@ -13621,7 +13764,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+       * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 9;</code>
        */
       public Builder mergeShipmentVessel(com.task3a_b.LogisticsManagement.PB_SeaVessel value) {
         if (shipmentVesselBuilder_ == null) {
@@ -13639,7 +13782,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+       * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 9;</code>
        */
       public Builder clearShipmentVessel() {
         if (shipmentVesselBuilder_ == null) {
@@ -13653,7 +13796,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+       * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 9;</code>
        */
       public com.task3a_b.LogisticsManagement.PB_SeaVessel.Builder getShipmentVesselBuilder() {
         
@@ -13661,7 +13804,7 @@ public final class LogisticsManagement {
         return getShipmentVesselFieldBuilder().getBuilder();
       }
       /**
-       * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+       * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 9;</code>
        */
       public com.task3a_b.LogisticsManagement.PB_SeaVesselOrBuilder getShipmentVesselOrBuilder() {
         if (shipmentVesselBuilder_ != null) {
@@ -13672,7 +13815,7 @@ public final class LogisticsManagement {
         }
       }
       /**
-       * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 8;</code>
+       * <code>.com.task3a_b.PB_SeaVessel shipmentVessel = 9;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.task3a_b.LogisticsManagement.PB_SeaVessel, com.task3a_b.LogisticsManagement.PB_SeaVessel.Builder, com.task3a_b.LogisticsManagement.PB_SeaVesselOrBuilder> 
@@ -13692,13 +13835,13 @@ public final class LogisticsManagement {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.task3a_b.LogisticsManagement.PB_Truck, com.task3a_b.LogisticsManagement.PB_Truck.Builder, com.task3a_b.LogisticsManagement.PB_TruckOrBuilder> shipmentTruckBuilder_;
       /**
-       * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+       * <code>.com.task3a_b.PB_Truck shipmentTruck = 10;</code>
        */
       public boolean hasShipmentTruck() {
         return shipmentTruckBuilder_ != null || shipmentTruck_ != null;
       }
       /**
-       * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+       * <code>.com.task3a_b.PB_Truck shipmentTruck = 10;</code>
        */
       public com.task3a_b.LogisticsManagement.PB_Truck getShipmentTruck() {
         if (shipmentTruckBuilder_ == null) {
@@ -13708,7 +13851,7 @@ public final class LogisticsManagement {
         }
       }
       /**
-       * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+       * <code>.com.task3a_b.PB_Truck shipmentTruck = 10;</code>
        */
       public Builder setShipmentTruck(com.task3a_b.LogisticsManagement.PB_Truck value) {
         if (shipmentTruckBuilder_ == null) {
@@ -13724,7 +13867,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+       * <code>.com.task3a_b.PB_Truck shipmentTruck = 10;</code>
        */
       public Builder setShipmentTruck(
           com.task3a_b.LogisticsManagement.PB_Truck.Builder builderForValue) {
@@ -13738,7 +13881,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+       * <code>.com.task3a_b.PB_Truck shipmentTruck = 10;</code>
        */
       public Builder mergeShipmentTruck(com.task3a_b.LogisticsManagement.PB_Truck value) {
         if (shipmentTruckBuilder_ == null) {
@@ -13756,7 +13899,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+       * <code>.com.task3a_b.PB_Truck shipmentTruck = 10;</code>
        */
       public Builder clearShipmentTruck() {
         if (shipmentTruckBuilder_ == null) {
@@ -13770,7 +13913,7 @@ public final class LogisticsManagement {
         return this;
       }
       /**
-       * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+       * <code>.com.task3a_b.PB_Truck shipmentTruck = 10;</code>
        */
       public com.task3a_b.LogisticsManagement.PB_Truck.Builder getShipmentTruckBuilder() {
         
@@ -13778,7 +13921,7 @@ public final class LogisticsManagement {
         return getShipmentTruckFieldBuilder().getBuilder();
       }
       /**
-       * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+       * <code>.com.task3a_b.PB_Truck shipmentTruck = 10;</code>
        */
       public com.task3a_b.LogisticsManagement.PB_TruckOrBuilder getShipmentTruckOrBuilder() {
         if (shipmentTruckBuilder_ != null) {
@@ -13789,7 +13932,7 @@ public final class LogisticsManagement {
         }
       }
       /**
-       * <code>.com.task3a_b.PB_Truck shipmentTruck = 9;</code>
+       * <code>.com.task3a_b.PB_Truck shipmentTruck = 10;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.task3a_b.LogisticsManagement.PB_Truck, com.task3a_b.LogisticsManagement.PB_Truck.Builder, com.task3a_b.LogisticsManagement.PB_TruckOrBuilder> 
@@ -13803,6 +13946,123 @@ public final class LogisticsManagement {
           shipmentTruck_ = null;
         }
         return shipmentTruckBuilder_;
+      }
+
+      private com.task3a_b.LogisticsManagement.PB_Packaging shipmentPackaging_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Packaging, com.task3a_b.LogisticsManagement.PB_Packaging.Builder, com.task3a_b.LogisticsManagement.PB_PackagingOrBuilder> shipmentPackagingBuilder_;
+      /**
+       * <code>.com.task3a_b.PB_Packaging shipmentPackaging = 11;</code>
+       */
+      public boolean hasShipmentPackaging() {
+        return shipmentPackagingBuilder_ != null || shipmentPackaging_ != null;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Packaging shipmentPackaging = 11;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Packaging getShipmentPackaging() {
+        if (shipmentPackagingBuilder_ == null) {
+          return shipmentPackaging_ == null ? com.task3a_b.LogisticsManagement.PB_Packaging.getDefaultInstance() : shipmentPackaging_;
+        } else {
+          return shipmentPackagingBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.com.task3a_b.PB_Packaging shipmentPackaging = 11;</code>
+       */
+      public Builder setShipmentPackaging(com.task3a_b.LogisticsManagement.PB_Packaging value) {
+        if (shipmentPackagingBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          shipmentPackaging_ = value;
+          onChanged();
+        } else {
+          shipmentPackagingBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Packaging shipmentPackaging = 11;</code>
+       */
+      public Builder setShipmentPackaging(
+          com.task3a_b.LogisticsManagement.PB_Packaging.Builder builderForValue) {
+        if (shipmentPackagingBuilder_ == null) {
+          shipmentPackaging_ = builderForValue.build();
+          onChanged();
+        } else {
+          shipmentPackagingBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Packaging shipmentPackaging = 11;</code>
+       */
+      public Builder mergeShipmentPackaging(com.task3a_b.LogisticsManagement.PB_Packaging value) {
+        if (shipmentPackagingBuilder_ == null) {
+          if (shipmentPackaging_ != null) {
+            shipmentPackaging_ =
+              com.task3a_b.LogisticsManagement.PB_Packaging.newBuilder(shipmentPackaging_).mergeFrom(value).buildPartial();
+          } else {
+            shipmentPackaging_ = value;
+          }
+          onChanged();
+        } else {
+          shipmentPackagingBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Packaging shipmentPackaging = 11;</code>
+       */
+      public Builder clearShipmentPackaging() {
+        if (shipmentPackagingBuilder_ == null) {
+          shipmentPackaging_ = null;
+          onChanged();
+        } else {
+          shipmentPackaging_ = null;
+          shipmentPackagingBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.task3a_b.PB_Packaging shipmentPackaging = 11;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_Packaging.Builder getShipmentPackagingBuilder() {
+        
+        onChanged();
+        return getShipmentPackagingFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.task3a_b.PB_Packaging shipmentPackaging = 11;</code>
+       */
+      public com.task3a_b.LogisticsManagement.PB_PackagingOrBuilder getShipmentPackagingOrBuilder() {
+        if (shipmentPackagingBuilder_ != null) {
+          return shipmentPackagingBuilder_.getMessageOrBuilder();
+        } else {
+          return shipmentPackaging_ == null ?
+              com.task3a_b.LogisticsManagement.PB_Packaging.getDefaultInstance() : shipmentPackaging_;
+        }
+      }
+      /**
+       * <code>.com.task3a_b.PB_Packaging shipmentPackaging = 11;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.task3a_b.LogisticsManagement.PB_Packaging, com.task3a_b.LogisticsManagement.PB_Packaging.Builder, com.task3a_b.LogisticsManagement.PB_PackagingOrBuilder> 
+          getShipmentPackagingFieldBuilder() {
+        if (shipmentPackagingBuilder_ == null) {
+          shipmentPackagingBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.task3a_b.LogisticsManagement.PB_Packaging, com.task3a_b.LogisticsManagement.PB_Packaging.Builder, com.task3a_b.LogisticsManagement.PB_PackagingOrBuilder>(
+                  getShipmentPackaging(),
+                  getParentForChildren(),
+                  isClean());
+          shipmentPackaging_ = null;
+        }
+        return shipmentPackagingBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -17868,25 +18128,27 @@ public final class LogisticsManagement {
       "\n\013PB_Customer\022\024\n\014customerName\030\001 \001(\t\022\022\n\nc" +
       "ustomerID\030\002 \001(\005\022\024\n\014customerRoad\030\003 \001(\t\022\024\n" +
       "\014customerTown\030\004 \001(\t\022\030\n\020customerPostCode\030" +
-      "\005 \001(\t\"\340\002\n\013PB_Shipment\022\022\n\nshipmentID\030\001 \001(" +
+      "\005 \001(\t\"\261\003\n\013PB_Shipment\022\022\n\nshipmentID\030\001 \001(" +
       "\005\022\026\n\016shipmentStatus\030\002 \001(\t\022\024\n\014dispatchDat" +
-      "e\030\003 \001(\t\022\021\n\torderDate\030\004 \001(\t\022/\n\013itemsToShi" +
-      "p\030\005 \003(\0132\032.com.task3a_b.PB_StockItem\0223\n\020s" +
-      "hipmentCustomer\030\006 \001(\0132\031.com.task3a_b.PB_" +
-      "Customer\0223\n\020shipmentAircraft\030\007 \001(\0132\031.com" +
-      ".task3a_b.PB_Aircraft\0222\n\016shipmentVessel\030" +
-      "\010 \001(\0132\032.com.task3a_b.PB_SeaVessel\022-\n\rshi" +
-      "pmentTruck\030\t \001(\0132\026.com.task3a_b.PB_Truck" +
-      "\"@\n\020PB_PackagingList\022,\n\010packages\030\001 \003(\0132\032" +
-      ".com.task3a_b.PB_Packaging\"\241\001\n\017PB_Vehicl" +
-      "esList\022.\n\013vehiclesAir\030\001 \003(\0132\031.com.task3a" +
-      "_b.PB_Aircraft\022/\n\013vehiclesSea\030\002 \003(\0132\032.co" +
-      "m.task3a_b.PB_SeaVessel\022-\n\rvehiclesTruck" +
-      "\030\003 \003(\0132\026.com.task3a_b.PB_Truck\"@\n\020PB_Cus" +
-      "tomersList\022,\n\tcustomers\030\001 \003(\0132\031.com.task" +
-      "3a_b.PB_Customer\":\n\rPB_OrdersList\022)\n\006ord" +
-      "ers\030\001 \003(\0132\031.com.task3a_b.PB_Shipmentb\006pr" +
-      "oto3"
+      "e\030\003 \001(\t\022\021\n\torderDate\030\004 \001(\t\022\030\n\020shipmentDi" +
+      "stance\030\005 \001(\001\022/\n\013itemsToShip\030\006 \003(\0132\032.com." +
+      "task3a_b.PB_StockItem\0223\n\020shipmentCustome" +
+      "r\030\007 \001(\0132\031.com.task3a_b.PB_Customer\0223\n\020sh" +
+      "ipmentAircraft\030\010 \001(\0132\031.com.task3a_b.PB_A" +
+      "ircraft\0222\n\016shipmentVessel\030\t \001(\0132\032.com.ta" +
+      "sk3a_b.PB_SeaVessel\022-\n\rshipmentTruck\030\n \001" +
+      "(\0132\026.com.task3a_b.PB_Truck\0225\n\021shipmentPa" +
+      "ckaging\030\013 \001(\0132\032.com.task3a_b.PB_Packagin" +
+      "g\"@\n\020PB_PackagingList\022,\n\010packages\030\001 \003(\0132" +
+      "\032.com.task3a_b.PB_Packaging\"\241\001\n\017PB_Vehic" +
+      "lesList\022.\n\013vehiclesAir\030\001 \003(\0132\031.com.task3" +
+      "a_b.PB_Aircraft\022/\n\013vehiclesSea\030\002 \003(\0132\032.c" +
+      "om.task3a_b.PB_SeaVessel\022-\n\rvehiclesTruc" +
+      "k\030\003 \003(\0132\026.com.task3a_b.PB_Truck\"@\n\020PB_Cu" +
+      "stomersList\022,\n\tcustomers\030\001 \003(\0132\031.com.tas" +
+      "k3a_b.PB_Customer\":\n\rPB_OrdersList\022)\n\006or" +
+      "ders\030\001 \003(\0132\031.com.task3a_b.PB_Shipmentb\006p" +
+      "roto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -17983,7 +18245,7 @@ public final class LogisticsManagement {
     internal_static_com_task3a_b_PB_Shipment_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_task3a_b_PB_Shipment_descriptor,
-        new java.lang.String[] { "ShipmentID", "ShipmentStatus", "DispatchDate", "OrderDate", "ItemsToShip", "ShipmentCustomer", "ShipmentAircraft", "ShipmentVessel", "ShipmentTruck", });
+        new java.lang.String[] { "ShipmentID", "ShipmentStatus", "DispatchDate", "OrderDate", "ShipmentDistance", "ItemsToShip", "ShipmentCustomer", "ShipmentAircraft", "ShipmentVessel", "ShipmentTruck", "ShipmentPackaging", });
     internal_static_com_task3a_b_PB_PackagingList_descriptor =
       getDescriptor().getMessageTypes().get(14);
     internal_static_com_task3a_b_PB_PackagingList_fieldAccessorTable = new

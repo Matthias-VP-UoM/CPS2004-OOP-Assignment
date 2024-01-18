@@ -37,7 +37,7 @@ public class App implements Serializable
                     case 3: AccessSubmenu("Packaging", 3); break;
                     case 4: AccessSubmenu("Customer", 4); break;
                     case 5: AccessSubmenu("Order", 5); break;
-                    case 6: AccessShipmentMenu(); break;
+                    case 6: ChooseShipmentToDispatch(); break;
                     case 7: save2("application_state.ser"); System.out.println("State is saved successfully!"); break;
                     case 8: load2("application_state.ser"); System.out.println("State is restored successfully!"); break;
                     case 9: System.out.println("Thanks for using the program!"); break;
@@ -79,7 +79,7 @@ public class App implements Serializable
         }while (subChoice != 'e');
     }
 
-    public static void AccessShipmentMenu(){
+    /*public static void AccessShipmentMenu(){
         char subChoice = 'z';
 
         do{
@@ -100,7 +100,7 @@ public class App implements Serializable
                 default: System.out.println("Invalid choice!");
             }
         }while (subChoice != 'e');
-    }
+    }*/
 
     public static void AddObject(int choiceEntered){
         if (choiceEntered == 2){
@@ -408,6 +408,27 @@ public class App implements Serializable
                 }
             }while (!validID);
 
+            System.out.print("Enter ID of packaging to use: ");
+            int packID = sc.nextInt();
+
+            int counter = 0, posOfPack = 0;
+            boolean isFound = false;
+            do{
+                if (customersList.get(counter).getID() == packID){
+                    isFound = true;
+                    posOfPack = counter;
+                }else{
+                    isFound = false;
+                    counter++;
+                }
+            }while (!isFound);
+
+            if (!isFound){
+                System.out.println("ID of packaging could not be found! Please try again!");
+                return;
+            }
+            Packaging packOrder = packagesList.get(posOfPack);
+
             for (int i = 0; i < customersList.size(); i++){
                 System.out.println(customersList.get(i).toString());
             }
@@ -415,8 +436,9 @@ public class App implements Serializable
             System.out.print("Enter ID of customer that ordered: ");
             int custID = sc.nextInt();
 
-            int counter = 0, posOfCust = 0;
-            boolean isFound = false;
+            int posOfCust = 0;
+            counter = 0;
+            isFound = false;
             do{
                 if (customersList.get(counter).getID() == custID){
                     isFound = true;
@@ -455,7 +477,7 @@ public class App implements Serializable
 
                     if (stock.getItem(prodIndex) != null && orderQuantity <= stock.calculate_product_quantity(stock.getItem(prodIndex))){
                         StockItem itemOrdered = new StockItem(orderQuantity, stock.getItem(prodIndex).getProduct());
-                        Shipment ship = new Shipment(orderID, custOrder, date);
+                        Shipment ship = new Shipment(orderID, custOrder, date, packOrder);
                         ship.addItemToList(itemOrdered);
                         stock.getItem(prodIndex).updateQuantity(-orderQuantity);
                         
@@ -1080,6 +1102,33 @@ public class App implements Serializable
 
             int orderID = ordersList.get(posToUpdate).getID();
 
+            System.out.println("Original Packaging: "+ordersList.get(posToUpdate).getPackaging());
+
+            for (int i = 0; i < packagesList.size(); i++){
+                packagesList.get(i).display_package_details();
+            }
+
+            System.out.print("Enter new ID of packaging (enter same value to keep current packaging): ");
+            int packID = sc.nextInt();
+
+            int counter = 0, posOfPack = 0;
+            boolean isFound = false;
+            do{
+                if (customersList.get(counter).getID() == packID){
+                    isFound = true;
+                    posOfPack = counter;
+                }else{
+                    isFound = false;
+                    counter++;
+                }
+            }while (!isFound);
+
+            if (!isFound){
+                System.out.println("ID of customer could not be found! Please try again!");
+                return;
+            }
+            Packaging packOrder = packagesList.get(posOfPack);
+
             System.out.println("Original Customer: "+ordersList.get(posToUpdate).getCustomer());
 
             for (int i = 0; i < customersList.size(); i++){
@@ -1089,8 +1138,9 @@ public class App implements Serializable
             System.out.print("Enter new ID of customer that ordered (enter same value to keep current customer): ");
             int custID = sc.nextInt();
 
-            int counter = 0, posOfCust = 0;
-            boolean isFound = false;
+            int posOfCust = 0;
+            counter = 0;
+            isFound = false;
             do{
                 if (customersList.get(counter).getID() == custID){
                     isFound = true;
@@ -1139,7 +1189,7 @@ public class App implements Serializable
 
                                 if (itemChosen != null && orderQuantity <= stock.calculate_product_quantity(stock.getItem(prodIndex))){
                                     StockItem itemOrdered = new StockItem(orderQuantity, itemChosen.getProduct());
-                                    Shipment ship = new Shipment(orderID, custOrder, date);
+                                    Shipment ship = new Shipment(orderID, custOrder, date, packOrder);
                                     ship.updateItemInList(itemOrdered, posToUpdate);
                                     if (orderQuantity < originalQuantity || orderQuantity > originalQuantity)
                                         stock.getItem(prodIndex).updateQuantity(orderQuantity - originalQuantity);
@@ -1172,7 +1222,7 @@ public class App implements Serializable
 
                                 if (stock.getItem(prodIndex) != null && orderQuantity <= stock.calculate_product_quantity(stock.getItem(prodIndex))){
                                     StockItem itemOrdered = new StockItem(orderQuantity, stock.getItem(prodIndex).getProduct());
-                                    Shipment ship = new Shipment(orderID, custOrder, date);
+                                    Shipment ship = new Shipment(orderID, custOrder, date, packOrder);
                                     ship.addItemToList(itemOrdered);
                                     stock.getItem(prodIndex).updateQuantity(-orderQuantity);
                                     
@@ -1265,7 +1315,7 @@ public class App implements Serializable
 
                     if (stock.getItem(prodIndex) != null && orderQuantity <= stock.calculate_product_quantity(stock.getItem(prodIndex))){
                         StockItem itemOrdered = new StockItem(orderQuantity, stock.getItem(prodIndex).getProduct());
-                        Shipment ship = new Shipment(orderID, custOrder, date);
+                        Shipment ship = new Shipment(orderID, custOrder, date, packOrder);
                         ship.addItemToList(itemOrdered);
                         stock.getItem(prodIndex).updateQuantity(-orderQuantity);
                         
@@ -1399,6 +1449,26 @@ public class App implements Serializable
         }else{
             System.out.println("Shipment found!");
 
+            boolean giveDiscount = false, closeMotorway = false;
+            System.out.print("Would you like to apply a discount (Yes or No): ");
+            String ans = sc.next();
+
+            if (ans.toUpperCase().charAt(0) == 'Y'){
+                giveDiscount = true;
+            }else{
+                giveDiscount = false;
+            }
+
+            System.out.print("Is there a closed motorway (Yes or No): ");
+            String ans2 = sc.next();
+
+            if (ans2.toUpperCase().charAt(0) == 'Y'){
+                closeMotorway = true;
+                AdjustShipmentDelivery(ordersList.get(posOfShipment));
+            }else{
+                closeMotorway = false;
+            }
+
             System.out.print("Enter day of month of dispatch: ");
             int day = sc.nextInt();
 
@@ -1412,6 +1482,9 @@ public class App implements Serializable
 
             double totalCost = ordersList.get(posOfShipment).calculateTotalCost(monthNum);
             System.out.println("Total Cost: €"+totalCost);
+			
+			double dist = ordersList.get(posOfShipment).getDistance();
+            System.out.println("Estimated Delivery Time: "+ordersList.get(posOfShipment).getTransport().calculate_delivery_time(dist) + " days");
 
             ordersList.get(posOfShipment).dispatch(date);
             System.out.println("Order has been dispatched!");
@@ -1419,10 +1492,7 @@ public class App implements Serializable
         }
     }
 
-    public static void ChooseShipmentForDiscount(){
-        System.out.print("Enter position of order to apply discount (from 0): ");
-        int posForDiscount = sc.nextInt();
-        Shipment shipmentChosen = ordersList.get(posForDiscount);
+    public static double ChooseShipmentForDiscount(Shipment shipmentChosen){
 
         String monthNumString = shipmentChosen.getOrderDate().substring(3, 5);
         int monthNum = Integer.parseInt(monthNumString);
@@ -1434,22 +1504,18 @@ public class App implements Serializable
             ShipmentInterface discountedShipment = new GlobalDiscountDecorator(shipmentChosen, discountRate);
 
             // Calculate and print the total cost
-            System.out.println("Total Cost: €" + discountedShipment.calculateTotalCost(monthNum));
-
-            // Get and print the delivery plan
-            //System.out.println("Delivery Plan: " + discountedShipment.getDeliveryPlan());
-        }else if (shipmentChosen == null){
-            System.out.println("Shipment cannot be found!");
+            double cost = discountedShipment.calculateTotalCost(monthNum);
+            return cost;
         }else if (discountRate < 0 || discountRate > 1){
             System.out.println("Invalid discount rate! Please try again later!");
+            return 0.0;
+        }else{
+            System.out.println("Shipment cannot be found!");
+            return 0.0;
         }
     }
 
-    public static void AdjustShipmentDelivery(){
-        System.out.print("Enter position of order to apply discount (from 0): ");
-        int posForAdjustment = sc.nextInt();
-        Shipment shipmentChosen = ordersList.get(posForAdjustment);
-
+    public static void AdjustShipmentDelivery(Shipment shipmentChosen){
         System.out.print("Enter closed motorway: ");
         String closedMotorway = sc.next();
 
@@ -1485,7 +1551,7 @@ public class App implements Serializable
             ShipmentInterface finalShipment = new MotorwayClosureDecorator(discountedShipment2, closedMotorway);
 
             // Calculate and print the total cost
-            System.out.println("Total Cost: $" + finalShipment.calculateTotalCost(monthNum));
+            System.out.println("Total Cost: €" + finalShipment.calculateTotalCost(monthNum));
 
             // Get and print the delivery plan
             System.out.println("Delivery Plan: " + finalShipment.getDeliveryPlan());

@@ -110,11 +110,13 @@ message PB_Shipment {
   string shipmentStatus = 2;
   string dispatchDate = 3;
   string orderDate = 4;
-  repeated PB_StockItem itemsToShip = 5;
-  PB_Customer shipmentCustomer = 6;
-  PB_Aircraft shipmentAircraft = 7;
-  PB_SeaVessel shipmentVessel = 8;
-  PB_Truck shipmentTruck = 9;
+  double shipmentDistance = 5;
+  repeated PB_StockItem itemsToShip = 6;
+  PB_Customer shipmentCustomer = 7;
+  PB_Aircraft shipmentAircraft = 8;
+  PB_SeaVessel shipmentVessel = 9;
+  PB_Truck shipmentTruck = 10;
+  PB_Packaging shipmentPackaging = 11;
 }
 
 // Lists in main class

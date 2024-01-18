@@ -27,7 +27,7 @@ public abstract class Transport implements Serializable{
         return transportationSpeed * distance;
     }
 
-    public double calculate_delivery_time(float distance){
+    public double calculate_delivery_time(double distance){
         return distance/transportationSpeed;
     }
 

@@ -70,12 +70,6 @@ string
 vector
 -
 
-/home/matthiasvp/assignment/task1/task1b/Shipment.cpp
-Shipment.h
-/home/matthiasvp/assignment/task1/task1b/Shipment.h
-iostream
--
-
 /home/matthiasvp/assignment/task1/task1b/Shipment.h
 string
 -
@@ -89,12 +83,8 @@ Customer.h
 /home/matthiasvp/assignment/task1/task1b/Customer.h
 Transport.h
 /home/matthiasvp/assignment/task1/task1b/Transport.h
-
-/home/matthiasvp/assignment/task1/task1b/Stock.cpp
-Stock.h
-/home/matthiasvp/assignment/task1/task1b/Stock.h
-iostream
--
+Packaging.h
+/home/matthiasvp/assignment/task1/task1b/Packaging.h
 
 /home/matthiasvp/assignment/task1/task1b/Stock.h
 Product.h

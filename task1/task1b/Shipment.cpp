@@ -3,7 +3,7 @@
 
 Shipment::Shipment(){}
 
-Shipment::Shipment(int id, Customer customer): shipmentID(id), shipmentStatus("Not Dispatched"), shipmentCustomer(customer){}
+Shipment::Shipment(int id, Customer customer, const string& date, Packaging pack): shipmentID(id), shipmentStatus("Not Dispatched"), shipmentCustomer(customer), orderDate(date), shipmentPackaging(pack){}
 
 void Shipment::print_items_list(){
     for (int i = 0; i < itemsToShip.size(); i++){
@@ -53,7 +53,7 @@ double Shipment::calculate_total_cost(int monthNum){
         StockItem currentItem = itemsToShip.at(i);
         int purchaseQuantity = currentItem.getQuantity();
         Product* purchaseProduct = currentItem.getProduct();
-        double itemCost = (purchaseQuantity * purchaseProduct->getPrice()) - purchaseProduct->calculate_discount(purchaseQuantity, monthNum);
+        double itemCost = ((purchaseQuantity * purchaseProduct->getPrice()) - purchaseProduct->calculate_discount(purchaseQuantity, monthNum)) + shipmentTransport->calculate_delivery_cost(shipmentDistance) + shipmentPackaging.getCost();
         totalCost += itemCost;
     }
 
@@ -78,16 +78,24 @@ void Shipment::setID(int id){
     shipmentID = id;
 }
 
-void Shipment::setStatus(const string& status){
-    shipmentStatus = status;
+void Shipment::setDate(const string& date){
+    orderDate = date;
 }
 
-void Shipment::setDate(const string& date){
-    dispatchDate = date;
+void Shipment::setCustomer(Customer customer){
+    shipmentCustomer = customer;
 }
 
 void Shipment::setTransport(Transport* vehicle){
     shipmentTransport = vehicle;
+}
+
+void Shipment::setPackaging(Packaging pack){
+    shipmentPackaging = pack;
+}
+
+void Shipment::setDistance(double distance){
+    shipmentDistance = distance;
 }
 
 // Getters
@@ -99,7 +107,11 @@ string Shipment::getStatus() const{
     return shipmentStatus;
 }
 
-string Shipment::getDate() const{
+string Shipment::getOrderDate() const{
+    return orderDate;
+}
+
+string Shipment::getDispatchDate() const{
     return dispatchDate;
 }
 
@@ -113,4 +125,12 @@ StockItem Shipment::getItem(int pos) const{
 
 Transport* Shipment::getTransport() const{
     return shipmentTransport;
+}
+
+Packaging Shipment::getPackaging() const{
+    return shipmentPackaging;
+}
+
+double Shipment::getDistance() const{
+    return shipmentDistance;
 }

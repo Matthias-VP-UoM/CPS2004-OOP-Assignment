@@ -43,6 +43,7 @@ CMakeFiles/task1bapp.dir/SeaVessel.cpp.o: ../SeaVessel.h
 CMakeFiles/task1bapp.dir/SeaVessel.cpp.o: ../Transport.h
 
 CMakeFiles/task1bapp.dir/Shipment.cpp.o: ../Customer.h
+CMakeFiles/task1bapp.dir/Shipment.cpp.o: ../Packaging.h
 CMakeFiles/task1bapp.dir/Shipment.cpp.o: ../Product.h
 CMakeFiles/task1bapp.dir/Shipment.cpp.o: ../Shipment.cpp
 CMakeFiles/task1bapp.dir/Shipment.cpp.o: ../Shipment.h
