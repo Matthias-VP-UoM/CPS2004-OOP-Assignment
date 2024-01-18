@@ -162,6 +162,8 @@ public class App implements Serializable
             double cost = sc.nextDouble();
     
             boolean validChoice = false;
+
+            TransportFactory tf = new TransportFactory();
     
             do{
                 System.out.println("A. Aircraft");
@@ -179,7 +181,12 @@ public class App implements Serializable
             }while(!validChoice);
     
             if (category.equals("Aircraft")){
-                Aircraft ac = new Aircraft(id, "Aircraft", speed, cost);
+                // Creating an aircraft through the use of the TransportFactory class
+                Aircraft ac = (Aircraft) tf.createTransport("Aircraft");
+
+                // Setting the attribute values through the use of the overloaded constructor
+                ac = new Aircraft(id, "Aircraft", speed, cost);
+
                 boolean isFinished = false;
                 do{
                     String ans;
@@ -199,8 +206,12 @@ public class App implements Serializable
                 }while(!isFinished);
                 vehiclesList.add(ac);
             }else if (category.equals("Sea Vessel")){
-                SeaVessel sv = new SeaVessel(id, "Sea Vessel", speed, cost);
-                //sv.setList();
+                // Creating a sea vessel through the use of the TransportFactory class
+                SeaVessel sv = (SeaVessel) tf.createTransport("Sea Vessel");
+
+                // Setting the attribute values through the use of the overloaded constructor
+                sv = new SeaVessel(id, "Sea Vessel", speed, cost);
+
                 boolean isFinished = false;
                 do{
                     String ans;
@@ -220,8 +231,12 @@ public class App implements Serializable
                 }while(!isFinished);
                 vehiclesList.add(sv);
             }else if (category.equals("Truck")){
-                Truck t = new Truck(id, "Truck", speed, cost);
-                //t.setList();
+                // Creating a truck through the use of the TransportFactory class
+                Truck t = (Truck) tf.createTransport("Truck");
+
+                // Setting the attribute values through the use of the overloaded constructor
+                t = new Truck(id, "Truck", speed, cost);
+
                 boolean isFinished = false;
                 do{
                     String ans;
@@ -260,6 +275,8 @@ public class App implements Serializable
             int quantity = sc.nextInt();
     
             boolean validChoice = false;
+
+            ProductFactory pf = new ProductFactory();
     
             do{
                 System.out.println("A. Book");
@@ -285,7 +302,11 @@ public class App implements Serializable
                 String genre = sc.next();
                 System.out.print("Enter book author: ");
                 String author = sc.next();
-                Book book = new Book(id, name, price, "Book", volume, iban, genre, author);
+                // Creating a book through the use of the ProductFactory class
+                Book book = (Book) pf.createProduct("Book");
+
+                // Setting the attribute values through the use of the overloaded constructor
+                book = new Book(id, name, price, "Book", volume, iban, genre, author);
 
                 StockItem item = new StockItem();
                 item.setQuantity(quantity);
@@ -300,8 +321,12 @@ public class App implements Serializable
                 double length = sc.nextDouble();
                 System.out.print("Enter size: ");
                 String size = sc.next();
-                Clothing cloth = new Clothing(id, name, price, "Clothing", volume, width, length, size);
+                // Creating a clothing item through the use of the ProductFactory class
+                Clothing cloth = (Clothing) pf.createProduct("Clothing");
 
+                // Setting the attribute values through the use of the overloaded constructor
+                cloth = new Clothing(id, name, price, "Clothing", volume, width, length, size);
+                
                 StockItem item = new StockItem();
                 item.setQuantity(quantity);
                 item.setProduct(cloth);
@@ -310,7 +335,11 @@ public class App implements Serializable
             }else if (category.equals("Computer Game")){
                 System.out.print("Enter game publisher: ");
                 String publisher = sc.next();
-                ComputerGame cg = new ComputerGame(id, name, price, "Computer Game", volume, publisher);
+                // Creating a computer game through the use of the ProductFactory class
+                ComputerGame cg = (ComputerGame) pf.createProduct("Computer Game");
+
+                // Setting the attribute values through the use of the overloaded constructor
+                cg = new ComputerGame(id, name, price, "Computer Game", volume, publisher);
 
                 StockItem item = new StockItem();
                 item.setQuantity(quantity);
@@ -318,7 +347,11 @@ public class App implements Serializable
 
                 stock.addItem(item);
             }else if (category.equals("Electronics")){
-                Electronics electronic = new Electronics(id, name, price, "Electronics", volume);
+                // Creating an electronic item through the use of the ProductFactory class
+                Electronics electronic = (Electronics) pf.createProduct("Electronics");
+
+                // Setting the attribute values through the use of the overloaded constructor
+                electronic = new Electronics(id, name, price, "Electronics", volume);
 
                 StockItem item = new StockItem();
                 item.setQuantity(quantity);

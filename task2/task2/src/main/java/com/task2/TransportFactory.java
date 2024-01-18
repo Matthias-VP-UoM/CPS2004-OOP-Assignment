@@ -16,7 +16,6 @@ public class TransportFactory implements TFInterface {
             case "Truck":
                 vehicle = new Truck();
                 break;
-            // Add more cases for other transport types
             default:
                 throw new IllegalArgumentException("Invalid transport type: " + type);
         }
