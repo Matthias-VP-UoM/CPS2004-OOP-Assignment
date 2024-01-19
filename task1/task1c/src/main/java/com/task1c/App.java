@@ -810,7 +810,7 @@ public class App implements Serializable
                         b.setGenre(genre);
                     }
 
-                    System.out.println("Original Author: " + b.getIBAN());
+                    System.out.println("Original Author: " + b.getAuthor());
                     System.out.print("Enter new author (enter same value to keep same author): ");
                     String author = sc.next();
                     if (author.length() != 0){

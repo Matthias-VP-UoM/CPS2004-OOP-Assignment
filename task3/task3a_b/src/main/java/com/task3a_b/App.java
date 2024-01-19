@@ -555,6 +555,7 @@ public class App implements Serializable
 
                         System.out.println("Enter distance between customer and warehouse: ");
                         double distance = sc.nextDouble();
+						ship.setDistance(distance);
 
                         String transportType = ship.stateTransportType(distance);
 

@@ -24,7 +24,7 @@ public class App implements Serializable
                 System.out.println("3. Packaging Management");
                 System.out.println("4. Customer Management");
                 System.out.println("5. Order Management");
-                System.out.println("6. Shipment Management");
+                System.out.println("6. Dispatch Shipment");
                 System.out.println("7. Save Application State");
                 System.out.println("8. Restore Application State");
                 System.out.println("9. Exit Application");
@@ -524,6 +524,7 @@ public class App implements Serializable
 
                         System.out.println("Enter distance between customer and warehouse: ");
                         double distance = sc.nextDouble();
+						ship.setDistance(distance);
 
                         String transportType = ship.stateTransportType(distance);
 

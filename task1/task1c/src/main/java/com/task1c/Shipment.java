@@ -40,7 +40,7 @@ public class Shipment implements Serializable{
     public void print_items_list(){
         for (int i = 0; i < itemsToShip.size(); i++){
             Product prodAtPos = itemsToShip.get(i).getProduct();
-            System.out.println("Item " + i + ":");
+            System.out.println("Item " + (i+1) + ":");
             System.out.println("Product Details:");
             prodAtPos.display_product_info();
             System.out.println("Product Quantity Ordered: " + itemsToShip.get(i).getQuantity());
