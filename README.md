@@ -1,4 +1,6 @@
-# CPS2004_assignment
+# CPS2004 Assignment
+
+Deliverable of the assignment of the CPS2004 unit, titled "Object Oriented Programming"
 
 ## Content organisation
 
